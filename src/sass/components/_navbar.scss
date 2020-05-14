@@ -1,0 +1,41 @@
+header nav {
+  background-color: $primary-color-light;
+  font-size: 1.2rem;
+
+  ul {
+    list-style-type: none;
+    padding: 0.8rem 0;
+    margin: 0;
+    margin-left: 4rem;
+    margin-right: 2rem;
+
+    display: flex;
+    align-items: baseline;
+
+    li {
+      display: inline;
+      margin-right: 1.2rem;
+
+      &.primary {
+        font-size: 1.4rem;
+      }
+
+      &.brand {
+        font-weight: 700;
+        font-style: italic;
+        margin-right: 1.5rem;
+      }
+
+      &.rightItem {
+        margin: 0 0 0 auto;
+        padding-right: 2rem;
+      }
+    }
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: $primary-color-dark;
+    }
+  }
+}

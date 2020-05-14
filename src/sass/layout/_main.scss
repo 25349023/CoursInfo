@@ -1,0 +1,28 @@
+section.main {
+  display: flex;
+  flex-flow: row-reverse;
+  height: 100%;
+}
+
+main {
+  background-color: $ui-color-light;
+  padding: 3rem 5rem;
+  // height: 100%;
+  display: flex;
+  flex-flow: row-reverse;
+
+  flex: 5 1 1000px;
+
+  .courses {
+    background-color: rgb(76, 147, 255);
+    height: 100%;
+    margin-left: 4%;
+    flex: 3 1 600px;
+  }
+
+  aside {
+    background-color: rgb(147, 221, 221);
+    height: 100%;
+    flex: 1 0 200px;
+  }
+}

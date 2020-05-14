@@ -1,6 +1,10 @@
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
@@ -335,6 +339,78 @@ template {
  */
 [hidden] {
   display: none;
+}
+
+section.main {
+  display: flex;
+  flex-flow: row-reverse;
+  height: 100%;
+}
+
+main {
+  background-color: #e4e4e4;
+  padding: 3rem 5rem;
+  display: flex;
+  flex-flow: row-reverse;
+  flex: 5 1 1000px;
+}
+main .courses {
+  background-color: #4c93ff;
+  height: 100%;
+  margin-left: 4%;
+  flex: 3 1 600px;
+}
+main aside {
+  background-color: #93dddd;
+  height: 100%;
+  flex: 1 0 200px;
+}
+
+.menu {
+  background-color: #68c360;
+  flex: 1 0 200px;
+}
+
+footer {
+  background-color: #2a2a2a;
+  text-align: center;
+  padding: 1rem 0;
+  color: #e4e4e4;
+}
+
+header nav {
+  background-color: #dfb9e4;
+  font-size: 1.2rem;
+}
+header nav ul {
+  list-style-type: none;
+  padding: 0.8rem 0;
+  margin: 0;
+  margin-left: 4rem;
+  margin-right: 2rem;
+  display: flex;
+  align-items: baseline;
+}
+header nav ul li {
+  display: inline;
+  margin-right: 1.2rem;
+}
+header nav ul li.primary {
+  font-size: 1.4rem;
+}
+header nav ul li.brand {
+  font-weight: 700;
+  font-style: italic;
+  margin-right: 1.5rem;
+}
+header nav ul li.rightItem {
+  margin: 0 0 0 auto;
+  padding-right: 2rem;
+}
+header nav ul a {
+  display: inline-block;
+  text-decoration: none;
+  color: #672d6e;
 }
 
 /*# sourceMappingURL=style.css.map */
