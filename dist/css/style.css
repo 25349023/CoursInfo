@@ -344,7 +344,7 @@ template {
 section.main {
   display: flex;
   flex-flow: row-reverse;
-  height: 100%;
+  min-height: 100vh;
 }
 
 .courses {
@@ -363,6 +363,7 @@ section.main {
 }
 .courses main .searchBox {
   position: relative;
+  margin-bottom: 1rem;
 }
 .courses main input[type=text] {
   width: 100%;
@@ -390,14 +391,14 @@ section.main {
 .courses .listing {
   background-color: #f0f0f0;
   flex: 1 1 80%;
+  padding-bottom: 1rem;
   border-radius: 10px;
   border: 1px solid rgba(60, 60, 60, 0.2);
   overflow: auto;
 }
 .courses aside {
-  background-color: #93dddd;
-  height: 100%;
   flex: 1 0 200px;
+  max-height: 32rem;
 }
 
 .menu {
@@ -491,6 +492,7 @@ table {
   text-align: center;
   border-collapse: collapse;
   color: #3c3c3c;
+  font-size: 1.1rem;
 }
 table col.primary {
   width: 25%;
@@ -498,21 +500,24 @@ table col.primary {
 table col.secondary {
   width: 16%;
 }
-table tr {
-  border-bottom: 1px solid rgba(60, 60, 60, 0.5);
+table thead tr {
+  border-bottom: 1px solid rgba(60, 60, 60, 0.2);
 }
-table tr:last-of-type {
-  border-bottom: none;
+table tbody tr {
+  border-bottom: 1px solid rgba(60, 60, 60, 0.5);
+  cursor: pointer;
 }
 table tbody tr:hover {
   background-color: #dee8f3;
 }
-table th,
-table td {
-  font-size: 1.1rem;
-  padding: 0.9rem 0;
+table tbody tr:last-of-type {
+  border-bottom: none;
+}
+table th {
+  padding: 0.9rem 0 0.5rem;
 }
 table td {
+  padding: 0.9rem 0;
   vertical-align: baseline;
 }
 table td.courseNumber {
@@ -525,6 +530,42 @@ table td.courseName {
 table td.rating {
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.courses aside {
+  background-color: #ebf1fa;
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 10px;
+  overflow: auto;
+}
+.courses aside table {
+  font-size: 1rem;
+  width: 90%;
+}
+.courses aside table col.check {
+  width: 6%;
+}
+.courses aside table td {
+  padding: 0.6rem 0;
+}
+.courses aside table td:first-of-type {
+  padding: 0 0 0 0.5rem;
+}
+.courses aside table td:first-of-type .svg-icon {
+  margin-bottom: -0.35rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.courses aside table td:first-of-type .svg-icon path,
+.courses aside table td:first-of-type .svg-icon polygon,
+.courses aside table td:first-of-type .svg-icon rect {
+  fill: #325ea0;
+}
+.courses aside table td:first-of-type .svg-icon circle {
+  stroke: #325ea0;
+}
+.courses aside table tbody tr:hover {
+  background-color: rgba(200, 209, 214, 0.5);
 }
 
 /*# sourceMappingURL=style.css.map */

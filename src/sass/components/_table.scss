@@ -6,6 +6,7 @@ table {
   text-align: center;
   border-collapse: collapse;
   color: $ui-color-text;
+  font-size: 1.1rem;
 
   col {
     &.primary {
@@ -17,27 +18,29 @@ table {
     }
   }
 
-  tr {
+  thead tr {
+    border-bottom: 1px solid rgba($ui-color-text, 0.2);
+  }
+
+  tbody tr {
     border-bottom: 1px solid rgba($ui-color-text, 0.5);
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($table-hover-color, 1);
+    }
 
     &:last-of-type {
       border-bottom: none;
     }
   }
 
-  tbody tr {
-    &:hover {
-      background-color: rgba($table-hover-color, 1);
-    }
+  th {
+    padding: 0.9rem 0 0.5rem;
   }
 
-  th,
   td {
-    font-size: 1.1rem;
     padding: 0.9rem 0;
-  }
-
-  td {
     vertical-align: baseline;
 
     &.courseNumber {

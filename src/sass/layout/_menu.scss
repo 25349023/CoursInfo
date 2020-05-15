@@ -23,7 +23,6 @@
         .svg-icon {
           position: absolute;
           right: 1.6rem;
-          // cursor: pointer;
           @include icon(rgba($sidebar-text-color, 0.9), 1.5rem);
         }
       }

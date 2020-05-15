@@ -1,7 +1,7 @@
 section.main {
   display: flex;
   flex-flow: row-reverse;
-  height: 100%;
+  min-height: 100vh;
 }
 
 .courses {
@@ -24,6 +24,7 @@ section.main {
 
     .searchBox {
       position: relative;
+      margin-bottom: 1rem;
     }
 
     input[type="text"] {
@@ -47,6 +48,7 @@ section.main {
   .listing {
     background-color: $ui-color-block;
     flex: 1 1 80%;
+    padding-bottom: 1rem;
 
     border-radius: 10px;
     border: 1px solid rgba($ui-color-text, 0.2);
@@ -55,8 +57,7 @@ section.main {
   }
 
   aside {
-    background-color: rgb(147, 221, 221);
-    height: 100%;
     flex: 1 0 200px;
+    max-height: 32rem;
   }
 }
