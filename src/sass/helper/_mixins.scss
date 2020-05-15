@@ -1,0 +1,14 @@
+@mixin icon($color, $size) {
+  width: $size;
+  height: $size;
+
+  path,
+  polygon,
+  rect {
+    fill: $color;
+  }
+
+  circle {
+    stroke: $color;
+  }
+}

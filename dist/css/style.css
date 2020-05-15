@@ -347,39 +347,109 @@ section.main {
   height: 100%;
 }
 
-main {
+.courses {
   background-color: #e4e4e4;
   padding: 3rem 5rem;
+  flex: 5 1 1000px;
   display: flex;
   flex-flow: row-reverse;
-  flex: 5 1 1000px;
 }
-main .courses {
-  background-color: #4c93ff;
-  height: 100%;
+.courses main {
   margin-left: 4%;
+  height: 100%;
   flex: 3 1 600px;
+  display: flex;
+  flex-flow: column;
 }
-main aside {
+.courses main .searchBox {
+  position: relative;
+}
+.courses main input[type=text] {
+  width: 100%;
+  padding: 0.6rem 1rem 0.6rem 3rem;
+  background-color: #f0f0f0;
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 5px;
+  color: #3c3c3c;
+}
+.courses main .searchIcon {
+  position: absolute;
+  left: 0.9rem;
+  top: 0.6rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.courses main .searchIcon path,
+.courses main .searchIcon polygon,
+.courses main .searchIcon rect {
+  fill: rgba(0, 0, 0, 0.5);
+}
+.courses main .searchIcon circle {
+  stroke: rgba(0, 0, 0, 0.5);
+}
+.courses .listing {
+  background-color: #f0f0f0;
+  flex: 1 1 80%;
+  border-radius: 10px;
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  overflow: auto;
+}
+.courses aside {
   background-color: #93dddd;
   height: 100%;
   flex: 1 0 200px;
 }
 
 .menu {
-  background-color: #68c360;
+  background-color: #7e5f80;
   flex: 1 0 200px;
+  overflow: auto;
+}
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.menu ul li {
+  padding: 1rem 0 1rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.9);
+}
+.menu ul li:first-of-type {
+  font-size: 1.2rem;
+  position: relative;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
+}
+.menu ul li:first-of-type .svg-icon {
+  position: absolute;
+  right: 1.6rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.menu ul li:first-of-type .svg-icon path,
+.menu ul li:first-of-type .svg-icon polygon,
+.menu ul li:first-of-type .svg-icon rect {
+  fill: rgba(255, 255, 255, 0.9);
+}
+.menu ul li:first-of-type .svg-icon circle {
+  stroke: rgba(255, 255, 255, 0.9);
+}
+.menu ul a {
+  text-decoration: none;
+  color: inherit;
 }
 
 footer {
-  background-color: #2a2a2a;
+  background-color: #42424d;
   text-align: center;
   padding: 1rem 0;
   color: #e4e4e4;
 }
 
 header nav {
-  background-color: #dfb9e4;
+  background-color: #f1caf6;
   font-size: 1.2rem;
 }
 header nav ul {
@@ -401,7 +471,7 @@ header nav ul li.primary {
 header nav ul li.brand {
   font-weight: 700;
   font-style: italic;
-  margin-right: 1.5rem;
+  margin-right: 2rem;
 }
 header nav ul li.rightItem {
   margin: 0 0 0 auto;
@@ -410,7 +480,51 @@ header nav ul li.rightItem {
 header nav ul a {
   display: inline-block;
   text-decoration: none;
-  color: #672d6e;
+  color: #641651;
+}
+
+table {
+  table-layout: fixed;
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  border-collapse: collapse;
+  color: #3c3c3c;
+}
+table col.primary {
+  width: 25%;
+}
+table col.secondary {
+  width: 16%;
+}
+table tr {
+  border-bottom: 1px solid rgba(60, 60, 60, 0.5);
+}
+table tr:last-of-type {
+  border-bottom: none;
+}
+table tbody tr:hover {
+  background-color: #dee8f3;
+}
+table th,
+table td {
+  font-size: 1.1rem;
+  padding: 0.9rem 0;
+}
+table td {
+  vertical-align: baseline;
+}
+table td.courseNumber {
+  color: rgba(60, 60, 60, 0.8);
+}
+table td.courseName {
+  font-size: 1.2rem;
+  margin-right: 2rem;
+}
+table td.rating {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=style.css.map */

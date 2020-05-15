@@ -1,0 +1,37 @@
+.menu {
+  background-color: $sidebar-background-color;
+  flex: 1 0 200px;
+  overflow: auto;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    li {
+      padding: 1rem 0 1rem 2rem;
+      border-bottom: 1px solid rgba($sidebar-text-color, 0.6);
+      color: rgba($sidebar-text-color, 0.9);
+
+      &:first-of-type {
+        font-size: 1.2rem;
+        position: relative;
+        border-bottom: 1px dashed rgba($sidebar-text-color, 0.4);
+
+        .svg-icon {
+          position: absolute;
+          right: 1.6rem;
+          // cursor: pointer;
+          @include icon(rgba($sidebar-text-color, 0.9), 1.5rem);
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
