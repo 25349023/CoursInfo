@@ -8,7 +8,7 @@ section.main {
   background-color: $ui-color-light;
   padding: 3rem 5rem;
 
-  flex: 5 1 1000px;
+  flex: 6 1 1000px;
 
   display: flex;
   flex-flow: row-reverse;
@@ -58,6 +58,7 @@ section.main {
 
   aside {
     flex: 1 0 200px;
+    min-width: 250px;
     max-height: 32rem;
   }
 }

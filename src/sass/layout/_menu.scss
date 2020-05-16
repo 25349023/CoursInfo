@@ -11,14 +11,14 @@
     font-weight: 600;
 
     li {
-      padding: 1rem 0 1rem 2rem;
       border-bottom: 1px solid rgba($sidebar-text-color, 0.6);
       color: rgba($sidebar-text-color, 0.9);
 
       &:first-of-type {
-        font-size: 1.2rem;
-        position: relative;
+        font-size: 1.3rem;
+        padding: 1rem 0 1rem 2rem;
         border-bottom: 1px dashed rgba($sidebar-text-color, 0.4);
+        position: relative;
 
         .svg-icon {
           position: absolute;
@@ -26,11 +26,20 @@
           @include icon(rgba($sidebar-text-color, 0.9), 1.5rem);
         }
       }
-    }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+      &:nth-of-type(n + 2) a {
+        display: block;
+        padding: 1rem 0 1rem 2rem;
+        text-decoration: none;
+        color: inherit;
+
+        transition: all 0.2s cubic-bezier(0.39, 0.58, 0.57, 1);
+
+        &:hover {
+          background-color: $primary-color-light;
+          color: rgba($primary-color-dark, 0.8);
+        }
+      }
     }
   }
 }

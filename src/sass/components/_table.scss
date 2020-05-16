@@ -26,6 +26,8 @@ table {
     border-bottom: 1px solid rgba($ui-color-text, 0.5);
     cursor: pointer;
 
+    transition: all 0.2s cubic-bezier(0.39, 0.58, 0.57, 1);
+
     &:hover {
       background-color: rgba($table-hover-color, 1);
     }
