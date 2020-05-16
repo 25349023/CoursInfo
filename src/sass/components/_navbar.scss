@@ -1,62 +1,67 @@
-header nav {
+header {
   background-color: $primary-color-light;
-  font-size: 1.1rem;
 
-  ul {
-    list-style-type: none;
-    padding: 0.8rem 0;
-    margin: 0;
-    margin-left: 4rem;
-    margin-right: 2rem;
+  nav {
+    font-size: 1.1rem;
+    max-width: 1600px;
+    margin: 0 auto;
 
-    display: flex;
-    align-items: baseline;
+    ul {
+      list-style-type: none;
+      padding: 0.8rem 0;
+      margin: 0;
+      margin-left: 2rem;
+      margin-right: 1rem;
 
-    li {
-      display: inline;
-      margin-right: 1.3rem;
+      display: flex;
+      align-items: baseline;
 
-      &.brand {
-        font: italic 600 1.4rem $brand-font;
-        margin-right: 2rem;
-      }
+      li {
+        display: inline;
+        margin-right: 1.3rem;
 
-      &.primary {
-        font-size: 1.2rem;
-      }
+        &.brand {
+          font: italic 600 1.4rem $brand-font;
+          margin-right: 2rem;
+        }
 
-      // for the space between primary and non-primary li
-      &:nth-of-type(3) {
-        margin-right: 1.6rem;
-      }
+        &.primary {
+          font-size: 1.2rem;
+        }
 
-      &.rightItem {
-        margin: 0 0 0 auto;
-        padding-right: 4rem;
-        position: relative;
+        // for the space between primary and non-primary li
+        &:nth-of-type(3) {
+          margin-right: 1.6rem;
+        }
 
-        img {
-          display: inline-block;
-          position: absolute;
-          right: 1.5rem;
-          top: -5px;
+        &.rightItem {
+          margin: 0 0 0 auto;
+          padding-right: 4rem;
+          position: relative;
 
-          width: $profile-image-width;
-          height: $profile-image-width;
-          object-fit: cover;
+          img {
+            display: inline-block;
+            position: absolute;
+            right: 1.5rem;
+            top: -5px;
 
-          background-color: rgba($primary-color-dark, 0.6);
-          background: border-box center / cover url(/dist/images/profile.png);
-          border-radius: 50%;
-          border: 1px solid rgba($ui-color-text, 0.4);
+            width: $profile-image-width;
+            height: $profile-image-width;
+            object-fit: cover;
+
+            background-color: rgba($primary-color-dark, 0.6);
+            background: border-box center / cover url(/dist/images/profile.png);
+            border-radius: 50%;
+            border: 1px solid rgba($ui-color-text, 0.4);
+          }
         }
       }
-    }
 
-    a {
-      display: inline-block;
-      text-decoration: none;
-      color: $primary-color-dark;
+      a {
+        display: inline-block;
+        text-decoration: none;
+        color: $primary-color-dark;
+      }
     }
   }
 }

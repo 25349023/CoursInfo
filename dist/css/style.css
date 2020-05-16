@@ -10,6 +10,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 html {
+  font-size: 16px;
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -461,16 +462,20 @@ footer {
   color: #e4e4e4;
 }
 
-header nav {
+header {
   background-color: #f1caf6;
+}
+header nav {
   font-size: 1.1rem;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 header nav ul {
   list-style-type: none;
   padding: 0.8rem 0;
   margin: 0;
-  margin-left: 4rem;
-  margin-right: 2rem;
+  margin-left: 2rem;
+  margin-right: 1rem;
   display: flex;
   align-items: baseline;
 }
