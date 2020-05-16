@@ -1,0 +1,40 @@
+.home main {
+  max-width: $page-width;
+  margin: 0 auto 4rem;
+  text-align: center;
+  color: $ui-color-dark;
+
+  h2 {
+    font-size: 2.2rem;
+    margin-top: 4rem;
+  }
+
+  .goal {
+    margin: 1rem 15rem;
+    display: flex;
+    justify-content: center;
+
+    div {
+      padding: 1.8rem;
+      background-clip: content-box;
+      background-color: rgb(152, 204, 255);
+      border-radius: 50%;
+      margin-left: 1rem;
+
+      flex: 0 0 25%;
+
+      &:after {
+        content: "";
+        float: left;
+        padding-bottom: 100%;
+      }
+    }
+
+    p {
+      font-size: 1.4rem;
+      margin-left: 3rem;
+      flex: 1 0 60%;
+      align-self: center;
+    }
+  }
+}

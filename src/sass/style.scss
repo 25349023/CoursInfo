@@ -3,9 +3,11 @@
 @import "./helper/mixins";
 @import "./layout/root";
 @import "./layout/header";
-@import "./layout/main";
+@import "./layout/home_main";
+@import "./layout/courses_main";
 @import "./layout/menu";
 @import "./layout/footer";
 @import "./components/navbar";
 @import "./components/table";
 @import "./components/category";
+@import "./components/banner";

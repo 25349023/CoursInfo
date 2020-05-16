@@ -6,6 +6,8 @@ $ui-color-block: rgb(240, 240, 240);
 $ui-color-text: rgb(60, 60, 60);
 $ui-color-dark: rgb(42, 42, 42);
 
+$banner-title-color: rgb(255, 255, 255);
+
 $sidebar-background-color: rgb(126, 95, 128);
 $sidebar-text-color: rgb(255, 255, 255);
 
@@ -18,6 +20,9 @@ $category-hover-color: rgb(200, 209, 214);
 
 // fonts
 $ui-text-font: "Maven Pro", "Quicksand", "Noto Sans TC", sans-serif;
-$brand-font: "Exo 2";
+$brand-font: "Exo 2", "Maven Pro", sans-serif;
+$banner-title-font: "Exo 2", "Maven Pro", sans-serif;
 
 $profile-image-width: 30px;
+$page-width: 1600px;
+// $home-image-width: $page-width * 0.3;

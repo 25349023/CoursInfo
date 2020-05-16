@@ -3,7 +3,7 @@ header {
 
   nav {
     font-size: 1.1rem;
-    max-width: 1600px;
+    max-width: $page-width;
     margin: 0 auto;
 
     ul {
@@ -23,6 +23,14 @@ header {
         &.brand {
           font: italic 600 1.4rem $brand-font;
           margin-right: 2rem;
+
+          a {
+            color: $primary-color-dark;
+          }
+        }
+
+        &.active a {
+          color: $primary-color-dark;
         }
 
         &.primary {
@@ -60,7 +68,11 @@ header {
       a {
         display: inline-block;
         text-decoration: none;
-        color: $primary-color-dark;
+        color: rgba($primary-color-dark, 0.6);
+
+        &:hover {
+          color: $primary-color-dark;
+        }
       }
     }
   }

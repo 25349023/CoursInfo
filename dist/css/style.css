@@ -346,7 +346,42 @@ body {
   font-family: "Maven Pro", "Quicksand", "Noto Sans TC", sans-serif;
 }
 
-section.main {
+.home main {
+  max-width: 1600px;
+  margin: 0 auto 4rem;
+  text-align: center;
+  color: #2a2a2a;
+}
+.home main h2 {
+  font-size: 2.2rem;
+  margin-top: 4rem;
+}
+.home main .goal {
+  margin: 1rem 15rem;
+  display: flex;
+  justify-content: center;
+}
+.home main .goal div {
+  padding: 1.8rem;
+  background-clip: content-box;
+  background-color: #98ccff;
+  border-radius: 50%;
+  margin-left: 1rem;
+  flex: 0 0 25%;
+}
+.home main .goal div:after {
+  content: "";
+  float: left;
+  padding-bottom: 100%;
+}
+.home main .goal p {
+  font-size: 1.4rem;
+  margin-left: 3rem;
+  flex: 1 0 60%;
+  align-self: center;
+}
+
+.coursesListing section.main {
   display: flex;
   flex-flow: row-reverse;
   min-height: 100vh;
@@ -484,8 +519,14 @@ header nav ul li {
   margin-right: 1.3rem;
 }
 header nav ul li.brand {
-  font: italic 600 1.4rem "Exo 2";
+  font: italic 600 1.4rem "Exo 2", "Maven Pro", sans-serif;
   margin-right: 2rem;
+}
+header nav ul li.brand a {
+  color: #641651;
+}
+header nav ul li.active a {
+  color: #641651;
 }
 header nav ul li.primary {
   font-size: 1.2rem;
@@ -514,6 +555,9 @@ header nav ul li.rightItem img {
 header nav ul a {
   display: inline-block;
   text-decoration: none;
+  color: rgba(100, 22, 81, 0.6);
+}
+header nav ul a:hover {
   color: #641651;
 }
 
@@ -600,6 +644,32 @@ table td.rating {
 }
 .courses aside table tbody tr:hover {
   background-color: rgba(200, 209, 214, 0.5);
+}
+
+.banner {
+  background: fixed center 70%/cover no-repeat url("/dist/images/library.jpg");
+  height: 80%;
+}
+.banner .foreground {
+  height: 100%;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+  color: white;
+  text-align: center;
+  font-family: "Exo 2", "Maven Pro", sans-serif;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+.banner .foreground h1 {
+  font-size: 4rem;
+  font-weight: 300;
+  font-style: italic;
+  margin: 0 0 0.5rem;
+}
+.banner .foreground h3 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
