@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+a {
+  outline: none;
+}
+
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
@@ -646,6 +650,19 @@ table td.rating {
   background-color: rgba(200, 209, 214, 0.5);
 }
 
+.banner .foreground button, .banner .foreground a.button {
+  line-height: 2.2;
+  width: 10rem;
+  padding: 0;
+  margin: 5rem auto 0;
+  font-size: 1.5rem;
+  text-decoration: none;
+  outline: none;
+  border: 1px solid rgba(241, 202, 246, 0.8);
+  border-radius: 5px;
+  color: white;
+}
+
 .banner {
   background: fixed center 70%/cover no-repeat url("/dist/images/library.jpg");
   height: 80%;
@@ -656,6 +673,7 @@ table td.rating {
   color: white;
   text-align: center;
   font-family: "Exo 2", "Maven Pro", sans-serif;
+  padding-top: 5rem;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -670,6 +688,26 @@ table td.rating {
   font-size: 1.8rem;
   font-weight: 400;
   margin: 0;
+}
+.banner .foreground a.button {
+  background-color: #a346aa;
+  border-color: #cea6d1;
+}
+.banner .foreground a.button:hover {
+  background-color: #b859bf;
+}
+.banner .foreground a.button:active {
+  background-color: #813a86;
+}
+.banner .foreground button {
+  background-color: #a346aa;
+  border-color: #cea6d1;
+}
+.banner .foreground button:hover {
+  background-color: #b859bf;
+}
+.banner .foreground button:active {
+  background-color: #813a86;
 }
 
 /*# sourceMappingURL=style.css.map */

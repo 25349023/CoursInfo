@@ -8,6 +8,7 @@
     color: $banner-title-color;
     text-align: center;
     font-family: $banner-title-font;
+    padding-top: 5rem;
 
     display: flex;
     flex-flow: column;
@@ -24,6 +25,14 @@
       font-size: 1.8rem;
       font-weight: 400;
       margin: 0;
+    }
+
+    a.button {
+      @include button-mixin();
+    }
+
+    button {
+      @include button-mixin();
     }
   }
 }
