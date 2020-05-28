@@ -391,25 +391,29 @@ body {
   min-height: 100vh;
 }
 
-.courses {
+.courses,
+.posts {
   background-color: #e4e4e4;
   padding: 3rem 5rem;
   flex: 6 1 1000px;
   display: flex;
   flex-flow: row-reverse;
 }
-.courses main {
+.courses main,
+.posts main {
   margin-left: 4%;
   height: 100%;
   flex: 3 1 600px;
   display: flex;
   flex-flow: column;
 }
-.courses main .searchBox {
+.courses main .searchBox,
+.posts main .searchBox {
   position: relative;
   margin-bottom: 1rem;
 }
-.courses main input[type=text] {
+.courses main input[type=text],
+.posts main input[type=text] {
   width: 100%;
   padding: 0.6rem 1rem 0.6rem 3rem;
   background-color: #f0f0f0;
@@ -417,7 +421,8 @@ body {
   border-radius: 5px;
   color: #3c3c3c;
 }
-.courses main .searchIcon {
+.courses main .searchIcon,
+.posts main .searchIcon {
   position: absolute;
   left: 0.9rem;
   top: 0.6rem;
@@ -426,13 +431,18 @@ body {
 }
 .courses main .searchIcon path,
 .courses main .searchIcon polygon,
-.courses main .searchIcon rect {
+.courses main .searchIcon rect,
+.posts main .searchIcon path,
+.posts main .searchIcon polygon,
+.posts main .searchIcon rect {
   fill: rgba(0, 0, 0, 0.5);
 }
-.courses main .searchIcon circle {
+.courses main .searchIcon circle,
+.posts main .searchIcon circle {
   stroke: rgba(0, 0, 0, 0.5);
 }
-.courses .listing {
+.courses .listing,
+.posts .listing {
   background-color: #f0f0f0;
   flex: 1 1 80%;
   padding-bottom: 1rem;
@@ -440,10 +450,26 @@ body {
   border: 1px solid rgba(60, 60, 60, 0.2);
   overflow: auto;
 }
-.courses aside {
+.courses aside,
+.posts aside {
   flex: 1 0 200px;
   min-width: 250px;
   max-height: 32rem;
+}
+
+.postsListing section.main {
+  display: flex;
+  flex-flow: row-reverse;
+  min-height: 100vh;
+}
+
+.posts .listing td:last-of-type span {
+  position: relative;
+}
+.posts .listing td:last-of-type span .likeIcon {
+  position: absolute;
+  right: -18px;
+  top: 3px;
 }
 
 .menu {
@@ -605,48 +631,66 @@ table td {
 table td.courseNumber {
   color: rgba(60, 60, 60, 0.8);
 }
-table td.courseName {
+table td.courseName, table td.postTitle {
   font-size: 1.2rem;
-  margin-right: 2rem;
 }
 table td.rating {
   font-size: 1.2rem;
   font-weight: 600;
 }
 
-.courses aside {
+.courses aside,
+.posts aside {
   background-color: #ebf1fa;
   border: 1px solid rgba(60, 60, 60, 0.2);
   border-radius: 10px;
   overflow: auto;
 }
-.courses aside table {
+.courses aside table,
+.posts aside table {
   font-size: 1rem;
   width: 90%;
 }
-.courses aside table col.check {
+.courses aside table col.check,
+.posts aside table col.check {
   width: 6%;
 }
-.courses aside table td {
+.courses aside table td,
+.posts aside table td {
   padding: 0.6rem 0;
 }
-.courses aside table td:first-of-type {
+.courses aside table td:first-of-type,
+.posts aside table td:first-of-type {
   padding: 0 0 0 0.5rem;
 }
-.courses aside table td:first-of-type .svg-icon {
+.courses aside table td:first-of-type svg,
+.posts aside table td:first-of-type svg {
+  display: none;
+}
+.courses aside table td:first-of-type svg.checked,
+.posts aside table td:first-of-type svg.checked {
+  display: inline;
+}
+.courses aside table td:first-of-type .svg-icon,
+.posts aside table td:first-of-type .svg-icon {
   margin-bottom: -0.35rem;
   width: 1.5rem;
   height: 1.5rem;
 }
 .courses aside table td:first-of-type .svg-icon path,
 .courses aside table td:first-of-type .svg-icon polygon,
-.courses aside table td:first-of-type .svg-icon rect {
+.courses aside table td:first-of-type .svg-icon rect,
+.posts aside table td:first-of-type .svg-icon path,
+.posts aside table td:first-of-type .svg-icon polygon,
+.posts aside table td:first-of-type .svg-icon rect {
   fill: #325ea0;
 }
-.courses aside table td:first-of-type .svg-icon circle {
+.courses aside table td:first-of-type .svg-icon circle,
+.posts aside table td:first-of-type .svg-icon circle {
   stroke: #325ea0;
 }
-.courses aside table tbody tr:hover {
+.courses aside table tbody tr:hover,
+.posts aside table tbody tr:hover {
   background-color: rgba(200, 209, 214, 0.5);
 }
 

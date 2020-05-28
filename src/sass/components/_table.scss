@@ -49,9 +49,9 @@ table {
       color: rgba($ui-color-text, 0.8);
     }
 
-    &.courseName {
+    &.courseName,
+    &.postTitle {
       font-size: 1.2rem;
-      margin-right: 2rem;
     }
 
     &.rating {
