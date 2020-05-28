@@ -1,16 +1,5 @@
-.coursesListing section.main {
-  display: flex;
-  flex-flow: row-reverse;
-  min-height: 100vh;
-}
-
 .courses,
 .posts {
-  background-color: $ui-color-light;
-  padding: 3rem 5rem;
-
-  flex: 6 1 1000px;
-
   display: flex;
   flex-flow: row-reverse;
 
@@ -32,7 +21,7 @@
       width: 100%;
       padding: 0.6rem 1rem 0.6rem 3rem;
       background-color: $ui-color-block;
-      border: 1px solid rgba($ui-color-text, 0.2);
+      border: 1px solid $ui-color-block-border;
       border-radius: 5px;
       color: $ui-color-text;
     }
@@ -52,7 +41,7 @@
     padding-bottom: 1rem;
 
     border-radius: 10px;
-    border: 1px solid rgba($ui-color-text, 0.2);
+    border: 1px solid $ui-color-block-border;
 
     overflow: auto;
   }

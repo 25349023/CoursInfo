@@ -1,6 +1,6 @@
 .menu {
   background-color: $sidebar-background-color;
-  flex: 1 0 200px;
+  flex: 1 0 $menu-width;
   overflow: auto;
 
   ul {

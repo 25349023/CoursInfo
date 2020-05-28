@@ -1,7 +1,7 @@
 .courses aside,
 .posts aside {
   background-color: $category-bg-color;
-  border: 1px solid rgba($ui-color-text, 0.2);
+  border: 1px solid $ui-color-block-border;
   border-radius: 10px;
   overflow: auto;
 
