@@ -739,7 +739,7 @@ table td.rating {
   background-color: rgba(200, 209, 214, 0.5);
 }
 
-.courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, .banner .foreground a.button {
+.courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, .banner .foreground a.button {
   line-height: 2.2;
   padding: 0;
   font-size: 1.5rem;
@@ -791,17 +791,32 @@ table td.rating {
 
 .courseInfo main .basicInfo {
   display: grid;
-  grid-template-rows: repeat(6, 1fr);
-  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 4rem 1fr;
+  grid-template-columns: 2rem 1fr 2fr 2rem;
 }
 .courseInfo main .basicInfo h3 {
-  grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column: 1/3;
 }
-.courseInfo main .basicInfo .item,
-.courseInfo main .basicInfo .content {
-  margin: auto 0 auto 2rem;
+.courseInfo main .basicInfo .infoWrapper {
+  grid-column: 2/4;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(5, 1fr);
+}
+.courseInfo main .basicInfo .infoWrapper .item,
+.courseInfo main .basicInfo .infoWrapper .content {
   font-size: 1.2rem;
+  place-self: center stretch;
+}
+.courseInfo main .basicInfo .infoWrapper .item {
+  line-height: 1.5;
+  text-align: right;
+  padding-right: 2rem;
+  border-right: 1px solid rgba(60, 60, 60, 0.2);
+}
+.courseInfo main .basicInfo .infoWrapper .content {
+  padding-left: 2rem;
 }
 
 .courseInfo main .ratingBlock {
@@ -810,13 +825,13 @@ table td.rating {
   grid-template-rows: 0.8fr repeat(3, 1fr);
 }
 .courseInfo main .ratingBlock button {
+  margin: auto 3rem auto auto;
   background-color: #198bf6;
   border-color: #9ac5ed;
-  margin: auto 3rem auto auto;
   font-size: 1.2rem;
   padding: 0 1rem;
   position: relative;
-  top: 3px;
+  top: 4px;
 }
 .courseInfo main .ratingBlock button:hover {
   background-color: #3b9cf8;
@@ -825,10 +840,10 @@ table td.rating {
   background-color: #0d6fcc;
 }
 .courseInfo main .ratingBlock button .svg-icon {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.8rem;
+  height: 1.8rem;
   position: relative;
-  top: 4px;
+  top: 5px;
 }
 .courseInfo main .ratingBlock button .svg-icon path,
 .courseInfo main .ratingBlock button .svg-icon polygon,
@@ -838,17 +853,23 @@ table td.rating {
 .courseInfo main .ratingBlock button .svg-icon circle {
   stroke: white;
 }
+.courseInfo main .ratingBlock button .svg-icon {
+  top: 6px;
+}
 .courseInfo main .ratingBlock .item,
 .courseInfo main .ratingBlock .content {
-  margin: auto 2rem;
+  place-self: center stretch;
   font-size: 1.4rem;
 }
 .courseInfo main .ratingBlock .item {
+  padding-right: 2rem;
+  border-right: 1px solid rgba(60, 60, 60, 0.2);
   text-align: right;
   font-weight: 600;
+  line-height: 1.8;
 }
 .courseInfo main .ratingBlock .content {
-  padding-top: 1px;
+  padding: 1px 0 0 2rem;
 }
 .courseInfo main .ratingBlock .content.sweet .svg-icon {
   width: 3rem;
@@ -900,9 +921,9 @@ table td.rating {
   grid-column: 1/3;
 }
 .courseInfo main .postsBlock button {
+  margin: auto 0 auto auto;
   background-color: #198bf6;
   border-color: #9ac5ed;
-  margin: auto 0 auto auto;
   font-size: 1.2rem;
   padding: 0 1rem;
   position: relative;
@@ -936,14 +957,136 @@ table td.rating {
   grid-template-rows: 1fr 1fr;
   gap: 1.2rem 1.6rem;
 }
-.courseInfo main .postsBlock .postsWrapper div {
+.courseInfo main .postsBlock .postsWrapper .singlePost {
   border: 1px solid rgba(60, 60, 60, 0.2);
   border-radius: 10px;
   background-color: #f8f8f8;
+  padding: 1rem 1.4rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2rem 1fr;
+  gap: 0.5rem;
 }
-.courseInfo main .postsBlock .postsWrapper div:first-of-type {
+.courseInfo main .postsBlock .postsWrapper .singlePost h4 {
+  margin: 0;
+  align-self: center;
+  font-size: 1.1rem;
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost p {
+  margin: 0;
+  font-size: 1rem;
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost:first-of-type {
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem 0.5rem;
   grid-row: 1/3;
   grid-column: 1/3;
+  padding: 1.6rem 2rem;
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost:first-of-type h4 {
+  font-size: 1.4rem;
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost:first-of-type .user {
+  place-self: center end;
+  font-size: 1.2rem;
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost:first-of-type p {
+  grid-column: 1/3;
+  font-size: 1.1rem;
+}
+
+.courseInfo main .discussBlock {
+  display: grid;
+  grid-template-columns: 3.6rem 1fr 1fr 3rem;
+  grid-template-rows: 5rem 1fr 1.2rem;
+  row-gap: 0.5rem;
+}
+.courseInfo main .discussBlock h3 {
+  grid-column: 1/3;
+}
+.courseInfo main .discussBlock button {
+  margin: auto 0 auto auto;
+  background-color: #198bf6;
+  border-color: #9ac5ed;
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  position: relative;
+  top: 4px;
+}
+.courseInfo main .discussBlock button:hover {
+  background-color: #3b9cf8;
+}
+.courseInfo main .discussBlock button:active {
+  background-color: #0d6fcc;
+}
+.courseInfo main .discussBlock button .svg-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  position: relative;
+  top: 5px;
+}
+.courseInfo main .discussBlock button .svg-icon path,
+.courseInfo main .discussBlock button .svg-icon polygon,
+.courseInfo main .discussBlock button .svg-icon rect {
+  fill: white;
+}
+.courseInfo main .discussBlock button .svg-icon circle {
+  stroke: white;
+}
+.courseInfo main .discussBlock button .svg-icon {
+  top: 6px;
+}
+.courseInfo main .discussBlock .discussWrapper {
+  grid-row: 2/3;
+  grid-column: 2/4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.courseInfo main .discussBlock .discussWrapper div {
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-rows: 1fr 0.8fr;
+  grid-template-columns: 3fr 1fr;
+}
+.courseInfo main .discussBlock .discussWrapper div h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  place-self: center start;
+}
+.courseInfo main .discussBlock .discussWrapper div .user {
+  font-size: 1.1rem;
+  place-self: center end;
+}
+.courseInfo main .discussBlock .discussWrapper div time {
+  place-self: start;
+  color: rgba(60, 60, 60, 0.8);
+}
+
+.courseInfo main .scoringBlock {
+  display: grid;
+  grid-template-columns: 3.6rem 1fr 1fr 3rem;
+  grid-template-rows: 5rem 1fr 1.2rem;
+  row-gap: 0.5rem;
+}
+.courseInfo main .scoringBlock h3 {
+  grid-column: 1/3;
+}
+.courseInfo main .scoringBlock .scoringWrapper {
+  grid-row: 2/3;
+  grid-column: 2/4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.8rem;
+}
+.courseInfo main .scoringBlock .scoringWrapper div {
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 10px;
+  background-color: #f8f8f8;
 }
 
 /*# sourceMappingURL=style.css.map */

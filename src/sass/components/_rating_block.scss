@@ -4,33 +4,30 @@
   grid-template-rows: 0.8fr repeat(3, 1fr);
 
   button {
-    @include button-mixin($button-function-color);
     margin: auto 3rem auto auto;
-    font-size: 1.2rem;
-    padding: 0 1rem;
-    position: relative;
-    top: 3px;
+    @include button-functional-mixin;
 
     .svg-icon {
-      @include icon(white, 1.6rem);
-      position: relative;
-      top: 4px;
+      top: 6px;
     }
   }
 
   .item,
   .content {
-    margin: auto 2rem;
+    place-self: center stretch;
     font-size: 1.4rem;
   }
 
   .item {
+    padding-right: 2rem;
+    border-right: 1px solid $ui-color-block-border;
     text-align: right;
     font-weight: 600;
+    line-height: 1.8;
   }
 
   .content {
-    padding-top: 1px;
+    padding: 1px 0 0 2rem;
 
     &.sweet .svg-icon {
       @include icon($rating-sweet-color, 3rem);

@@ -43,3 +43,22 @@
     );
   }
 }
+
+@mixin button-functional-mixin(
+  $btn-color: $button-function-color,
+  $with-icon: true
+) {
+  @include button-mixin($btn-color);
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  position: relative;
+  top: 4px;
+
+  @if $with-icon {
+    .svg-icon {
+      @include icon(white, 1.8rem);
+      position: relative;
+      top: 5px;
+    }
+  }
+}
