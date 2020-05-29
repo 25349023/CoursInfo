@@ -1,0 +1,50 @@
+.courseInfo main .ratingBlock {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  grid-template-rows: 0.8fr repeat(3, 1fr);
+
+  button {
+    @include button-mixin($button-function-color);
+    margin: auto 3rem auto auto;
+    font-size: 1.2rem;
+    padding: 0 1rem;
+    position: relative;
+    top: 3px;
+
+    .svg-icon {
+      @include icon(white, 1.6rem);
+      position: relative;
+      top: 4px;
+    }
+  }
+
+  .item,
+  .content {
+    margin: auto 2rem;
+    font-size: 1.4rem;
+  }
+
+  .item {
+    text-align: right;
+    font-weight: 600;
+  }
+
+  .content {
+    padding-top: 1px;
+
+    &.sweet .svg-icon {
+      @include icon($rating-sweet-color, 3rem);
+      transform: rotateY(180deg);
+    }
+
+    &.cool .svg-icon {
+      @include icon($rating-cool-color, 3rem);
+      transform: rotateY(180deg);
+    }
+
+    &.recommend .svg-icon {
+      @include icon($rating-recommend-color, 3rem);
+      transform: rotateY(180deg);
+    }
+  }
+}

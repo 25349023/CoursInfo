@@ -2,7 +2,6 @@
   display: grid;
   grid-template-rows: repeat(6, 1fr);
   grid-template-columns: 1fr 2fr;
-  padding-bottom: 0.5rem;
 
   h3 {
     grid-column-start: 1;

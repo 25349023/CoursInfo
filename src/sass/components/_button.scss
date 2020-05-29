@@ -2,9 +2,7 @@
 
 %button {
   line-height: 2.2;
-  width: 10rem;
   padding: 0;
-  margin: 5rem auto 0;
   font-size: 1.5rem;
 
   // fix for <a>
@@ -22,7 +20,7 @@
   background-color: $btn-color;
 
   border-color: color.scale(
-    $color: $button-primary-color,
+    $color: $btn-color,
     $saturation: -25%,
     $lightness: 50%,
     $alpha: 80%

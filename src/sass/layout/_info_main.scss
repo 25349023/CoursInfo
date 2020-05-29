@@ -33,12 +33,13 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 24rem;
     grid-auto-rows: minmax(30rem, auto);
-    gap: 5rem 4rem;
+    gap: 4rem;
 
-    > div {
+    > section {
       background-color: $ui-color-block;
       border: 1px solid $ui-color-block-border;
       border-radius: 10px;
+      padding-bottom: 0.5rem;
 
       &:nth-of-type(n + 3) {
         grid-column-start: 1;

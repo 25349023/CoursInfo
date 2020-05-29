@@ -6,6 +6,7 @@ $ui-color-block: rgb(240, 240, 240);
 $ui-color-text: rgb(60, 60, 60);
 $ui-color-dark: rgb(42, 42, 42);
 $ui-color-block-border: rgba($ui-color-text, 0.2);
+$ui-color-lighter: rgb(248, 248, 248);
 
 $banner-title-color: rgb(255, 255, 255);
 
@@ -20,6 +21,11 @@ $category-color: rgb(50, 94, 160);
 $category-hover-color: rgb(200, 209, 214);
 
 $button-primary-color: rgb(163, 70, 170);
+$button-function-color: rgb(25, 139, 246);
+
+$rating-sweet-color: rgb(255, 169, 169);
+$rating-cool-color: rgb(141, 190, 255);
+$rating-recommend-color: rgb(149, 199, 130);
 
 // fonts
 $ui-text-font: "Maven Pro", "Quicksand", "Noto Sans TC", sans-serif;

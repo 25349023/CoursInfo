@@ -29,10 +29,8 @@
 
     a.button {
       @include button-mixin();
-    }
-
-    button {
-      @include button-mixin();
+      width: 10rem;
+      margin: 5rem auto 0;
     }
   }
 }
