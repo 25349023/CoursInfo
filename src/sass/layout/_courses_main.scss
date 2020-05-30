@@ -1,0 +1,54 @@
+.courses,
+.posts {
+  display: flex;
+  flex-flow: row-reverse;
+
+  main {
+    margin-left: 4%;
+    height: 100%;
+
+    flex: 3 1 600px;
+
+    display: flex;
+    flex-flow: column;
+
+    .searchBox {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 0.6rem 1rem 0.6rem 3rem;
+      background-color: $ui-color-block;
+      border: 1px solid $ui-color-block-border;
+      border-radius: 5px;
+      color: $ui-color-text;
+    }
+
+    .searchIcon {
+      position: absolute;
+      left: 0.9rem;
+      top: 0.6rem;
+
+      @include icon(rgba(0, 0, 0, 0.5), 1.5rem);
+    }
+  }
+
+  .listing {
+    background-color: $ui-color-block;
+    flex: 1 1 80%;
+    padding-bottom: 1rem;
+
+    border-radius: 10px;
+    border: 1px solid $ui-color-block-border;
+
+    overflow: auto;
+  }
+
+  aside {
+    flex: 1 0 200px;
+    min-width: 250px;
+    max-height: 32rem;
+  }
+}

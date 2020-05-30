@@ -1,0 +1,60 @@
+.wrapper {
+  max-width: $thin-page-width;
+  margin-left: 4rem;
+}
+
+.courseInfo {
+  color: $ui-color-text;
+
+  .title {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 3rem;
+
+    h1 {
+      margin: 0;
+      font-size: 3rem;
+      letter-spacing: 0.1rem;
+      font-weight: 400;
+    }
+
+    h2 {
+      margin: 0 2rem 0 auto;
+      font-size: 2rem;
+      font-weight: 600;
+      color: rgba($color: $ui-color-text, $alpha: 0.8);
+    }
+  }
+
+  main {
+    min-height: 100vh;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 24rem;
+    grid-auto-rows: minmax(30rem, auto);
+    gap: 4rem;
+
+    > section {
+      background-color: $ui-color-block;
+      border: 1px solid $ui-color-block-border;
+      border-radius: 10px;
+      padding-bottom: 0.5rem;
+
+      &:first-of-type {
+        padding-bottom: 1rem;
+      }
+
+      &:nth-of-type(n + 3) {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+
+      h3 {
+        font-size: 1.8rem;
+        font-weight: 400;
+        margin: 1.5rem 0 1rem 2rem;
+      }
+    }
+  }
+}

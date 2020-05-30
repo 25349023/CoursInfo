@@ -1,0 +1,5 @@
+.postArticle .detailedSection {
+  .detailedWrapper {
+    @extend %post-section;
+  }
+}

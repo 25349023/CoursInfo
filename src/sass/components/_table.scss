@@ -1,0 +1,62 @@
+table {
+  table-layout: fixed;
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  border-collapse: collapse;
+  color: $ui-color-text;
+  font-size: 1.1rem;
+
+  col {
+    &.primary {
+      width: 25%;
+    }
+
+    &.secondary {
+      width: 16%;
+    }
+  }
+
+  thead tr {
+    border-bottom: 1px solid rgba($ui-color-text, 0.2);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba($ui-color-text, 0.5);
+    cursor: pointer;
+
+    transition: all 0.2s cubic-bezier(0.39, 0.58, 0.57, 1);
+
+    &:hover {
+      background-color: rgba($table-hover-color, 1);
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+  th {
+    padding: 0.9rem 0 0.5rem;
+  }
+
+  td {
+    padding: 0.9rem 0;
+    vertical-align: baseline;
+
+    &.courseNumber {
+      color: rgba($ui-color-text, 0.8);
+    }
+
+    &.courseName,
+    &.postTitle {
+      font-size: 1.2rem;
+    }
+
+    &.rating {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+}

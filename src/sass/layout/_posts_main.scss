@@ -1,0 +1,11 @@
+.posts .listing {
+  td:last-of-type span {
+    position: relative;
+
+    .likeIcon {
+      position: absolute;
+      right: -18px;
+      top: 3px;
+    }
+  }
+}

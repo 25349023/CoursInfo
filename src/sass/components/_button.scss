@@ -1,0 +1,64 @@
+@use "sass:color";
+
+%button {
+  line-height: 2.2;
+  padding: 0;
+  font-size: 1.5rem;
+
+  // fix for <a>
+  text-decoration: none;
+  outline: none;
+
+  border: 1px solid rgba($primary-color-light, $alpha: 0.8);
+  border-radius: 5px;
+  color: $banner-title-color;
+}
+
+@mixin button-mixin($btn-color: $button-primary-color) {
+  @extend %button;
+
+  background-color: $btn-color;
+
+  border-color: color.scale(
+    $color: $btn-color,
+    $saturation: -25%,
+    $lightness: 50%,
+    $alpha: 80%
+  );
+
+  &:hover {
+    background-color: color.scale(
+      $color: $btn-color,
+      $lightness: 15%,
+      $saturation: 5%
+    );
+  }
+
+  &:active {
+    background-color: color.scale(
+      $color: $btn-color,
+      $saturation: -5%,
+      $lightness: -20%,
+      $alpha: 100%
+    );
+  }
+}
+
+@mixin button-functional-mixin(
+  $btn-color: $button-function-color,
+  $with-icon: true
+) {
+  @include button-mixin($btn-color);
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  position: relative;
+  top: 4px;
+
+  @if $with-icon {
+    .svg-icon {
+      @include icon(white, 1.8rem);
+      position: relative;
+      top: 5px;
+    }
+  }
+}

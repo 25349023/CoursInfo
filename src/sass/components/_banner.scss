@@ -1,0 +1,36 @@
+.banner {
+  background: fixed center 70% / cover no-repeat url("/dist/images/library.jpg");
+  height: 80%;
+
+  .foreground {
+    height: 100%;
+    background-image: radial-gradient(rgba(black, 0.4), rgba(black, 0.7));
+    color: $banner-title-color;
+    text-align: center;
+    font-family: $banner-title-font;
+    padding-top: 5rem;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 300;
+      font-style: italic;
+      margin: 0 0 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    a.button {
+      @include button-mixin();
+      width: 10rem;
+      margin: 5rem auto 0;
+    }
+  }
+}
