@@ -1,0 +1,82 @@
+@use 'sass:color';
+
+.postArticle {
+  color: $ui-color-text;
+
+  .title {
+    display: grid;
+    // flex-flow: wrap;
+    grid-template-columns: 3fr 2fr;
+    align-items: baseline;
+    row-gap: 1.2rem;
+
+    margin-bottom: 3rem;
+
+    h1 {
+      margin: 0;
+      font-size: 3rem;
+      letter-spacing: 0.1rem;
+      font-weight: 400;
+    }
+
+    div {
+      display: flex;
+      align-items: baseline;
+    }
+
+    h2 {
+      margin: 0 2rem 0 auto;
+      font-size: 2rem;
+      font-weight: 600;
+      color: rgba($color: $ui-color-text, $alpha: 0.8);
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: rgba($color: $ui-color-text, $alpha: 0.7);
+    }
+
+    .user {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      padding-left: 0.5rem;
+
+      img {
+        width: $profile-image-width;
+        height: $profile-image-width;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      figcaption {
+        font-size: 1.2rem;
+        padding-left: 1rem;
+        color: rgba($ui-color-text, 0.9);
+      }
+    }
+  }
+
+  main {
+    display: grid;
+    grid-template-rows: repeat(5, auto);
+    row-gap: 2.4rem;
+
+    section h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0;
+
+      border-left: 8px solid
+        scale-color(
+          $color: $primary-color-light,
+          $saturation: -10%,
+          $lightness: -30%,
+          $alpha: -50%
+        );
+      padding-left: 1rem;
+    }
+  }
+}

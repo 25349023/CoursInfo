@@ -12,3 +12,24 @@
     stroke: $color;
   }
 }
+
+%post-section {
+  padding-left: 2.2rem;
+
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 1.5rem 0 0.8rem;
+
+    .fas {
+      margin-right: 0.5rem;
+    }
+  }
+
+  div {
+    padding-left: 3rem;
+    padding-right: 10rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+}

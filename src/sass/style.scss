@@ -8,6 +8,7 @@
 @import "./layout/courses_main";
 @import "./layout/posts_main";
 @import "./layout/info_main";
+@import "./layout/post_article_main";
 @import "./layout/menu";
 @import "./layout/footer";
 @import "./components/navbar";
@@ -20,3 +21,7 @@
 @import "./components/posts_block";
 @import "./components/discuss_block";
 @import "./components/scoring_block";
+@import "./components/post_info_sec";
+@import "./components/post_detailed_sec";
+@import "./components/post_grade_sec";
+@import "./components/review_other_sec";

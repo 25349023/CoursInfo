@@ -26,7 +26,7 @@
     grid-template-rows: repeat(3, 1fr);
     gap: 1.2rem;
 
-    div {
+    article {
       border: 1px solid $ui-color-block-border;
       border-radius: 10px;
       background-color: $ui-color-lighter;

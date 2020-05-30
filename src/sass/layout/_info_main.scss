@@ -41,6 +41,10 @@
       border-radius: 10px;
       padding-bottom: 0.5rem;
 
+      &:first-of-type {
+        padding-bottom: 1rem;
+      }
+
       &:nth-of-type(n + 3) {
         grid-column-start: 1;
         grid-column-end: 3;
