@@ -8,5 +8,13 @@ section.main {
     padding: 3rem 5rem;
 
     flex: 6 1 1000px;
+
+    @include brk-down($brk-huge) {
+      padding: 3rem 2rem;
+    }
+
+    @include brk-down($brk-medium) {
+      padding: 2rem 0.5rem;
+    }
   }
 }

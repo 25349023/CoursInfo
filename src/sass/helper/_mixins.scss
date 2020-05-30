@@ -1,3 +1,21 @@
+@mixin brk-down($brk: $brk-huge) {
+  @media (max-width: $brk) {
+    @content;
+  }
+}
+
+@mixin brk-up($brk: $brk-small) {
+  @media (min-width: $brk) {
+    @content;
+  }
+}
+
+@mixin brk-between($brk-head, $brk-tail) {
+  @media (max-width: $brk-head) and (min-width: $brk-tail) {
+    @content;
+  }
+}
+
 @mixin icon($color, $size) {
   width: $size;
   height: $size;

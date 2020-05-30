@@ -378,6 +378,16 @@ section.main > section {
   padding: 3rem 5rem;
   flex: 6 1 1000px;
 }
+@media (max-width: 1320px) {
+  section.main > section {
+    padding: 3rem 2rem;
+  }
+}
+@media (max-width: 632px) {
+  section.main > section {
+    padding: 2rem 0.5rem;
+  }
+}
 
 .home main {
   max-width: 1600px;
@@ -394,6 +404,16 @@ section.main > section {
   display: flex;
   justify-content: center;
 }
+@media (max-width: 1320px) {
+  .home main .goal {
+    margin: 1rem 2rem;
+  }
+}
+@media (max-width: 840px) {
+  .home main .goal {
+    flex-flow: column;
+  }
+}
 .home main .goal div {
   padding: 1.8rem;
   background-clip: content-box;
@@ -402,10 +422,21 @@ section.main > section {
   margin-left: 1rem;
   flex: 0 0 25%;
 }
-.home main .goal div:after {
-  content: "";
-  float: left;
-  padding-bottom: 100%;
+@media (max-width: 840px) {
+  .home main .goal div {
+    margin: 0;
+    padding: 0;
+    align-self: center;
+    flex: 1 0 40vw;
+    width: 40vw;
+  }
+}
+@media (min-width: 840px) {
+  .home main .goal div:after {
+    content: "";
+    float: left;
+    padding-bottom: 100%;
+  }
 }
 .home main .goal p {
   font-size: 1.4rem;
@@ -413,11 +444,22 @@ section.main > section {
   flex: 1 0 60%;
   align-self: center;
 }
+@media (max-width: 840px) {
+  .home main .goal p {
+    margin: 2rem 3rem 3rem;
+  }
+}
 
 .courses,
 .posts {
   display: flex;
   flex-flow: row-reverse;
+}
+@media (max-width: 840px) {
+  .courses,
+.posts {
+    flex-flow: column-reverse;
+  }
 }
 .courses main,
 .posts main {
@@ -475,6 +517,91 @@ section.main > section {
   flex: 1 0 200px;
   min-width: 250px;
   max-height: 32rem;
+}
+
+@media (max-width: 1136px) {
+  .courses main col:first-of-type,
+.courses main th:first-of-type,
+.courses main td:first-of-type {
+    display: none;
+  }
+  .courses main col.primary {
+    width: 40%;
+  }
+}
+@media (max-width: 840px) {
+  .courses main {
+    margin: 2rem 0 0;
+  }
+}
+@media (max-width: 632px) {
+  .courses main col:nth-of-type(3),
+.courses main th:nth-of-type(3),
+.courses main th:nth-of-type(4),
+.courses main td:nth-of-type(3),
+.courses main td:nth-of-type(4) {
+    display: none;
+  }
+  .courses main col.primary {
+    width: 50%;
+  }
+}
+@media (max-width: 420px) {
+  .courses main col:nth-of-type(4),
+.courses main th:nth-of-type(5),
+.courses main td:nth-of-type(5) {
+    display: none;
+  }
+  .courses main col.primary {
+    width: 65%;
+  }
+  .courses main td.courseName,
+.courses main td.rating {
+    font-size: 1.1rem;
+  }
+}
+
+.posts main {
+  /*}*/
+}
+@media (max-width: 1136px) {
+  .posts main col:last-of-type,
+.posts main th:last-of-type,
+.posts main td:last-of-type {
+    display: none;
+  }
+  .posts main col.primary {
+    width: 30%;
+  }
+}
+@media (max-width: 840px) {
+  .posts main {
+    margin: 2rem 0 0;
+  }
+}
+@media (max-width: 632px) {
+  .posts main col:nth-of-type(4),
+.posts main th:nth-of-type(4),
+.posts main td:nth-of-type(4) {
+    display: none;
+  }
+  .posts main col.primary {
+    width: 40%;
+  }
+}
+@media (max-width: 420px) {
+  .posts main col:nth-of-type(2),
+.posts main th:nth-of-type(2),
+.posts main td:nth-of-type(2) {
+    display: none;
+  }
+  .posts main col.primary {
+    width: 50%;
+  }
+  .posts main td.courseName,
+.posts main td.postTitle {
+    font-size: 1.1rem;
+  }
 }
 
 .posts .listing td:last-of-type span {
@@ -649,6 +776,11 @@ section.main > section {
   flex: 1 0 200px;
   overflow: auto;
 }
+@media (max-width: 1136px) {
+  .menu {
+    display: none;
+  }
+}
 .menu ul {
   list-style-type: none;
   margin: 0;
@@ -695,7 +827,7 @@ section.main > section {
 footer {
   background-color: #42424d;
   text-align: center;
-  padding: 1rem 0;
+  padding: 1rem;
   color: #e4e4e4;
 }
 
@@ -777,7 +909,12 @@ table col.primary {
   width: 25%;
 }
 table col.secondary {
-  width: 16%;
+  width: 18%;
+}
+@media (max-width: 1320px) {
+  table col.secondary {
+    width: 20%;
+  }
 }
 table thead tr {
   border-bottom: 1px solid rgba(60, 60, 60, 0.2);
@@ -897,6 +1034,11 @@ table td.rating {
   font-weight: 300;
   font-style: italic;
   margin: 0 0 0.5rem;
+}
+@media (max-width: 632px) {
+  .banner .foreground h1 {
+    font-size: 2.8rem;
+  }
 }
 .banner .foreground h3 {
   font-size: 1.8rem;

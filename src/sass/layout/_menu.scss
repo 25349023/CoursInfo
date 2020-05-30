@@ -3,6 +3,10 @@
   flex: 1 0 $menu-width;
   overflow: auto;
 
+  @include brk-down($brk-xlarge) {
+    display: none;
+  }
+
   ul {
     list-style-type: none;
     margin: 0;

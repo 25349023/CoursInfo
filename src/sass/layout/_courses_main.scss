@@ -3,6 +3,10 @@
   display: flex;
   flex-flow: row-reverse;
 
+  @include brk-down($brk-large) {
+    flex-flow: column-reverse;
+  }
+
   main {
     margin-left: 4%;
     height: 100%;
@@ -51,4 +55,97 @@
     min-width: 250px;
     max-height: 32rem;
   }
+}
+
+.courses main {
+  @include brk-down($brk-xlarge) {
+    col:first-of-type,
+    th:first-of-type,
+    td:first-of-type {
+      display: none;
+    }
+
+    col.primary {
+      width: 40%;
+    }
+  }
+
+  @include brk-down($brk-large) {
+    margin: 2rem 0 0;
+  }
+
+  @include brk-down($brk-medium) {
+    col:nth-of-type(3),
+    th:nth-of-type(3),
+    th:nth-of-type(4),
+    td:nth-of-type(3),
+    td:nth-of-type(4) {
+      display: none;
+    }
+
+    col.primary {
+      width: 50%;
+    }
+  }
+
+  @include brk-down($brk-small) {
+    col:nth-of-type(4),
+    th:nth-of-type(5),
+    td:nth-of-type(5) {
+      display: none;
+    }
+    col.primary {
+      width: 65%;
+    }
+    td.courseName,
+    td.rating {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.posts main {
+  @include brk-down($brk-xlarge) {
+    col:last-of-type,
+    th:last-of-type,
+    td:last-of-type {
+      display: none;
+    }
+
+    col.primary {
+      width: 30%;
+    }
+  }
+
+  @include brk-down($brk-large) {
+    margin: 2rem 0 0;
+  }
+
+  @include brk-down($brk-medium) {
+    col:nth-of-type(4),
+    th:nth-of-type(4),
+    td:nth-of-type(4) {
+      display: none;
+    }
+
+    col.primary {
+      width: 40%;
+    }
+  }
+
+  @include brk-down($brk-small) {
+    col:nth-of-type(2),
+    th:nth-of-type(2),
+    td:nth-of-type(2) {
+      display: none;
+    }
+    col.primary {
+      width: 50%;
+    }
+    td.courseName,
+    td.postTitle {
+      font-size: 1.1rem;
+    }
+  }
+  /*}*/
 }
