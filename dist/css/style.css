@@ -544,6 +544,7 @@ section.main > section {
 .postArticle .title {
   display: grid;
   grid-template-columns: 3fr 2fr;
+  grid-template-rows: auto 2.5rem;
   align-items: baseline;
   row-gap: 1.2rem;
   margin-bottom: 3rem;
@@ -571,6 +572,7 @@ section.main > section {
   color: rgba(60, 60, 60, 0.7);
 }
 .postArticle .title .user {
+  align-self: center;
   margin: 0;
   display: flex;
   align-items: center;
@@ -586,6 +588,48 @@ section.main > section {
   font-size: 1.2rem;
   padding-left: 1rem;
   color: rgba(60, 60, 60, 0.9);
+}
+.postArticle .title .remark {
+  place-self: center end;
+  font-size: 1.4rem;
+}
+.postArticle .title .remark .like {
+  margin-right: 2rem;
+}
+.postArticle .title .remark .like a {
+  color: rgba(221, 101, 101, 0.4);
+  text-decoration: none;
+}
+.postArticle .title .remark .like a:hover {
+  color: #dd6565;
+}
+.postArticle .title .remark .like a.active {
+  color: #dd6565;
+}
+.postArticle .title .remark .like span {
+  font-weight: 600;
+  color: #dd6565;
+}
+.postArticle .title .remark .dislike {
+  color: #6567dd;
+  font-weight: 600;
+}
+.postArticle .title .remark .dislike a {
+  color: rgba(101, 103, 221, 0.4);
+  text-decoration: none;
+}
+.postArticle .title .remark .dislike a:hover {
+  color: #6567dd;
+}
+.postArticle .title .remark .dislike a.active {
+  color: #6567dd;
+}
+.postArticle .title .remark .dislike span {
+  font-weight: 600;
+  color: #6567dd;
+}
+.postArticle .title .remark .fas {
+  margin-right: 0.4rem;
 }
 .postArticle main {
   display: grid;
@@ -1252,6 +1296,9 @@ table td.rating {
   padding-right: 10rem;
   font-size: 1.2rem;
   line-height: 1.5;
+}
+.postArticle .reviewSection div {
+  font-size: 1.3rem;
 }
 
 /*# sourceMappingURL=style.css.map */

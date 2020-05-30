@@ -7,6 +7,7 @@
     display: grid;
     // flex-flow: wrap;
     grid-template-columns: 3fr 2fr;
+    grid-template-rows: auto 2.5rem;
     align-items: baseline;
     row-gap: 1.2rem;
 
@@ -39,6 +40,8 @@
     }
 
     .user {
+      align-self: center;
+
       margin: 0;
       display: flex;
       align-items: center;
@@ -55,6 +58,58 @@
         font-size: 1.2rem;
         padding-left: 1rem;
         color: rgba($ui-color-text, 0.9);
+      }
+    }
+
+    .remark {
+      place-self: center end;
+      font-size: 1.4rem;
+
+      .like {
+        margin-right: 2rem;
+
+        a {
+          color: rgba($like-color, 0.4);
+          text-decoration: none;
+        }
+        a:hover {
+          color: $like-color;
+        }
+        a.active {
+          color: $like-color;
+        }
+
+        span {
+          font-weight: 600;
+          color: $like-color;
+        }
+      }
+
+      .dislike {
+        color: $dislike-color;
+        font-weight: 600;
+
+        a {
+          color: rgba($dislike-color, 0.4);
+          text-decoration: none;
+        }
+
+        a:hover {
+          color: $dislike-color;
+        }
+
+        a.active {
+          color: $dislike-color;
+        }
+
+        span {
+          font-weight: 600;
+          color: $dislike-color;
+        }
+      }
+
+      .fas {
+        margin-right: 0.4rem;
       }
     }
   }
