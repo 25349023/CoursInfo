@@ -821,7 +821,7 @@ table td.rating {
 
 .courseInfo main .ratingBlock {
   display: grid;
-  grid-template-columns: 2fr 5fr;
+  grid-template-columns: 2fr 5fr 2fr;
   grid-template-rows: 0.8fr repeat(3, 1fr);
 }
 .courseInfo main .ratingBlock button {
@@ -832,6 +832,7 @@ table td.rating {
   padding: 0 1rem;
   position: relative;
   top: 4px;
+  grid-column: 2/4;
 }
 .courseInfo main .ratingBlock button:hover {
   background-color: #3b9cf8;
@@ -857,7 +858,8 @@ table td.rating {
   top: 6px;
 }
 .courseInfo main .ratingBlock .item,
-.courseInfo main .ratingBlock .content {
+.courseInfo main .ratingBlock .content,
+.courseInfo main .ratingBlock .rateScore {
   place-self: center stretch;
   font-size: 1.4rem;
 }
@@ -909,6 +911,19 @@ table td.rating {
 }
 .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
   stroke: #95c782;
+}
+.courseInfo main .ratingBlock .rateScore {
+  padding-left: 1rem;
+  font-weight: 600;
+}
+.courseInfo main .ratingBlock .rateScore.sweet {
+  color: #aa2a2a;
+}
+.courseInfo main .ratingBlock .rateScore.cool {
+  color: #285b9e;
+}
+.courseInfo main .ratingBlock .rateScore.recommend {
+  color: #4a653f;
 }
 
 .courseInfo main .postsBlock {
@@ -975,6 +990,7 @@ table td.rating {
 .courseInfo main .postsBlock .postsWrapper .singlePost p {
   margin: 0;
   font-size: 1rem;
+  line-height: 1.3;
 }
 .courseInfo main .postsBlock .postsWrapper .singlePost:first-of-type {
   grid-template-columns: 2fr 1fr;

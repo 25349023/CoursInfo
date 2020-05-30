@@ -1,11 +1,14 @@
+@use 'sass:color';
+
 .courseInfo main .ratingBlock {
   display: grid;
-  grid-template-columns: 2fr 5fr;
+  grid-template-columns: 2fr 5fr 2fr;
   grid-template-rows: 0.8fr repeat(3, 1fr);
 
   button {
     margin: auto 3rem auto auto;
     @include button-functional-mixin;
+    grid-column: 2 / 4;
 
     .svg-icon {
       top: 6px;
@@ -13,7 +16,8 @@
   }
 
   .item,
-  .content {
+  .content,
+  .rateScore {
     place-self: center stretch;
     font-size: 1.4rem;
   }
@@ -42,6 +46,35 @@
     &.recommend .svg-icon {
       @include icon($rating-recommend-color, 3rem);
       transform: rotateY(180deg);
+    }
+  }
+
+  .rateScore {
+    padding-left: 1rem;
+    font-weight: 600;
+
+    &.sweet {
+      color: color.scale(
+        $color: $rating-sweet-color,
+        $saturation: -40%,
+        $lightness: -50%
+      );
+    }
+
+    &.cool {
+      color: color.scale(
+        $color: $rating-cool-color,
+        $saturation: -40%,
+        $lightness: -50%
+      );
+    }
+
+    &.recommend {
+      color: color.scale(
+        $color: $rating-recommend-color,
+        $saturation: -40%,
+        $lightness: -50%
+      );
     }
   }
 }
