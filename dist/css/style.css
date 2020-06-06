@@ -607,15 +607,20 @@ section.main > section {
 .posts .listing td:last-of-type span {
   position: relative;
 }
-.posts .listing td:last-of-type span .likeIcon {
+.posts .listing td:last-of-type span .fa-heart {
   position: absolute;
-  right: -18px;
-  top: 3px;
+  right: -24px;
+  top: 2px;
 }
 
 .wrapper {
   max-width: 1200px;
   margin-left: 4rem;
+}
+@media (max-width: 1680px) {
+  .wrapper {
+    margin-left: 0;
+  }
 }
 
 .courseInfo {
@@ -625,6 +630,11 @@ section.main > section {
   display: flex;
   align-items: baseline;
   margin-bottom: 3rem;
+}
+@media (max-width: 632px) {
+  .courseInfo .title {
+    padding: 0 0.6rem;
+  }
 }
 .courseInfo .title h1 {
   margin: 0;
@@ -638,6 +648,11 @@ section.main > section {
   font-weight: 600;
   color: rgba(60, 60, 60, 0.8);
 }
+@media (max-width: 840px) {
+  .courseInfo .title h2 {
+    margin-right: 0;
+  }
+}
 .courseInfo main {
   min-height: 100vh;
   display: grid;
@@ -646,18 +661,42 @@ section.main > section {
   grid-auto-rows: minmax(30rem, auto);
   gap: 4rem;
 }
+@media (max-width: 1680px) {
+  .courseInfo main {
+    gap: 2rem;
+  }
+}
+@media (max-width: 840px) {
+  .courseInfo main {
+    gap: 1rem;
+  }
+}
+@media (max-width: 1012px) {
+  .courseInfo main {
+    grid-template-rows: 24rem 24rem;
+  }
+}
 .courseInfo main > section {
   background-color: #f0f0f0;
   border: 1px solid rgba(60, 60, 60, 0.2);
   border-radius: 10px;
   padding-bottom: 0.5rem;
 }
+@media (max-width: 1012px) {
+  .courseInfo main > section {
+    grid-column: 1/3;
+  }
+}
+@media (max-width: 840px) {
+  .courseInfo main > section:nth-of-type(n + 3) {
+    padding-bottom: 0;
+  }
+}
 .courseInfo main > section:first-of-type {
   padding-bottom: 1rem;
 }
 .courseInfo main > section:nth-of-type(n + 3) {
-  grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column: 1/3;
 }
 .courseInfo main > section h3 {
   font-size: 1.8rem;
@@ -1064,7 +1103,7 @@ table td.rating {
   grid-template-columns: 2rem 1fr 2fr 2rem;
 }
 .courseInfo main .basicInfo h3 {
-  grid-column: 1/3;
+  grid-column: 1/4;
 }
 .courseInfo main .basicInfo .infoWrapper {
   grid-column: 2/4;
@@ -1072,6 +1111,21 @@ table td.rating {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: repeat(5, 1fr);
+}
+@media (max-width: 1480px) {
+  .courseInfo main .basicInfo .infoWrapper {
+    grid-template-columns: 1fr 2.7fr;
+  }
+}
+@media (max-width: 1012px) {
+  .courseInfo main .basicInfo .infoWrapper {
+    grid-template-columns: 1fr 5fr;
+  }
+}
+@media (max-width: 840px) {
+  .courseInfo main .basicInfo .infoWrapper {
+    grid-template-columns: 1fr 2.7fr;
+  }
 }
 .courseInfo main .basicInfo .infoWrapper .item,
 .courseInfo main .basicInfo .infoWrapper .content {
@@ -1084,14 +1138,29 @@ table td.rating {
   padding-right: 2rem;
   border-right: 1px solid rgba(60, 60, 60, 0.2);
 }
+@media (max-width: 1680px) and (min-width: 1136px) {
+  .courseInfo main .basicInfo .infoWrapper .item {
+    padding-right: 1rem;
+  }
+}
 .courseInfo main .basicInfo .infoWrapper .content {
   padding-left: 2rem;
+}
+@media (max-width: 1680px) and (min-width: 1136px) {
+  .courseInfo main .basicInfo .infoWrapper .content {
+    padding-left: 1rem;
+  }
 }
 
 .courseInfo main .ratingBlock {
   display: grid;
   grid-template-columns: 2fr 5fr 2fr;
   grid-template-rows: 0.8fr repeat(3, 1fr);
+}
+@media (max-width: 1012px) and (min-width: 840px) {
+  .courseInfo main .ratingBlock {
+    grid-template-columns: 2fr 4fr 2fr;
+  }
 }
 .courseInfo main .ratingBlock button {
   margin: auto 3rem auto auto;
@@ -1123,6 +1192,16 @@ table td.rating {
 .courseInfo main .ratingBlock button .svg-icon circle {
   stroke: white;
 }
+@media (max-width: 840px) {
+  .courseInfo main .ratingBlock button {
+    margin-right: 1.6rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock button {
+    margin-right: 0.8rem;
+  }
+}
 .courseInfo main .ratingBlock button .svg-icon {
   top: 6px;
 }
@@ -1139,8 +1218,48 @@ table td.rating {
   font-weight: 600;
   line-height: 1.8;
 }
+@media (max-width: 1680px) {
+  .courseInfo main .ratingBlock .item {
+    padding-right: 1.2rem;
+  }
+}
+@media (max-width: 1480px) {
+  .courseInfo main .ratingBlock .item {
+    padding-right: 0.9rem;
+  }
+}
+@media (max-width: 1012px) {
+  .courseInfo main .ratingBlock .item {
+    padding-right: 2rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock .item {
+    padding-right: 0.9rem;
+  }
+}
 .courseInfo main .ratingBlock .content {
   padding: 1px 0 0 2rem;
+}
+@media (max-width: 1680px) {
+  .courseInfo main .ratingBlock .content {
+    padding-left: 1rem;
+  }
+}
+@media (max-width: 1480px) {
+  .courseInfo main .ratingBlock .content {
+    padding-left: 0.75rem;
+  }
+}
+@media (max-width: 1012px) {
+  .courseInfo main .ratingBlock .content {
+    padding-left: 2rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock .content {
+    padding-left: 0.75rem;
+  }
 }
 .courseInfo main .ratingBlock .content.sweet .svg-icon {
   width: 3rem;
@@ -1155,6 +1274,34 @@ table td.rating {
 .courseInfo main .ratingBlock .content.sweet .svg-icon circle {
   stroke: #ffa9a9;
 }
+@media (max-width: 1480px) and (min-width: 1012px) {
+  .courseInfo main .ratingBlock .content.sweet .svg-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .courseInfo main .ratingBlock .content.sweet .svg-icon path,
+.courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
+.courseInfo main .ratingBlock .content.sweet .svg-icon rect {
+    fill: #ffa9a9;
+  }
+  .courseInfo main .ratingBlock .content.sweet .svg-icon circle {
+    stroke: #ffa9a9;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock .content.sweet .svg-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .courseInfo main .ratingBlock .content.sweet .svg-icon path,
+.courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
+.courseInfo main .ratingBlock .content.sweet .svg-icon rect {
+    fill: #ffa9a9;
+  }
+  .courseInfo main .ratingBlock .content.sweet .svg-icon circle {
+    stroke: #ffa9a9;
+  }
+}
 .courseInfo main .ratingBlock .content.cool .svg-icon {
   width: 3rem;
   height: 3rem;
@@ -1168,6 +1315,34 @@ table td.rating {
 .courseInfo main .ratingBlock .content.cool .svg-icon circle {
   stroke: #8dbeff;
 }
+@media (max-width: 1480px) and (min-width: 1012px) {
+  .courseInfo main .ratingBlock .content.cool .svg-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .courseInfo main .ratingBlock .content.cool .svg-icon path,
+.courseInfo main .ratingBlock .content.cool .svg-icon polygon,
+.courseInfo main .ratingBlock .content.cool .svg-icon rect {
+    fill: #8dbeff;
+  }
+  .courseInfo main .ratingBlock .content.cool .svg-icon circle {
+    stroke: #8dbeff;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock .content.cool .svg-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .courseInfo main .ratingBlock .content.cool .svg-icon path,
+.courseInfo main .ratingBlock .content.cool .svg-icon polygon,
+.courseInfo main .ratingBlock .content.cool .svg-icon rect {
+    fill: #8dbeff;
+  }
+  .courseInfo main .ratingBlock .content.cool .svg-icon circle {
+    stroke: #8dbeff;
+  }
+}
 .courseInfo main .ratingBlock .content.recommend .svg-icon {
   width: 3rem;
   height: 3rem;
@@ -1180,6 +1355,34 @@ table td.rating {
 }
 .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
   stroke: #95c782;
+}
+@media (max-width: 1480px) and (min-width: 1012px) {
+  .courseInfo main .ratingBlock .content.recommend .svg-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .courseInfo main .ratingBlock .content.recommend .svg-icon path,
+.courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
+.courseInfo main .ratingBlock .content.recommend .svg-icon rect {
+    fill: #95c782;
+  }
+  .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
+    stroke: #95c782;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock .content.recommend .svg-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .courseInfo main .ratingBlock .content.recommend .svg-icon path,
+.courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
+.courseInfo main .ratingBlock .content.recommend .svg-icon rect {
+    fill: #95c782;
+  }
+  .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
+    stroke: #95c782;
+  }
 }
 .courseInfo main .ratingBlock .rateScore {
   padding-left: 1rem;
@@ -1200,6 +1403,17 @@ table td.rating {
   grid-template-columns: 3.6rem 1fr 1fr 3rem;
   grid-template-rows: 5rem 1fr 1.2rem;
   row-gap: 0.5rem;
+}
+@media (max-width: 840px) {
+  .courseInfo main .postsBlock {
+    grid-template-columns: 2rem 1fr 1fr 1.6rem;
+    grid-template-rows: 5rem 1fr 0.5rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .postsBlock {
+    grid-template-columns: 1rem 1fr 1fr 0.8rem;
+  }
 }
 .courseInfo main .postsBlock h3 {
   grid-column: 1/3;
@@ -1241,6 +1455,11 @@ table td.rating {
   grid-template-rows: 1fr 1fr;
   gap: 1.2rem 1.6rem;
 }
+@media (max-width: 632px) {
+  .courseInfo main .postsBlock .postsWrapper {
+    gap: 0.4rem 0.5rem;
+  }
+}
 .courseInfo main .postsBlock .postsWrapper .singlePost {
   border: 1px solid rgba(60, 60, 60, 0.2);
   border-radius: 10px;
@@ -1262,6 +1481,7 @@ table td.rating {
   line-height: 1.3;
 }
 .courseInfo main .postsBlock .postsWrapper .singlePost:first-of-type {
+  grid-template-rows: minmax(2rem, auto) 1fr;
   grid-template-columns: 2fr 1fr;
   gap: 1rem 0.5rem;
   grid-row: 1/3;
@@ -1279,12 +1499,31 @@ table td.rating {
   grid-column: 1/3;
   font-size: 1.1rem;
 }
+@media (max-width: 1012px) {
+  .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(2), .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(3) {
+    grid-column: span 2;
+  }
+  .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(n + 4) {
+    display: none;
+  }
+}
 
 .courseInfo main .discussBlock {
   display: grid;
   grid-template-columns: 3.6rem 1fr 1fr 3rem;
   grid-template-rows: 5rem 1fr 1.2rem;
   row-gap: 0.5rem;
+}
+@media (max-width: 840px) {
+  .courseInfo main .discussBlock {
+    grid-template-columns: 2rem 1fr 1fr 1.6rem;
+    grid-template-rows: 5rem 1fr 0.5rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .discussBlock {
+    grid-template-columns: 1rem 1fr 1fr 0.8rem;
+  }
 }
 .courseInfo main .discussBlock h3 {
   grid-column: 1/3;
@@ -1326,8 +1565,18 @@ table td.rating {
   grid-column: 2/4;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
   gap: 1.2rem;
+}
+@media (max-width: 632px) {
+  .courseInfo main .discussBlock .discussWrapper {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 6rem;
+    gap: 0.8rem;
+  }
+  .courseInfo main .discussBlock .discussWrapper article:nth-of-type(n + 5) {
+    display: none;
+  }
 }
 .courseInfo main .discussBlock .discussWrapper article {
   border: 1px solid rgba(60, 60, 60, 0.2);
@@ -1358,6 +1607,17 @@ table td.rating {
   grid-template-rows: 5rem 1fr 1.2rem;
   row-gap: 0.5rem;
 }
+@media (max-width: 840px) {
+  .courseInfo main .scoringBlock {
+    grid-template-columns: 2rem 1fr 1fr 1.6rem;
+    grid-template-rows: 5rem 1fr 0.5rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .scoringBlock {
+    grid-template-columns: 1rem 1fr 1fr 0.8rem;
+  }
+}
 .courseInfo main .scoringBlock h3 {
   grid-column: 1/3;
 }
@@ -1367,6 +1627,14 @@ table td.rating {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 1.8rem;
+}
+@media (max-width: 632px) {
+  .courseInfo main .scoringBlock .scoringWrapper {
+    grid-template-columns: 1fr;
+  }
+  .courseInfo main .scoringBlock .scoringWrapper div:nth-of-type(n + 2) {
+    display: none;
+  }
 }
 .courseInfo main .scoringBlock .scoringWrapper div {
   border: 1px solid rgba(60, 60, 60, 0.2);

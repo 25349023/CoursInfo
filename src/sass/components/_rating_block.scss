@@ -5,10 +5,22 @@
   grid-template-columns: 2fr 5fr 2fr;
   grid-template-rows: 0.8fr repeat(3, 1fr);
 
+  @include brk-between($brk-mlarge, $brk-large) {
+    grid-template-columns: 2fr 4fr 2fr;
+  }
+
   button {
     margin: auto 3rem auto auto;
     @include button-functional-mixin;
     grid-column: 2 / 4;
+
+    @include brk-down($brk-large) {
+      margin-right: 1.6rem;
+    }
+
+    @include brk-down($brk-medium) {
+      margin-right: 0.8rem;
+    }
 
     .svg-icon {
       top: 6px;
@@ -28,24 +40,80 @@
     text-align: right;
     font-weight: 600;
     line-height: 1.8;
+
+    @include brk-down($brk-xhuge) {
+      padding-right: 1.2rem;
+    }
+
+    @include brk-down($brk-mhuge) {
+      padding-right: 0.9rem;
+    }
+
+    @include brk-down($brk-mlarge) {
+      padding-right: 2rem;
+    }
+
+    @include brk-down($brk-medium) {
+      padding-right: 0.9rem;
+    }
   }
 
   .content {
     padding: 1px 0 0 2rem;
 
+    @include brk-down($brk-xhuge) {
+      padding-left: 1rem;
+    }
+
+    @include brk-down($brk-mhuge) {
+      padding-left: 0.75rem;
+    }
+
+    @include brk-down($brk-mlarge) {
+      padding-left: 2rem;
+    }
+
+    @include brk-down($brk-medium) {
+      padding-left: 0.75rem;
+    }
+
     &.sweet .svg-icon {
       @include icon($rating-sweet-color, 3rem);
       transform: rotateY(180deg);
+
+      @include brk-between($brk-mhuge, $brk-mlarge) {
+        @include icon($rating-sweet-color, 2.4rem);
+      }
+
+      @include brk-down($brk-medium) {
+        @include icon($rating-sweet-color, 2.4rem);
+      }
     }
 
     &.cool .svg-icon {
       @include icon($rating-cool-color, 3rem);
       transform: rotateY(180deg);
+
+      @include brk-between($brk-mhuge, $brk-mlarge) {
+        @include icon($rating-cool-color, 2.4rem);
+      }
+
+      @include brk-down($brk-medium) {
+        @include icon($rating-cool-color, 2.4rem);
+      }
     }
 
     &.recommend .svg-icon {
       @include icon($rating-recommend-color, 3rem);
       transform: rotateY(180deg);
+
+      @include brk-between($brk-mhuge, $brk-mlarge) {
+        @include icon($rating-recommend-color, 2.4rem);
+      }
+
+      @include brk-down($brk-medium) {
+        @include icon($rating-recommend-color, 2.4rem);
+      }
     }
   }
 

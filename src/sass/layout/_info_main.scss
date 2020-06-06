@@ -1,6 +1,10 @@
 .wrapper {
   max-width: $thin-page-width;
   margin-left: 4rem;
+
+  @include brk-down($brk-xhuge) {
+    margin-left: 0;
+  }
 }
 
 .courseInfo {
@@ -10,6 +14,10 @@
     display: flex;
     align-items: baseline;
     margin-bottom: 3rem;
+
+    @include brk-down($brk-medium) {
+      padding: 0 0.6rem;
+    }
 
     h1 {
       margin: 0;
@@ -23,6 +31,10 @@
       font-size: 2rem;
       font-weight: 600;
       color: rgba($color: $ui-color-text, $alpha: 0.8);
+
+      @include brk-down($brk-large) {
+        margin-right: 0;
+      }
     }
   }
 
@@ -35,19 +47,39 @@
     grid-auto-rows: minmax(30rem, auto);
     gap: 4rem;
 
+    @include brk-down($brk-xhuge) {
+      gap: 2rem;
+    }
+    @include brk-down($brk-large) {
+      gap: 1rem;
+    }
+
+    @include brk-down($brk-mlarge) {
+      grid-template-rows: 24rem 24rem;
+    }
+
     > section {
       background-color: $ui-color-block;
       border: 1px solid $ui-color-block-border;
       border-radius: 10px;
       padding-bottom: 0.5rem;
 
+      @include brk-down($brk-mlarge) {
+        grid-column: 1 / 3;
+      }
+
+      @include brk-down($brk-large) {
+        &:nth-of-type(n + 3) {
+          padding-bottom: 0;
+        }
+      }
+
       &:first-of-type {
         padding-bottom: 1rem;
       }
 
       &:nth-of-type(n + 3) {
-        grid-column-start: 1;
-        grid-column-end: 3;
+        grid-column: 1 / 3;
       }
 
       h3 {
