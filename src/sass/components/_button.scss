@@ -46,7 +46,8 @@
 
 @mixin button-functional-mixin(
   $btn-color: $button-function-color,
-  $with-icon: true
+  $with-icon: true,
+  $icon-size: 1.8rem
 ) {
   @include button-mixin($btn-color);
   font-size: 1.2rem;
@@ -56,7 +57,7 @@
 
   @if $with-icon {
     .svg-icon {
-      @include icon(white, 1.8rem);
+      @include icon(white, $icon-size);
       position: relative;
       top: 5px;
     }

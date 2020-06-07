@@ -16,24 +16,39 @@
     margin-bottom: 3rem;
 
     @include brk-down($brk-medium) {
-      padding: 0 0.6rem;
+      flex-flow: wrap;
+      padding: 0 1rem;
     }
 
     h1 {
-      margin: 0;
+      margin: 0 auto 0 0;
       font-size: 3rem;
       letter-spacing: 0.1rem;
       font-weight: 400;
     }
 
     h2 {
-      margin: 0 2rem 0 auto;
+      margin: 0 2rem 0 0;
       font-size: 2rem;
       font-weight: 600;
       color: rgba($color: $ui-color-text, $alpha: 0.8);
 
       @include brk-down($brk-large) {
         margin-right: 0;
+      }
+
+      @include brk-down($brk-small) {
+        margin-top: 1rem;
+      }
+    }
+
+    @include brk-down($brk-medium) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
       }
     }
   }
@@ -56,6 +71,10 @@
 
     @include brk-down($brk-mlarge) {
       grid-template-rows: 24rem 24rem;
+    }
+
+    @include brk-down($brk-medium) {
+      grid-template-rows: minmax(24rem, auto) 18rem;
     }
 
     > section {
@@ -86,6 +105,11 @@
         font-size: 1.8rem;
         font-weight: 400;
         margin: 1.5rem 0 1rem 2rem;
+
+        @include brk-down($brk-medium) {
+          align-self: center;
+          font-size: 1.4rem;
+        }
       }
     }
   }

@@ -11,6 +11,17 @@
 
   @include brk-down($brk-medium) {
     grid-template-columns: 1rem 1fr 1fr 0.8rem;
+    grid-template-rows: 3rem 1fr 0.5rem;
+    padding-top: 0.5rem;
+    row-gap: 1rem;
+  }
+
+  @include brk-down($brk-small) {
+    grid-template-columns: 1rem 2fr 3fr 0.8rem;
+
+    h3 {
+      margin: 0 0 0 1.4rem;
+    }
   }
 
   h3 {
@@ -20,6 +31,17 @@
   button {
     margin: auto 0 auto auto;
     @include button-functional-mixin;
+
+    @include brk-down($brk-medium) {
+      font-size: 1.1rem;
+    }
+
+    .svg-icon {
+      @include brk-down($brk-medium) {
+        @include icon(white, 1.5rem);
+        // top: 5px;
+      }
+    }
   }
 
   .postsWrapper {
@@ -32,7 +54,8 @@
     gap: 1.2rem 1.6rem;
 
     @include brk-down($brk-medium) {
-      gap: 0.4rem 0.5rem;
+      display: flex;
+      flex-flow: column;
     }
 
     .singlePost {
@@ -45,6 +68,10 @@
       grid-template-columns: 1fr;
       grid-template-rows: 2rem 1fr;
       gap: 0.5rem;
+
+      @include brk-down($brk-medium) {
+        padding: 1rem 1.2rem;
+      }
 
       h4 {
         margin: 0;
@@ -70,6 +97,14 @@
 
         h4 {
           font-size: 1.4rem;
+        }
+
+        @include brk-down($brk-medium) {
+          padding: 1rem 1.2rem;
+
+          h4 {
+            font-size: 1.2rem;
+          }
         }
 
         .user {

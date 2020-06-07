@@ -11,6 +11,16 @@
 
   @include brk-down($brk-medium) {
     grid-template-columns: 1rem 1fr 1fr 0.8rem;
+    grid-template-rows: 3rem 1fr 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  @include brk-down($brk-small) {
+    grid-template-columns: 1rem 2fr 1fr 0.8rem;
+
+    h3 {
+      margin: 0 0 0 1.4rem;
+    }
   }
 
   h3 {

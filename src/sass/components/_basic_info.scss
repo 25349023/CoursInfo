@@ -39,7 +39,11 @@
       padding-right: 2rem;
       border-right: 1px solid $ui-color-block-border;
 
-      @include brk-between($brk-xhuge, $brk-xlarge) {
+      @include brk-between($brk-xhuge, $brk-mlarge) {
+        padding-right: 1rem;
+      }
+
+      @include brk-down($brk-medium) {
         padding-right: 1rem;
       }
     }
@@ -47,7 +51,11 @@
     .content {
       padding-left: 2rem;
 
-      @include brk-between($brk-xhuge, $brk-xlarge) {
+      @include brk-between($brk-xhuge, $brk-mlarge) {
+        padding-left: 1rem;
+      }
+
+      @include brk-down($brk-medium) {
         padding-left: 1rem;
       }
     }
