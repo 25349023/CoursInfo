@@ -1,42 +1,71 @@
 @use 'sass:color';
 
+@include brk-down($brk-medium) {
+  .postPage .main .postArticle {
+    padding: 2rem;
+  }
+}
+
+@include brk-down($brk-small) {
+  .postPage .main .postArticle {
+    padding: 1.2rem 1rem;
+  }
+}
+
 .postArticle {
   color: $ui-color-text;
 
   .title {
     display: grid;
-    // flex-flow: wrap;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto 2.5rem;
     align-items: baseline;
     row-gap: 1.2rem;
 
     margin-bottom: 3rem;
 
-    h1 {
-      margin: 0;
-      font-size: 3rem;
-      letter-spacing: 0.1rem;
-      font-weight: 400;
-    }
-
     div {
       display: flex;
+      flex-flow: wrap;
       align-items: baseline;
     }
 
+    h1 {
+      margin: 0 auto 0 0;
+      font-size: 3rem;
+      letter-spacing: 0.1rem;
+      font-weight: 400;
+
+      @include brk-down($brk-xlarge) {
+        font-size: 2.2rem;
+      }
+    }
+
     h2 {
-      margin: 0 2rem 0 auto;
+      margin: 0.8rem 2rem 0 0;
       font-size: 2rem;
       font-weight: 600;
       color: rgba($color: $ui-color-text, $alpha: 0.8);
+
+      @include brk-down($brk-xlarge) {
+        font-size: 1.6rem;
+      }
     }
 
     h3 {
-      margin: 0;
+      margin: 0.6rem 0 0;
       font-size: 1.6rem;
       font-weight: 600;
       color: rgba($color: $ui-color-text, $alpha: 0.7);
+
+      @include brk-down($brk-xlarge) {
+        font-size: 1.4rem;
+      }
+    }
+
+    .articleInfo {
+      display: flex;
+      justify-content: space-between;
     }
 
     .user {
@@ -64,6 +93,10 @@
     .remark {
       place-self: center end;
       font-size: 1.4rem;
+
+      @include brk-down($brk-medium) {
+        font-size: 1.6rem;
+      }
 
       .like {
         margin-right: 2rem;
@@ -132,6 +165,10 @@
           $alpha: -50%
         );
       padding-left: 1rem;
+
+      @include brk-down($brk-medium) {
+        font-size: 1.6rem;
+      }
     }
   }
 }

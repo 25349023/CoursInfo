@@ -13,6 +13,10 @@ section.main {
       padding: 3rem 2rem;
     }
 
+    @include brk-down($brk-xlarge) {
+      padding: 2rem;
+    }
+
     @include brk-down($brk-medium) {
       padding: 2rem 0.5rem;
     }
