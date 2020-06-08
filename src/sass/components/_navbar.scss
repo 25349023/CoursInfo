@@ -15,10 +15,34 @@ header {
 
       display: flex;
       align-items: baseline;
+      position: relative;
+
+      @include brk-down($brk-large) {
+        margin-left: 1.2rem;
+      }
 
       li {
         display: inline;
         margin-right: 1.3rem;
+
+        &:last-of-type {
+          display: none;
+        }
+
+        @include brk-down($brk-large) {
+          &:nth-of-type(n + 2) {
+            display: none;
+          }
+
+          &:last-of-type {
+            margin-left: auto;
+            display: inline-block;
+            position: absolute;
+            margin-right: 0;
+            right: 0;
+            top: 10px;
+          }
+        }
 
         &.brand {
           font: italic 600 1.4rem $brand-font;
@@ -73,6 +97,48 @@ header {
         &:hover {
           color: $primary-color-dark;
         }
+      }
+
+      .btnToggle {
+        @include button-mixin(
+          $primary-color-light,
+          rgba($primary-color-dark, 0.3),
+          $pressed-color: $primary-color-press
+        );
+        padding: 0.4rem 1rem;
+        font-size: 1.2rem;
+        line-height: 1;
+      }
+    }
+
+    @include brk-down($brk-large) {
+      ul.expanded {
+        flex-flow: column;
+
+        .brand {
+          margin-bottom: 0.5rem;
+        }
+
+        li.link {
+          display: block;
+          padding: 0.5rem 0 0.5rem 1rem;
+          margin: 0 auto 0 0;
+        }
+
+        li.rightItem {
+          padding-right: 4rem;
+
+          img {
+            right: 1.2rem;
+            top: 3px;
+          }
+        }
+      }
+    }
+
+    @include brk-down($brk-small) {
+      ul.expanded li.link {
+        padding-left: 0.5rem;
       }
     }
   }

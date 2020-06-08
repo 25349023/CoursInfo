@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,14 +33,19 @@
   <body class="postPage">
     <header>
       <nav>
-        <ul>
+        <ul id="navbar">
           <li class="brand"><a href="./index.html">CoursInfo</a></li>
-          <li class="primary active"><a href="./courses.html">課程列表</a></li>
-          <li class="primary"><a href="./posts.html">心得</a></li>
-          <li><a href="#">關於</a></li>
-          <li><a href="#">支援</a></li>
-          <li class="rightItem">
+          <li class="primary link"><a href="./courses.html">課程列表</a></li>
+          <li class="primary link"><a href="./posts.html">心得</a></li>
+          <li class="link"><a href="#">關於</a></li>
+          <li class="link"><a href="#">支援</a></li>
+          <li class="rightItem link">
             <a href="#">Account<img src="images/profile.png" /></a>
+          </li>
+          <li>
+            <button id="navBtn" class="btnToggle">
+              <i class="fas fa-bars"></i>
+            </button>
           </li>
         </ul>
       </nav>
@@ -221,5 +226,6 @@
     </section>
 
     <footer>Copyright &copy; 2020 Skyline. All Rights Reserved.</footer>
+    <script src="/src/js/navbar.js"></script>
   </body>
 </html>

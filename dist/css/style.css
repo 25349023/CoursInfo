@@ -956,6 +956,17 @@ footer {
   color: #e4e4e4;
 }
 
+.courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, .banner .foreground a.button, header nav ul .btnToggle {
+  line-height: 2.2;
+  padding: 0;
+  font-size: 1.5rem;
+  text-decoration: none;
+  outline: none;
+  border: 1px solid rgba(241, 202, 246, 0.8);
+  border-radius: 5px;
+  color: white;
+}
+
 header {
   background-color: #f1caf6;
 }
@@ -972,10 +983,32 @@ header nav ul {
   margin-right: 1rem;
   display: flex;
   align-items: baseline;
+  position: relative;
+}
+@media (max-width: 840px) {
+  header nav ul {
+    margin-left: 1.2rem;
+  }
 }
 header nav ul li {
   display: inline;
   margin-right: 1.3rem;
+}
+header nav ul li:last-of-type {
+  display: none;
+}
+@media (max-width: 840px) {
+  header nav ul li:nth-of-type(n + 2) {
+    display: none;
+  }
+  header nav ul li:last-of-type {
+    margin-left: auto;
+    display: inline-block;
+    position: absolute;
+    margin-right: 0;
+    right: 0;
+    top: 10px;
+  }
 }
 header nav ul li.brand {
   font: italic 600 1.4rem "Exo 2", "Maven Pro", sans-serif;
@@ -1018,6 +1051,44 @@ header nav ul a {
 }
 header nav ul a:hover {
   color: #641651;
+}
+header nav ul .btnToggle {
+  background-color: #f1caf6;
+  border-color: rgba(100, 22, 81, 0.3);
+  padding: 0.4rem 1rem;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+header nav ul .btnToggle:hover {
+  background-color: #f3d2f8;
+}
+header nav ul .btnToggle:active {
+  background-color: #ecbaf3;
+}
+@media (max-width: 840px) {
+  header nav ul.expanded {
+    flex-flow: column;
+  }
+  header nav ul.expanded .brand {
+    margin-bottom: 0.5rem;
+  }
+  header nav ul.expanded li.link {
+    display: block;
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin: 0 auto 0 0;
+  }
+  header nav ul.expanded li.rightItem {
+    padding-right: 4rem;
+  }
+  header nav ul.expanded li.rightItem img {
+    right: 1.2rem;
+    top: 3px;
+  }
+}
+@media (max-width: 420px) {
+  header nav ul.expanded li.link {
+    padding-left: 0.5rem;
+  }
 }
 
 table {
@@ -1126,17 +1197,6 @@ table td.rating {
 .courses aside table tbody tr:hover,
 .posts aside table tbody tr:hover {
   background-color: rgba(200, 209, 214, 0.5);
-}
-
-.courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, .banner .foreground a.button {
-  line-height: 2.2;
-  padding: 0;
-  font-size: 1.5rem;
-  text-decoration: none;
-  outline: none;
-  border: 1px solid rgba(241, 202, 246, 0.8);
-  border-radius: 5px;
-  color: white;
 }
 
 .banner {

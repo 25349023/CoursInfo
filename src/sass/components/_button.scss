@@ -14,17 +14,25 @@
   color: $banner-title-color;
 }
 
-@mixin button-mixin($btn-color: $button-primary-color) {
+@mixin button-mixin(
+  $btn-color: $button-primary-color,
+  $border-color: null,
+  $pressed-color: null
+) {
   @extend %button;
 
   background-color: $btn-color;
 
-  border-color: color.scale(
-    $color: $btn-color,
-    $saturation: -25%,
-    $lightness: 50%,
-    $alpha: 80%
-  );
+  @if $border-color {
+    border-color: $border-color;
+  } @else {
+    border-color: color.scale(
+      $color: $btn-color,
+      $saturation: -25%,
+      $lightness: 50%,
+      $alpha: 80%
+    );
+  }
 
   &:hover {
     background-color: color.scale(
@@ -35,12 +43,16 @@
   }
 
   &:active {
-    background-color: color.scale(
-      $color: $btn-color,
-      $saturation: -5%,
-      $lightness: -20%,
-      $alpha: 100%
-    );
+    @if $pressed-color {
+      background-color: $pressed-color;
+    } @else {
+      background-color: color.scale(
+        $color: $btn-color,
+        $saturation: -5%,
+        $lightness: -20%,
+        $alpha: 100%
+      );
+    }
   }
 }
 
