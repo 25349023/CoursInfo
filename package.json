@@ -1,0 +1,27 @@
+{
+  "name": "coursinfo",
+  "version": "1.0.0",
+  "description": "course info for nthu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://shwu10.cs.nthu.edu.tw/107062303/coursinfo.git"
+  },
+  "keywords": [
+    "nthu",
+    "courses",
+    "info"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.43.0"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
