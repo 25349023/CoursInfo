@@ -10,6 +10,14 @@
       align-items: center;
       grid-auto-flow: column dense;
 
+      @include brk-down($brk-medium) {
+        grid-template: repeat(6, 2rem) / 1fr 1fr;
+      }
+
+      @include brk-down($brk-small) {
+        grid-template: repeat(10, 2rem) / 1fr;
+      }
+
       .item {
         display: flex;
         padding: 0;

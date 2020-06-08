@@ -14,7 +14,11 @@ table {
     }
 
     &.secondary {
-      width: 16%;
+      width: 18%;
+
+      @include brk-down($brk-huge) {
+        width: 20%;
+      }
     }
   }
 

@@ -5,13 +5,47 @@
   grid-template-columns: 2fr 5fr 2fr;
   grid-template-rows: 0.8fr repeat(3, 1fr);
 
+  @include brk-between($brk-mlarge, $brk-large) {
+    grid-template-columns: 2fr 4fr 2fr;
+  }
+
+  @include brk-down($brk-medium) {
+    grid-template-columns: 2fr 2.5fr 2.5fr 2fr;
+  }
+
+  @include brk-down($brk-small) {
+    grid-template-columns: 3fr 1fr 3fr 2fr;
+  }
+
+  h3 {
+    @include brk-down($brk-medium) {
+      margin-right: 0.8rem;
+      grid-column: span 2;
+    }
+  }
+
   button {
     margin: auto 3rem auto auto;
     @include button-functional-mixin;
     grid-column: 2 / 4;
 
+    @include brk-down($brk-large) {
+      margin-right: 1.6rem;
+    }
+
+    @include brk-down($brk-medium) {
+      margin-right: 0.8rem;
+      grid-column: 3 / 5;
+      font-size: 1.1rem;
+    }
+
     .svg-icon {
       top: 6px;
+
+      @include brk-down($brk-medium) {
+        @include icon(white, 1.4rem);
+        top: 4px;
+      }
     }
   }
 
@@ -20,6 +54,10 @@
   .rateScore {
     place-self: center stretch;
     font-size: 1.4rem;
+
+    @include brk-down($brk-medium) {
+      font-size: 1.2rem;
+    }
   }
 
   .item {
@@ -28,30 +66,107 @@
     text-align: right;
     font-weight: 600;
     line-height: 1.8;
+
+    @include brk-down($brk-xhuge) {
+      padding-right: 1.2rem;
+    }
+
+    @include brk-down($brk-mhuge) {
+      padding-right: 0.9rem;
+    }
+
+    @include brk-down($brk-mlarge) {
+      padding-right: 2rem;
+    }
+
+    @include brk-down($brk-medium) {
+      padding-right: 0.9rem;
+    }
   }
 
   .content {
     padding: 1px 0 0 2rem;
 
+    @include brk-down($brk-xhuge) {
+      padding-left: 1rem;
+    }
+
+    @include brk-down($brk-mhuge) {
+      padding-left: 0.75rem;
+    }
+
+    @include brk-down($brk-mlarge) {
+      padding-left: 2rem;
+    }
+
+    @include brk-down($brk-medium) {
+      padding-left: 0.75rem;
+      grid-column: span 2;
+    }
+
+    @include brk-down($brk-small) {
+      display: none;
+    }
+
     &.sweet .svg-icon {
       @include icon($rating-sweet-color, 3rem);
       transform: rotateY(180deg);
+
+      @include brk-between($brk-mhuge, $brk-mlarge) {
+        @include icon($rating-sweet-color, 2.4rem);
+      }
+
+      @include brk-down($brk-medium) {
+        @include icon($rating-sweet-color, 2.2rem);
+      }
+
+      @include brk-down($brk-small) {
+        @include icon($rating-sweet-color, 1.8rem);
+      }
     }
 
     &.cool .svg-icon {
       @include icon($rating-cool-color, 3rem);
       transform: rotateY(180deg);
+
+      @include brk-between($brk-mhuge, $brk-mlarge) {
+        @include icon($rating-cool-color, 2.4rem);
+      }
+
+      @include brk-down($brk-medium) {
+        @include icon($rating-cool-color, 2.2rem);
+      }
+
+      @include brk-down($brk-small) {
+        @include icon($rating-cool-color, 1.8rem);
+      }
     }
 
     &.recommend .svg-icon {
       @include icon($rating-recommend-color, 3rem);
       transform: rotateY(180deg);
+
+      @include brk-between($brk-mhuge, $brk-mlarge) {
+        @include icon($rating-recommend-color, 2.4rem);
+      }
+
+      @include brk-down($brk-medium) {
+        @include icon($rating-recommend-color, 2.2rem);
+      }
+
+      @include brk-down($brk-small) {
+        @include icon($rating-recommend-color, 1.8rem);
+      }
     }
   }
 
   .rateScore {
     padding-left: 1rem;
     font-weight: 600;
+
+    @include brk-down($brk-small) {
+      grid-column: span 3;
+    }
 
     &.sweet {
       color: color.scale(
