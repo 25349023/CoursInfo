@@ -1201,7 +1201,8 @@ table td.rating {
 
 .banner {
   background: fixed center 70%/cover no-repeat url("/dist/images/library.jpg");
-  height: 80%;
+  height: 80vh;
+  min-height: 30rem;
 }
 .banner .foreground {
   height: 100%;
@@ -1209,7 +1210,7 @@ table td.rating {
   color: white;
   text-align: center;
   font-family: "Exo 2", "Maven Pro", sans-serif;
-  padding-top: 5rem;
+  padding: 4rem 0 3rem;
   display: flex;
   flex-flow: column;
   justify-content: center;
