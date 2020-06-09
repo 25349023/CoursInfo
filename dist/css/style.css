@@ -1040,7 +1040,6 @@ header nav ul li.rightItem img {
   height: 30px;
   object-fit: cover;
   background-color: rgba(100, 22, 81, 0.6);
-  background: border-box center/cover url(/dist/images/profile.png);
   border-radius: 50%;
   border: 1px solid rgba(60, 60, 60, 0.4);
 }
@@ -1200,7 +1199,7 @@ table td.rating {
 }
 
 .banner {
-  background: fixed center 70%/cover no-repeat url("/dist/images/library.jpg");
+  background: fixed center 70%/cover no-repeat url("/images/library.jpg");
   height: 80vh;
   min-height: 30rem;
 }
