@@ -1,1 +1,3 @@
-import "./navbar.js";
+import "./navbar";
+import "./linkTable";
+import "./checkTable";
