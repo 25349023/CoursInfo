@@ -24,10 +24,8 @@
         border-bottom: 1px dashed rgba($sidebar-text-color, 0.4);
         position: relative;
 
-        .svg-icon {
-          position: absolute;
-          right: 1.6rem;
-          @include icon(rgba($sidebar-text-color, 0.9), 1.5rem);
+        .fas {
+          margin-right: 0.6rem;
         }
       }
 

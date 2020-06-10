@@ -1,6 +1,7 @@
 .banner {
-  background: fixed center 70% / cover no-repeat url("/dist/images/library.jpg");
-  height: 80%;
+  background: fixed center 70% / cover no-repeat url("/images/library.jpg");
+  height: 80vh;
+  min-height: 30rem;
 
   .foreground {
     height: 100%;
@@ -8,7 +9,7 @@
     color: $banner-title-color;
     text-align: center;
     font-family: $banner-title-font;
-    padding-top: 5rem;
+    padding: 4rem 0 3rem;
 
     display: flex;
     flex-flow: column;

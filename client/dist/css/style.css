@@ -923,19 +923,8 @@ section.main > section {
   border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
   position: relative;
 }
-.menu ul li:first-of-type .svg-icon {
-  position: absolute;
-  right: 1.6rem;
-  width: 1.5rem;
-  height: 1.5rem;
-}
-.menu ul li:first-of-type .svg-icon path,
-.menu ul li:first-of-type .svg-icon polygon,
-.menu ul li:first-of-type .svg-icon rect {
-  fill: rgba(255, 255, 255, 0.9);
-}
-.menu ul li:first-of-type .svg-icon circle {
-  stroke: rgba(255, 255, 255, 0.9);
+.menu ul li:first-of-type .fas {
+  margin-right: 0.6rem;
 }
 .menu ul li:nth-of-type(n + 2) a {
   display: block;
@@ -1040,7 +1029,6 @@ header nav ul li.rightItem img {
   height: 30px;
   object-fit: cover;
   background-color: rgba(100, 22, 81, 0.6);
-  background: border-box center/cover url(/dist/images/profile.png);
   border-radius: 50%;
   border: 1px solid rgba(60, 60, 60, 0.4);
 }
@@ -1200,8 +1188,9 @@ table td.rating {
 }
 
 .banner {
-  background: fixed center 70%/cover no-repeat url("/dist/images/library.jpg");
-  height: 80%;
+  background: fixed center 70%/cover no-repeat url("/images/library.jpg");
+  height: 80vh;
+  min-height: 30rem;
 }
 .banner .foreground {
   height: 100%;
@@ -1209,7 +1198,7 @@ table td.rating {
   color: white;
   text-align: center;
   font-family: "Exo 2", "Maven Pro", sans-serif;
-  padding-top: 5rem;
+  padding: 4rem 0 3rem;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -1759,6 +1748,10 @@ table td.rating {
   margin: 0;
   align-self: center;
   font-size: 1.1rem;
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost h4 a {
+  text-decoration: none;
+  color: #3c3c3c;
 }
 .courseInfo main .postsBlock .postsWrapper .singlePost p {
   margin: 0;
