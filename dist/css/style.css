@@ -923,19 +923,8 @@ section.main > section {
   border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
   position: relative;
 }
-.menu ul li:first-of-type .svg-icon {
-  position: absolute;
-  right: 1.6rem;
-  width: 1.5rem;
-  height: 1.5rem;
-}
-.menu ul li:first-of-type .svg-icon path,
-.menu ul li:first-of-type .svg-icon polygon,
-.menu ul li:first-of-type .svg-icon rect {
-  fill: rgba(255, 255, 255, 0.9);
-}
-.menu ul li:first-of-type .svg-icon circle {
-  stroke: rgba(255, 255, 255, 0.9);
+.menu ul li:first-of-type .fas {
+  margin-right: 0.6rem;
 }
 .menu ul li:nth-of-type(n + 2) a {
   display: block;
