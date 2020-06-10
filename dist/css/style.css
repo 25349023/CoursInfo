@@ -1749,6 +1749,10 @@ table td.rating {
   align-self: center;
   font-size: 1.1rem;
 }
+.courseInfo main .postsBlock .postsWrapper .singlePost h4 a {
+  text-decoration: none;
+  color: #3c3c3c;
+}
 .courseInfo main .postsBlock .postsWrapper .singlePost p {
   margin: 0;
   font-size: 1rem;
