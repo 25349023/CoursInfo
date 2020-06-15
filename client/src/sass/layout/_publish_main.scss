@@ -1,0 +1,38 @@
+.publishPage .articleForm {
+  color: $ui-color-text;
+
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin: 0 0 2rem 0;
+  }
+
+  main {
+    display: grid;
+    grid-auto-rows: auto;
+    row-gap: 2.4rem;
+
+    section {
+      h2 {
+        font-size: 1.8rem;
+        padding-left: 1rem;
+        border-left: 10px solid $rating-recommend-color;
+        margin-top: 0;
+
+        + * {
+          margin-left: 2rem;
+        }
+      }
+
+      &:nth-of-type(n + 2) {
+        display: flex;
+        flex-flow: column;
+        min-width: 0;
+      }
+
+      &:last-of-type {
+        flex-flow: row;
+      }
+    }
+  }
+}

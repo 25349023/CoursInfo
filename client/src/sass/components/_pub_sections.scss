@@ -1,0 +1,145 @@
+.publishContent {
+  .ratingSection {
+    .ratingWrapper {
+      display: flex;
+
+      .item {
+        display: flex;
+        align-items: center;
+        min-width: 0;
+        flex: 1 1 30%;
+
+        .fas {
+          margin-right: 0.5rem;
+        }
+
+        &:not(:last-of-type) {
+          margin-right: 2rem;
+        }
+
+        h3 {
+          margin: 0;
+          padding: 0 1rem;
+          font-size: 1.3rem;
+          font-weight: 400;
+        }
+
+        input {
+          min-width: 0;
+          flex: 1 1 50%;
+        }
+      }
+    }
+  }
+
+  .detailedSection {
+    .detailedWrapper {
+      display: grid;
+      grid-auto-rows: auto;
+      row-gap: 1.5rem;
+
+      .item {
+        display: flex;
+        flex-flow: column;
+      }
+
+      h3 {
+        margin: 0 0 1rem;
+        font-size: 1.4rem;
+        font-weight: 400;
+
+        .fas {
+          margin-right: 0.5rem;
+        }
+      }
+
+      textarea {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .gradeSection {
+    .gradeWrapper {
+      display: flex;
+
+      h3 {
+        margin: 0 0 1rem;
+        font-size: 1.3rem;
+        font-weight: 400;
+
+        .fas {
+          margin-right: 0.5rem;
+        }
+      }
+
+      .personal {
+        flex: 1 1 200px;
+      }
+
+      .total {
+        margin-left: 3rem;
+        flex: 3 1 600px;
+
+        .classGrading {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(4, auto);
+          gap: 1.5rem 1rem;
+          align-items: center;
+
+          .item {
+            display: flex;
+            align-items: center;
+            min-width: 0;
+            padding-right: 1.5rem;
+            border-right: 1px solid $ui-color-block-border;
+
+            div {
+              font-size: 1.3rem;
+              font-weight: 600;
+              flex: 0 0 4rem;
+              padding-left: 1rem;
+            }
+
+            input {
+              min-width: 0;
+              font-size: 1.2rem;
+              line-height: 1.4;
+            }
+
+            &:nth-of-type(3n),
+            &:last-of-type {
+              border-right: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .submitSection {
+    justify-content: end;
+
+    button {
+      cursor: pointer;
+      // flex: 1;
+      // max-width: 15rem;
+
+      &:first-of-type {
+        @include button-mixin($save-color);
+        margin-right: 2rem;
+        padding: 0 2rem;
+      }
+
+      &:last-of-type {
+        @include button-mixin($submit-color);
+        padding: 0 2rem;
+      }
+
+      .fas {
+        margin-right: 0.4rem;
+      }
+    }
+  }
+}

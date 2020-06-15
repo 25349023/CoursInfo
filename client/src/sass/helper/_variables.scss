@@ -13,6 +13,7 @@ $primary-color-press: rgb(236, 186, 243);
 
 $ui-color-light: rgb(228, 228, 228);
 $ui-color-block: rgb(240, 240, 240);
+$ui-color-input: rgb(236, 236, 236);
 $ui-color-text: rgb(60, 60, 60);
 $ui-color-dark: rgb(42, 42, 42);
 $ui-color-block-border: rgba($ui-color-text, 0.2);
@@ -39,6 +40,12 @@ $rating-recommend-color: rgb(149, 199, 130);
 
 $like-color: rgb(221, 101, 101);
 $dislike-color: rgb(101, 103, 221);
+
+$dropdown-color1: rgb(161, 213, 255);
+$dropdown-text-color1: rgb(25, 60, 88);
+$option-hover-color: rgb(212, 212, 212);
+$submit-color: rgb(105, 177, 69);
+$save-color: rgb(74, 160, 230);
 
 // fonts
 $ui-text-font: "Maven Pro", "Quicksand", "Noto Sans TC", sans-serif;

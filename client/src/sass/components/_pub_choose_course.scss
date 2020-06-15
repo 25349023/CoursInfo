@@ -1,0 +1,19 @@
+.chooseCourse {
+  display: flex;
+
+  .dropdown:nth-of-type(n + 2) {
+    margin-left: 2rem;
+  }
+
+  .semesterDrop {
+    flex: 1 1 100px;
+  }
+
+  .departmentDrop {
+    flex: 2 1 200px;
+  }
+
+  .courseDrop {
+    flex: 3 1 300px;
+  }
+}

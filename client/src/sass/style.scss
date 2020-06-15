@@ -9,6 +9,7 @@
 @import "./layout/posts_main";
 @import "./layout/info_main";
 @import "./layout/post_article_main";
+@import "./layout/publish_main";
 @import "./layout/menu";
 @import "./layout/footer";
 @import "./components/button";
@@ -16,6 +17,7 @@
 @import "./components/table";
 @import "./components/category";
 @import "./components/banner";
+@import "./components/dropdown";
 @import "./components/basic_info";
 @import "./components/rating_block";
 @import "./components/posts_block";
@@ -25,3 +27,6 @@
 @import "./components/post_detailed_sec";
 @import "./components/post_grade_sec";
 @import "./components/review_other_sec";
+@import "./components/pub_choose_course";
+@import "./components/pub_form";
+@import "./components/pub_sections";

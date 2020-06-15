@@ -3,13 +3,13 @@
 .postArticle .infoSection {
   display: grid;
   grid-template-columns: 6rem 1fr;
-  grid-template-rows: auto repeat(8, 2rem);
+  grid-template-rows: auto repeat(9, 2rem);
   align-items: center;
   row-gap: 0.75rem;
 
   @include brk-down($brk-medium) {
     grid-template-columns: 4.8rem 1fr;
-    grid-template-rows: auto repeat(8, minmax(2rem, auto));
+    grid-template-rows: auto repeat(9, minmax(2rem, auto));
   }
 
   h2 {
