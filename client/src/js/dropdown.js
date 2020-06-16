@@ -11,11 +11,9 @@ window.addEventListener("load", () => {
         let dropBtn = drp.querySelector(".dropdownBtn .chosen");
         let options = drp.querySelectorAll(".option");
         options.forEach((op) => {
-            let contents = [...op.querySelectorAll("span")].map(
-                (sp) => sp.textContent
-            );
+            let content = op.querySelector(".primary").textContent;
             op.addEventListener("click", () => {
-                dropBtn.textContent = contents.join(" ");
+                dropBtn.textContent = content;
             });
         });
     }

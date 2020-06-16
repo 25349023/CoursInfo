@@ -1,7 +1,15 @@
-.publishContent {
+.main .publishContent {
+  @include brk-down($brk-medium) {
+    padding: 2rem 1.8rem 2rem 1.6rem;
+  }
+
   .ratingSection {
     .ratingWrapper {
       display: flex;
+
+      @include brk-down($brk-large) {
+        flex-flow: column;
+      }
 
       .item {
         display: flex;
@@ -15,6 +23,10 @@
 
         &:not(:last-of-type) {
           margin-right: 2rem;
+
+          @include brk-down($brk-large) {
+            margin: 0 0 1.4rem 0;
+          }
         }
 
         h3 {
@@ -63,6 +75,10 @@
     .gradeWrapper {
       display: flex;
 
+      @include brk-down($brk-large) {
+        flex-flow: column;
+      }
+
       h3 {
         margin: 0 0 1rem;
         font-size: 1.3rem;
@@ -75,11 +91,35 @@
 
       .personal {
         flex: 1 1 200px;
+
+        @include brk-down($brk-large) {
+          flex: 1 0 auto;
+          margin-bottom: 2rem;
+        }
+
+        @include brk-down($brk-medium) {
+          .dropdownBtn {
+            font-size: 1.3rem;
+          }
+
+          .option {
+            font-size: 1.1rem;
+          }
+        }
       }
 
       .total {
         margin-left: 3rem;
         flex: 3 1 600px;
+
+        @include brk-down($brk-mlarge) {
+          margin-left: 1.2rem;
+        }
+
+        @include brk-down($brk-large) {
+          flex: 1 0 auto;
+          margin-left: 0;
+        }
 
         .classGrading {
           display: grid;
@@ -88,6 +128,17 @@
           gap: 1.5rem 1rem;
           align-items: center;
 
+          @include brk-down($brk-medium) {
+            gap: 0.8rem 0.4rem;
+          }
+
+          @include brk-down($brk-small) {
+            display: flex;
+            flex-flow: column;
+            gap: 0;
+            align-items: stretch;
+          }
+
           .item {
             display: flex;
             align-items: center;
@@ -95,17 +146,43 @@
             padding-right: 1.5rem;
             border-right: 1px solid $ui-color-block-border;
 
+            @include brk-down($brk-medium) {
+              padding: 0;
+              border-right: none;
+            }
+
+            @include brk-down($brk-small) {
+              &:nth-of-type(n + 2) {
+                margin-top: 0.8rem;
+              }
+            }
+
             div {
               font-size: 1.3rem;
               font-weight: 600;
               flex: 0 0 4rem;
-              padding-left: 1rem;
+              padding-right: 1rem;
+              text-align: right;
+
+              @include brk-down($brk-medium) {
+                flex: 0 1 4rem;
+                padding: 0 1rem 0 0;
+              }
+
+              @include brk-down($brk-small) {
+                text-align: left;
+                padding: 0 0 0 0.8rem;
+              }
             }
 
             input {
               min-width: 0;
               font-size: 1.2rem;
               line-height: 1.4;
+
+              @include brk-down($brk-small) {
+                flex: 1 1 40%;
+              }
             }
 
             &:nth-of-type(3n),
@@ -121,15 +198,22 @@
   .submitSection {
     justify-content: end;
 
+    @include brk-down($brk-medium) {
+      align-items: stretch;
+      margin-left: 0.2rem;
+    }
+
     button {
       cursor: pointer;
-      // flex: 1;
-      // max-width: 15rem;
 
       &:first-of-type {
         @include button-mixin($save-color);
         margin-right: 2rem;
         padding: 0 2rem;
+
+        @include brk-down($brk-medium) {
+          margin: 0 0 1rem 0;
+        }
       }
 
       &:last-of-type {
