@@ -53,80 +53,88 @@
 
     <section class="main">
       <section class="publishContent">
-        <div class="wrapper articleForm">
+        <form class="wrapper articleForm" spellcheck="false">
           <h1>發表心得</h1>
 
           <main>
             <section class="chooseCourse">
               <div class="dropdown semesterDrop">
-                <button id="semesterDropdown" class="dropdownBtn">
+                <button type="button" id="semesterDropdown" class="dropdownBtn">
                   <span class="chosen">請選擇學期</span>
                   <i class="fas fa-caret-down"></i>
                 </button>
                 <div class="drpOptions">
-                  <button data-semester="10910" class="option">
+                  <button type="button" data-semester="10910" class="option">
                     <span class="primary">109 上</span>
                   </button>
-                  <button data-semester="10820" class="option">
+                  <button type="button" data-semester="10820" class="option">
                     <span class="primary">108 下</span>
                   </button>
-                  <button data-semester="10810" class="option">
+                  <button type="button" data-semester="10810" class="option">
                     <span class="primary">108 上</span>
                   </button>
                 </div>
               </div>
 
               <div class="dropdown departmentDrop">
-                <button id="departmentDropdown" class="dropdownBtn">
+                <button
+                  type="button"
+                  id="departmentDropdown"
+                  class="dropdownBtn"
+                >
                   <span class="chosen">請選擇科系</span>
                   <i class="fas fa-caret-down"></i>
                 </button>
                 <div class="drpOptions">
-                  <button data-department="CS" class="option">
+                  <button type="button" data-department="CS" class="option">
                     <span class="primary">CS 資工系</span>
                   </button>
-                  <button data-department="EE" class="option">
+                  <button type="button" data-department="EE" class="option">
                     <span class="primary">EE 電機系</span>
                   </button>
-                  <button data-department="EECS" class="option">
+                  <button type="button" data-department="EECS" class="option">
                     <span class="primary">EECS 電資院學士班</span>
                   </button>
-                  <button data-department="GE" class="option">
+                  <button type="button" data-department="GE" class="option">
                     <span class="primary">GE 通識</span>
                   </button>
-                  <button data-department="GEC" class="option">
+                  <button type="button" data-department="GEC" class="option">
                     <span class="primary">GEC 通識核心</span>
                   </button>
                 </div>
               </div>
 
               <div class="dropdown courseDrop">
-                <button id="departmentDropdown" class="dropdownBtn">
+                <button
+                  type="button"
+                  id="departmentDropdown"
+                  class="dropdownBtn"
+                >
                   <span class="chosen">請選擇課程</span>
                   <i class="fas fa-caret-down"></i>
                 </button>
                 <div class="drpOptions">
-                  <button class="option">
+                  <button type="button" class="option">
                     <span class="primary">CS 100000 計算機程式設計一</span>
                     <span class="secondary">王小明</span>
                   </button>
-                  <button class="option">
+                  <button type="button" class="option">
                     <span class="primary">CS 100010 計算機程式設計一</span>
                     <span class="secondary">王大明</span>
                   </button>
-                  <button class="option">
+                  <button type="button" class="option">
                     <span class="primary">CS 100000 計算機程式設計一</span>
                     <span class="secondary">王小明</span>
                   </button>
-                  <button class="option">
+                  <button type="button" class="option">
                     <span class="primary">CS 100010 計算機程式設計一</span>
                     <span class="secondary">王大明</span>
                   </button>
-                  <button class="option">
+                  <button type="button" class="option">
                     <span class="primary">CS 100000 計算機程式設計一</span>
                     <span class="secondary">王小明</span>
                   </button>
-                  <button class="option">
+                  <button type="button" class="option">
                     <span class="primary">CS 100010 計算機程式設計一</span>
                     <span class="secondary">王大明</span>
                   </button>
@@ -156,15 +164,24 @@
             </section>
 
             <section class="ratingSection">
-              <h2>課程評價</h2>
+              <div id="ratingPopup" class="popupContent"></div>
+              <h2>
+                課程評價
+                <div class="tooltip popup" data-target="#ratingPopup">
+                  <i class="fas fa-question-circle"></i>
+                  <div class="tooltipBalloon right">1231243</div>
+                </div>
+              </h2>
               <div class="ratingWrapper">
                 <div class="item">
                   <h3><i class="fas fa-candy-cane"></i> 甜度</h3>
                   <input
                     type="text"
                     inputmode="numeric"
+                    required
                     maxlength="3"
                     pattern="\d(\.\d)?"
+                    placeholder="例：3.5"
                   />
                 </div>
                 <div class="item">
@@ -172,8 +189,10 @@
                   <input
                     type="text"
                     inputmode="numeric"
+                    required
                     maxlength="3"
                     pattern="\d(\.\d)?"
+                    placeholder="例：3.5"
                   />
                 </div>
                 <div class="item">
@@ -181,8 +200,10 @@
                   <input
                     type="text"
                     inputmode="numeric"
+                    required
                     maxlength="3"
                     pattern="\d(\.\d)?"
+                    placeholder="例：3.5"
                   />
                 </div>
               </div>
@@ -193,52 +214,105 @@
               <div class="detailedWrapper">
                 <div class="item">
                   <h3><i class="fas fa-info-circle"></i> 內容綱要</h3>
-                  <textarea name="" id="" cols="10" rows="2"></textarea>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                    placeholder="簡單描述課程內容"
+                  ></textarea>
                 </div>
                 <div class="item">
                   <h3><i class="fas fa-backward"></i> 先修課程</h3>
-                  <textarea name="" id="" cols="10" rows="2"></textarea>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    placeholder="擋修或建議先修的課程"
+                  ></textarea>
                 </div>
                 <div class="item">
                   <h3><i class="fas fa-chalkboard-teacher"></i> 上課方式</h3>
-                  <textarea name="" id="" cols="10" rows="2"></textarea>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                    placeholder="例：PPT ／ 版書 ..."
+                  ></textarea>
                 </div>
                 <div class="item">
                   <h3><i class="fas fa-pencil-ruler"></i> 作業 ＆ 報告</h3>
-                  <textarea name="" id="" cols="10" rows="2"></textarea>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                    placeholder="作業類型、內容 ／ 個人、小組報告 ..."
+                  ></textarea>
                 </div>
                 <div class="item">
                   <h3><i class="fas fa-eraser"></i> 考試</h3>
-                  <textarea name="" id="" cols="10" rows="2"></textarea>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                    placeholder="平時小考 ／ 期中末"
+                  ></textarea>
                 </div>
                 <div class="item">
                   <h3><i class="fas fa-calculator"></i> 評分方式</h3>
-                  <textarea name="" id="" cols="10" rows="2"></textarea>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                    placeholder="學期成績計算方式：作業、考試所佔比例"
+                  ></textarea>
                 </div>
                 <div class="item">
                   <h3><i class="fas fa-book"></i> 使用課本</h3>
-                  <textarea name="" id="" cols="10" rows="2"></textarea>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    placeholder="使用哪本課本、是否一定要買"
+                  ></textarea>
                 </div>
                 <div class="item">
                   <h3><i class="fas fa-smile"></i> 老師個性、風格</h3>
-                  <textarea name="" id="" cols="10" rows="2"></textarea>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                  ></textarea>
                 </div>
                 <div class="item">
                   <h3><i class="fas fa-hands-helping"></i> 助教表現</h3>
-                  <textarea name="" id="" cols="10" rows="2"></textarea>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                  ></textarea>
                 </div>
               </div>
             </section>
 
             <section class="reviewSection">
               <h2>個人心得</h2>
-              <textarea
-                name=""
-                id=""
-                cols="10"
-                rows="10"
-                spellcheck="false"
-              ></textarea>
+              <textarea name="" id="" cols="10" rows="10" required></textarea>
             </section>
 
             <section class="gradeSection">
@@ -247,42 +321,46 @@
                 <div class="personal">
                   <h3><i class="fas fa-user"></i> 個人</h3>
                   <div class="dropdown">
-                    <button id="gradeDropdown" class="dropdownBtn">
+                    <button
+                      type="button"
+                      id="gradeDropdown"
+                      class="dropdownBtn"
+                    >
                       <span class="chosen">請選擇成績</span>
                       <i class="fas fa-caret-down"></i>
                     </button>
                     <div class="drpOptions">
-                      <button data-grade="X" class="option">
+                      <button type="button" data-grade="X" class="option">
                         <span class="primary">成績未到</span>
                       </button>
-                      <button data-grade="A+" class="option">
+                      <button type="button" data-grade="A+" class="option">
                         <span class="primary">A+</span>
                       </button>
-                      <button data-grade="A" class="option">
+                      <button type="button" data-grade="A" class="option">
                         <span class="primary">A</span>
                       </button>
-                      <button data-grade="A-" class="option">
+                      <button type="button" data-grade="A-" class="option">
                         <span class="primary">A-</span>
                       </button>
-                      <button data-grade="B+" class="option">
+                      <button type="button" data-grade="B+" class="option">
                         <span class="primary">B+</span>
                       </button>
-                      <button data-grade="B" class="option">
+                      <button type="button" data-grade="B" class="option">
                         <span class="primary">B</span>
                       </button>
-                      <button data-grade="B-" class="option">
+                      <button type="button" data-grade="B-" class="option">
                         <span class="primary">B-</span>
                       </button>
-                      <button data-grade="C+" class="option">
+                      <button type="button" data-grade="C+" class="option">
                         <span class="primary">C+</span>
                       </button>
-                      <button data-grade="C" class="option">
+                      <button type="button" data-grade="C" class="option">
                         <span class="primary">C</span>
                       </button>
-                      <button data-grade="C-" class="option">
+                      <button type="button" data-grade="C-" class="option">
                         <span class="primary">C-</span>
                       </button>
-                      <button data-grade="D" class="option">
+                      <button type="button" data-grade="D" class="option">
                         <span class="primary">D&DownArrow;</span>
                       </button>
                     </div>
@@ -338,21 +416,19 @@
 
             <section class="otherSection">
               <h2>其他</h2>
-              <textarea
-                name=""
-                id=""
-                cols="10"
-                rows="6"
-                spellcheck="false"
-              ></textarea>
+              <textarea name="" id="" cols="10" rows="6"></textarea>
             </section>
 
             <section class="submitSection">
-              <button><i class="fas fa-save"></i> 存成草稿</button>
-              <button><i class="fas fa-paper-plane"></i> 發表</button>
+              <button type="button" type="button">
+                <i class="fas fa-save"></i> 存成草稿
+              </button>
+              <button type="submit">
+                <i class="fas fa-paper-plane"></i> 發表
+              </button>
             </section>
           </main>
-        </div>
+        </form>
       </section>
 
       <aside class="menu">

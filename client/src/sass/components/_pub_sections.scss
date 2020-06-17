@@ -4,6 +4,17 @@
   }
 
   .ratingSection {
+    h2 {
+      .tooltip {
+        display: inline-block;
+      }
+
+      .fas {
+        margin-left: 0.5rem;
+        color: $category-color;
+      }
+    }
+
     .ratingWrapper {
       display: flex;
 

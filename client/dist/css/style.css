@@ -1341,6 +1341,23 @@ table td.rating {
   margin-left: 1rem;
 }
 
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+.tooltip .tooltipBalloon {
+  position: absolute;
+  display: none;
+  background-color: rgba(42, 42, 42, 0.9);
+  color: #f8f8f8;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+.tooltip:hover .tooltipBalloon {
+  display: block;
+}
+
 .courseInfo main .basicInfo {
   display: grid;
   grid-template-rows: 4rem 1fr;
@@ -2246,6 +2263,13 @@ table td.rating {
   .main .publishContent {
     padding: 2rem 1.8rem 2rem 1.6rem;
   }
+}
+.main .publishContent .ratingSection h2 .tooltip {
+  display: inline-block;
+}
+.main .publishContent .ratingSection h2 .fas {
+  margin-left: 0.5rem;
+  color: #325ea0;
 }
 .main .publishContent .ratingSection .ratingWrapper {
   display: flex;
