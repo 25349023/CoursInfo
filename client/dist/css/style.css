@@ -1284,7 +1284,7 @@ table td.rating {
 }
 
 .dropdown .option {
-  line-height: 2.2;
+  line-height: 1.2;
   padding: 0;
   display: block;
   width: 100%;
@@ -1300,6 +1300,7 @@ table td.rating {
 
 .dropdown {
   position: relative;
+  min-width: 0;
 }
 .dropdown .dropdownBtn {
   background-color: #a1d5ff;
@@ -1308,12 +1309,23 @@ table td.rating {
   width: 100%;
   color: #193c58;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .dropdown .dropdownBtn:hover {
   background-color: #afdbff;
 }
 .dropdown .dropdownBtn:active {
   background-color: #52affb;
+}
+.dropdown .dropdownBtn .chosen {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.dropdown .dropdownBtn .fas {
+  margin-left: 1rem;
 }
 .dropdown .drpOptions {
   display: none;
@@ -1331,10 +1343,10 @@ table td.rating {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 0.6rem;
+  padding: 0.7rem 0.6rem;
 }
 .dropdown .option:last-of-type {
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.9rem;
 }
 .dropdown .option .secondary {
   font-size: 1.1rem;
@@ -2237,6 +2249,7 @@ table td.rating {
 
 .chooseCourse {
   display: flex;
+  min-width: 0;
 }
 .chooseCourse .dropdown:nth-of-type(n + 2) {
   margin-left: 2rem;

@@ -1,5 +1,6 @@
 .chooseCourse {
   display: flex;
+  min-width: 0;
 
   .dropdown:nth-of-type(n + 2) {
     margin-left: 2rem;
