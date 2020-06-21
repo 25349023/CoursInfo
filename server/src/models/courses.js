@@ -4,19 +4,28 @@ if (!global.db) {
 }
 
 /**  List courses satisfying options
- * searchOptions: { text, department }
- *      text: string,  department: array
- * start: [department, subnumber]
+ * searchOptions: { text, department, start, full }
+ *      text: string,  department: array,
+ *      start: [department, subnumber],  full: bool
  */
 function list(searchOptions) {
-    const { text, department, start } = searchOptions;
-    let queryingColumns = ["department", "course_subnumber"];
+    const { text, department, start, full } = searchOptions;
+    let queryingColumns = full
+        ? ["cs.*"]
+        : [
+              "cs.course_number",
+              "cs.department",
+              "cs.course_subnumber",
+              "cs.course_chinese_title",
+              "cs.teacher",
+          ];
     let textSearchColumns = [
         "course_number",
         "course_chinese_title",
         "teacher",
     ];
     let queries = ["cs.department IN ($<department:list>)"];
+
     if (text) {
         let textQry = [];
         for (let col of textSearchColumns) {
@@ -30,16 +39,32 @@ function list(searchOptions) {
     }
 
     const sql = `
-        SELECT cs.*
-        FROM courses cs
-            LEFT JOIN courses rhs
-            ON cs.department = rhs.department 
-                AND cs.course_subnumber = rhs.course_subnumber
-                AND cs.semester < rhs.semester
-        WHERE rhs.semester IS NULL AND 
-            ${queries.join(" AND ")}
-        ORDER BY cs.department, cs.course_subnumber
-        LIMIT 10;	
+        SELECT uniq_cs.*, 
+            rt.sweet, rt.cool, rt.recommend
+        FROM (
+            SELECT ${queryingColumns.join(", ")}
+            FROM courses cs
+                LEFT JOIN courses rhs
+                ON cs.department = rhs.department 
+                    AND cs.course_subnumber = rhs.course_subnumber
+                    AND cs.semester < rhs.semester
+            WHERE rhs.semester IS NULL AND 
+                ${queries.join(" AND ")}
+            ORDER BY cs.department, cs.course_subnumber
+            LIMIT 10
+        ) uniq_cs
+
+        LEFT JOIN (
+            SELECT course_department, course_subnum,
+                avg(sweet)::numeric(3, 2) as sweet,
+                avg(cool)::numeric(3, 2) as cool,
+                avg(recommend)::numeric(3, 2) as recommend 
+            FROM ratings
+            GROUP BY course_department, course_subnum
+        ) rt
+        ON uniq_cs.department = rt.course_department
+            AND uniq_cs.course_subnumber = rt.course_subnum
+        ORDER BY uniq_cs.department, uniq_cs.course_subnumber;
     `;
     console.log(pgp.as.format(sql, { text, department, start }));
     return db.any(sql, { text, department, start });
