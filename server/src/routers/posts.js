@@ -131,16 +131,15 @@ router.put("/posts/:postId", function (req, res, next) {
     let err = null;
     if (isNaN(postId)) {
         err = new Error(`id must be a number`);
+        err.status = 400;
+        throw err;
     }
     for (let f of requiredFields) {
         if (!req.body.hasOwnProperty(f)) {
             err = new Error(`field ${f} is required`);
+            err.status = 400;
+            throw err;
         }
-    }
-
-    if (err) {
-        err.status = 400;
-        throw err;
     }
 
     postsModel

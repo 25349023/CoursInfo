@@ -86,7 +86,7 @@ function select(courseId) {
                         AND cs.department = rt.course_department
                         AND cs.course_subnumber = rt.course_subnum
                 WHERE (cs.semester, cs.department, cs.course_subnumber) 
-                    = ($<semester>, $<department>, $<course_subnum>)
+                    = ($<semester>, $<department>, $<courseSubnum>)
                 GROUP BY cs.semester, cs.department, cs.course_subnumber
                 ORDER BY cs.course_number
             ) rt

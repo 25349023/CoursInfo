@@ -18,33 +18,22 @@ function list(userId) {
     return db.any(sql, { userId });
 }
 
-function create(data) {
-    const optionalFields = [
-        "title",
-        "courseType",
-        "sweet",
-        "cool",
-        "recommend",
-        "info",
-        "prerequisite",
-        "teachMethod",
-        "assignment",
-        "exam",
-        "evaluation",
-        "textbook",
-        "teacherCharacter",
-        "taPerformance",
-        "mainReview",
-        "personalGrade",
-        "classGradeDist",
-        "others",
-    ];
+function select(draftId) {
+    const sql = `
+        SELECT pd.*, cs.course_chinese_title, cs.teacher
+        FROM post_drafts pd
+            JOIN courses cs
+            ON (cs.semester, cs.department, cs.course_subnumber) 
+                = (pd.semester, pd.department, pd.course_subnumber)
+        WHERE id = $<draftId> 
+            AND deleted_at IS NULL;
+    `;
 
-    for (let f of optionalFields) {
-        if (!data.hasOwnProperty(f)) {
-            data[f] = null;
-        }
-    }
+    return db.any(sql, { draftId });
+}
+
+function create(data) {
+    fillNull(data);
 
     const sql = `
         UPDATE users SET draft_count = draft_count + 1
@@ -84,4 +73,68 @@ function create(data) {
     return db.one(sql, data);
 }
 
-module.exports = { list, create };
+function edit(draftId, data) {
+    fillNull(data);
+
+    const sql = `        
+        UPDATE post_drafts 
+        SET semester = $<semester>,
+            department = $<department>,
+            course_subnumber = $<courseSubnumber>,
+            title = $<title>,
+            course_type = $<courseType>,
+            sweet = $<sweet>,
+            cool = $<cool>,
+            recommend = $<recommend>,
+            info = $<info>,
+            prerequisite = $<prerequisite>,
+            teach_method = $<teachMethod>,
+            assignment = $<assignment>,
+            exam = $<exam>,
+            evaluation = $<evaluation>,
+            textbook = $<textbook>,
+            teacher_character = $<teacherCharacter>,
+            ta_performance = $<taPerformance>,
+            main_review = $<mainReview>,
+            personal_grade = $<personalGrade>,
+            class_grade_dist = '{ $<classGradeDist:list> }',
+            others = $<others>,
+            updated_at = current_timestamp
+        WHERE id = $<draftId> AND deleted_at IS NULL
+        RETURNING *;
+    `;
+
+    console.log(pgp.as.format(sql, { ...data, draftId }));
+    return db.one(sql, { ...data, draftId });
+}
+
+function fillNull(data) {
+    const optionalFields = [
+        "title",
+        "courseType",
+        "sweet",
+        "cool",
+        "recommend",
+        "info",
+        "prerequisite",
+        "teachMethod",
+        "assignment",
+        "exam",
+        "evaluation",
+        "textbook",
+        "teacherCharacter",
+        "taPerformance",
+        "mainReview",
+        "personalGrade",
+        "classGradeDist",
+        "others",
+    ];
+
+    for (let f of optionalFields) {
+        if (!data.hasOwnProperty(f)) {
+            data[f] = null;
+        }
+    }
+}
+
+module.exports = { list, select, create, edit };
