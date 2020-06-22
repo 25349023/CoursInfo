@@ -914,11 +914,24 @@ section.main > section {
   grid-auto-rows: auto;
   row-gap: 2.4rem;
 }
+.publishPage .articleForm main section .titleFlexbox {
+  display: flex;
+  align-items: baseline;
+  flex-flow: wrap;
+}
+.publishPage .articleForm main section .titleFlexbox > div {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: rgba(60, 60, 60, 0.7);
+}
+.publishPage .articleForm main section .titleFlexbox h3 + div {
+  margin-bottom: 1rem;
+}
 .publishPage .articleForm main section h2 {
   font-size: 1.8rem;
   padding-left: 1rem;
   border-left: 10px solid #95c782;
-  margin-top: 0;
+  margin: 0 0 1.4rem;
 }
 @media (max-width: 632px) {
   .publishPage .articleForm main section h2 {
@@ -2375,7 +2388,7 @@ table td.rating {
   flex-flow: column;
 }
 .main .publishContent .detailedSection .detailedWrapper h3 {
-  margin: 0 0 1rem;
+  margin: 0 0 0.7rem;
   font-size: 1.4rem;
   font-weight: 400;
 }

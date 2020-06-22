@@ -17,11 +17,27 @@
     row-gap: 2.4rem;
 
     section {
+      .titleFlexbox {
+        display: flex;
+        align-items: baseline;
+        flex-flow: wrap;
+
+        > div {
+          margin-left: auto;
+          font-size: 1.2rem;
+          color: rgba($ui-color-text, 0.7);
+        }
+
+        h3 + div {
+          margin-bottom: 1rem;
+        }
+      }
+
       h2 {
         font-size: 1.8rem;
         padding-left: 1rem;
         border-left: 10px solid $rating-recommend-color;
-        margin-top: 0;
+        margin: 0 0 1.4rem;
 
         @include brk-down($brk-medium) {
           font-size: 1.4rem;
