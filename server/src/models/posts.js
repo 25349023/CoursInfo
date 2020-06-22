@@ -1,5 +1,3 @@
-const { relativeTimeRounding } = require("moment");
-
 const pgp = require("pg-promise")();
 if (!global.db) {
     db = pgp(process.env.DB_URL);
@@ -74,6 +72,10 @@ function select(postId) {
 
 function create(data) {
     const sql = `
+        UPDATE users 
+        SET daily_publish_count = daily_publish_count + 1
+        WHERE id = $<userId>;    
+
         INSERT INTO posts (user_id, semester, department, course_subnumber, title,
             course_type, sweet, cool, recommend, info, prerequisite, teach_method,
             assignment, exam, evaluation, textbook, teacher_character, ta_performance,

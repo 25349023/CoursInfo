@@ -7,7 +7,7 @@ const postsModel = require("../models/posts");
 const router = express.Router();
 
 router.use(bodyParser.json());
-router.use(accessController); // Allows cross-origin HTTP requests
+router.use(accessController);
 
 router.get("/posts", function (req, res, next) {
     let { department, text, start } = req.query;
