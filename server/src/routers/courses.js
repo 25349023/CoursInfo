@@ -11,7 +11,7 @@ router.use(accessController); // Allows cross-origin HTTP requests
 
 router.get("/courses", function (req, res, next) {
     let { department, text, start, full } = req.query;
-    const err = null;
+    let err = null;
     if (!department) {
         err = new Error("department is required");
     }
@@ -26,6 +26,27 @@ router.get("/courses", function (req, res, next) {
     full = full == "true" ? true : false;
     courseModel
         .list({ department, text, start, full })
+        .then((cs) => {
+            res.json(cs);
+        })
+        .catch(next);
+});
+
+router.get("/courses/:semester-:department-:course_subnum", function (
+    req,
+    res,
+    next
+) {
+    let { semester, department, course_subnum } = req.params;
+    let err = null;
+
+    if (err) {
+        err.status = 400;
+        throw err;
+    }
+
+    courseModel
+        .select({ semester, department, course_subnum })
         .then((cs) => {
             res.json(cs);
         })

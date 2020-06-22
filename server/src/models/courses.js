@@ -70,4 +70,32 @@ function list(searchOptions) {
     return db.any(sql, { text, department, start });
 }
 
-module.exports = { list };
+function select(courseId) {
+    const { semester, department, course_subnum } = courseId;
+
+    sql = `
+        SELECT cs.*, rt.sweet, rt.cool, rt.recommend FROM courses cs
+            JOIN (
+                SELECT cs.semester, cs.department, cs.course_subnumber,
+                    avg(rt.sweet)::numeric(3, 2) as sweet,
+                    avg(rt.cool)::numeric(3, 2) as cool,
+                    avg(rt.recommend)::numeric(3, 2) as recommend
+                FROM courses cs
+                    LEFT JOIN ratings rt
+                    ON cs.semester = rt.course_semester
+                        AND cs.department = rt.course_department
+                        AND cs.course_subnumber = rt.course_subnum
+                WHERE (cs.semester, cs.department, cs.course_subnumber) 
+                    = ($<semester>, $<department>, $<course_subnum>)
+                GROUP BY cs.semester, cs.department, cs.course_subnumber
+                ORDER BY cs.course_number
+            ) rt
+            ON (cs.semester, cs.department, cs.course_subnumber) 
+                = (rt.semester, rt.department, rt.course_subnumber);
+    `;
+
+    console.log(pgp.as.format(sql, { semester, department, course_subnum }));
+    return db.any(sql, { semester, department, course_subnum });
+}
+
+module.exports = { list, select };
