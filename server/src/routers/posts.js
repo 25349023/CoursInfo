@@ -100,7 +100,7 @@ router.post("/posts", function (req, res, next) {
         .catch(next);
 });
 
-router.post("/posts/:postId/edit", function (req, res, next) {
+router.put("/posts/:postId", function (req, res, next) {
     const requiredFields = [
         "semester",
         "department",
@@ -151,7 +151,7 @@ router.post("/posts/:postId/edit", function (req, res, next) {
         .catch(next);
 });
 
-router.post("/posts/:postId/delete", function (req, res, next) {
+router.delete("/posts/:postId", function (req, res, next) {
     let { postId } = req.params;
     postId = Number(postId);
 
@@ -168,6 +168,42 @@ router.post("/posts/:postId/delete", function (req, res, next) {
         .deletePost(postId)
         .then((info) => {
             res.json(info);
+        })
+        .catch(next);
+});
+
+router.post("/posts/:postId/like", function (req, res, next) {
+    let { postId } = req.params;
+    let { userId } = req.body;
+
+    postsModel
+        .voteLike(userId, postId)
+        .then((data) => {
+            res.json(data);
+        })
+        .catch(next);
+});
+
+router.post("/posts/:postId/dislike", function (req, res, next) {
+    let { postId } = req.params;
+    let { userId } = req.body;
+
+    postsModel
+        .voteDislike(userId, postId)
+        .then((data) => {
+            res.json(data);
+        })
+        .catch(next);
+});
+
+router.post("/posts/:postId/cancelVote", function (req, res, next) {
+    let { postId } = req.params;
+    let { userId } = req.body;
+
+    postsModel
+        .voteCancel(userId, postId)
+        .then((data) => {
+            res.json(data);
         })
         .catch(next);
 });

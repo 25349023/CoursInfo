@@ -1,3 +1,5 @@
+const { relativeTimeRounding } = require("moment");
+
 const pgp = require("pg-promise")();
 if (!global.db) {
     db = pgp(process.env.DB_URL);
@@ -67,7 +69,7 @@ function select(postId) {
     `;
 
     console.log(pgp.as.format(sql, { postId }));
-    return db.one(sql, { postId });
+    return db.any(sql, { postId });
 }
 
 function create(data) {
@@ -151,4 +153,145 @@ function deletePost(postId) {
     return db.any(sql, { postId });
 }
 
-module.exports = { list, select, create, edit, deletePost };
+function voteLike(userId, postId) {
+    const succSql = `
+        UPDATE post_votes
+        SET upvote = true
+        WHERE user_id = $<userId> AND post_id = $<postId>;
+
+        UPDATE posts
+        SET dislikes = dislikes - 1
+        WHERE id = $<postId> AND deleted_at IS NULL;
+    `;
+    const fail_Sql = `
+        INSERT INTO post_votes (user_id, post_id, upvote)
+        VALUES ($<userId>, $<postId>, true);
+    `;
+    const baseSql = `
+        UPDATE posts
+        SET likes = likes + 1
+        WHERE id = $<postId> AND deleted_at IS NULL
+        RETURNING *;    
+    `;
+    const originSql = `
+        SELECT * FROM posts
+        WHERE id = $<postId> AND deleted_at IS NULL;
+    `;
+
+    return getUserVote(userId, postId)
+        .then((data) => {
+            if (!data.upvote) {
+                console.log("update existing vote");
+                const sql = succSql + baseSql;
+                return db.any(sql, { userId, postId });
+            } else {
+                console.log("no op");
+                return db.any(originSql, { userId, postId });
+            }
+        })
+        .catch((err) => {
+            console.log("create new vote");
+            const sql = fail_Sql + baseSql;
+            return db.any(sql, { userId, postId });
+        });
+}
+
+function voteDislike(userId, postId) {
+    const succSql = `
+        UPDATE post_votes
+        SET upvote = false
+        WHERE user_id = $<userId> AND post_id = $<postId>;
+
+        UPDATE posts
+        SET likes = likes - 1
+        WHERE id = $<postId> AND deleted_at IS NULL;
+    `;
+    const failSql = `
+        INSERT INTO post_votes (user_id, post_id, upvote)
+        VALUES ($<userId>, $<postId>, false);
+    `;
+    const baseSql = `
+        UPDATE posts
+        SET dislikes = dislikes + 1
+        WHERE id = $<postId> AND deleted_at IS NULL
+        RETURNING *;    
+    `;
+    const originSql = `
+        SELECT * FROM posts
+        WHERE id = $<postId> AND deleted_at IS NULL;
+    `;
+
+    return getUserVote(userId, postId)
+        .then((data) => {
+            if (data.upvote) {
+                console.log("update existing vote");
+                const sql = succSql + baseSql;
+                return db.any(sql, { userId, postId });
+            } else {
+                console.log("no op");
+                return db.any(originSql, { userId, postId });
+            }
+        })
+        .catch((err) => {
+            console.log("create new vote");
+            const sql = failSql + baseSql;
+            return db.any(sql, { userId, postId });
+        });
+}
+
+function voteCancel(userId, postId) {
+    const deleteVote = `
+        DELETE FROM post_votes 
+        WHERE user_id = $<userId> AND post_id = $<postId>;
+    `;
+    const cancelLike = `
+        UPDATE posts
+        SET likes = likes - 1
+        WHERE id = $<postId> AND deleted_at IS NULL
+        RETURNING *;    
+    `;
+    const cancelDislike = `
+        UPDATE posts
+        SET dislikes = dislikes - 1
+        WHERE id = $<postId> AND deleted_at IS NULL
+        RETURNING *;    
+    `;
+    const originSql = `
+        SELECT * FROM posts
+        WHERE id = $<postId> AND deleted_at IS NULL;
+    `;
+
+    return getUserVote(userId, postId)
+        .then((data) => {
+            if (data.upvote) {
+                const sql = deleteVote + cancelLike;
+                return db.any(sql, { userId, postId });
+            } else {
+                const sql = deleteVote + cancelDislike;
+                return db.any(sql, { userId, postId });
+            }
+        })
+        .catch((err) => {
+            return db.any(originSql, { userId, postId });
+        });
+}
+
+function getUserVote(userId, postId) {
+    const sql = `
+        SELECT * FROM post_votes
+        WHERE (user_id, post_id) = ($<userId>, $<postId>);
+    `;
+
+    return db.one(sql, { userId, postId });
+}
+
+module.exports = {
+    list,
+    select,
+    create,
+    edit,
+    deletePost,
+    voteLike,
+    voteDislike,
+    voteCancel,
+};
