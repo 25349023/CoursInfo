@@ -32,12 +32,12 @@ router.get("/courses", function (req, res, next) {
         .catch(next);
 });
 
-router.get("/courses/:semester-:department-:course_subnum", function (
+router.get("/courses/:semester-:department-:courseSubnum", function (
     req,
     res,
     next
 ) {
-    let { semester, department, course_subnum } = req.params;
+    let { semester, department, courseSubnum } = req.params;
     let err = null;
 
     if (err) {
@@ -46,7 +46,7 @@ router.get("/courses/:semester-:department-:course_subnum", function (
     }
 
     courseModel
-        .select({ semester, department, course_subnum })
+        .select({ semester, department, courseSubnum })
         .then((cs) => {
             res.json(cs);
         })

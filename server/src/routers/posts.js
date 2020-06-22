@@ -58,4 +58,91 @@ router.get("/posts/:postId", function (req, res, next) {
         .catch(next);
 });
 
+router.post("/posts", function (req, res, next) {
+    const requiredFields = [
+        "userId",
+        "semester",
+        "department",
+        "courseSubnumber",
+        "title",
+        "courseType",
+        "sweet",
+        "cool",
+        "recommend",
+        "info",
+        "prerequisite",
+        "teachMethod",
+        "assignment",
+        "exam",
+        "evaluation",
+        "textbook",
+        "teacherCharacter",
+        "taPerformance",
+        "mainReview",
+        "personalGrade",
+        "classGradeDist",
+        "others",
+    ];
+    let err = null;
+    for (let f of requiredFields) {
+        if (!req.body.hasOwnProperty(f)) {
+            err = new Error(`field ${f} is required`);
+            err.status = 400;
+            throw err;
+        }
+    }
+
+    console.log(req.body);
+    postsModel
+        .create(req.body)
+        .then((post) => {
+            res.json(post);
+        })
+        .catch(next);
+});
+
+router.post("/posts/:postId/edit", function (req, res, next) {
+    const requiredFields = [
+        "semester",
+        "department",
+        "courseSubnumber",
+        "title",
+        "courseType",
+        "sweet",
+        "cool",
+        "recommend",
+        "info",
+        "prerequisite",
+        "teachMethod",
+        "assignment",
+        "exam",
+        "evaluation",
+        "textbook",
+        "teacherCharacter",
+        "taPerformance",
+        "mainReview",
+        "personalGrade",
+        "classGradeDist",
+        "others",
+    ];
+    const { postId } = req.params;
+
+    let err = null;
+    for (let f of requiredFields) {
+        if (!req.body.hasOwnProperty(f)) {
+            err = new Error(`field ${f} is required`);
+            err.status = 400;
+            throw err;
+        }
+    }
+
+    console.log(req.body);
+    postsModel
+        .edit(postId, req.body)
+        .then((post) => {
+            res.json(post);
+        })
+        .catch(next);
+});
+
 module.exports = router;

@@ -71,7 +71,7 @@ function list(searchOptions) {
 }
 
 function select(courseId) {
-    const { semester, department, course_subnum } = courseId;
+    const { semester, department, courseSubnum } = courseId;
 
     sql = `
         SELECT cs.*, rt.sweet, rt.cool, rt.recommend FROM courses cs
@@ -94,8 +94,8 @@ function select(courseId) {
                 = (rt.semester, rt.department, rt.course_subnumber);
     `;
 
-    console.log(pgp.as.format(sql, { semester, department, course_subnum }));
-    return db.any(sql, { semester, department, course_subnum });
+    console.log(pgp.as.format(sql, { semester, department, courseSubnum }));
+    return db.any(sql, { semester, department, courseSubnum });
 }
 
 module.exports = { list, select };
