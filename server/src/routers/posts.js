@@ -92,7 +92,6 @@ router.post("/posts", function (req, res, next) {
         }
     }
 
-    console.log(req.body);
     postsModel
         .create(req.body)
         .then((post) => {
@@ -125,22 +124,50 @@ router.post("/posts/:postId/edit", function (req, res, next) {
         "classGradeDist",
         "others",
     ];
-    const { postId } = req.params;
+
+    let { postId } = req.params;
+    postId = Number(postId);
 
     let err = null;
+    if (isNaN(postId)) {
+        err = new Error(`id must be a number`);
+    }
     for (let f of requiredFields) {
         if (!req.body.hasOwnProperty(f)) {
             err = new Error(`field ${f} is required`);
-            err.status = 400;
-            throw err;
         }
     }
 
-    console.log(req.body);
+    if (err) {
+        err.status = 400;
+        throw err;
+    }
+
     postsModel
         .edit(postId, req.body)
         .then((post) => {
             res.json(post);
+        })
+        .catch(next);
+});
+
+router.post("/posts/:postId/delete", function (req, res, next) {
+    let { postId } = req.params;
+    postId = Number(postId);
+
+    let err = null;
+    if (isNaN(postId)) {
+        err = new Error(`id must be a number`);
+    }
+    if (err) {
+        err.status = 400;
+        throw err;
+    }
+
+    postsModel
+        .deletePost(postId)
+        .then((info) => {
+            res.json(info);
         })
         .catch(next);
 });

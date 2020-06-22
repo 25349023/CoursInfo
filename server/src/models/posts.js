@@ -47,7 +47,8 @@ function list(searchOptions) {
             JOIN courses cs
             ON (cs.semester, cs.department, cs.course_subnumber) 
                 = (ps.semester, ps.department, ps.course_subnumber)
-        WHERE ${queries.join(" AND ")}
+        WHERE ps.deleted_at IS NULL AND
+            ${queries.join(" AND ")}
         ORDER BY id DESC
         LIMIT 10;
     `;
@@ -62,7 +63,7 @@ function select(postId) {
             JOIN courses cs
             ON (cs.semester, cs.department, cs.course_subnumber) 
                 = (ps.semester, ps.department, ps.course_subnumber)
-        WHERE ps.id = $<postId>;
+        WHERE ps.id = $<postId> AND deleted_at IS NULL;
     `;
 
     console.log(pgp.as.format(sql, { postId }));
@@ -130,12 +131,24 @@ function edit(postId, data) {
             class_grade_dist = '{ $<classGradeDist:list> }',
             others = $<others>,
             updated_at = current_timestamp
-        WHERE id = $<postId>
+        WHERE id = $<postId> AND deleted_at IS NULL
         RETURNING *;
     `;
 
     console.log(pgp.as.format(sql, { ...data, postId }));
-    return db.one(sql, { ...data, postId });
+    return db.any(sql, { ...data, postId });
 }
 
-module.exports = { list, select, create, edit };
+function deletePost(postId) {
+    const sql = `
+        UPDATE posts
+        SET deleted_at = current_timestamp
+        WHERE id = $<postId> AND deleted_at IS NULL
+        RETURNING id, deleted_at;
+    `;
+
+    console.log(pgp.as.format(sql, { postId }));
+    return db.any(sql, { postId });
+}
+
+module.exports = { list, select, create, edit, deletePost };
