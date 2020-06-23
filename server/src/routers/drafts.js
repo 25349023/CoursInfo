@@ -96,4 +96,23 @@ router.put("/drafts/:draftId", function (req, res, next) {
         .catch(next);
 });
 
+router.delete("/drafts/:draftId", function (req, res, next) {
+    const { userId } = req.body;
+    let { draftId } = req.params;
+    draftId = Number(draftId);
+
+    if (isNaN(draftId)) {
+        let err = new Error(`id must be number`);
+        err.status = 400;
+        throw err;
+    }
+
+    draftsModel
+        .deleteDraft(draftId, userId)
+        .then((df) => {
+            res.json(df);
+        })
+        .catch(next);
+});
+
 module.exports = router;

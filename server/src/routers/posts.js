@@ -125,6 +125,7 @@ router.put("/posts/:postId", function (req, res, next) {
         "others",
     ];
 
+    const { userId } = req.body;
     let { postId } = req.params;
     postId = Number(postId);
 
@@ -143,7 +144,7 @@ router.put("/posts/:postId", function (req, res, next) {
     }
 
     postsModel
-        .edit(postId, req.body)
+        .edit(postId, userId, req.body)
         .then((post) => {
             res.json(post);
         })
@@ -151,6 +152,7 @@ router.put("/posts/:postId", function (req, res, next) {
 });
 
 router.delete("/posts/:postId", function (req, res, next) {
+    const { userId } = req.body;
     let { postId } = req.params;
     postId = Number(postId);
 
@@ -164,7 +166,7 @@ router.delete("/posts/:postId", function (req, res, next) {
     }
 
     postsModel
-        .deletePost(postId)
+        .deletePost(postId, userId)
         .then((info) => {
             res.json(info);
         })

@@ -108,6 +108,45 @@ function edit(draftId, data) {
     return db.one(sql, { ...data, draftId });
 }
 
+function deleteDraft(draftId, userId) {
+    const sql = `
+        UPDATE post_drafts
+        SET deleted_at = current_timestamp
+        WHERE id = $<draftId> AND deleted_at IS NULL
+        RETURNING id, deleted_at;
+    `;
+
+    return checkUserDraft(draftId, userId).then(() => {
+        return db.any(sql, { draftId });
+    });
+}
+
+function checkUserDraft(draftId, userId) {
+    const check = `
+        SELECT id, user_id FROM post_drafts
+        WHERE id = $<draftId> AND deleted_at IS NULL;
+    `;
+    const permissionDenied = 400;
+
+    return db
+        .one(check, { draftId })
+        .then((draft) => {
+            if (userId == draft.user_id) {
+                return;
+            } else {
+                const err = new Error("you dont have permission to do this");
+                err.code = permissionDenied;
+                throw err;
+            }
+        })
+        .catch((err) => {
+            if (err.code == permissionDenied) {
+                throw err;
+            }
+            throw new Error("no such draft");
+        });
+}
+
 function fillNull(data) {
     const optionalFields = [
         "title",
@@ -137,4 +176,4 @@ function fillNull(data) {
     }
 }
 
-module.exports = { list, select, create, edit };
+module.exports = { list, select, create, edit, deleteDraft };

@@ -110,7 +110,7 @@ function create(data) {
     return db.one(sql, data);
 }
 
-function edit(postId, data) {
+function edit(postId, userId, data) {
     const sql = `
         UPDATE posts 
         SET semester = $<semester>,
@@ -139,11 +139,13 @@ function edit(postId, data) {
         RETURNING *;
     `;
 
-    console.log(pgp.as.format(sql, { ...data, postId }));
-    return db.any(sql, { ...data, postId });
+    return checkUserPost(postId, userId).then(() => {
+        console.log(pgp.as.format(sql, { ...data, postId }));
+        return db.any(sql, { ...data, postId });
+    });
 }
 
-function deletePost(postId) {
+function deletePost(postId, userId) {
     const sql = `
         UPDATE posts
         SET deleted_at = current_timestamp
@@ -151,8 +153,35 @@ function deletePost(postId) {
         RETURNING id, deleted_at;
     `;
 
-    console.log(pgp.as.format(sql, { postId }));
-    return db.any(sql, { postId });
+    return checkUserPost(postId, userId).then(() => {
+        return db.any(sql, { postId });
+    });
+}
+
+function checkUserPost(postId, userId) {
+    const check = `
+        SELECT id, user_id FROM posts
+        WHERE id = $<postId> AND deleted_at IS NULL;
+    `;
+    const permissionDenied = 400;
+
+    return db
+        .one(check, { postId })
+        .then((post) => {
+            if (userId == post.user_id) {
+                return;
+            } else {
+                const err = new Error("you dont have permission to do this");
+                err.code = permissionDenied;
+                throw err;
+            }
+        })
+        .catch((err) => {
+            if (err.code == permissionDenied) {
+                throw err;
+            }
+            throw new Error("no such post");
+        });
 }
 
 function voteLike(userId, postId) {
