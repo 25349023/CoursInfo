@@ -7,7 +7,12 @@ const distPath = path.resolve(__dirname, "dist");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const htmlPlugin = new HtmlWebPackPlugin({
-    template: "./index.html",
+    template: "./home.html",
+    filename: "./home.html",
+});
+
+const htmlPlugin2 = new HtmlWebPackPlugin({
+    template: "./main.html",
     filename: "./index.html",
 });
 
@@ -21,7 +26,7 @@ module.exports = {
         },
     },
     entry: {
-        index: ["./js/index.js"],
+        index: ["./index.jsx", "./js/index.js"],
     },
     output: {
         path: distPath,
@@ -66,7 +71,7 @@ module.exports = {
         port: 7070,
     },
     devtool: "cheap-source-map",
-    plugins: [htmlPlugin],
+    plugins: [htmlPlugin, htmlPlugin2],
     watchOptions: {
         ignored: /node_modules/,
     },
