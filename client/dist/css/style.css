@@ -896,66 +896,80 @@ section.main > section {
   }
 }
 
-.publishPage .articleForm {
+.publishPage .articleForm,
+.draftPage .articleForm {
   color: #3c3c3c;
 }
-.publishPage .articleForm h1 {
+.publishPage .articleForm h1,
+.draftPage .articleForm h1 {
   font-size: 2.8rem;
   font-weight: 400;
   margin: 0 0 2rem 0;
 }
 @media (max-width: 1136px) {
-  .publishPage .articleForm h1 {
+  .publishPage .articleForm h1,
+.draftPage .articleForm h1 {
     font-size: 2.2rem;
   }
 }
-.publishPage .articleForm main {
+.publishPage .articleForm main,
+.draftPage .articleForm main {
   display: grid;
   grid-auto-rows: auto;
   row-gap: 2.4rem;
 }
-.publishPage .articleForm main section .titleFlexbox {
+.publishPage .articleForm main section .titleFlexbox,
+.draftPage .articleForm main section .titleFlexbox {
   display: flex;
   align-items: baseline;
   flex-flow: wrap;
 }
-.publishPage .articleForm main section .titleFlexbox > div {
+.publishPage .articleForm main section .titleFlexbox > div,
+.draftPage .articleForm main section .titleFlexbox > div {
   margin-left: auto;
   font-size: 1.2rem;
   color: rgba(60, 60, 60, 0.7);
 }
-.publishPage .articleForm main section .titleFlexbox h3 + div {
+.publishPage .articleForm main section .titleFlexbox h3 + div,
+.draftPage .articleForm main section .titleFlexbox h3 + div {
   margin-bottom: 1rem;
 }
-.publishPage .articleForm main section h2 {
+.publishPage .articleForm main section h2,
+.draftPage .articleForm main section h2 {
   font-size: 1.8rem;
   padding-left: 1rem;
   border-left: 10px solid #95c782;
   margin: 0 0 1.4rem;
 }
 @media (max-width: 632px) {
-  .publishPage .articleForm main section h2 {
+  .publishPage .articleForm main section h2,
+.draftPage .articleForm main section h2 {
     font-size: 1.4rem;
   }
 }
-.publishPage .articleForm main section h2 + * {
+.publishPage .articleForm main section h2 + *,
+.draftPage .articleForm main section h2 + * {
   margin-left: 2rem;
 }
 @media (max-width: 632px) {
-  .publishPage .articleForm main section h2 + * {
+  .publishPage .articleForm main section h2 + *,
+.draftPage .articleForm main section h2 + * {
     margin-left: 1rem;
   }
 }
-.publishPage .articleForm main section:nth-of-type(n + 2) {
+.publishPage .articleForm main section:nth-of-type(n + 2),
+.draftPage .articleForm main section:nth-of-type(n + 2) {
   display: flex;
   flex-flow: column;
   min-width: 0;
 }
-.publishPage .articleForm main section:last-of-type {
+.publishPage .articleForm main section:last-of-type,
+.draftPage .articleForm main section:last-of-type {
   flex-flow: row;
 }
 @media (max-width: 632px) {
-  .publishPage .articleForm main section:last-of-type {
+  .publishPage .articleForm main section:last-of-type,
+.draftPage .articleForm main section:last-of-type {
     flex-flow: column;
   }
 }
@@ -1009,7 +1023,7 @@ footer {
   color: #e4e4e4;
 }
 
-.main .publishContent .submitSection button:last-of-type, .main .publishContent .submitSection button:first-of-type, .courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, .dropdown .dropdownBtn, .banner .foreground a.button, header nav ul .btnToggle {
+.draftPage .main .publishContent .submitSection button:last-of-type, .draftPage .main .publishContent .submitSection button:nth-of-type(2), .draftPage .main .publishContent .submitSection button:first-of-type, .main .publishContent .submitSection button:last-of-type, .main .publishContent .submitSection button:first-of-type, .courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, .dropdown .dropdownBtn, .banner .foreground a.button, header nav ul .btnToggle {
   line-height: 2.2;
   padding: 0;
   font-size: 1.5rem;
@@ -2308,7 +2322,9 @@ table td.rating {
   }
 }
 
-.publishPage .articleForm textarea, .publishPage .articleForm input[type=text] {
+.publishPage .articleForm textarea,
+.draftPage .articleForm textarea, .publishPage .articleForm input[type=text],
+.draftPage .articleForm input[type=text] {
   padding: 0.6rem 1rem;
   background-color: #f0f0f0;
   border: 1px solid rgba(60, 60, 60, 0.2);
@@ -2317,11 +2333,14 @@ table td.rating {
   font-size: 1.4rem;
   transition: all 0.3s;
 }
-.publishPage .articleForm textarea:focus, .publishPage .articleForm input[type=text]:focus {
+.publishPage .articleForm textarea:focus,
+.draftPage .articleForm textarea:focus, .publishPage .articleForm input[type=text]:focus,
+.draftPage .articleForm input[type=text]:focus {
   background-color: #f8f8f8;
 }
 
-.publishPage .articleForm textarea {
+.publishPage .articleForm textarea,
+.draftPage .articleForm textarea {
   resize: none;
   line-height: 1.5;
 }
@@ -2558,6 +2577,48 @@ table td.rating {
 }
 .main .publishContent .submitSection button .fas {
   margin-right: 0.4rem;
+}
+
+.draftPage .main .publishContent .submitSection button:first-of-type {
+  background-color: #eb5a55;
+  border-color: #ecb5b3;
+  padding: 0 2rem;
+}
+.draftPage .main .publishContent .submitSection button:first-of-type:hover {
+  background-color: #ef726e;
+}
+.draftPage .main .publishContent .submitSection button:first-of-type:active {
+  background-color: #df2721;
+}
+.draftPage .main .publishContent .submitSection button:nth-of-type(2) {
+  background-color: #4aa0e6;
+  border-color: #aecfe9;
+  padding: 0 2rem;
+}
+.draftPage .main .publishContent .submitSection button:nth-of-type(2):hover {
+  background-color: #64aeeb;
+}
+.draftPage .main .publishContent .submitSection button:nth-of-type(2):active {
+  background-color: #2283d1;
+}
+.draftPage .main .publishContent .submitSection button:last-of-type {
+  background-color: #69b145;
+  border-color: #b6d3a7;
+  padding: 0 2rem;
+}
+.draftPage .main .publishContent .submitSection button:last-of-type:hover {
+  background-color: #7dc35a;
+}
+.draftPage .main .publishContent .submitSection button:last-of-type:active {
+  background-color: #558b39;
+}
+.draftPage .main .publishContent .submitSection button:not(:last-of-type) {
+  margin-right: 2rem;
+}
+@media (max-width: 632px) {
+  .draftPage .main .publishContent .submitSection button:not(:last-of-type) {
+    margin: 0 0 1rem 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -12,7 +12,8 @@
   }
 }
 
-.publishPage {
+.publishPage,
+.draftPage {
   .articleForm {
     input[type="text"] {
       @extend %input;
