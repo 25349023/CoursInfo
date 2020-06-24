@@ -896,6 +896,84 @@ section.main > section {
   }
 }
 
+.publishPage .articleForm,
+.draftPage .articleForm {
+  color: #3c3c3c;
+}
+.publishPage .articleForm h1,
+.draftPage .articleForm h1 {
+  font-size: 2.8rem;
+  font-weight: 400;
+  margin: 0 0 2rem 0;
+}
+@media (max-width: 1136px) {
+  .publishPage .articleForm h1,
+.draftPage .articleForm h1 {
+    font-size: 2.2rem;
+  }
+}
+.publishPage .articleForm main,
+.draftPage .articleForm main {
+  display: grid;
+  grid-auto-rows: auto;
+  row-gap: 2.4rem;
+}
+.publishPage .articleForm main section .titleFlexbox,
+.draftPage .articleForm main section .titleFlexbox {
+  display: flex;
+  align-items: baseline;
+  flex-flow: wrap;
+}
+.publishPage .articleForm main section .titleFlexbox > div,
+.draftPage .articleForm main section .titleFlexbox > div {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: rgba(60, 60, 60, 0.7);
+}
+.publishPage .articleForm main section .titleFlexbox h3 + div,
+.draftPage .articleForm main section .titleFlexbox h3 + div {
+  margin-bottom: 1rem;
+}
+.publishPage .articleForm main section h2,
+.draftPage .articleForm main section h2 {
+  font-size: 1.8rem;
+  padding-left: 1rem;
+  border-left: 10px solid #95c782;
+  margin: 0 0 1.4rem;
+}
+@media (max-width: 632px) {
+  .publishPage .articleForm main section h2,
+.draftPage .articleForm main section h2 {
+    font-size: 1.4rem;
+  }
+}
+.publishPage .articleForm main section h2 + *,
+.draftPage .articleForm main section h2 + * {
+  margin-left: 2rem;
+}
+@media (max-width: 632px) {
+  .publishPage .articleForm main section h2 + *,
+.draftPage .articleForm main section h2 + * {
+    margin-left: 1rem;
+  }
+}
+.publishPage .articleForm main section:nth-of-type(n + 2),
+.draftPage .articleForm main section:nth-of-type(n + 2) {
+  display: flex;
+  flex-flow: column;
+  min-width: 0;
+}
+.publishPage .articleForm main section:last-of-type,
+.draftPage .articleForm main section:last-of-type {
+  flex-flow: row;
+}
+@media (max-width: 632px) {
+  .publishPage .articleForm main section:last-of-type,
+.draftPage .articleForm main section:last-of-type {
+    flex-flow: column;
+  }
+}
+
 .menu {
   background-color: #7e5f80;
   flex: 1 0 200px;
@@ -945,7 +1023,7 @@ footer {
   color: #e4e4e4;
 }
 
-.courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, .banner .foreground a.button, header nav ul .btnToggle {
+.draftPage .main .publishContent .submitSection button:last-of-type, .draftPage .main .publishContent .submitSection button:nth-of-type(2), .draftPage .main .publishContent .submitSection button:first-of-type, .main .publishContent .submitSection button:last-of-type, .main .publishContent .submitSection button:first-of-type, .courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, .dropdown .dropdownBtn, .banner .foreground a.button, header nav ul .btnToggle {
   line-height: 2.2;
   padding: 0;
   font-size: 1.5rem;
@@ -1230,6 +1308,134 @@ table td.rating {
 }
 .banner .foreground a.button:active {
   background-color: #813a86;
+}
+
+.dropdown .option {
+  line-height: 1.2;
+  padding: 0;
+  display: block;
+  width: 100%;
+  color: #3c3c3c;
+  background-color: #f0f0f0;
+  font-size: 1.3rem;
+  border: none;
+  outline: none;
+}
+.dropdown .option:hover {
+  background-color: #d4d4d4;
+}
+
+.dropdown {
+  position: relative;
+  min-width: 0;
+}
+.dropdown .dropdownBtn {
+  background-color: #a1d5ff;
+  border-color: #d6e9f9;
+  padding: 0 1rem;
+  width: 100%;
+  color: #193c58;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown .dropdownBtn:hover {
+  background-color: #afdbff;
+}
+.dropdown .dropdownBtn:active {
+  background-color: #52affb;
+}
+.dropdown .dropdownBtn .chosen {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.dropdown .dropdownBtn .fas {
+  margin-left: 1rem;
+}
+.dropdown .drpOptions {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  max-height: 15rem;
+  overflow: auto;
+}
+.dropdown .drpOptions.active {
+  display: block;
+}
+.dropdown .option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 0.6rem;
+}
+.dropdown .option:last-of-type {
+  padding-bottom: 0.9rem;
+}
+.dropdown .option .secondary {
+  font-size: 1.1rem;
+  margin-left: 1rem;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+.tooltip .tooltipBalloon {
+  position: absolute;
+  display: none;
+  background-color: rgba(42, 42, 42, 0.9);
+  color: #f8f8f8;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+.tooltip:hover .tooltipBalloon {
+  display: block;
+}
+
+.popupContent {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 4rem 3rem;
+}
+.popupContent.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popupContent .popupWindow {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 1.4rem 2rem;
+  overflow: auto;
+  max-height: 50vh;
+  max-width: 40rem;
+}
+.popupContent .popupWindow h3 {
+  display: flex;
+  font-size: 1.8rem;
+  margin: 0;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(60, 60, 60, 0.5);
+}
+.popupContent .popupWindow h3 .fas {
+  margin-left: auto;
+  color: rgba(60, 60, 60, 0.6);
+  cursor: pointer;
+}
+.popupContent .popupWindow div {
+  padding: 0.6rem 0;
+  font-size: 1.2rem;
 }
 
 .courseInfo main .basicInfo {
@@ -1973,14 +2179,14 @@ table td.rating {
 .postArticle .infoSection {
   display: grid;
   grid-template-columns: 6rem 1fr;
-  grid-template-rows: auto repeat(8, 2rem);
+  grid-template-rows: auto repeat(9, 2rem);
   align-items: center;
   row-gap: 0.75rem;
 }
 @media (max-width: 632px) {
   .postArticle .infoSection {
     grid-template-columns: 4.8rem 1fr;
-    grid-template-rows: auto repeat(8, minmax(2rem, auto));
+    grid-template-rows: auto repeat(9, minmax(2rem, auto));
   }
 }
 .postArticle .infoSection h2 {
@@ -2066,6 +2272,353 @@ table td.rating {
 }
 .postArticle .reviewSection div {
   font-size: 1.3rem;
+}
+
+.chooseCourse {
+  display: flex;
+  min-width: 0;
+}
+.chooseCourse .dropdown:nth-of-type(n + 2) {
+  margin-left: 2rem;
+}
+.chooseCourse .semesterDrop {
+  flex: 1 1 180px;
+}
+.chooseCourse .departmentDrop {
+  flex: 2 1 225px;
+}
+.chooseCourse .courseDrop {
+  flex: 3 1 400px;
+}
+@media (max-width: 1012px) {
+  .chooseCourse {
+    flex-flow: row wrap;
+  }
+  .chooseCourse .semesterDrop {
+    flex: 1 1 40%;
+  }
+  .chooseCourse .departmentDrop {
+    flex: 1 1 40%;
+  }
+  .chooseCourse .courseDrop {
+    flex: 1 1 80%;
+  }
+  .chooseCourse .dropdown:last-of-type {
+    margin: 1.5rem 0 0 0;
+  }
+}
+@media (max-width: 632px) {
+  .chooseCourse {
+    flex-flow: column;
+  }
+  .chooseCourse .dropdown:nth-of-type(n + 2) {
+    margin: 1rem 0 0;
+  }
+  .chooseCourse .dropdown .dropdownBtn {
+    font-size: 1.3rem;
+  }
+  .chooseCourse .option {
+    font-size: 1.1rem;
+  }
+}
+
+.publishPage .articleForm textarea,
+.draftPage .articleForm textarea, .publishPage .articleForm input[type=text],
+.draftPage .articleForm input[type=text] {
+  padding: 0.6rem 1rem;
+  background-color: #f0f0f0;
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 5px;
+  color: #3c3c3c;
+  font-size: 1.4rem;
+  transition: all 0.3s;
+}
+.publishPage .articleForm textarea:focus,
+.draftPage .articleForm textarea:focus, .publishPage .articleForm input[type=text]:focus,
+.draftPage .articleForm input[type=text]:focus {
+  background-color: #f8f8f8;
+}
+
+.publishPage .articleForm textarea,
+.draftPage .articleForm textarea {
+  resize: none;
+  line-height: 1.5;
+}
+
+@media (max-width: 632px) {
+  .main .publishContent {
+    padding: 2rem 1.8rem 2rem 1.6rem;
+  }
+}
+.main .publishContent .ratingSection h2 .tooltip {
+  display: inline-block;
+}
+.main .publishContent .ratingSection h2 .fas {
+  margin: 0 0.6rem 0 0.5rem;
+  color: #325ea0;
+}
+.main .publishContent .ratingSection h2 .tooltipBalloon {
+  top: -2px;
+  left: 100%;
+  white-space: nowrap;
+}
+.main .publishContent .ratingSection .ratingWrapper {
+  display: flex;
+}
+@media (max-width: 840px) {
+  .main .publishContent .ratingSection .ratingWrapper {
+    flex-flow: column;
+  }
+}
+.main .publishContent .ratingSection .ratingWrapper .item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 30%;
+}
+.main .publishContent .ratingSection .ratingWrapper .item .fas {
+  margin-right: 0.5rem;
+}
+.main .publishContent .ratingSection .ratingWrapper .item:not(:last-of-type) {
+  margin-right: 2rem;
+}
+@media (max-width: 840px) {
+  .main .publishContent .ratingSection .ratingWrapper .item:not(:last-of-type) {
+    margin: 0 0 1.4rem 0;
+  }
+}
+.main .publishContent .ratingSection .ratingWrapper .item h3 {
+  margin: 0;
+  padding: 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.main .publishContent .ratingSection .ratingWrapper .item input {
+  min-width: 0;
+  flex: 1 1 50%;
+}
+.main .publishContent .detailedSection .detailedWrapper {
+  display: grid;
+  grid-auto-rows: auto;
+  row-gap: 1.5rem;
+}
+.main .publishContent .detailedSection .detailedWrapper .item {
+  display: flex;
+  flex-flow: column;
+}
+.main .publishContent .detailedSection .detailedWrapper h3 {
+  margin: 0 0 0.7rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.main .publishContent .detailedSection .detailedWrapper h3 .fas {
+  margin-right: 0.5rem;
+}
+.main .publishContent .detailedSection .detailedWrapper textarea {
+  margin-left: 1rem;
+}
+.main .publishContent .gradeSection .gradeWrapper {
+  display: flex;
+}
+@media (max-width: 840px) {
+  .main .publishContent .gradeSection .gradeWrapper {
+    flex-flow: column;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper h3 {
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.main .publishContent .gradeSection .gradeWrapper h3 .fas {
+  margin-right: 0.5rem;
+}
+.main .publishContent .gradeSection .gradeWrapper .personal {
+  flex: 1 1 200px;
+}
+@media (max-width: 840px) {
+  .main .publishContent .gradeSection .gradeWrapper .personal {
+    flex: 1 0 auto;
+    margin-bottom: 2rem;
+  }
+}
+@media (max-width: 632px) {
+  .main .publishContent .gradeSection .gradeWrapper .personal .dropdownBtn {
+    font-size: 1.3rem;
+  }
+  .main .publishContent .gradeSection .gradeWrapper .personal .option {
+    font-size: 1.1rem;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper .total {
+  margin-left: 3rem;
+  flex: 3 1 600px;
+}
+@media (max-width: 1012px) {
+  .main .publishContent .gradeSection .gradeWrapper .total {
+    margin-left: 1.2rem;
+  }
+}
+@media (max-width: 840px) {
+  .main .publishContent .gradeSection .gradeWrapper .total {
+    flex: 1 0 auto;
+    margin-left: 0;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper .total .classGrading {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 1.5rem 1rem;
+  align-items: center;
+}
+@media (max-width: 632px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading {
+    gap: 0.8rem 0.4rem;
+  }
+}
+@media (max-width: 420px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading {
+    display: flex;
+    flex-flow: column;
+    gap: 0;
+    align-items: stretch;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper .total .classGrading .item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding-right: 1.5rem;
+  border-right: 1px solid rgba(60, 60, 60, 0.2);
+}
+@media (max-width: 632px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item {
+    padding: 0;
+    border-right: none;
+  }
+}
+@media (max-width: 420px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item:nth-of-type(n + 2) {
+    margin-top: 0.8rem;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper .total .classGrading .item div {
+  font-size: 1.3rem;
+  font-weight: 600;
+  flex: 0 0 4rem;
+  padding-right: 1rem;
+  text-align: right;
+}
+@media (max-width: 632px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item div {
+    flex: 0 1 4rem;
+    padding: 0 1rem 0 0;
+  }
+}
+@media (max-width: 420px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item div {
+    text-align: left;
+    padding: 0 0 0 0.8rem;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper .total .classGrading .item input {
+  min-width: 0;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+@media (max-width: 420px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item input {
+    flex: 1 1 40%;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper .total .classGrading .item:nth-of-type(3n), .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item:last-of-type {
+  border-right: none;
+}
+.main .publishContent .submitSection {
+  justify-content: end;
+}
+@media (max-width: 632px) {
+  .main .publishContent .submitSection {
+    align-items: stretch;
+    margin-left: 0.2rem;
+  }
+}
+.main .publishContent .submitSection button {
+  cursor: pointer;
+}
+.main .publishContent .submitSection button:first-of-type {
+  background-color: #4aa0e6;
+  border-color: #aecfe9;
+  margin-right: 2rem;
+  padding: 0 2rem;
+}
+.main .publishContent .submitSection button:first-of-type:hover {
+  background-color: #64aeeb;
+}
+.main .publishContent .submitSection button:first-of-type:active {
+  background-color: #2283d1;
+}
+@media (max-width: 632px) {
+  .main .publishContent .submitSection button:first-of-type {
+    margin: 0 0 1rem 0;
+  }
+}
+.main .publishContent .submitSection button:last-of-type {
+  background-color: #69b145;
+  border-color: #b6d3a7;
+  padding: 0 2rem;
+}
+.main .publishContent .submitSection button:last-of-type:hover {
+  background-color: #7dc35a;
+}
+.main .publishContent .submitSection button:last-of-type:active {
+  background-color: #558b39;
+}
+.main .publishContent .submitSection button .fas {
+  margin-right: 0.4rem;
+}
+
+.draftPage .main .publishContent .submitSection button:first-of-type {
+  background-color: #eb5a55;
+  border-color: #ecb5b3;
+  padding: 0 2rem;
+}
+.draftPage .main .publishContent .submitSection button:first-of-type:hover {
+  background-color: #ef726e;
+}
+.draftPage .main .publishContent .submitSection button:first-of-type:active {
+  background-color: #df2721;
+}
+.draftPage .main .publishContent .submitSection button:nth-of-type(2) {
+  background-color: #4aa0e6;
+  border-color: #aecfe9;
+  padding: 0 2rem;
+}
+.draftPage .main .publishContent .submitSection button:nth-of-type(2):hover {
+  background-color: #64aeeb;
+}
+.draftPage .main .publishContent .submitSection button:nth-of-type(2):active {
+  background-color: #2283d1;
+}
+.draftPage .main .publishContent .submitSection button:last-of-type {
+  background-color: #69b145;
+  border-color: #b6d3a7;
+  padding: 0 2rem;
+}
+.draftPage .main .publishContent .submitSection button:last-of-type:hover {
+  background-color: #7dc35a;
+}
+.draftPage .main .publishContent .submitSection button:last-of-type:active {
+  background-color: #558b39;
+}
+.draftPage .main .publishContent .submitSection button:not(:last-of-type) {
+  margin-right: 2rem;
+}
+@media (max-width: 632px) {
+  .draftPage .main .publishContent .submitSection button:not(:last-of-type) {
+    margin: 0 0 1rem 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

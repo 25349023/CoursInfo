@@ -1,0 +1,28 @@
+%input {
+  padding: 0.6rem 1rem;
+  background-color: $ui-color-block;
+  border: 1px solid $ui-color-block-border;
+  border-radius: 5px;
+  color: $ui-color-text;
+  font-size: 1.4rem;
+  transition: all 0.3s;
+
+  &:focus {
+    background-color: $ui-color-lighter;
+  }
+}
+
+.publishPage,
+.draftPage {
+  .articleForm {
+    input[type="text"] {
+      @extend %input;
+    }
+
+    textarea {
+      @extend %input;
+      resize: none;
+      line-height: 1.5;
+    }
+  }
+}

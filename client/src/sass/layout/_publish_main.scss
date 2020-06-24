@@ -1,0 +1,71 @@
+.publishPage .articleForm,
+.draftPage .articleForm {
+  color: $ui-color-text;
+
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin: 0 0 2rem 0;
+
+    @include brk-down($brk-xlarge) {
+      font-size: 2.2rem;
+    }
+  }
+
+  main {
+    display: grid;
+    grid-auto-rows: auto;
+    row-gap: 2.4rem;
+
+    section {
+      .titleFlexbox {
+        display: flex;
+        align-items: baseline;
+        flex-flow: wrap;
+
+        > div {
+          margin-left: auto;
+          font-size: 1.2rem;
+          color: rgba($ui-color-text, 0.7);
+        }
+
+        h3 + div {
+          margin-bottom: 1rem;
+        }
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        padding-left: 1rem;
+        border-left: 10px solid $rating-recommend-color;
+        margin: 0 0 1.4rem;
+
+        @include brk-down($brk-medium) {
+          font-size: 1.4rem;
+        }
+
+        + * {
+          margin-left: 2rem;
+
+          @include brk-down($brk-medium) {
+            margin-left: 1rem;
+          }
+        }
+      }
+
+      &:nth-of-type(n + 2) {
+        display: flex;
+        flex-flow: column;
+        min-width: 0;
+      }
+
+      &:last-of-type {
+        flex-flow: row;
+
+        @include brk-down($brk-medium) {
+          flex-flow: column;
+        }
+      }
+    }
+  }
+}

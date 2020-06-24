@@ -1,0 +1,56 @@
+.chooseCourse {
+  display: flex;
+  min-width: 0;
+
+  .dropdown:nth-of-type(n + 2) {
+    margin-left: 2rem;
+  }
+
+  .semesterDrop {
+    flex: 1 1 180px;
+  }
+
+  .departmentDrop {
+    flex: 2 1 225px;
+  }
+
+  .courseDrop {
+    flex: 3 1 400px;
+  }
+
+  @include brk-down($brk-mlarge) {
+    flex-flow: row wrap;
+
+    .semesterDrop {
+      flex: 1 1 40%;
+    }
+
+    .departmentDrop {
+      flex: 1 1 40%;
+    }
+
+    .courseDrop {
+      flex: 1 1 80%;
+    }
+
+    .dropdown:last-of-type {
+      margin: 1.5rem 0 0 0;
+    }
+  }
+
+  @include brk-down($brk-medium) {
+    flex-flow: column;
+
+    .dropdown:nth-of-type(n + 2) {
+      margin: 1rem 0 0;
+    }
+
+    .dropdown .dropdownBtn {
+      font-size: 1.3rem;
+    }
+
+    .option {
+      font-size: 1.1rem;
+    }
+  }
+}
