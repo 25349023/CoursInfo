@@ -1,0 +1,10 @@
+.editPage .main .publishContent {
+  .submitSection {
+    button {
+      &:first-of-type {
+        @include button-mixin($cancel-color);
+        padding: 0 2rem;
+      }
+    }
+  }
+}
