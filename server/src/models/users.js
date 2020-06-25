@@ -43,7 +43,7 @@ function selectOrCreate(config) {
         })
         .catch(() => {
             // create
-            create(config);
+            return create(config);
         });
 }
 

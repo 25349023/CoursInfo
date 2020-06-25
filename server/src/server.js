@@ -9,11 +9,13 @@ const usersRouter = require("./routers/users");
 const authRouter = require("./routers/auth");
 // const requestLogger = require("./middlewares/requests-logger");
 const errorHandler = require("./middlewares/error-handler.js");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 const port = 3000;
 
 // app.use(requestLogger);
+app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 

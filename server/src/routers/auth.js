@@ -20,10 +20,20 @@ router.get(
 router.get(
     "/google/callback",
     passport.authenticate("login", { failureRedirect: "/login" }),
-    function (req, res, next) {
+    function (req, res) {
         console.log(req.user);
-        res.send(`hi how are you ${req.user.nickname}`);
+        res.status(200)
+            .cookie("jwt", authStrategy.getJwtToken(req.user), {
+                httpOnly: true,
+                maxAge: 3600,
+                secure: true,
+            })
+            .redirect("/");
     }
 );
+
+router.get("/check", passport.authenticate("token"), function (req, res) {
+    res.send("auth success");
+});
 
 module.exports = router;

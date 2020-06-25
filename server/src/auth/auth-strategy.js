@@ -1,6 +1,10 @@
 const passport = require("passport");
-const passportJWT = require("passport-jwt");
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+
+const passportJWT = require("passport-jwt");
+const JWTStrategy = passportJWT.Strategy;
+const ExtractJWT = passportJWT.ExtractJwt;
+const jwt = require("jsonwebtoken");
 
 const secret_key = process.env.SECRET_KEY;
 const client_id = process.env.GOOGLE_CLIENT_ID;
@@ -38,7 +42,32 @@ passport.use(
                 })
                 .catch((err) => {
                     console.log(err);
+                    done(err);
                 });
         }
     )
 );
+
+passport.use(
+    "token",
+    new JWTStrategy(
+        {
+            secretOrKey: secret_key,
+            jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+        },
+        function (jwtPayload, done) {
+            console.log("jwtpayload: ");
+            console.log(jwtPayload);
+            done(null, jwtPayload.id);
+        }
+    )
+);
+
+function getJwtToken(user) {
+    const token = jwt.sign({ id: user.id, email: user.email }, secret_key, {
+        expiresIn: "7 days",
+    });
+    return token;
+}
+
+module.exports = { getJwtToken };
