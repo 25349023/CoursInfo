@@ -27,4 +27,24 @@ function select(userId) {
     return db.any(sql, { userId });
 }
 
-module.exports = { create, select };
+function selectOrCreate(config) {
+    let { email } = config;
+    email = email.trim().toLowerCase();
+
+    const sql = `
+        SELECT * FROM users
+        WHERE email = $<email>;
+    `;
+    return db
+        .one(sql, { email })
+        .then((user) => {
+            // select
+            return user;
+        })
+        .catch(() => {
+            // create
+            create(config);
+        });
+}
+
+module.exports = { create, select, selectOrCreate };
