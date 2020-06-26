@@ -1,7 +1,8 @@
 node_modules
 server/env.sh
 server/log*
-server/src/localhost.*
+*.crt
+*.key
 
 
 # Elastic Beanstalk Files
