@@ -25,6 +25,14 @@ app.use(passport.session());
 
 app.use(express.static("public"));
 
+app.use(function (req, res, next) {
+    console.log(req.headers);
+    if (req.headers["x-forwarded-proto"] === "https") {
+        return next();
+    }
+    res.redirect("https://" + req.hostname + req.url);
+});
+
 app.get("/", (req, res) => res.send("Hello World!"));
 app.use("/auth", authRouter);
 app.use("/api", coursesRouter, postsRouter, draftsRouter, usersRouter);

@@ -25,9 +25,9 @@ router.get(
         res.status(200)
             .cookie("jwt", authStrategy.getJwtToken(req.user), {
                 httpOnly: true,
-                maxAge: 3600,
+                maxAge: 604800,
                 sameSite: "lax",
-                // secure: true,
+                secure: true,
             })
             .redirect("/");
     }
