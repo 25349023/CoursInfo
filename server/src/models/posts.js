@@ -13,6 +13,7 @@ function list(searchOptions) {
     let queryingColumns = [
         "cs.course_chinese_title",
         "cs.teacher",
+        "us.nickname",
         "ps.id",
         "ps.title",
         "ps.recommend",
@@ -47,6 +48,8 @@ function list(searchOptions) {
             JOIN courses cs
             ON (cs.semester, cs.department, cs.course_subnumber) 
                 = (ps.semester, ps.department, ps.course_subnumber)
+            JOIN users us
+            ON ps.user_id = us.id
         WHERE ps.deleted_at IS NULL AND
             ${queries.join(" AND ")}
         ORDER BY id DESC

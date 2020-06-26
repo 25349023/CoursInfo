@@ -21,13 +21,6 @@ router.get("/drafts/user/:userId", function (req, res, next) {
 
 router.get("/drafts/:draftId", function (req, res, next) {
     let { draftId } = req.params;
-    draftId = Number(draftId);
-
-    if (isNaN(draftId)) {
-        let err = new Error(`id must be number`);
-        err.status = 400;
-        throw err;
-    }
 
     draftsModel
         .select(draftId)
@@ -69,16 +62,9 @@ router.put("/drafts/:draftId", function (req, res, next) {
         "department",
         "courseSubnumber",
     ];
-
     let { draftId } = req.params;
-    draftId = Number(draftId);
 
     let err = null;
-    if (isNaN(draftId)) {
-        err = new Error(`id must be number`);
-        err.status = 400;
-        throw err;
-    }
 
     for (let f of requiredFields) {
         if (!req.body.hasOwnProperty(f)) {
@@ -99,13 +85,6 @@ router.put("/drafts/:draftId", function (req, res, next) {
 router.delete("/drafts/:draftId", function (req, res, next) {
     const { userId } = req.body;
     let { draftId } = req.params;
-    draftId = Number(draftId);
-
-    if (isNaN(draftId)) {
-        let err = new Error(`id must be number`);
-        err.status = 400;
-        throw err;
-    }
 
     draftsModel
         .deleteDraft(draftId, userId)
