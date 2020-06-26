@@ -12,24 +12,25 @@ function list(userId) {
                 = (pd.semester, pd.department, pd.course_subnumber)
         WHERE user_id = $<userId> 
             AND deleted_at IS NULL
-        ORDER BY pd.updated_at DESC;
+        ORDER BY pd.updated_at DESC
+        LIMIT 5;
     `;
 
     return db.any(sql, { userId });
 }
 
-function select(draftId) {
+function select(draftId, userId) {
     const sql = `
         SELECT pd.*, cs.course_chinese_title, cs.teacher
         FROM post_drafts pd
             JOIN courses cs
             ON (cs.semester, cs.department, cs.course_subnumber) 
                 = (pd.semester, pd.department, pd.course_subnumber)
-        WHERE id = $<draftId> 
+        WHERE id = $<draftId> AND user_id = $<userId> 
             AND deleted_at IS NULL;
     `;
 
-    return db.any(sql, { draftId });
+    return db.any(sql, { draftId, userId });
 }
 
 function create(data) {
@@ -73,7 +74,7 @@ function create(data) {
     return db.one(sql, data);
 }
 
-function edit(draftId, data) {
+function edit(draftId, userId, data) {
     fillNull(data);
 
     const sql = `        
@@ -105,11 +106,16 @@ function edit(draftId, data) {
     `;
 
     console.log(pgp.as.format(sql, { ...data, draftId }));
-    return db.one(sql, { ...data, draftId });
+    return checkUserDraft(draftId, userId).then(() => {
+        return db.any(sql, { ...data, draftId });
+    });
 }
 
 function deleteDraft(draftId, userId) {
     const sql = `
+        UPDATE users SET draft_count = draft_count - 1
+        WHERE id = $<userId>;    
+
         UPDATE post_drafts
         SET deleted_at = current_timestamp
         WHERE id = $<draftId> AND deleted_at IS NULL

@@ -18,13 +18,13 @@ router.get("/users/:userId", function (req, res, next) {
         .catch(next);
 });
 
-router.post("/users", function (req, res, next) {
-    usersModel
-        .create(req.body)
-        .then((user) => {
-            res.json(user);
-        })
-        .catch(next);
-});
+// router.post("/users", function (req, res, next) {
+//     usersModel
+//         .create(req.body)
+//         .then((user) => {
+//             res.json(user);
+//         })
+//         .catch(next);
+// });
 
 module.exports = router;

@@ -21,9 +21,10 @@ router.get("/drafts/user/:userId", function (req, res, next) {
 
 router.get("/drafts/:draftId", function (req, res, next) {
     let { draftId } = req.params;
+    const { userId } = req.query;
 
     draftsModel
-        .select(draftId)
+        .select(draftId, userId)
         .then((df) => {
             res.json(df);
         })
@@ -63,6 +64,7 @@ router.put("/drafts/:draftId", function (req, res, next) {
         "courseSubnumber",
     ];
     let { draftId } = req.params;
+    const { userId } = req.body;
 
     let err = null;
 
@@ -75,7 +77,7 @@ router.put("/drafts/:draftId", function (req, res, next) {
     }
 
     draftsModel
-        .edit(draftId, req.body)
+        .edit(draftId, userId, req.body)
         .then((df) => {
             res.json(df);
         })

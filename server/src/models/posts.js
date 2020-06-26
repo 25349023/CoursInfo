@@ -138,13 +138,13 @@ function edit(postId, userId, data) {
             class_grade_dist = '{ $<classGradeDist:list> }',
             others = $<others>,
             updated_at = current_timestamp
-        WHERE id = $<postId> AND deleted_at IS NULL
+        WHERE id = $<postId> AND user_id = $<userId> AND deleted_at IS NULL
         RETURNING *;
     `;
 
     return checkUserPost(postId, userId).then(() => {
-        console.log(pgp.as.format(sql, { ...data, postId }));
-        return db.any(sql, { ...data, postId });
+        console.log(pgp.as.format(sql, { ...data, postId, userId }));
+        return db.any(sql, { ...data, postId, userId });
     });
 }
 
