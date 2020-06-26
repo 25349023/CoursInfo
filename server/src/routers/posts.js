@@ -3,7 +3,9 @@ const bodyParser = require("body-parser");
 const accessController = require("../middlewares/access-controller.js");
 
 const postsModel = require("../models/posts");
+const { checkUser } = require("../utils");
 
+const passport = require("passport");
 const router = express.Router();
 
 router.use(bodyParser.json());
@@ -37,7 +39,11 @@ router.get("/posts/:postId", function (req, res, next) {
         .catch(next);
 });
 
-router.post("/posts", function (req, res, next) {
+router.post("/posts", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
     const requiredFields = [
         "userId",
         "semester",
@@ -62,6 +68,9 @@ router.post("/posts", function (req, res, next) {
         "classGradeDist",
         "others",
     ];
+
+    checkUser(req.body.userId, req);
+
     let err = null;
     for (let f of requiredFields) {
         if (!req.body.hasOwnProperty(f)) {
@@ -79,7 +88,11 @@ router.post("/posts", function (req, res, next) {
         .catch(next);
 });
 
-router.put("/posts/:postId", function (req, res, next) {
+router.put("/posts/:postId", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
     const requiredFields = [
         "semester",
         "department",
@@ -106,6 +119,7 @@ router.put("/posts/:postId", function (req, res, next) {
 
     const { userId } = req.body;
     let { postId } = req.params;
+    checkUser(userId, req);
 
     let err = null;
     for (let f of requiredFields) {
@@ -124,9 +138,14 @@ router.put("/posts/:postId", function (req, res, next) {
         .catch(next);
 });
 
-router.delete("/posts/:postId", function (req, res, next) {
+router.delete("/posts/:postId", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
     const { userId } = req.body;
     let { postId } = req.params;
+    checkUser(userId, req);
 
     postsModel
         .deletePost(postId, userId)
@@ -136,9 +155,14 @@ router.delete("/posts/:postId", function (req, res, next) {
         .catch(next);
 });
 
-router.post("/posts/:postId/like", function (req, res, next) {
+router.post("/posts/:postId/like", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
     let { postId } = req.params;
     let { userId } = req.body;
+    checkUser(userId, req);
 
     postsModel
         .voteLike(userId, postId)
@@ -148,9 +172,14 @@ router.post("/posts/:postId/like", function (req, res, next) {
         .catch(next);
 });
 
-router.post("/posts/:postId/dislike", function (req, res, next) {
+router.post("/posts/:postId/dislike", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
     let { postId } = req.params;
     let { userId } = req.body;
+    checkUser(userId, req);
 
     postsModel
         .voteDislike(userId, postId)
@@ -160,16 +189,21 @@ router.post("/posts/:postId/dislike", function (req, res, next) {
         .catch(next);
 });
 
-router.post("/posts/:postId/cancelVote", function (req, res, next) {
-    let { postId } = req.params;
-    let { userId } = req.body;
+router.post(
+    "/posts/:postId/cancelVote",
+    passport.authenticate("token"),
+    function (req, res, next) {
+        let { postId } = req.params;
+        let { userId } = req.body;
+        checkUser(userId, req);
 
-    postsModel
-        .voteCancel(userId, postId)
-        .then((data) => {
-            res.json(data);
-        })
-        .catch(next);
-});
+        postsModel
+            .voteCancel(userId, postId)
+            .then((data) => {
+                res.json(data);
+            })
+            .catch(next);
+    }
+);
 
 module.exports = router;

@@ -3,14 +3,20 @@ const bodyParser = require("body-parser");
 const accessController = require("../middlewares/access-controller.js");
 
 const draftsModel = require("../models/drafts");
+const { checkUser } = require("../utils");
 
+const passport = require("passport");
 const router = express.Router();
 
 router.use(bodyParser.json());
 router.use(accessController);
 
+router.use(passport.authenticate("token"));
+
 router.get("/drafts/user/:userId", function (req, res, next) {
     const { userId } = req.params;
+    checkUser(userId, req);
+
     draftsModel
         .list(userId)
         .then((df) => {
@@ -22,6 +28,7 @@ router.get("/drafts/user/:userId", function (req, res, next) {
 router.get("/drafts/:draftId", function (req, res, next) {
     let { draftId } = req.params;
     const { userId } = req.query;
+    checkUser(userId, req);
 
     draftsModel
         .select(draftId, userId)
@@ -38,6 +45,8 @@ router.post("/drafts", function (req, res, next) {
         "department",
         "courseSubnumber",
     ];
+    const { userId } = res.body;
+    checkUser(userId, req);
 
     let err = null;
     for (let f of requiredFields) {
@@ -65,6 +74,7 @@ router.put("/drafts/:draftId", function (req, res, next) {
     ];
     let { draftId } = req.params;
     const { userId } = req.body;
+    checkUser(userId, req);
 
     let err = null;
 
@@ -86,6 +96,7 @@ router.put("/drafts/:draftId", function (req, res, next) {
 
 router.delete("/drafts/:draftId", function (req, res, next) {
     const { userId } = req.body;
+    checkUser(userId, req);
     let { draftId } = req.params;
 
     draftsModel

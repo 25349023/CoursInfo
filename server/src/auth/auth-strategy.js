@@ -38,7 +38,7 @@ passport.use(
                     nickname: profile.displayName,
                 })
                 .then((user) => {
-                    done(null, user);
+                    done(null, { id: user.id, pid: profile.id });
                 })
                 .catch((err) => {
                     console.log(err);
@@ -64,7 +64,7 @@ passport.use(
 );
 
 function getJwtToken(user) {
-    const token = jwt.sign({ sub: user.id, email: user.email }, secret_key, {
+    const token = jwt.sign({ pid: user.pid, id: user.id }, secret_key, {
         expiresIn: "7 days",
     });
     return token;

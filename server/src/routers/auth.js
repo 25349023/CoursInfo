@@ -34,6 +34,7 @@ router.get(
 );
 
 router.get("/check", passport.authenticate("token"), function (req, res) {
+    console.log(req.user);
     res.send("auth success");
 });
 
