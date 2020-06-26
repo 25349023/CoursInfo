@@ -15,7 +15,7 @@ const errorHandler = require("./middlewares/error-handler.js");
 const cookieParser = require("cookie-parser");
 
 const app = express();
-const httpsPort = 3000,
+const httpsPort = 443,
     httpPort = 3001;
 
 // app.use(requestLogger);
