@@ -1,5 +1,5 @@
 # Define from what image we want to build our own image from.
-FROM node:12.16
+FROM node:12.18
 
 # Create the working directory that holds the application code inside our image.
 RUN mkdir /app
@@ -13,7 +13,7 @@ RUN npm install
 COPY . /app
 
 # Bind app to the specified port to be mapped by the Docker daemon.
-EXPOSE 443
+EXPOSE 3000
 
 # Define the command to run app.
 CMD ["npm", "start"]
