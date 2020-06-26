@@ -64,7 +64,7 @@ passport.use(
 );
 
 function getJwtToken(user) {
-    const token = jwt.sign({ id: user.id, email: user.email }, secret_key, {
+    const token = jwt.sign({ sub: user.id, email: user.email }, secret_key, {
         expiresIn: "7 days",
     });
     return token;

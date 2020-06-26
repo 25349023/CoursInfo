@@ -1,6 +1,9 @@
 require("../config.js");
 const express = require("express");
 const passport = require("passport");
+const http = require("http");
+const https = require("https");
+const fs = require("fs");
 
 const coursesRouter = require("./routers/courses");
 const postsRouter = require("./routers/posts");
@@ -12,7 +15,8 @@ const errorHandler = require("./middlewares/error-handler.js");
 const cookieParser = require("cookie-parser");
 
 const app = express();
-const port = 3000;
+const httpsPort = 3000,
+    httpPort = 3001;
 
 // app.use(requestLogger);
 app.use(cookieParser());
@@ -26,6 +30,19 @@ app.get("/*", (req, res) => res.redirect("/"));
 
 app.use(errorHandler);
 
-app.listen(port, () =>
-    console.log(`Server is up and running on port ${port}...`)
+// app.listen(httpsPort, () =>
+//     console.log(`Server is up and running on port ${port}...`)
+// );
+
+const privateKey = fs.readFileSync("src/localhost.key", "utf8");
+const certificate = fs.readFileSync("src/localhost.crt", "utf8");
+
+const credentials = { key: privateKey, cert: certificate };
+
+const httpsServer = https.createServer(credentials, app);
+httpsServer.listen(httpsPort, () =>
+    console.log(`Server is up and running on Port ${httpsPort}...`)
 );
+
+// const httpServer = http.createServer(app);
+// httpServer;

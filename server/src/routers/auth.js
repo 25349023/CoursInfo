@@ -27,6 +27,7 @@ router.get(
                 httpOnly: true,
                 maxAge: 3600,
                 sameSite: "lax",
+                secure: true,
             })
             .redirect("/");
     }
