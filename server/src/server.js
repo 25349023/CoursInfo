@@ -23,6 +23,8 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(express.static("public"));
+
 app.get("/", (req, res) => res.send("Hello World!"));
 app.use("/auth", authRouter);
 app.use("/api", coursesRouter, postsRouter, draftsRouter, usersRouter);
