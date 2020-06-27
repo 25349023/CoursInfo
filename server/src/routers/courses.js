@@ -23,7 +23,7 @@ router.get("/courses", function (req, res, next) {
         throw err;
     }
 
-    full = full == "true" ? true : false;
+    full = full === "true" ? true : false;
     courseModel
         .list({ department, text, start, full })
         .then((cs) => {

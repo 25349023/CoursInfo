@@ -171,7 +171,7 @@ function checkUserPost(postId, userId) {
     return db
         .one(check, { postId })
         .then((post) => {
-            if (userId == post.user_id) {
+            if (userId === post.user_id) {
                 return;
             } else {
                 const err = new Error("you dont have permission to do this");
@@ -180,7 +180,7 @@ function checkUserPost(postId, userId) {
             }
         })
         .catch((err) => {
-            if (err.code == permissionDenied) {
+            if (err.code === permissionDenied) {
                 throw err;
             }
             throw new Error("no such post");

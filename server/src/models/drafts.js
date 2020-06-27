@@ -137,7 +137,7 @@ function checkUserDraft(draftId, userId) {
     return db
         .one(check, { draftId })
         .then((draft) => {
-            if (userId == draft.user_id) {
+            if (userId === draft.user_id) {
                 return;
             } else {
                 const err = new Error("you dont have permission to do this");
@@ -146,7 +146,7 @@ function checkUserDraft(draftId, userId) {
             }
         })
         .catch((err) => {
-            if (err.code == permissionDenied) {
+            if (err.code === permissionDenied) {
                 throw err;
             }
             throw new Error("no such draft");

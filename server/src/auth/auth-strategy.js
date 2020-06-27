@@ -38,7 +38,11 @@ passport.use(
                     nickname: profile.displayName,
                 })
                 .then((user) => {
-                    done(null, { id: user.id, pid: profile.id });
+                    done(null, {
+                        id: user.id,
+                        email: user.email,
+                        pid: profile.id,
+                    });
                 })
                 .catch((err) => {
                     console.log(err);
@@ -53,7 +57,7 @@ passport.use(
     new JWTStrategy(
         {
             secretOrKey: secret_key,
-            jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+            jwtFromRequest: cookieExtractor("jwt"),
         },
         function (jwtPayload, done) {
             console.log("jwtpayload: ");
@@ -63,11 +67,36 @@ passport.use(
     )
 );
 
-function getJwtToken(user) {
-    const token = jwt.sign({ pid: user.pid, id: user.id }, secret_key, {
-        expiresIn: "7 days",
-    });
-    return token;
+function cookieExtractor(cookieName) {
+    return function (req) {
+        var token = null;
+        if (req && req.cookies) {
+            token = req.cookies[cookieName];
+        }
+        return token;
+    };
 }
 
-module.exports = { getJwtToken };
+function getJwtToken(user) {
+    const accToken = genAccessToken(user);
+    const refToken = genRefreshToken(user);
+    return [accToken, refToken];
+}
+
+function genAccessToken(user) {
+    return jwt.sign({ pid: user.pid, id: user.id }, secret_key, {
+        expiresIn: "1 hour",
+    });
+}
+
+function genRefreshToken(user) {
+    return jwt.sign(
+        { pid: user.pid, id: user.id, email: user.email },
+        secret_key,
+        {
+            expiresIn: "7 days",
+        }
+    );
+}
+
+module.exports = { getJwtToken, genAccessToken, genRefreshToken };

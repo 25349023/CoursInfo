@@ -47,4 +47,28 @@ function selectOrCreate(config) {
         });
 }
 
-module.exports = { create, select, selectOrCreate };
+function setRefreshToken(config) {
+    const sql = `
+        UPDATE users 
+        SET refresh_token = $<refreshToken>
+        WHERE id = $<userId>;
+    `;
+    return db.none(sql, config);
+}
+
+function getRefreshToken(userId) {
+    console.log(userId);
+    const sql = `
+        SELECT refresh_token FROM users
+        WHERE id = $<userId>;
+    `;
+    return db.one(sql, { userId });
+}
+
+module.exports = {
+    create,
+    select,
+    selectOrCreate,
+    setRefreshToken,
+    getRefreshToken,
+};
