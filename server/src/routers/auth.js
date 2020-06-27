@@ -5,8 +5,7 @@ const accessController = require("../middlewares/access-controller.js");
 const authStrategy = require("../auth/auth-strategy");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-const usersModel = require("../models/users");
-const SECRET_KEY = process.env.SECRET_KEY;
+const secret_key = process.env.SECRET_KEY;
 
 const router = express.Router();
 
@@ -17,6 +16,7 @@ router.get(
     "/google",
     passport.authenticate("login", {
         scope: ["profile", "email"],
+        prompt: "select_account",
     })
 );
 
@@ -26,7 +26,6 @@ router.get(
     function (req, res) {
         console.log(req.user);
         const [accessToken, refreshToken] = authStrategy.getJwtToken(req.user);
-        usersModel.setRefreshToken({ userId: req.user.id, refreshToken });
 
         res.status(200)
             .cookie("jwt", accessToken, {
@@ -48,62 +47,60 @@ router.get(
 
 router.get("/check", function (req, res, next) {
     passport.authenticate("token", function (err, user, info) {
-        console.log(req.originalUrl);
-        if (!user) {
-            res.redirect(`/auth/refresh?redirect=${req.originalUrl}`);
+        if (req.query.fail) {
+            res.send("auth failed");
+        } else if (!user) {
+            res.redirect(`/auth/refresh?redirect=${req.baseUrl}${req.path}`);
         } else {
             res.send("auth success");
         }
     })(req, res, next);
 });
 
+router.get("/logout", function (req, res, next) {
+    res.status(200)
+        .clearCookie("jwt", {
+            httpOnly: true,
+            sameSite: "lax",
+            secure: true,
+        })
+        .clearCookie("reftok", {
+            httpOnly: true,
+            sameSite: "lax",
+            secure: true,
+            path: "/auth",
+        })
+        .redirect("/");
+});
+
 router.get("/refresh", function (req, res, next) {
     if (!req.cookies.reftok) {
         const err = new Error("you don't have refresh token");
-        err.status = 400;
-        throw err;
+        res.status(400).redirect(`${req.query.redirect}?fail=1`);
+        return;
     }
-    const payload = jwt.verify(req.cookies.reftok, SECRET_KEY);
+    const payload = jwt.verify(req.cookies.reftok, secret_key);
     console.log(payload);
 
-    usersModel
-        .getRefreshToken(payload.id)
-        .then((token) => {
-            console.log(token);
+    if (checkRefreshExpired(payload)) {
+        console.log("refresh refresh token");
+        const newRefreshToken = authStrategy.genRefreshToken(payload);
+        res.cookie("reftok", newRefreshToken, {
+            httpOnly: true,
+            maxAge: 604800000,
+            sameSite: "lax",
+            secure: true,
+            path: "/auth",
+        });
+    }
 
-            if (token.refresh_token === req.cookies.reftok) {
-                if (checkRefreshExpired(payload)) {
-                    console.log("refresh refresh token");
-                    const newRefreshToken = authStrategy.genRefreshToken(
-                        payload
-                    );
-                    usersModel.setRefreshToken({
-                        userId: payload.id,
-                        refreshToken: newRefreshToken,
-                    });
-                    res.cookie("reftok", newRefreshToken, {
-                        httpOnly: true,
-                        maxAge: 604800000,
-                        sameSite: "lax",
-                        secure: true,
-                        path: "/auth",
-                    });
-                }
-
-                const newAccessToken = authStrategy.genAccessToken(payload);
-                res.cookie("jwt", newAccessToken, {
-                    httpOnly: true,
-                    maxAge: 3600000,
-                    sameSite: "lax",
-                    secure: true,
-                }).redirect(req.query.redirect);
-            } else {
-                const err = new Error("your refresh token is not valid");
-                err.status = 401;
-                throw err;
-            }
-        })
-        .catch(next);
+    const newAccessToken = authStrategy.genAccessToken(payload);
+    res.cookie("jwt", newAccessToken, {
+        httpOnly: true,
+        maxAge: 3600000,
+        sameSite: "lax",
+        secure: true,
+    }).redirect(req.query.redirect);
 });
 
 function checkRefreshExpired(payload) {
