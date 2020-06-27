@@ -1,0 +1,12 @@
+.userPage .accountInfo {
+  .editName {
+    position: absolute;
+    top: -7px;
+    left: calc(100% + 15px);
+
+    @include button-mixin($edit-color);
+    padding: 0 0.6rem;
+    line-height: 1.8;
+    font-size: 1.4rem;
+  }
+}

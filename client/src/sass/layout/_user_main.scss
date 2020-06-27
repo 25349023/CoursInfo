@@ -1,0 +1,53 @@
+.userPage .accountInfo {
+  color: $ui-color-text;
+
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin: 0 0 2rem 0;
+
+    @include brk-down($brk-xlarge) {
+      font-size: 2.2rem;
+    }
+  }
+
+  main {
+    .imgWrapper {
+      display: flex;
+    }
+
+    figure {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      margin: 0 2rem;
+    }
+
+    figcaption {
+      margin-top: 1.5rem;
+    }
+
+    .info {
+      display: grid;
+      grid-template-columns: 14rem 1fr;
+      row-gap: 1.6rem;
+      margin: 3rem 0 0 2rem;
+
+      h3 {
+        font-size: 1.5rem;
+        margin: 0;
+        padding-left: 1rem;
+        border-left: 10px solid rgba($category-color, 0.8);
+      }
+
+      > span {
+        border-left: 1px solid rgba($ui-color-text, 0.4);
+        font-size: 1.5rem;
+        padding-left: 1rem;
+      }
+      .nickname {
+        position: relative;
+      }
+    }
+  }
+}

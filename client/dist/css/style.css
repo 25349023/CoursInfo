@@ -988,6 +988,52 @@ section.main > section {
   }
 }
 
+.userPage .accountInfo {
+  color: #3c3c3c;
+}
+.userPage .accountInfo h1 {
+  font-size: 2.8rem;
+  font-weight: 400;
+  margin: 0 0 2rem 0;
+}
+@media (max-width: 1136px) {
+  .userPage .accountInfo h1 {
+    font-size: 2.2rem;
+  }
+}
+.userPage .accountInfo main .imgWrapper {
+  display: flex;
+}
+.userPage .accountInfo main figure {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 0 2rem;
+}
+.userPage .accountInfo main figcaption {
+  margin-top: 1.5rem;
+}
+.userPage .accountInfo main .info {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  row-gap: 1.6rem;
+  margin: 3rem 0 0 2rem;
+}
+.userPage .accountInfo main .info h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  padding-left: 1rem;
+  border-left: 10px solid rgba(50, 94, 160, 0.8);
+}
+.userPage .accountInfo main .info > span {
+  border-left: 1px solid rgba(60, 60, 60, 0.4);
+  font-size: 1.5rem;
+  padding-left: 1rem;
+}
+.userPage .accountInfo main .info .nickname {
+  position: relative;
+}
+
 .menu {
   background-color: #7e5f80;
   flex: 1 0 200px;
@@ -1037,7 +1083,7 @@ footer {
   color: #e4e4e4;
 }
 
-.editPage .main .publishContent .submitSection button:first-of-type, .draftPage .main .publishContent .submitSection button:last-of-type, .draftPage .main .publishContent .submitSection button:nth-of-type(2), .draftPage .main .publishContent .submitSection button:first-of-type, .main .publishContent .submitSection button:last-of-type, .main .publishContent .submitSection button:first-of-type, .courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, .dropdown .dropdownBtn, .banner .foreground a.button, header nav ul .btnToggle {
+.userPage .accountInfo .editName, .userPage .accountInfo figcaption a, .editPage .main .publishContent .submitSection button:first-of-type, .draftPage .main .publishContent .submitSection button:last-of-type, .draftPage .main .publishContent .submitSection button:nth-of-type(2), .draftPage .main .publishContent .submitSection button:first-of-type, .main .publishContent .submitSection button:last-of-type, .main .publishContent .submitSection button:first-of-type, .courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, .dropdown .dropdownBtn, .banner .foreground a.button, header nav ul .btnToggle {
   line-height: 2.2;
   padding: 0;
   font-size: 1.5rem;
@@ -2650,6 +2696,45 @@ table td.rating {
 }
 .editPage .main .publishContent .submitSection button:first-of-type:active {
   background-color: #df2721;
+}
+
+.userPage .accountInfo img {
+  border-radius: 50%;
+  border: 10px solid rgba(60, 60, 60, 0.5);
+  background: border-box center/cover white;
+}
+.userPage .accountInfo figcaption a {
+  background-color: #198bf6;
+  border-color: #9ac5ed;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.5rem;
+}
+.userPage .accountInfo figcaption a:hover {
+  background-color: #3b9cf8;
+}
+.userPage .accountInfo figcaption a:active {
+  background-color: #0d6fcc;
+}
+.userPage .accountInfo figcaption a .fas {
+  margin-right: 0.5rem;
+}
+
+.userPage .accountInfo .editName {
+  position: absolute;
+  top: -7px;
+  left: calc(100% + 15px);
+  background-color: #eb8c55;
+  border-color: #ecc8b3;
+  padding: 0 0.6rem;
+  line-height: 1.8;
+  font-size: 1.4rem;
+}
+.userPage .accountInfo .editName:hover {
+  background-color: #ef9d6e;
+}
+.userPage .accountInfo .editName:active {
+  background-color: #df6721;
 }
 
 /*# sourceMappingURL=style.css.map */

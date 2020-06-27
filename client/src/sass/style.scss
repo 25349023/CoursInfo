@@ -10,6 +10,7 @@
 @import "./layout/info_main";
 @import "./layout/post_article_main";
 @import "./layout/publish_main";
+@import "./layout/user_main";
 @import "./layout/menu";
 @import "./layout/footer";
 @import "./components/button";
@@ -34,3 +35,5 @@
 @import "./components/pub_sections";
 @import "./components/draft_sections";
 @import "./components/edit_sections";
+@import "./components/user_profile_img";
+@import "./components/user_operation";

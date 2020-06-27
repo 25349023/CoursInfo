@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>帳號中心</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/svgicons.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;1,300;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/d03b276a94.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body class="userPage">
+    <header>
+      <nav>
+        <ul id="navbar">
+          <li class="brand"><a href="./index.html">CoursInfo</a></li>
+          <li class="primary link"><a href="./courses.html">課程列表</a></li>
+          <li class="primary link"><a href="./posts.html">心得</a></li>
+          <li class="link"><a href="#">關於</a></li>
+          <li class="link"><a href="#">支援</a></li>
+          <li class="rightItem link">
+            <a href="./user.html">Account<img src="images/profile.png" /></a>
+          </li>
+          <li>
+            <button id="navBtn" class="btnToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="main">
+      <section class="accountInfo">
+        <div class="wrapper">
+          <h1>Hi，<span>sky1234</span></h1>
+
+          <main>
+            <div class="imgWrapper">
+              <figure>
+                <!-- here to replace gravater_hash -->
+                <img
+                  src="https://www.gravatar.com/avatar/4f1a2eb9a71a5ad830d450e3a5c8e40e?d=identicon&r=g&s=256"
+                  style="
+                    background-image: url(https://www.gravatar.com/avatar/4f1a2eb9a71a5ad830d450e3a5c8e40e?d=identicon&r=g&s=275);
+                  "
+                  alt="userImage"
+                />
+                <figcaption>
+                  <a href="https://en.gravatar.com/"
+                    ><i class="fas fa-image"></i> 到 Gravatar 上更改頭像</a
+                  >
+                </figcaption>
+              </figure>
+            </div>
+            <div class="info">
+              <h3>Email</h3>
+              <span>example@mail.com</span>
+              <h3>暱稱</h3>
+
+              <span
+                ><span class="nickname"
+                  >sky1234<button class="editName">
+                    <i class="fas fa-pen-alt"></i></button
+                ></span>
+              </span>
+              <h3>積分</h3>
+              <span>0</span>
+              <h3>角色</h3>
+              <span>一般會員</span>
+              <h3>每日發文上限</h3>
+              <span><span class="publishLimit">3</span> / 5</span>
+              <h3>草稿數量</h3>
+              <span><span class="draftLimit">2</span> / 5</span>
+            </div>
+          </main>
+        </div>
+      </section>
+
+      <aside class="menu">
+        <ul>
+          <li><i class="fas fa-stream"></i> MENU</li>
+          <li><a href="#">發表心得</a></li>
+          <li><a href="#">討論區</a></li>
+          <li><a href="#">筆記＆考古</a></li>
+          <li><a href="#">設定</a></li>
+          <li><a href="#">OtherA</a></li>
+          <li><a href="#">OtherB</a></li>
+        </ul>
+      </aside>
+    </section>
+
+    <footer>Copyright &copy; 2020 Skyline. All Rights Reserved.</footer>
+    <script src="vendors~index.bundle.js"></script>
+    <script src="index.bundle.js"></script>
+  </body>
+</html>
