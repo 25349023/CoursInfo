@@ -1,0 +1,40 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  button {
+    @include button-mixin(
+      $pagination-color,
+      $pressed-color: $pagination-pressed-color,
+      $hover-color: $pagination-hover-color
+    );
+    cursor: pointer;
+    line-height: 1.8;
+    transition: all 0.3s;
+    border: none;
+
+    padding: 0 1rem;
+    border-radius: 10px;
+    color: $ui-color-text;
+
+    &:nth-of-type(n + 2) {
+      margin-left: 1rem;
+    }
+
+    &.active {
+      @include button-color-mixin(
+        $pagination-active-color,
+        $hover-color: $pagination-active-hover-color
+      );
+    }
+
+    &:first-of-type,
+    &:last-of-type {
+      @include button-color-mixin(
+        $ui-color-light,
+        $pressed-color: $pagination-pressed-color,
+        $hover-color: $pagination-hover-color
+      );
+    }
+  }
+}

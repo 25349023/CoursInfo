@@ -6,6 +6,7 @@ $brk-mlarge: 1012px;
 $brk-large: 840px;
 $brk-medium: 632px;
 $brk-small: 420px;
+$brk-xsmall: 300px;
 
 $primary-color-dark: rgb(100, 22, 81);
 $primary-color-light: rgb(241, 202, 246);
@@ -47,6 +48,12 @@ $option-hover-color: rgb(212, 212, 212);
 $submit-color: rgb(105, 177, 69);
 $save-color: rgb(74, 160, 230);
 $cancel-color: rgb(235, 90, 85);
+
+$pagination-color: rgb(214, 214, 214);
+$pagination-hover-color: rgb(184, 184, 184);
+$pagination-pressed-color: rgb(146, 146, 146);
+$pagination-active-color: rgb(238, 196, 206);
+$pagination-active-hover-color: rgb(224, 165, 180);
 
 // fonts
 $ui-text-font: "Maven Pro", "Quicksand", "Noto Sans TC", sans-serif;

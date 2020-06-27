@@ -9,7 +9,6 @@
 
   main {
     margin-left: 4%;
-    height: 100%;
 
     flex: 3 1 600px;
 
@@ -23,7 +22,8 @@
 
     input[type="text"] {
       width: 100%;
-      padding: 0.6rem 1rem 0.6rem 3rem;
+      padding: 0.7rem 1rem 0.7rem 3rem;
+      font-size: 1.2rem;
       background-color: $ui-color-block;
       border: 1px solid $ui-color-block-border;
       border-radius: 5px;
@@ -33,9 +33,30 @@
     .searchIcon {
       position: absolute;
       left: 0.9rem;
-      top: 0.6rem;
+      top: 0.8rem;
 
       @include icon(rgba(0, 0, 0, 0.5), 1.5rem);
+    }
+
+    .pagination {
+      button {
+        @include brk-down($brk-medium) {
+          &:nth-of-type(n + 7):not(:last-of-type),
+          &:nth-last-of-type(n + 7):not(:first-of-type) {
+            display: none;
+          }
+
+          &:nth-of-type(n + 2) {
+            margin-left: 0.6rem;
+          }
+        }
+
+        @include brk-down($brk-xsmall) {
+          &:not(:first-of-type):not(:last-of-type) {
+            display: none;
+          }
+        }
+      }
     }
   }
 
@@ -43,6 +64,7 @@
     background-color: $ui-color-block;
     flex: 1 1 80%;
     padding-bottom: 1rem;
+    margin-bottom: 1.4rem;
 
     border-radius: 10px;
     border: 1px solid $ui-color-block-border;
