@@ -9,7 +9,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(accessController); // Allows cross-origin HTTP requests
 
-router.get("/courses", function (req, res, next) {
+router.get("/", function (req, res, next) {
     let { department, text, start, full } = req.query;
     let err = null;
     if (!department) {
@@ -32,11 +32,7 @@ router.get("/courses", function (req, res, next) {
         .catch(next);
 });
 
-router.get("/courses/:semester-:department-:courseSubnum", function (
-    req,
-    res,
-    next
-) {
+router.get("/:semester-:department-:courseSubnum", function (req, res, next) {
     let { semester, department, courseSubnum } = req.params;
     if (!semester || !department || !courseSubnum) {
         const err = new Error("parameters are not enough");
@@ -52,7 +48,7 @@ router.get("/courses/:semester-:department-:courseSubnum", function (
         .catch(next);
 });
 
-router.get("/courses/:semester-:department", function (req, res, next) {
+router.get("/:semester-:department", function (req, res, next) {
     let { semester, department } = req.params;
     if (!semester || !department) {
         const err = new Error("parameters are not enough");
@@ -66,12 +62,6 @@ router.get("/courses/:semester-:department", function (req, res, next) {
             res.json(cs);
         })
         .catch(next);
-});
-
-router.get("/courses/*", function (req, res, next) {
-    const err = new Error("not found");
-    err.status = 404;
-    throw err;
 });
 
 module.exports = router;

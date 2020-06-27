@@ -14,7 +14,7 @@ router.use(accessController);
 
 router.use(passport.authenticate("token"));
 
-router.get("/users/current", function (req, res, next) {
+router.get("/current", function (req, res, next) {
     usersModel
         .select(req.user)
         .then((user) => {
@@ -23,7 +23,7 @@ router.get("/users/current", function (req, res, next) {
         .catch(next);
 });
 
-router.get("/users/:userId", function (req, res, next) {
+router.get("/:userId", function (req, res, next) {
     const { userId } = req.params;
     checkUser(userId, req);
 

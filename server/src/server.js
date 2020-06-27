@@ -5,12 +5,9 @@ const http = require("http");
 const https = require("https");
 const fs = require("fs");
 
-const coursesRouter = require("./routers/courses");
-const postsRouter = require("./routers/posts");
-const draftsRouter = require("./routers/drafts");
-const usersRouter = require("./routers/users");
+const apiRouter = require("./routers/api");
 const authRouter = require("./routers/auth");
-// const requestLogger = require("./middlewares/requests-logger");
+const requestLogger = require("./middlewares/requests-logger");
 const errorHandler = require("./middlewares/error-handler.js");
 const cookieParser = require("cookie-parser");
 
@@ -18,7 +15,7 @@ const app = express();
 const httpsPort = 3000,
     httpPort = 3001;
 
-// app.use(requestLogger);
+app.use(requestLogger);
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -34,8 +31,9 @@ app.use(express.static("public"));
 // });
 
 app.get("/", (req, res) => res.send("Hello World!"));
+app.use("/api", apiRouter);
 app.use("/auth", authRouter);
-app.use("/api", coursesRouter, postsRouter, draftsRouter, usersRouter);
+
 app.get("/*", (req, res) => res.redirect("/"));
 
 app.use(errorHandler);

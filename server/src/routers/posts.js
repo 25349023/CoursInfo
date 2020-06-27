@@ -11,7 +11,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(accessController);
 
-router.get("/posts", function (req, res, next) {
+router.get("/", function (req, res, next) {
     let { department, text, start } = req.query;
     let err = null;
     if (!department) {
@@ -28,7 +28,7 @@ router.get("/posts", function (req, res, next) {
         .catch(next);
 });
 
-router.get("/posts/:postId", function (req, res, next) {
+router.get("/:postId", function (req, res, next) {
     let { postId } = req.params;
 
     postsModel
@@ -39,11 +39,7 @@ router.get("/posts/:postId", function (req, res, next) {
         .catch(next);
 });
 
-router.post("/posts", passport.authenticate("token"), function (
-    req,
-    res,
-    next
-) {
+router.post("/", passport.authenticate("token"), function (req, res, next) {
     const requiredFields = [
         "userId",
         "semester",
@@ -88,7 +84,7 @@ router.post("/posts", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.put("/posts/:postId", passport.authenticate("token"), function (
+router.put("/:postId", passport.authenticate("token"), function (
     req,
     res,
     next
@@ -138,7 +134,7 @@ router.put("/posts/:postId", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.delete("/posts/:postId", passport.authenticate("token"), function (
+router.delete("/:postId", passport.authenticate("token"), function (
     req,
     res,
     next
@@ -155,7 +151,7 @@ router.delete("/posts/:postId", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.post("/posts/:postId/like", passport.authenticate("token"), function (
+router.post("/:postId/like", passport.authenticate("token"), function (
     req,
     res,
     next
@@ -172,7 +168,7 @@ router.post("/posts/:postId/like", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.post("/posts/:postId/dislike", passport.authenticate("token"), function (
+router.post("/:postId/dislike", passport.authenticate("token"), function (
     req,
     res,
     next
@@ -189,21 +185,21 @@ router.post("/posts/:postId/dislike", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.post(
-    "/posts/:postId/cancelVote",
-    passport.authenticate("token"),
-    function (req, res, next) {
-        let { postId } = req.params;
-        let { userId } = req.body;
-        checkUser(userId, req);
+router.post("/:postId/cancelVote", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
+    let { postId } = req.params;
+    let { userId } = req.body;
+    checkUser(userId, req);
 
-        postsModel
-            .voteCancel(userId, postId)
-            .then((data) => {
-                res.json(data);
-            })
-            .catch(next);
-    }
-);
+    postsModel
+        .voteCancel(userId, postId)
+        .then((data) => {
+            res.json(data);
+        })
+        .catch(next);
+});
 
 module.exports = router;

@@ -13,7 +13,7 @@ router.use(accessController);
 
 router.use(passport.authenticate("token"));
 
-router.get("/drafts/user/:userId", function (req, res, next) {
+router.get("/user/:userId", function (req, res, next) {
     const { userId } = req.params;
     checkUser(userId, req);
 
@@ -25,7 +25,7 @@ router.get("/drafts/user/:userId", function (req, res, next) {
         .catch(next);
 });
 
-router.get("/drafts/:draftId", function (req, res, next) {
+router.get("/:draftId", function (req, res, next) {
     let { draftId } = req.params;
     const { userId } = req.query;
     checkUser(userId, req);
@@ -38,7 +38,7 @@ router.get("/drafts/:draftId", function (req, res, next) {
         .catch(next);
 });
 
-router.post("/drafts", function (req, res, next) {
+router.post("/", function (req, res, next) {
     const requiredFields = [
         "userId",
         "semester",
@@ -65,7 +65,7 @@ router.post("/drafts", function (req, res, next) {
         .catch(next);
 });
 
-router.put("/drafts/:draftId", function (req, res, next) {
+router.put("/:draftId", function (req, res, next) {
     const requiredFields = [
         "userId",
         "semester",
@@ -94,7 +94,7 @@ router.put("/drafts/:draftId", function (req, res, next) {
         .catch(next);
 });
 
-router.delete("/drafts/:draftId", function (req, res, next) {
+router.delete("/:draftId", function (req, res, next) {
     const { userId } = req.body;
     checkUser(userId, req);
     let { draftId } = req.params;
