@@ -15,7 +15,7 @@ const errorHandler = require("./middlewares/error-handler.js");
 const cookieParser = require("cookie-parser");
 
 const app = express();
-const httpsPort = 3000,
+const httpsPort = 443,
     httpPort = 3001;
 
 // app.use(requestLogger);
@@ -25,13 +25,13 @@ app.use(passport.session());
 
 app.use(express.static("public"));
 
-// app.use(function (req, res, next) {
-//     console.log(req.protocol);
-//     if (req.headers["x-forwarded-proto"] === "https") {
-//         return next();
-//     }
-//     res.redirect("https://" + req.hostname + req.url);
-// });
+app.use(function (req, res, next) {
+    console.log(req.protocol);
+    if (req.headers["x-forwarded-proto"] === "https") {
+        return next();
+    }
+    res.redirect("https://" + req.hostname + req.url);
+});
 
 app.get("/", (req, res) => res.send("Hello World!"));
 app.use("/auth", authRouter);
