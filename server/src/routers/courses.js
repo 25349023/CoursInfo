@@ -38,19 +38,40 @@ router.get("/courses/:semester-:department-:courseSubnum", function (
     next
 ) {
     let { semester, department, courseSubnum } = req.params;
-    let err = null;
-
-    if (err) {
+    if (!semester || !department || !courseSubnum) {
+        const err = new Error("parameters are not enough");
         err.status = 400;
         throw err;
     }
 
     courseModel
-        .select({ semester, department, courseSubnum })
+        .select(req.params)
         .then((cs) => {
             res.json(cs);
         })
         .catch(next);
+});
+
+router.get("/courses/:semester-:department", function (req, res, next) {
+    let { semester, department } = req.params;
+    if (!semester || !department) {
+        const err = new Error("parameters are not enough");
+        err.status = 400;
+        throw err;
+    }
+
+    courseModel
+        .dropdownList(semester, department)
+        .then((cs) => {
+            res.json(cs);
+        })
+        .catch(next);
+});
+
+router.get("/courses/*", function (req, res, next) {
+    const err = new Error("not found");
+    err.status = 404;
+    throw err;
 });
 
 module.exports = router;

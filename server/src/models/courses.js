@@ -66,7 +66,7 @@ function list(searchOptions) {
             AND uniq_cs.course_subnumber = rt.course_subnum
         ORDER BY uniq_cs.department, uniq_cs.course_subnumber;
     `;
-    console.log(pgp.as.format(sql, { text, department, start }));
+
     return db.any(sql, { text, department, start });
 }
 
@@ -94,8 +94,17 @@ function select(courseId) {
                 = (rt.semester, rt.department, rt.course_subnumber);
     `;
 
-    console.log(pgp.as.format(sql, { semester, department, courseSubnum }));
     return db.any(sql, { semester, department, courseSubnum });
 }
 
-module.exports = { list, select };
+function dropdownList(semester, department) {
+    const sql = `
+        SELECT course_number, course_chinese_title, teacher FROM courses
+        WHERE semester = $<semester> AND department = $<department>
+        ORDER BY course_number;
+    `;
+
+    return db.any(sql, { semester, department });
+}
+
+module.exports = { list, select, dropdownList };
