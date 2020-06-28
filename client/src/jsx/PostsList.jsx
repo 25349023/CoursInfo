@@ -13,7 +13,7 @@ export default class PostsList extends React.Component {
         let children = [];
         if (posts.length) {
             children = posts.map((p) => (
-                <tr data-href="#">
+                <tr data-href="#" key={p.course_number}>
                     <td className="courseName">{p.course_chinese_title}</td>
                     <td className="teacher">{p.teacher}</td>
                     <td className="postTitle">{p.title}</td>
@@ -47,16 +47,14 @@ export default class PostsList extends React.Component {
                         <th scope="col">此心得評價</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <InfiniteScroll
-                        initialLoad={false}
-                        loadMore={this.props.listMorePost}
-                        hasMore={this.props.hasMore}
-                        element={"tbody"}
-                    >
-                        {children}
-                    </InfiniteScroll>
-                </tbody>
+                <InfiniteScroll
+                    initialLoad={false}
+                    loadMore={this.props.listMorePost}
+                    hasMore={this.props.hasMore}
+                    element={"tbody"}
+                >
+                    {children}
+                </InfiniteScroll>
             </table>
         );
     }
