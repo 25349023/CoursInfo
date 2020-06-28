@@ -20,6 +20,14 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(
+    express.static("dist", {
+        setHeaders: (res, path, stat) => {
+            res.set("Cache-Control", "public, s-maxage=86400");
+        },
+    })
+);
+
 app.use(express.static("public"));
 
 // app.use(function (req, res, next) {

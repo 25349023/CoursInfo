@@ -28,7 +28,7 @@ export function listPosts(department, text = "", start) {
 }
 
 export function selectPost(postId) {
-    let url = `${postBaseUrl}/GET /api/posts/${postId}`;
+    let url = `${postBaseUrl}/api/posts/${postId}`;
     console.log(`Making GET & selectPost request to: ${url}`);
     return axios.get(url).then(function (res) {
         if (res.status !== 200)
@@ -40,7 +40,7 @@ export function selectPost(postId) {
 
 //post is a big object
 export function createPost(post) {
-    let url = `${postBaseUrl}/POST /api/posts`;
+    let url = `${postBaseUrl}/api/posts`;
     console.log(`Making POST & createPost request to: ${url}`);
     return axios.post(url, post).then(function (res) {
         if (res.status !== 200)
@@ -51,7 +51,7 @@ export function createPost(post) {
 }
 
 export function editPost(postId, post) {
-    let url = `${postBaseUrl}/PUT /api/posts/${postId}`;
+    let url = `${postBaseUrl}/api/posts/${postId}`;
     console.log(`Making PUT & editPost request to: ${url}`);
     return axios.put(url, post).then(function (res) {
         if (res.status !== 200)
@@ -62,7 +62,7 @@ export function editPost(postId, post) {
 }
 
 export function deletePost(postId) {
-    let url = `${postBaseUrl}/DELETE /api/posts/${postId}`;
+    let url = `${postBaseUrl}/api/posts/${postId}`;
     console.log(`Making DELETE & deletePost request to: ${url}`);
     return axios.delete(url).then(function (res) {
         if (res.status !== 200)
@@ -74,7 +74,7 @@ export function deletePost(postId) {
 
 //islike = 1 means like, = 0 means dislike, = 2 means cancel
 export function createVote(postId, islike) {
-    let url = `${postBaseUrl}/POST /api/posts/${postId}`;
+    let url = `${postBaseUrl}/api/posts/${postId}`;
     if (islike == 0) url += `/like`;
     else if (islike == 1) url += `/dislike`;
     else if (islike == 2) url += `/cancelVote`;

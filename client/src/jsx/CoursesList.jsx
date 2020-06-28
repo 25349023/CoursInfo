@@ -2,7 +2,7 @@ import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
 
 export default class CoursesList extends React.Component {
-    constructor() {
+    constructor(props) {
         super(props);
         this.state = {};
     }
@@ -13,7 +13,7 @@ export default class CoursesList extends React.Component {
         let children = [];
         if (courses.length) {
             children = courses.map((p) => (
-                <tr data-href="#">
+                <tr data-href="#" key={p.course_number}>
                     <td className="courseNumber">{p.course_number}</td>
                     <td className="courseName">{p.course_chinese_title}</td>
                     <td className="rating">{p.sweet}</td>

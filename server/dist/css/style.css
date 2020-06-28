@@ -1,0 +1,2894 @@
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+a {
+  outline: none;
+}
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  font-size: 16px;
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+.postArticle .gradeSection .gradeWrapper,
+.postArticle .detailedSection .detailedWrapper {
+  padding-left: 2.2rem;
+}
+@media (max-width: 632px) {
+  .postArticle .gradeSection .gradeWrapper,
+  .postArticle .detailedSection .detailedWrapper {
+    padding-left: 1.4rem;
+  }
+}
+.postArticle .gradeSection .gradeWrapper h3,
+.postArticle .detailedSection .detailedWrapper h3 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 1.5rem 0 0.8rem;
+}
+.postArticle .gradeSection .gradeWrapper h3 .fas,
+.postArticle .detailedSection .detailedWrapper h3 .fas {
+  margin-right: 0.5rem;
+}
+.postArticle .gradeSection .gradeWrapper div,
+.postArticle .detailedSection .detailedWrapper div {
+  padding-left: 3rem;
+  padding-right: 10rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+@media (max-width: 1012px) {
+  .postArticle .gradeSection .gradeWrapper div,
+  .postArticle .detailedSection .detailedWrapper div {
+    padding-right: 3rem;
+  }
+}
+@media (max-width: 632px) {
+  .postArticle .gradeSection .gradeWrapper div,
+  .postArticle .detailedSection .detailedWrapper div {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+}
+
+body {
+  font-family: "Maven Pro", "Quicksand", "Noto Sans TC", sans-serif;
+}
+
+section.main {
+  display: flex;
+  flex-flow: row-reverse;
+  min-height: 100vh;
+}
+section.main > section {
+  background-color: #e4e4e4;
+  padding: 3rem 5rem;
+  flex: 6 1 1000px;
+}
+@media (max-width: 1320px) {
+  section.main > section {
+    padding: 3rem 2rem;
+  }
+}
+@media (max-width: 1136px) {
+  section.main > section {
+    padding: 2rem;
+  }
+}
+@media (max-width: 632px) {
+  section.main > section {
+    padding: 2rem 0.5rem;
+  }
+}
+
+.home main {
+  max-width: 1600px;
+  margin: 0 auto 4rem;
+  text-align: center;
+  color: #2a2a2a;
+}
+.home main h2 {
+  font-size: 2.2rem;
+  margin-top: 4rem;
+}
+.home main .goal {
+  margin: 1rem 15rem;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 1320px) {
+  .home main .goal {
+    margin: 1rem 2rem;
+  }
+}
+@media (max-width: 840px) {
+  .home main .goal {
+    flex-flow: column;
+  }
+}
+.home main .goal div {
+  padding: 1.8rem;
+  background-clip: content-box;
+  background-color: #98ccff;
+  border-radius: 50%;
+  margin-left: 1rem;
+  flex: 0 0 25%;
+}
+@media (max-width: 840px) {
+  .home main .goal div {
+    margin: 0;
+    padding: 0;
+    align-self: center;
+    flex: 1 0 40vw;
+    width: 40vw;
+  }
+}
+@media (min-width: 840px) {
+  .home main .goal div:after {
+    content: "";
+    float: left;
+    padding-bottom: 100%;
+  }
+}
+.home main .goal p {
+  font-size: 1.4rem;
+  margin-left: 3rem;
+  flex: 1 0 60%;
+  align-self: center;
+}
+@media (max-width: 840px) {
+  .home main .goal p {
+    margin: 2rem 3rem 3rem;
+  }
+}
+
+.courses,
+.posts {
+  display: flex;
+  flex-flow: row-reverse;
+}
+@media (max-width: 840px) {
+  .courses,
+  .posts {
+    flex-flow: column-reverse;
+  }
+}
+.courses main,
+.posts main {
+  margin-left: 4%;
+  height: 100%;
+  flex: 3 1 600px;
+  display: flex;
+  flex-flow: column;
+}
+.courses main .searchBox,
+.posts main .searchBox {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.courses main input[type="text"],
+.posts main input[type="text"] {
+  width: 100%;
+  padding: 0.6rem 1rem 0.6rem 3rem;
+  background-color: #f0f0f0;
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 5px;
+  color: #3c3c3c;
+}
+.courses main .searchIcon,
+.posts main .searchIcon {
+  position: absolute;
+  left: 0.9rem;
+  top: 0.6rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.courses main .searchIcon path,
+.courses main .searchIcon polygon,
+.courses main .searchIcon rect,
+.posts main .searchIcon path,
+.posts main .searchIcon polygon,
+.posts main .searchIcon rect {
+  fill: rgba(0, 0, 0, 0.5);
+}
+.courses main .searchIcon circle,
+.posts main .searchIcon circle {
+  stroke: rgba(0, 0, 0, 0.5);
+}
+.courses .listing,
+.posts .listing {
+  background-color: #f0f0f0;
+  flex: 1 1 80%;
+  padding-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  overflow: auto;
+}
+.courses aside,
+.posts aside {
+  flex: 1 0 200px;
+  min-width: 250px;
+  max-height: 32rem;
+}
+
+@media (max-width: 1136px) {
+  .courses main col:first-of-type,
+  .courses main th:first-of-type,
+  .courses main td:first-of-type {
+    display: none;
+  }
+  .courses main col.primary {
+    width: 40%;
+  }
+}
+@media (max-width: 840px) {
+  .courses main {
+    margin: 2rem 0 0;
+  }
+}
+@media (max-width: 632px) {
+  .courses main col:nth-of-type(3),
+  .courses main th:nth-of-type(3),
+  .courses main th:nth-of-type(4),
+  .courses main td:nth-of-type(3),
+  .courses main td:nth-of-type(4) {
+    display: none;
+  }
+  .courses main col.primary {
+    width: 50%;
+  }
+}
+@media (max-width: 420px) {
+  .courses main col:nth-of-type(4),
+  .courses main th:nth-of-type(5),
+  .courses main td:nth-of-type(5) {
+    display: none;
+  }
+  .courses main col.primary {
+    width: 65%;
+  }
+  .courses main td.courseName,
+  .courses main td.rating {
+    font-size: 1.1rem;
+  }
+}
+
+.posts main {
+  /*}*/
+}
+@media (max-width: 1136px) {
+  .posts main col:last-of-type,
+  .posts main th:last-of-type,
+  .posts main td:last-of-type {
+    display: none;
+  }
+  .posts main col.primary {
+    width: 30%;
+  }
+}
+@media (max-width: 840px) {
+  .posts main {
+    margin: 2rem 0 0;
+  }
+}
+@media (max-width: 632px) {
+  .posts main col:nth-of-type(4),
+  .posts main th:nth-of-type(4),
+  .posts main td:nth-of-type(4) {
+    display: none;
+  }
+  .posts main col.primary {
+    width: 40%;
+  }
+}
+@media (max-width: 420px) {
+  .posts main col:nth-of-type(2),
+  .posts main th:nth-of-type(2),
+  .posts main td:nth-of-type(2) {
+    display: none;
+  }
+  .posts main col.primary {
+    width: 50%;
+  }
+  .posts main td.courseName,
+  .posts main td.postTitle {
+    font-size: 1.1rem;
+  }
+}
+
+.posts .listing td:last-of-type span {
+  position: relative;
+}
+.posts .listing td:last-of-type span .fa-heart {
+  position: absolute;
+  right: -24px;
+  top: 2px;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin-left: 4rem;
+}
+@media (max-width: 1680px) {
+  .wrapper {
+    margin-left: 0;
+  }
+}
+
+.courseInfo {
+  color: #3c3c3c;
+}
+.courseInfo .title {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 3rem;
+}
+@media (max-width: 632px) {
+  .courseInfo .title {
+    flex-flow: wrap;
+    padding: 0 1rem;
+  }
+}
+.courseInfo .title h1 {
+  margin: 0 auto 0 0;
+  font-size: 3rem;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+}
+.courseInfo .title h2 {
+  margin: 0 2rem 0 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba(60, 60, 60, 0.8);
+}
+@media (max-width: 840px) {
+  .courseInfo .title h2 {
+    margin-right: 0;
+  }
+}
+@media (max-width: 420px) {
+  .courseInfo .title h2 {
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo .title h1 {
+    font-size: 2rem;
+  }
+  .courseInfo .title h2 {
+    font-size: 1.5rem;
+  }
+}
+.courseInfo main {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 24rem;
+  grid-auto-rows: minmax(30rem, auto);
+  gap: 4rem;
+}
+@media (max-width: 1680px) {
+  .courseInfo main {
+    gap: 2rem;
+  }
+}
+@media (max-width: 840px) {
+  .courseInfo main {
+    gap: 1rem;
+  }
+}
+@media (max-width: 1012px) {
+  .courseInfo main {
+    grid-template-rows: 24rem 24rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main {
+    grid-template-rows: minmax(24rem, auto) 18rem;
+  }
+}
+.courseInfo main > section {
+  background-color: #f0f0f0;
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 10px;
+  padding-bottom: 0.5rem;
+}
+@media (max-width: 1012px) {
+  .courseInfo main > section {
+    grid-column: 1/3;
+  }
+}
+@media (max-width: 840px) {
+  .courseInfo main > section:nth-of-type(n + 3) {
+    padding-bottom: 0;
+  }
+}
+.courseInfo main > section:first-of-type {
+  padding-bottom: 1rem;
+}
+.courseInfo main > section:nth-of-type(n + 3) {
+  grid-column: 1/3;
+}
+.courseInfo main > section h3 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin: 1.5rem 0 1rem 2rem;
+}
+@media (max-width: 632px) {
+  .courseInfo main > section h3 {
+    align-self: center;
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 632px) {
+  .postPage .main .postArticle {
+    padding: 2rem;
+  }
+}
+@media (max-width: 420px) {
+  .postPage .main .postArticle {
+    padding: 1.2rem 1rem;
+  }
+}
+.postArticle {
+  color: #3c3c3c;
+}
+.postArticle .title {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 2.5rem;
+  align-items: baseline;
+  row-gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+.postArticle .title div {
+  display: flex;
+  flex-flow: wrap;
+  align-items: baseline;
+}
+.postArticle .title h1 {
+  margin: 0 auto 0 0;
+  font-size: 3rem;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+}
+@media (max-width: 1136px) {
+  .postArticle .title h1 {
+    font-size: 2.2rem;
+  }
+}
+.postArticle .title h2 {
+  margin: 0.8rem 2rem 0 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba(60, 60, 60, 0.8);
+}
+@media (max-width: 1136px) {
+  .postArticle .title h2 {
+    font-size: 1.6rem;
+  }
+}
+.postArticle .title h3 {
+  margin: 0.6rem 0 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: rgba(60, 60, 60, 0.7);
+}
+@media (max-width: 1136px) {
+  .postArticle .title h3 {
+    font-size: 1.4rem;
+  }
+}
+.postArticle .title .articleInfo {
+  display: flex;
+  justify-content: space-between;
+}
+.postArticle .title .user {
+  align-self: center;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+}
+.postArticle .title .user img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.postArticle .title .user figcaption {
+  font-size: 1.2rem;
+  padding-left: 1rem;
+  color: rgba(60, 60, 60, 0.9);
+}
+.postArticle .title .remark {
+  place-self: center end;
+  font-size: 1.4rem;
+}
+@media (max-width: 632px) {
+  .postArticle .title .remark {
+    font-size: 1.6rem;
+  }
+}
+.postArticle .title .remark .like {
+  margin-right: 2rem;
+}
+.postArticle .title .remark .like a {
+  color: rgba(221, 101, 101, 0.4);
+  text-decoration: none;
+}
+.postArticle .title .remark .like a:hover {
+  color: #dd6565;
+}
+.postArticle .title .remark .like a.active {
+  color: #dd6565;
+}
+.postArticle .title .remark .like span {
+  font-weight: 600;
+  color: #dd6565;
+}
+.postArticle .title .remark .dislike {
+  color: #6567dd;
+  font-weight: 600;
+}
+.postArticle .title .remark .dislike a {
+  color: rgba(101, 103, 221, 0.4);
+  text-decoration: none;
+}
+.postArticle .title .remark .dislike a:hover {
+  color: #6567dd;
+}
+.postArticle .title .remark .dislike a.active {
+  color: #6567dd;
+}
+.postArticle .title .remark .dislike span {
+  font-weight: 600;
+  color: #6567dd;
+}
+.postArticle .title .remark .fas {
+  margin-right: 0.4rem;
+}
+.postArticle main {
+  display: grid;
+  grid-template-rows: repeat(5, auto);
+  row-gap: 2.4rem;
+}
+.postArticle main section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  border-left: 8px solid rgba(205, 94, 220, 0.5);
+  padding-left: 1rem;
+}
+@media (max-width: 632px) {
+  .postArticle main section h2 {
+    font-size: 1.6rem;
+  }
+}
+
+.editPage .articleForm,
+.publishPage .articleForm,
+.draftPage .articleForm {
+  color: #3c3c3c;
+}
+.editPage .articleForm h1,
+.publishPage .articleForm h1,
+.draftPage .articleForm h1 {
+  font-size: 2.8rem;
+  font-weight: 400;
+  margin: 0 0 2rem 0;
+}
+@media (max-width: 1136px) {
+  .editPage .articleForm h1,
+  .publishPage .articleForm h1,
+  .draftPage .articleForm h1 {
+    font-size: 2.2rem;
+  }
+}
+.editPage .articleForm main,
+.publishPage .articleForm main,
+.draftPage .articleForm main {
+  display: grid;
+  grid-auto-rows: auto;
+  row-gap: 2.4rem;
+}
+.editPage .articleForm main section .titleFlexbox,
+.publishPage .articleForm main section .titleFlexbox,
+.draftPage .articleForm main section .titleFlexbox {
+  display: flex;
+  align-items: baseline;
+  flex-flow: wrap;
+}
+.editPage .articleForm main section .titleFlexbox > div,
+.publishPage .articleForm main section .titleFlexbox > div,
+.draftPage .articleForm main section .titleFlexbox > div {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: rgba(60, 60, 60, 0.7);
+}
+.editPage .articleForm main section .titleFlexbox h3 + div,
+.publishPage .articleForm main section .titleFlexbox h3 + div,
+.draftPage .articleForm main section .titleFlexbox h3 + div {
+  margin-bottom: 1rem;
+}
+.editPage .articleForm main section h2,
+.publishPage .articleForm main section h2,
+.draftPage .articleForm main section h2 {
+  font-size: 1.8rem;
+  padding-left: 1rem;
+  border-left: 10px solid #95c782;
+  margin: 0 0 1.4rem;
+}
+@media (max-width: 632px) {
+  .editPage .articleForm main section h2,
+  .publishPage .articleForm main section h2,
+  .draftPage .articleForm main section h2 {
+    font-size: 1.4rem;
+  }
+}
+.editPage .articleForm main section h2 + *,
+.publishPage .articleForm main section h2 + *,
+.draftPage .articleForm main section h2 + * {
+  margin-left: 2rem;
+}
+@media (max-width: 632px) {
+  .editPage .articleForm main section h2 + *,
+  .publishPage .articleForm main section h2 + *,
+  .draftPage .articleForm main section h2 + * {
+    margin-left: 1rem;
+  }
+}
+.editPage .articleForm main section:nth-of-type(n + 2),
+.publishPage .articleForm main section:nth-of-type(n + 2),
+.draftPage .articleForm main section:nth-of-type(n + 2) {
+  display: flex;
+  flex-flow: column;
+  min-width: 0;
+}
+.editPage .articleForm main section:last-of-type,
+.publishPage .articleForm main section:last-of-type,
+.draftPage .articleForm main section:last-of-type {
+  flex-flow: row;
+}
+@media (max-width: 632px) {
+  .editPage .articleForm main section:last-of-type,
+  .publishPage .articleForm main section:last-of-type,
+  .draftPage .articleForm main section:last-of-type {
+    flex-flow: column;
+  }
+}
+
+.userPage .accountInfo {
+  color: #3c3c3c;
+}
+.userPage .accountInfo h1 {
+  font-size: 2.8rem;
+  font-weight: 400;
+  margin: 0 0 2rem 0;
+}
+@media (max-width: 1136px) {
+  .userPage .accountInfo h1 {
+    font-size: 2.2rem;
+  }
+}
+.userPage .accountInfo main .imgWrapper {
+  display: flex;
+}
+.userPage .accountInfo main figure {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 0 2rem;
+}
+.userPage .accountInfo main figcaption {
+  margin-top: 1.5rem;
+}
+.userPage .accountInfo main .info {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  row-gap: 1.6rem;
+  margin: 3rem 0 0 2rem;
+}
+.userPage .accountInfo main .info h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  padding-left: 1rem;
+  border-left: 10px solid rgba(50, 94, 160, 0.8);
+}
+.userPage .accountInfo main .info > span {
+  border-left: 1px solid rgba(60, 60, 60, 0.4);
+  font-size: 1.5rem;
+  padding-left: 1rem;
+}
+.userPage .accountInfo main .info .nickname {
+  position: relative;
+}
+
+.menu {
+  background-color: #7e5f80;
+  flex: 1 0 200px;
+  overflow: auto;
+}
+@media (max-width: 1136px) {
+  .menu {
+    display: none;
+  }
+}
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.menu ul li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.9);
+}
+.menu ul li:first-of-type {
+  font-size: 1.3rem;
+  padding: 1rem 0 1rem 2rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
+  position: relative;
+}
+.menu ul li:first-of-type .fas {
+  margin-right: 0.6rem;
+}
+.menu ul li:nth-of-type(n + 2) a {
+  display: block;
+  padding: 1rem 0 1rem 2rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s cubic-bezier(0.39, 0.58, 0.57, 1);
+}
+.menu ul li:nth-of-type(n + 2) a:hover {
+  background-color: #f1caf6;
+  color: rgba(100, 22, 81, 0.8);
+}
+
+footer {
+  background-color: #42424d;
+  text-align: center;
+  padding: 1rem;
+  color: #e4e4e4;
+}
+
+.userPage .accountInfo .popupWindow button,
+.userPage .accountInfo .editName,
+.userPage .accountInfo figcaption a,
+.editPage .main .publishContent .submitSection button:first-of-type,
+.draftPage .main .publishContent .submitSection button:last-of-type,
+.draftPage .main .publishContent .submitSection button:nth-of-type(2),
+.draftPage .main .publishContent .submitSection button:first-of-type,
+.main .publishContent .submitSection button:last-of-type,
+.main .publishContent .submitSection button:first-of-type,
+.courseInfo main .discussBlock button,
+.courseInfo main .postsBlock button,
+.courseInfo main .ratingBlock button,
+.dropdown .dropdownBtn,
+.banner .foreground a.button,
+header nav ul .btnToggle {
+  line-height: 2.2;
+  padding: 0;
+  font-size: 1.5rem;
+  text-decoration: none;
+  outline: none;
+  border: 1px solid rgba(241, 202, 246, 0.8);
+  border-radius: 5px;
+  color: white;
+}
+
+header {
+  background-color: #f1caf6;
+}
+header nav {
+  font-size: 1.1rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+header nav ul {
+  list-style-type: none;
+  padding: 0.8rem 0;
+  margin: 0;
+  margin-left: 2rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: baseline;
+  position: relative;
+}
+@media (max-width: 840px) {
+  header nav ul {
+    margin-left: 1.2rem;
+  }
+}
+header nav ul li {
+  display: inline;
+  margin-right: 1.3rem;
+}
+header nav ul li:last-of-type {
+  display: none;
+}
+@media (max-width: 840px) {
+  header nav ul li:nth-of-type(n + 2) {
+    display: none;
+  }
+  header nav ul li:last-of-type {
+    margin-left: auto;
+    display: inline-block;
+    position: absolute;
+    margin-right: 0;
+    right: 0;
+    top: 10px;
+  }
+}
+header nav ul li.brand {
+  font: italic 600 1.4rem "Exo 2", "Maven Pro", sans-serif;
+  margin-right: 2rem;
+}
+header nav ul li.brand a {
+  color: #641651;
+}
+header nav ul li.active a {
+  color: #641651;
+}
+header nav ul li.primary {
+  font-size: 1.2rem;
+}
+header nav ul li:nth-of-type(3) {
+  margin-right: 1.6rem;
+}
+header nav ul li.rightItem {
+  margin: 0 0 0 auto;
+  padding-right: 4rem;
+  position: relative;
+}
+header nav ul li.rightItem img {
+  display: inline-block;
+  position: absolute;
+  right: 1.5rem;
+  top: -5px;
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  background-color: rgba(100, 22, 81, 0.6);
+  border-radius: 50%;
+  border: 1px solid rgba(60, 60, 60, 0.4);
+}
+header nav ul a {
+  display: inline-block;
+  text-decoration: none;
+  color: rgba(100, 22, 81, 0.6);
+}
+header nav ul a:hover {
+  color: #641651;
+}
+header nav ul .btnToggle {
+  background-color: #f1caf6;
+  border-color: rgba(100, 22, 81, 0.3);
+  padding: 0.4rem 1rem;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+header nav ul .btnToggle:hover {
+  background-color: #f3d2f8;
+}
+header nav ul .btnToggle:active {
+  background-color: #ecbaf3;
+}
+@media (max-width: 840px) {
+  header nav ul.expanded {
+    flex-flow: column;
+  }
+  header nav ul.expanded .brand {
+    margin-bottom: 0.5rem;
+  }
+  header nav ul.expanded li.link {
+    display: block;
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin: 0 auto 0 0;
+  }
+  header nav ul.expanded li.rightItem {
+    padding-right: 4rem;
+  }
+  header nav ul.expanded li.rightItem img {
+    right: 1.2rem;
+    top: 3px;
+  }
+}
+@media (max-width: 420px) {
+  header nav ul.expanded li.link {
+    padding-left: 0.5rem;
+  }
+}
+
+table {
+  table-layout: fixed;
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  border-collapse: collapse;
+  color: #3c3c3c;
+  font-size: 1.1rem;
+}
+table col.primary {
+  width: 25%;
+}
+table col.secondary {
+  width: 18%;
+}
+@media (max-width: 1320px) {
+  table col.secondary {
+    width: 20%;
+  }
+}
+table thead tr {
+  border-bottom: 1px solid rgba(60, 60, 60, 0.2);
+}
+table tbody tr {
+  border-bottom: 1px solid rgba(60, 60, 60, 0.5);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.39, 0.58, 0.57, 1);
+}
+table tbody tr:hover {
+  background-color: #dee8f3;
+}
+table tbody tr:last-of-type {
+  border-bottom: none;
+}
+table th {
+  padding: 0.9rem 0 0.5rem;
+}
+table td {
+  padding: 0.9rem 0;
+  vertical-align: baseline;
+}
+table td.courseNumber {
+  color: rgba(60, 60, 60, 0.8);
+}
+table td.courseName,
+table td.postTitle {
+  font-size: 1.2rem;
+}
+table td.rating {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.courses aside,
+.posts aside {
+  background-color: #ebf1fa;
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 10px;
+  overflow: auto;
+}
+.courses aside table,
+.posts aside table {
+  font-size: 1rem;
+  width: 90%;
+}
+.courses aside table col.check,
+.posts aside table col.check {
+  width: 6%;
+}
+.courses aside table td,
+.posts aside table td {
+  padding: 0.6rem 0;
+}
+.courses aside table td:first-of-type,
+.posts aside table td:first-of-type {
+  padding: 0 0 0 0.5rem;
+}
+.courses aside table td:first-of-type svg,
+.posts aside table td:first-of-type svg {
+  display: none;
+}
+.courses aside table td:first-of-type svg.checked,
+.posts aside table td:first-of-type svg.checked {
+  display: inline;
+}
+.courses aside table td:first-of-type .svg-icon,
+.posts aside table td:first-of-type .svg-icon {
+  margin-bottom: -0.35rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.courses aside table td:first-of-type .svg-icon path,
+.courses aside table td:first-of-type .svg-icon polygon,
+.courses aside table td:first-of-type .svg-icon rect,
+.posts aside table td:first-of-type .svg-icon path,
+.posts aside table td:first-of-type .svg-icon polygon,
+.posts aside table td:first-of-type .svg-icon rect {
+  fill: #325ea0;
+}
+.courses aside table td:first-of-type .svg-icon circle,
+.posts aside table td:first-of-type .svg-icon circle {
+  stroke: #325ea0;
+}
+.courses aside table tbody tr:hover,
+.posts aside table tbody tr:hover {
+  background-color: rgba(200, 209, 214, 0.5);
+}
+
+.banner {
+  background: fixed center 70% / cover no-repeat url("/images/library.jpg");
+  height: 80vh;
+  min-height: 30rem;
+}
+.banner .foreground {
+  height: 100%;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+  color: white;
+  text-align: center;
+  font-family: "Exo 2", "Maven Pro", sans-serif;
+  padding: 4rem 0 3rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+.banner .foreground h1 {
+  font-size: 4rem;
+  font-weight: 300;
+  font-style: italic;
+  margin: 0 0 0.5rem;
+}
+@media (max-width: 632px) {
+  .banner .foreground h1 {
+    font-size: 2.8rem;
+  }
+}
+.banner .foreground h3 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin: 0;
+}
+.banner .foreground a.button {
+  background-color: #a346aa;
+  border-color: #cea6d1;
+  width: 10rem;
+  margin: 5rem auto 0;
+}
+.banner .foreground a.button:hover {
+  background-color: #b859bf;
+}
+.banner .foreground a.button:active {
+  background-color: #813a86;
+}
+
+.dropdown .option {
+  line-height: 1.2;
+  padding: 0;
+  display: block;
+  width: 100%;
+  color: #3c3c3c;
+  background-color: #f0f0f0;
+  font-size: 1.3rem;
+  border: none;
+  outline: none;
+}
+.dropdown .option:hover {
+  background-color: #d4d4d4;
+}
+
+.dropdown {
+  position: relative;
+  min-width: 0;
+}
+.dropdown .dropdownBtn {
+  background-color: #a1d5ff;
+  border-color: #d6e9f9;
+  padding: 0 1rem;
+  width: 100%;
+  color: #193c58;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown .dropdownBtn:hover {
+  background-color: #afdbff;
+}
+.dropdown .dropdownBtn:active {
+  background-color: #52affb;
+}
+.dropdown .dropdownBtn .chosen {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.dropdown .dropdownBtn .fas {
+  margin-left: 1rem;
+}
+.dropdown .drpOptions {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  max-height: 15rem;
+  overflow: auto;
+}
+.dropdown .drpOptions.active {
+  display: block;
+}
+.dropdown .option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 0.6rem;
+}
+.dropdown .option:last-of-type {
+  padding-bottom: 0.9rem;
+}
+.dropdown .option .secondary {
+  font-size: 1.1rem;
+  margin-left: 1rem;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+.tooltip .tooltipBalloon {
+  position: absolute;
+  display: none;
+  background-color: rgba(42, 42, 42, 0.9);
+  color: #f8f8f8;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+.tooltip:hover .tooltipBalloon {
+  display: block;
+}
+
+.popupContent {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 4rem 3rem;
+}
+.popupContent.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popupContent .popupWindow {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 1.4rem 2rem;
+  overflow: auto;
+  max-height: 50vh;
+  max-width: 40rem;
+}
+.popupContent .popupWindow h3 {
+  display: flex;
+  font-size: 1.8rem;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(60, 60, 60, 0.5);
+}
+.popupContent .popupWindow h3 .fas {
+  margin-left: auto;
+  color: rgba(60, 60, 60, 0.6);
+  cursor: pointer;
+}
+.popupContent .popupWindow > div {
+  padding: 0.8rem 0 0.6rem;
+  font-size: 1.2rem;
+}
+
+.courseInfo main .basicInfo {
+  display: grid;
+  grid-template-rows: 4rem 1fr;
+  grid-template-columns: 2rem 1fr 2fr 2rem;
+}
+.courseInfo main .basicInfo h3 {
+  grid-column: 1/4;
+}
+.courseInfo main .basicInfo .infoWrapper {
+  grid-column: 2/4;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(5, 1fr);
+}
+@media (max-width: 1480px) {
+  .courseInfo main .basicInfo .infoWrapper {
+    grid-template-columns: 1fr 2.7fr;
+  }
+}
+@media (max-width: 1012px) {
+  .courseInfo main .basicInfo .infoWrapper {
+    grid-template-columns: 1fr 5fr;
+  }
+}
+@media (max-width: 840px) {
+  .courseInfo main .basicInfo .infoWrapper {
+    grid-template-columns: 1fr 2.7fr;
+  }
+}
+.courseInfo main .basicInfo .infoWrapper .item,
+.courseInfo main .basicInfo .infoWrapper .content {
+  font-size: 1.2rem;
+  place-self: center stretch;
+}
+.courseInfo main .basicInfo .infoWrapper .item {
+  line-height: 1.5;
+  text-align: right;
+  padding-right: 2rem;
+  border-right: 1px solid rgba(60, 60, 60, 0.2);
+}
+@media (max-width: 1680px) and (min-width: 1012px) {
+  .courseInfo main .basicInfo .infoWrapper .item {
+    padding-right: 1rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .basicInfo .infoWrapper .item {
+    padding-right: 1rem;
+  }
+}
+.courseInfo main .basicInfo .infoWrapper .content {
+  padding-left: 2rem;
+}
+@media (max-width: 1680px) and (min-width: 1012px) {
+  .courseInfo main .basicInfo .infoWrapper .content {
+    padding-left: 1rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .basicInfo .infoWrapper .content {
+    padding-left: 1rem;
+  }
+}
+
+.courseInfo main .ratingBlock {
+  display: grid;
+  grid-template-columns: 2fr 5fr 2fr;
+  grid-template-rows: 0.8fr repeat(3, 1fr);
+}
+@media (max-width: 1012px) and (min-width: 840px) {
+  .courseInfo main .ratingBlock {
+    grid-template-columns: 2fr 4fr 2fr;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock {
+    grid-template-columns: 2fr 2.5fr 2.5fr 2fr;
+  }
+}
+@media (max-width: 420px) {
+  .courseInfo main .ratingBlock {
+    grid-template-columns: 3fr 1fr 3fr 2fr;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock h3 {
+    margin-right: 0.8rem;
+    grid-column: span 2;
+  }
+}
+.courseInfo main .ratingBlock button {
+  margin: auto 3rem auto auto;
+  background-color: #198bf6;
+  border-color: #9ac5ed;
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  position: relative;
+  top: 4px;
+  grid-column: 2/4;
+}
+.courseInfo main .ratingBlock button:hover {
+  background-color: #3b9cf8;
+}
+.courseInfo main .ratingBlock button:active {
+  background-color: #0d6fcc;
+}
+.courseInfo main .ratingBlock button .svg-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  position: relative;
+  top: 5px;
+}
+.courseInfo main .ratingBlock button .svg-icon path,
+.courseInfo main .ratingBlock button .svg-icon polygon,
+.courseInfo main .ratingBlock button .svg-icon rect {
+  fill: white;
+}
+.courseInfo main .ratingBlock button .svg-icon circle {
+  stroke: white;
+}
+@media (max-width: 840px) {
+  .courseInfo main .ratingBlock button {
+    margin-right: 1.6rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock button {
+    margin-right: 0.8rem;
+    grid-column: 3/5;
+    font-size: 1.1rem;
+  }
+}
+.courseInfo main .ratingBlock button .svg-icon {
+  top: 6px;
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock button .svg-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    top: 4px;
+  }
+  .courseInfo main .ratingBlock button .svg-icon path,
+  .courseInfo main .ratingBlock button .svg-icon polygon,
+  .courseInfo main .ratingBlock button .svg-icon rect {
+    fill: white;
+  }
+  .courseInfo main .ratingBlock button .svg-icon circle {
+    stroke: white;
+  }
+}
+.courseInfo main .ratingBlock .item,
+.courseInfo main .ratingBlock .content,
+.courseInfo main .ratingBlock .rateScore {
+  place-self: center stretch;
+  font-size: 1.4rem;
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock .item,
+  .courseInfo main .ratingBlock .content,
+  .courseInfo main .ratingBlock .rateScore {
+    font-size: 1.2rem;
+  }
+}
+.courseInfo main .ratingBlock .item {
+  padding-right: 2rem;
+  border-right: 1px solid rgba(60, 60, 60, 0.2);
+  text-align: right;
+  font-weight: 600;
+  line-height: 1.8;
+}
+@media (max-width: 1680px) {
+  .courseInfo main .ratingBlock .item {
+    padding-right: 1.2rem;
+  }
+}
+@media (max-width: 1480px) {
+  .courseInfo main .ratingBlock .item {
+    padding-right: 0.9rem;
+  }
+}
+@media (max-width: 1012px) {
+  .courseInfo main .ratingBlock .item {
+    padding-right: 2rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock .item {
+    padding-right: 0.9rem;
+  }
+}
+.courseInfo main .ratingBlock .content {
+  padding: 1px 0 0 2rem;
+}
+@media (max-width: 1680px) {
+  .courseInfo main .ratingBlock .content {
+    padding-left: 1rem;
+  }
+}
+@media (max-width: 1480px) {
+  .courseInfo main .ratingBlock .content {
+    padding-left: 0.75rem;
+  }
+}
+@media (max-width: 1012px) {
+  .courseInfo main .ratingBlock .content {
+    padding-left: 2rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock .content {
+    padding-left: 0.75rem;
+    grid-column: span 2;
+  }
+}
+@media (max-width: 420px) {
+  .courseInfo main .ratingBlock .content {
+    display: none;
+  }
+}
+.courseInfo main .ratingBlock .content.sweet .svg-icon {
+  width: 3rem;
+  height: 3rem;
+  transform: rotateY(180deg);
+}
+.courseInfo main .ratingBlock .content.sweet .svg-icon path,
+.courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
+.courseInfo main .ratingBlock .content.sweet .svg-icon rect {
+  fill: #ffa9a9;
+}
+.courseInfo main .ratingBlock .content.sweet .svg-icon circle {
+  stroke: #ffa9a9;
+}
+@media (max-width: 1480px) and (min-width: 1012px) {
+  .courseInfo main .ratingBlock .content.sweet .svg-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .courseInfo main .ratingBlock .content.sweet .svg-icon path,
+  .courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.sweet .svg-icon rect {
+    fill: #ffa9a9;
+  }
+  .courseInfo main .ratingBlock .content.sweet .svg-icon circle {
+    stroke: #ffa9a9;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock .content.sweet .svg-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+  .courseInfo main .ratingBlock .content.sweet .svg-icon path,
+  .courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.sweet .svg-icon rect {
+    fill: #ffa9a9;
+  }
+  .courseInfo main .ratingBlock .content.sweet .svg-icon circle {
+    stroke: #ffa9a9;
+  }
+}
+@media (max-width: 420px) {
+  .courseInfo main .ratingBlock .content.sweet .svg-icon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .courseInfo main .ratingBlock .content.sweet .svg-icon path,
+  .courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.sweet .svg-icon rect {
+    fill: #ffa9a9;
+  }
+  .courseInfo main .ratingBlock .content.sweet .svg-icon circle {
+    stroke: #ffa9a9;
+  }
+}
+.courseInfo main .ratingBlock .content.cool .svg-icon {
+  width: 3rem;
+  height: 3rem;
+  transform: rotateY(180deg);
+}
+.courseInfo main .ratingBlock .content.cool .svg-icon path,
+.courseInfo main .ratingBlock .content.cool .svg-icon polygon,
+.courseInfo main .ratingBlock .content.cool .svg-icon rect {
+  fill: #8dbeff;
+}
+.courseInfo main .ratingBlock .content.cool .svg-icon circle {
+  stroke: #8dbeff;
+}
+@media (max-width: 1480px) and (min-width: 1012px) {
+  .courseInfo main .ratingBlock .content.cool .svg-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .courseInfo main .ratingBlock .content.cool .svg-icon path,
+  .courseInfo main .ratingBlock .content.cool .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.cool .svg-icon rect {
+    fill: #8dbeff;
+  }
+  .courseInfo main .ratingBlock .content.cool .svg-icon circle {
+    stroke: #8dbeff;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock .content.cool .svg-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+  .courseInfo main .ratingBlock .content.cool .svg-icon path,
+  .courseInfo main .ratingBlock .content.cool .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.cool .svg-icon rect {
+    fill: #8dbeff;
+  }
+  .courseInfo main .ratingBlock .content.cool .svg-icon circle {
+    stroke: #8dbeff;
+  }
+}
+@media (max-width: 420px) {
+  .courseInfo main .ratingBlock .content.cool .svg-icon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .courseInfo main .ratingBlock .content.cool .svg-icon path,
+  .courseInfo main .ratingBlock .content.cool .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.cool .svg-icon rect {
+    fill: #8dbeff;
+  }
+  .courseInfo main .ratingBlock .content.cool .svg-icon circle {
+    stroke: #8dbeff;
+  }
+}
+.courseInfo main .ratingBlock .content.recommend .svg-icon {
+  width: 3rem;
+  height: 3rem;
+  transform: rotateY(180deg);
+}
+.courseInfo main .ratingBlock .content.recommend .svg-icon path,
+.courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
+.courseInfo main .ratingBlock .content.recommend .svg-icon rect {
+  fill: #95c782;
+}
+.courseInfo main .ratingBlock .content.recommend .svg-icon circle {
+  stroke: #95c782;
+}
+@media (max-width: 1480px) and (min-width: 1012px) {
+  .courseInfo main .ratingBlock .content.recommend .svg-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .courseInfo main .ratingBlock .content.recommend .svg-icon path,
+  .courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.recommend .svg-icon rect {
+    fill: #95c782;
+  }
+  .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
+    stroke: #95c782;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .ratingBlock .content.recommend .svg-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+  .courseInfo main .ratingBlock .content.recommend .svg-icon path,
+  .courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.recommend .svg-icon rect {
+    fill: #95c782;
+  }
+  .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
+    stroke: #95c782;
+  }
+}
+@media (max-width: 420px) {
+  .courseInfo main .ratingBlock .content.recommend .svg-icon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .courseInfo main .ratingBlock .content.recommend .svg-icon path,
+  .courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.recommend .svg-icon rect {
+    fill: #95c782;
+  }
+  .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
+    stroke: #95c782;
+  }
+}
+.courseInfo main .ratingBlock .rateScore {
+  padding-left: 1rem;
+  font-weight: 600;
+}
+@media (max-width: 420px) {
+  .courseInfo main .ratingBlock .rateScore {
+    grid-column: span 3;
+  }
+}
+.courseInfo main .ratingBlock .rateScore.sweet {
+  color: #aa2a2a;
+}
+.courseInfo main .ratingBlock .rateScore.cool {
+  color: #285b9e;
+}
+.courseInfo main .ratingBlock .rateScore.recommend {
+  color: #4a653f;
+}
+
+.courseInfo main .postsBlock {
+  display: grid;
+  grid-template-columns: 3.6rem 1fr 1fr 3rem;
+  grid-template-rows: 5rem 1fr 1.2rem;
+  row-gap: 0.5rem;
+}
+@media (max-width: 840px) {
+  .courseInfo main .postsBlock {
+    grid-template-columns: 2rem 1fr 1fr 1.6rem;
+    grid-template-rows: 5rem 1fr 0.5rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .postsBlock {
+    grid-template-columns: 1rem 1fr 1fr 0.8rem;
+    grid-template-rows: 3rem 1fr 0.5rem;
+    padding-top: 0.5rem;
+    row-gap: 1rem;
+  }
+}
+@media (max-width: 420px) {
+  .courseInfo main .postsBlock {
+    grid-template-columns: 1rem 2fr 3fr 0.8rem;
+  }
+  .courseInfo main .postsBlock h3 {
+    margin: 0 0 0 1.4rem;
+  }
+}
+.courseInfo main .postsBlock h3 {
+  grid-column: 1/3;
+}
+.courseInfo main .postsBlock button {
+  margin: auto 0 auto auto;
+  background-color: #198bf6;
+  border-color: #9ac5ed;
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  position: relative;
+  top: 4px;
+}
+.courseInfo main .postsBlock button:hover {
+  background-color: #3b9cf8;
+}
+.courseInfo main .postsBlock button:active {
+  background-color: #0d6fcc;
+}
+.courseInfo main .postsBlock button .svg-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  position: relative;
+  top: 5px;
+}
+.courseInfo main .postsBlock button .svg-icon path,
+.courseInfo main .postsBlock button .svg-icon polygon,
+.courseInfo main .postsBlock button .svg-icon rect {
+  fill: white;
+}
+.courseInfo main .postsBlock button .svg-icon circle {
+  stroke: white;
+}
+@media (max-width: 632px) {
+  .courseInfo main .postsBlock button {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .postsBlock button .svg-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .courseInfo main .postsBlock button .svg-icon path,
+  .courseInfo main .postsBlock button .svg-icon polygon,
+  .courseInfo main .postsBlock button .svg-icon rect {
+    fill: white;
+  }
+  .courseInfo main .postsBlock button .svg-icon circle {
+    stroke: white;
+  }
+}
+.courseInfo main .postsBlock .postsWrapper {
+  grid-row: 2/3;
+  grid-column: 2/4;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 1.2rem 1.6rem;
+}
+@media (max-width: 632px) {
+  .courseInfo main .postsBlock .postsWrapper {
+    display: flex;
+    flex-flow: column;
+  }
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost {
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  padding: 1rem 1.4rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2rem 1fr;
+  gap: 0.5rem;
+}
+@media (max-width: 632px) {
+  .courseInfo main .postsBlock .postsWrapper .singlePost {
+    padding: 1rem 1.2rem;
+  }
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost h4 {
+  margin: 0;
+  align-self: center;
+  font-size: 1.1rem;
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost h4 a {
+  text-decoration: none;
+  color: #3c3c3c;
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost:first-of-type {
+  grid-template-rows: minmax(2rem, auto) 1fr;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem 0.5rem;
+  grid-row: 1/3;
+  grid-column: 1/3;
+  padding: 1.6rem 2rem;
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost:first-of-type h4 {
+  font-size: 1.4rem;
+}
+@media (max-width: 632px) {
+  .courseInfo main .postsBlock .postsWrapper .singlePost:first-of-type {
+    padding: 1rem 1.2rem;
+  }
+  .courseInfo main .postsBlock .postsWrapper .singlePost:first-of-type h4 {
+    font-size: 1.2rem;
+  }
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost:first-of-type .user {
+  place-self: center end;
+  font-size: 1.2rem;
+}
+.courseInfo main .postsBlock .postsWrapper .singlePost:first-of-type p {
+  grid-column: 1/3;
+  font-size: 1.1rem;
+}
+@media (max-width: 1012px) {
+  .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(2),
+  .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(3) {
+    grid-column: span 2;
+  }
+  .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(n + 4) {
+    display: none;
+  }
+}
+
+.courseInfo main .discussBlock {
+  display: grid;
+  grid-template-columns: 3.6rem 1fr 1fr 3rem;
+  grid-template-rows: 5rem 1fr 1.2rem;
+  row-gap: 0.5rem;
+}
+@media (max-width: 840px) {
+  .courseInfo main .discussBlock {
+    grid-template-columns: 2rem 1fr 1fr 1.6rem;
+    grid-template-rows: 5rem 1fr 0.5rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .discussBlock {
+    grid-template-columns: 1rem 1fr 1fr 0.8rem;
+    grid-template-rows: 3rem 1fr 0.5rem;
+    padding-top: 0.5rem;
+    row-gap: 1rem;
+  }
+}
+@media (max-width: 420px) {
+  .courseInfo main .discussBlock {
+    grid-template-columns: 1rem 2fr 3fr 0.8rem;
+  }
+  .courseInfo main .discussBlock h3 {
+    margin: 0 0 0 1.4rem;
+  }
+}
+.courseInfo main .discussBlock h3 {
+  grid-column: 1/3;
+}
+.courseInfo main .discussBlock button {
+  margin: auto 0 auto auto;
+  background-color: #198bf6;
+  border-color: #9ac5ed;
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  position: relative;
+  top: 4px;
+}
+.courseInfo main .discussBlock button:hover {
+  background-color: #3b9cf8;
+}
+.courseInfo main .discussBlock button:active {
+  background-color: #0d6fcc;
+}
+.courseInfo main .discussBlock button .svg-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  position: relative;
+  top: 5px;
+}
+.courseInfo main .discussBlock button .svg-icon path,
+.courseInfo main .discussBlock button .svg-icon polygon,
+.courseInfo main .discussBlock button .svg-icon rect {
+  fill: white;
+}
+.courseInfo main .discussBlock button .svg-icon circle {
+  stroke: white;
+}
+@media (max-width: 632px) {
+  .courseInfo main .discussBlock button {
+    font-size: 1.1rem;
+    align-self: center;
+  }
+}
+.courseInfo main .discussBlock button .svg-icon {
+  top: 6px;
+}
+@media (max-width: 632px) {
+  .courseInfo main .discussBlock button .svg-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 5px;
+  }
+  .courseInfo main .discussBlock button .svg-icon path,
+  .courseInfo main .discussBlock button .svg-icon polygon,
+  .courseInfo main .discussBlock button .svg-icon rect {
+    fill: white;
+  }
+  .courseInfo main .discussBlock button .svg-icon circle {
+    stroke: white;
+  }
+}
+.courseInfo main .discussBlock .discussWrapper {
+  grid-row: 2/3;
+  grid-column: 2/4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 1.2rem;
+}
+@media (max-width: 632px) {
+  .courseInfo main .discussBlock .discussWrapper {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 6rem;
+    gap: 0.8rem;
+  }
+  .courseInfo main .discussBlock .discussWrapper article:nth-of-type(n + 5) {
+    display: none;
+  }
+}
+.courseInfo main .discussBlock .discussWrapper article {
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-rows: 1fr 0.8fr;
+  grid-template-columns: 3fr 1fr;
+}
+.courseInfo main .discussBlock .discussWrapper article h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  place-self: center start;
+}
+.courseInfo main .discussBlock .discussWrapper article .user {
+  font-size: 1.1rem;
+  place-self: center end;
+}
+.courseInfo main .discussBlock .discussWrapper article time {
+  place-self: start;
+  color: rgba(60, 60, 60, 0.8);
+}
+
+.courseInfo main .scoringBlock {
+  display: grid;
+  grid-template-columns: 3.6rem 1fr 1fr 3rem;
+  grid-template-rows: 5rem 1fr 1.2rem;
+  row-gap: 0.5rem;
+}
+@media (max-width: 840px) {
+  .courseInfo main .scoringBlock {
+    grid-template-columns: 2rem 1fr 1fr 1.6rem;
+    grid-template-rows: 5rem 1fr 0.5rem;
+  }
+}
+@media (max-width: 632px) {
+  .courseInfo main .scoringBlock {
+    grid-template-columns: 1rem 1fr 1fr 0.8rem;
+    grid-template-rows: 3rem 1fr 0.5rem;
+    padding-top: 0.5rem;
+  }
+}
+@media (max-width: 420px) {
+  .courseInfo main .scoringBlock {
+    grid-template-columns: 1rem 2fr 1fr 0.8rem;
+  }
+  .courseInfo main .scoringBlock h3 {
+    margin: 0 0 0 1.4rem;
+  }
+}
+.courseInfo main .scoringBlock h3 {
+  grid-column: 1/3;
+}
+.courseInfo main .scoringBlock .scoringWrapper {
+  grid-row: 2/3;
+  grid-column: 2/4;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.8rem;
+}
+@media (max-width: 632px) {
+  .courseInfo main .scoringBlock .scoringWrapper {
+    grid-template-columns: 1fr;
+  }
+  .courseInfo main .scoringBlock .scoringWrapper div:nth-of-type(n + 2) {
+    display: none;
+  }
+}
+.courseInfo main .scoringBlock .scoringWrapper div {
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 10px;
+  background-color: #f8f8f8;
+}
+
+.postArticle .infoSection {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  grid-template-rows: auto repeat(9, 2rem);
+  align-items: center;
+  row-gap: 0.75rem;
+}
+@media (max-width: 632px) {
+  .postArticle .infoSection {
+    grid-template-columns: 4.8rem 1fr;
+    grid-template-rows: auto repeat(9, minmax(2rem, auto));
+  }
+}
+.postArticle .infoSection h2 {
+  margin-bottom: 0.4rem;
+  grid-column: 1/3;
+}
+.postArticle .infoSection .item,
+.postArticle .infoSection .content {
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+.postArticle .infoSection .item {
+  justify-self: right;
+  padding-right: 1rem;
+  border-right: 1px solid rgba(60, 60, 60, 0.4);
+}
+.postArticle .infoSection .content {
+  padding-left: 1rem;
+}
+.postArticle .infoSection .content .fas {
+  position: relative;
+  top: -1px;
+  font-size: 1.1rem;
+  margin-left: 0.2rem;
+  color: rgba(60, 60, 60, 0.9);
+}
+
+.postArticle .gradeSection .gradeWrapper .classGrading {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 2rem);
+  row-gap: 0.4rem;
+  align-items: center;
+  grid-auto-flow: column dense;
+}
+@media (max-width: 632px) {
+  .postArticle .gradeSection .gradeWrapper .classGrading {
+    grid-template: repeat(6, 2rem) / 1fr 1fr;
+  }
+}
+@media (max-width: 420px) {
+  .postArticle .gradeSection .gradeWrapper .classGrading {
+    grid-template: repeat(10, 2rem) / 1fr;
+  }
+}
+.postArticle .gradeSection .gradeWrapper .classGrading .item {
+  display: flex;
+  padding: 0;
+}
+.postArticle .gradeSection .gradeWrapper .classGrading .item div {
+  padding: 0;
+}
+.postArticle
+  .gradeSection
+  .gradeWrapper
+  .classGrading
+  .item
+  div:nth-of-type(1) {
+  flex: 0 0 3.2rem;
+  font-weight: 600;
+  border-right: 1px solid rgba(60, 60, 60, 0.4);
+}
+.postArticle
+  .gradeSection
+  .gradeWrapper
+  .classGrading
+  .item
+  div:nth-of-type(2) {
+  flex: 1;
+  padding: 0 1rem;
+}
+
+.postArticle .reviewSection div,
+.postArticle .otherSection div {
+  margin-top: 1.2rem;
+  padding-left: 3rem;
+  padding-right: 10rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+@media (max-width: 1012px) {
+  .postArticle .reviewSection div,
+  .postArticle .otherSection div {
+    padding-right: 3rem;
+  }
+}
+@media (max-width: 632px) {
+  .postArticle .reviewSection div,
+  .postArticle .otherSection div {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+}
+.postArticle .reviewSection div {
+  font-size: 1.3rem;
+}
+
+.chooseCourse {
+  display: flex;
+  min-width: 0;
+}
+.chooseCourse .dropdown:nth-of-type(n + 2) {
+  margin-left: 2rem;
+}
+.chooseCourse .semesterDrop {
+  flex: 1 1 180px;
+}
+.chooseCourse .departmentDrop {
+  flex: 2 1 225px;
+}
+.chooseCourse .courseDrop {
+  flex: 3 1 400px;
+}
+@media (max-width: 1012px) {
+  .chooseCourse {
+    flex-flow: row wrap;
+  }
+  .chooseCourse .semesterDrop {
+    flex: 1 1 40%;
+  }
+  .chooseCourse .departmentDrop {
+    flex: 1 1 40%;
+  }
+  .chooseCourse .courseDrop {
+    flex: 1 1 80%;
+  }
+  .chooseCourse .dropdown:last-of-type {
+    margin: 1.5rem 0 0 0;
+  }
+}
+@media (max-width: 632px) {
+  .chooseCourse {
+    flex-flow: column;
+  }
+  .chooseCourse .dropdown:nth-of-type(n + 2) {
+    margin: 1rem 0 0;
+  }
+  .chooseCourse .dropdown .dropdownBtn {
+    font-size: 1.3rem;
+  }
+  .chooseCourse .option {
+    font-size: 1.1rem;
+  }
+}
+
+.userPage .accountInfo .popupWindow input[type="text"],
+.publishPage .articleForm textarea,
+.draftPage .articleForm textarea,
+.editPage .articleForm textarea,
+.publishPage .articleForm input[type="text"],
+.draftPage .articleForm input[type="text"],
+.editPage .articleForm input[type="text"] {
+  padding: 0.6rem 1rem;
+  background-color: #f0f0f0;
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 5px;
+  color: #3c3c3c;
+  font-size: 1.4rem;
+  transition: all 0.3s;
+}
+.userPage .accountInfo .popupWindow input[type="text"]:focus,
+.publishPage .articleForm textarea:focus,
+.draftPage .articleForm textarea:focus,
+.editPage .articleForm textarea:focus,
+.publishPage .articleForm input[type="text"]:focus,
+.draftPage .articleForm input[type="text"]:focus,
+.editPage .articleForm input[type="text"]:focus {
+  background-color: #f8f8f8;
+}
+
+.publishPage .articleForm textarea,
+.draftPage .articleForm textarea,
+.editPage .articleForm textarea {
+  resize: none;
+  line-height: 1.5;
+}
+
+@media (max-width: 632px) {
+  .main .publishContent {
+    padding: 2rem 1.8rem 2rem 1.6rem;
+  }
+}
+.main .publishContent .ratingSection h2 .tooltip {
+  display: inline-block;
+}
+.main .publishContent .ratingSection h2 .fas {
+  margin: 0 0.6rem 0 0.5rem;
+  color: #325ea0;
+}
+.main .publishContent .ratingSection h2 .tooltipBalloon {
+  top: -2px;
+  left: 100%;
+  white-space: nowrap;
+}
+.main .publishContent .ratingSection .ratingWrapper {
+  display: flex;
+}
+@media (max-width: 840px) {
+  .main .publishContent .ratingSection .ratingWrapper {
+    flex-flow: column;
+  }
+}
+.main .publishContent .ratingSection .ratingWrapper .item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 30%;
+}
+.main .publishContent .ratingSection .ratingWrapper .item .fas {
+  margin-right: 0.5rem;
+}
+.main .publishContent .ratingSection .ratingWrapper .item:not(:last-of-type) {
+  margin-right: 2rem;
+}
+@media (max-width: 840px) {
+  .main .publishContent .ratingSection .ratingWrapper .item:not(:last-of-type) {
+    margin: 0 0 1.4rem 0;
+  }
+}
+.main .publishContent .ratingSection .ratingWrapper .item h3 {
+  margin: 0;
+  padding: 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.main .publishContent .ratingSection .ratingWrapper .item input {
+  min-width: 0;
+  flex: 1 1 50%;
+}
+.main .publishContent .detailedSection .detailedWrapper {
+  display: grid;
+  grid-auto-rows: auto;
+  row-gap: 1.5rem;
+}
+.main .publishContent .detailedSection .detailedWrapper .item {
+  display: flex;
+  flex-flow: column;
+}
+.main .publishContent .detailedSection .detailedWrapper h3 {
+  margin: 0 0 0.7rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.main .publishContent .detailedSection .detailedWrapper h3 .fas {
+  margin-right: 0.5rem;
+}
+.main .publishContent .detailedSection .detailedWrapper textarea {
+  margin-left: 1rem;
+}
+.main .publishContent .gradeSection .gradeWrapper {
+  display: flex;
+}
+@media (max-width: 840px) {
+  .main .publishContent .gradeSection .gradeWrapper {
+    flex-flow: column;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper h3 {
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.main .publishContent .gradeSection .gradeWrapper h3 .fas {
+  margin-right: 0.5rem;
+}
+.main .publishContent .gradeSection .gradeWrapper .personal {
+  flex: 1 1 200px;
+}
+@media (max-width: 840px) {
+  .main .publishContent .gradeSection .gradeWrapper .personal {
+    flex: 1 0 auto;
+    margin-bottom: 2rem;
+  }
+}
+@media (max-width: 632px) {
+  .main .publishContent .gradeSection .gradeWrapper .personal .dropdownBtn {
+    font-size: 1.3rem;
+  }
+  .main .publishContent .gradeSection .gradeWrapper .personal .option {
+    font-size: 1.1rem;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper .total {
+  margin-left: 3rem;
+  flex: 3 1 600px;
+}
+@media (max-width: 1012px) {
+  .main .publishContent .gradeSection .gradeWrapper .total {
+    margin-left: 1.2rem;
+  }
+}
+@media (max-width: 840px) {
+  .main .publishContent .gradeSection .gradeWrapper .total {
+    flex: 1 0 auto;
+    margin-left: 0;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper .total .classGrading {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 1.5rem 1rem;
+  align-items: center;
+}
+@media (max-width: 632px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading {
+    gap: 0.8rem 0.4rem;
+  }
+}
+@media (max-width: 420px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading {
+    display: flex;
+    flex-flow: column;
+    gap: 0;
+    align-items: stretch;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper .total .classGrading .item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding-right: 1.5rem;
+  border-right: 1px solid rgba(60, 60, 60, 0.2);
+}
+@media (max-width: 632px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item {
+    padding: 0;
+    border-right: none;
+  }
+}
+@media (max-width: 420px) {
+  .main
+    .publishContent
+    .gradeSection
+    .gradeWrapper
+    .total
+    .classGrading
+    .item:nth-of-type(n + 2) {
+    margin-top: 0.8rem;
+  }
+}
+.main
+  .publishContent
+  .gradeSection
+  .gradeWrapper
+  .total
+  .classGrading
+  .item
+  div {
+  font-size: 1.3rem;
+  font-weight: 600;
+  flex: 0 0 4rem;
+  padding-right: 1rem;
+  text-align: right;
+}
+@media (max-width: 632px) {
+  .main
+    .publishContent
+    .gradeSection
+    .gradeWrapper
+    .total
+    .classGrading
+    .item
+    div {
+    flex: 0 1 4rem;
+    padding: 0 1rem 0 0;
+  }
+}
+@media (max-width: 420px) {
+  .main
+    .publishContent
+    .gradeSection
+    .gradeWrapper
+    .total
+    .classGrading
+    .item
+    div {
+    text-align: left;
+    padding: 0 0 0 0.8rem;
+  }
+}
+.main
+  .publishContent
+  .gradeSection
+  .gradeWrapper
+  .total
+  .classGrading
+  .item
+  input {
+  min-width: 0;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+@media (max-width: 420px) {
+  .main
+    .publishContent
+    .gradeSection
+    .gradeWrapper
+    .total
+    .classGrading
+    .item
+    input {
+    flex: 1 1 40%;
+  }
+}
+.main
+  .publishContent
+  .gradeSection
+  .gradeWrapper
+  .total
+  .classGrading
+  .item:nth-of-type(3n),
+.main
+  .publishContent
+  .gradeSection
+  .gradeWrapper
+  .total
+  .classGrading
+  .item:last-of-type {
+  border-right: none;
+}
+.main .publishContent .submitSection {
+  justify-content: flex-end;
+}
+@media (max-width: 632px) {
+  .main .publishContent .submitSection {
+    align-items: stretch;
+    margin-left: 0.2rem;
+  }
+}
+.main .publishContent .submitSection button {
+  cursor: pointer;
+}
+.main .publishContent .submitSection button:first-of-type {
+  background-color: #4aa0e6;
+  border-color: #aecfe9;
+  margin-right: 2rem;
+  padding: 0 2rem;
+}
+.main .publishContent .submitSection button:first-of-type:hover {
+  background-color: #64aeeb;
+}
+.main .publishContent .submitSection button:first-of-type:active {
+  background-color: #2283d1;
+}
+@media (max-width: 632px) {
+  .main .publishContent .submitSection button:first-of-type {
+    margin: 0 0 1rem 0;
+  }
+}
+.main .publishContent .submitSection button:last-of-type {
+  background-color: #69b145;
+  border-color: #b6d3a7;
+  padding: 0 2rem;
+}
+.main .publishContent .submitSection button:last-of-type:hover {
+  background-color: #7dc35a;
+}
+.main .publishContent .submitSection button:last-of-type:active {
+  background-color: #558b39;
+}
+.main .publishContent .submitSection button .fas {
+  margin-right: 0.4rem;
+}
+
+.draftPage .main .publishContent .submitSection button:first-of-type {
+  background-color: #eb5a55;
+  border-color: #ecb5b3;
+  padding: 0 2rem;
+}
+.draftPage .main .publishContent .submitSection button:first-of-type:hover {
+  background-color: #ef726e;
+}
+.draftPage .main .publishContent .submitSection button:first-of-type:active {
+  background-color: #df2721;
+}
+.draftPage .main .publishContent .submitSection button:nth-of-type(2) {
+  background-color: #4aa0e6;
+  border-color: #aecfe9;
+  padding: 0 2rem;
+}
+.draftPage .main .publishContent .submitSection button:nth-of-type(2):hover {
+  background-color: #64aeeb;
+}
+.draftPage .main .publishContent .submitSection button:nth-of-type(2):active {
+  background-color: #2283d1;
+}
+.draftPage .main .publishContent .submitSection button:last-of-type {
+  background-color: #69b145;
+  border-color: #b6d3a7;
+  padding: 0 2rem;
+}
+.draftPage .main .publishContent .submitSection button:last-of-type:hover {
+  background-color: #7dc35a;
+}
+.draftPage .main .publishContent .submitSection button:last-of-type:active {
+  background-color: #558b39;
+}
+.draftPage .main .publishContent .submitSection button:not(:last-of-type) {
+  margin-right: 2rem;
+}
+@media (max-width: 632px) {
+  .draftPage .main .publishContent .submitSection button:not(:last-of-type) {
+    margin: 0 0 1rem 0;
+  }
+}
+
+.editPage .main .publishContent .submitSection button:first-of-type {
+  background-color: #eb5a55;
+  border-color: #ecb5b3;
+  padding: 0 2rem;
+}
+.editPage .main .publishContent .submitSection button:first-of-type:hover {
+  background-color: #ef726e;
+}
+.editPage .main .publishContent .submitSection button:first-of-type:active {
+  background-color: #df2721;
+}
+
+.userPage .accountInfo img {
+  border-radius: 50%;
+  border: 10px solid rgba(60, 60, 60, 0.5);
+  background: border-box center/cover white;
+}
+.userPage .accountInfo figcaption a {
+  background-color: #198bf6;
+  border-color: #9ac5ed;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.5rem;
+}
+.userPage .accountInfo figcaption a:hover {
+  background-color: #3b9cf8;
+}
+.userPage .accountInfo figcaption a:active {
+  background-color: #0d6fcc;
+}
+.userPage .accountInfo figcaption a .fas {
+  margin-right: 0.5rem;
+}
+
+.userPage .accountInfo .editName {
+  position: absolute;
+  top: -7px;
+  left: calc(100% + 15px);
+  margin-right: 1rem;
+  background-color: #eb8c55;
+  border-color: #ecc8b3;
+  cursor: pointer;
+  padding: 0 0.6rem;
+  line-height: 1.8;
+  font-size: 1.4rem;
+}
+.userPage .accountInfo .editName:hover {
+  background-color: #ef9d6e;
+}
+.userPage .accountInfo .editName:active {
+  background-color: #df6721;
+}
+.userPage .accountInfo .editName .tooltipBalloon {
+  position: absolute;
+  left: calc(100% + 15px);
+  top: 1px;
+  white-space: nowrap;
+  letter-spacing: 0.1rem;
+  line-height: 1.2;
+}
+.userPage .accountInfo .popupWindow {
+  min-width: 30rem;
+}
+.userPage .accountInfo .popupWindow .editContent {
+  display: flex;
+  flex-flow: column;
+}
+.userPage .accountInfo .popupWindow input[type="text"] {
+  margin-top: 0.8rem;
+  background-color: #f8f8f8;
+}
+.userPage .accountInfo .popupWindow .btnGroup {
+  display: flex;
+  margin-top: 1rem;
+}
+.userPage .accountInfo .popupWindow button {
+  background-color: #a346aa;
+  border-color: #cea6d1;
+  line-height: 1.8;
+  padding: 0 1.2rem;
+}
+.userPage .accountInfo .popupWindow button:hover {
+  background-color: #b859bf;
+}
+.userPage .accountInfo .popupWindow button:active {
+  background-color: #813a86;
+}
+.userPage .accountInfo .popupWindow button .fas {
+  margin-right: 0.5rem;
+}
+.userPage .accountInfo .popupWindow button:first-of-type {
+  flex: 1;
+  background-color: #eb5a55;
+  border-color: #ecb5b3;
+}
+.userPage .accountInfo .popupWindow button:first-of-type:hover {
+  background-color: #ef726e;
+}
+.userPage .accountInfo .popupWindow button:first-of-type:active {
+  background-color: #df2721;
+}
+.userPage .accountInfo .popupWindow button:last-of-type {
+  flex: 1;
+  margin-left: 2rem;
+  background-color: #69b145;
+  border-color: #b6d3a7;
+}
+.userPage .accountInfo .popupWindow button:last-of-type:hover {
+  background-color: #7dc35a;
+}
+.userPage .accountInfo .popupWindow button:last-of-type:active {
+  background-color: #558b39;
+}
+
+/*# sourceMappingURL=style.css.map */
