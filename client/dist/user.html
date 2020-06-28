@@ -69,10 +69,27 @@
                 />
                 <figcaption>
                   <a href="https://en.gravatar.com/"
-                    ><i class="fas fa-image"></i> 到 Gravatar 上更改頭像</a
+                    ><i class="fas fa-image"></i> 到 Gravatar 上更改頭貼</a
                   >
                 </figcaption>
               </figure>
+            </div>
+            <div id="namePopup" class="popupContent">
+              <div class="popupWindow">
+                <h3>更改暱稱 <i class="close fas fa-times"></i></h3>
+                <div class="editContent">
+                  <span>輸入新暱稱：</span>
+                  <input type="text" />
+                  <div class="btnGroup">
+                    <button type="button">
+                      <i class="fas fa-times"></i> 取消
+                    </button>
+                    <button type="button">
+                      <i class="fas fa-check"></i> 確認
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="info">
               <h3>Email</h3>
@@ -81,9 +98,14 @@
 
               <span
                 ><span class="nickname"
-                  >sky1234<button class="editName">
-                    <i class="fas fa-pen-alt"></i></button
-                ></span>
+                  >sky1234<button
+                    class="editName popup tooltip"
+                    data-target="#namePopup"
+                  >
+                    <i class="fas fa-pen-alt"></i>
+                    <span class="tooltipBalloon">更改暱稱</span>
+                  </button></span
+                >
               </span>
               <h3>積分</h3>
               <span>0</span>
@@ -93,6 +115,9 @@
               <span><span class="publishLimit">3</span> / 5</span>
               <h3>草稿數量</h3>
               <span><span class="draftLimit">2</span> / 5</span>
+            </div>
+            <div class="savedDrafts">
+              <!-- <h2>我的草稿</h2> -->
             </div>
           </main>
         </div>
