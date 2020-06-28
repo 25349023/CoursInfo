@@ -1,6 +1,6 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
-
+import { Link } from "react-router-dom";
 export default class CoursesList extends React.Component {
     constructor(props) {
         super(props);
@@ -14,16 +14,25 @@ export default class CoursesList extends React.Component {
         if (courses.length) {
             children = courses.map((p) => (
                 <tr data-href="#" key={p.course_number}>
-                    <td className="courseNumber">{p.course_number}</td>
-                    <td className="courseName">{p.course_chinese_title}</td>
-                    <td className="rating">{p.sweet ? p.sweet : "-"}</td>
-                    <td className="rating">{p.cool ? p.cool : "-"}</td>
-                    <td className="rating">
-                        {p.recommend ? p.recommend : "-"}
-                    </td>
-                    <td className="teacher">
-                        {p.teacher ? p.teacher.split("\t")[0] : "-"}
-                    </td>
+                    <Link
+                        to="/info"
+                        params={{
+                            smt: p.course_number.slice(0, 5),
+                            dep: p.department,
+                            subnum: p.course_subnumber,
+                        }}
+                    >
+                        <td className="courseNumber">{p.course_number}</td>
+                        <td className="courseName">{p.course_chinese_title}</td>
+                        <td className="rating">{p.sweet ? p.sweet : "-"}</td>
+                        <td className="rating">{p.cool ? p.cool : "-"}</td>
+                        <td className="rating">
+                            {p.recommend ? p.recommend : "-"}
+                        </td>
+                        <td className="teacher">
+                            {p.teacher ? p.teacher.split("\t")[0] : "-"}
+                        </td>
+                    </Link>
                 </tr>
             ));
         }

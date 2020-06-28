@@ -5,6 +5,7 @@ import Home from "./Home.jsx";
 import Courses from "./Courses.jsx";
 import Posts from "./Posts.jsx";
 import Publish from "./Publish.jsx";
+import Info from "./Info.jsx";
 
 export default class Main extends React.Component {
     constructor(props) {
@@ -50,6 +51,7 @@ export default class Main extends React.Component {
                 <Route path="/courses" render={() => <Courses />} />
                 <Route path="/posts" render={() => <Posts />} />
                 <Route path="/publish" render={() => <Publish />} />
+                <Route path="/info" render={() => <Info />} />
 
                 <footer>
                     Copyright &copy; 2020 Skyline and 憶純晃晃. All Rights

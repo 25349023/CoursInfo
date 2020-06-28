@@ -21,10 +21,10 @@ export function selectDraft(draftId) {
     });
 }
 
-export function createDraft() {
+export function createDraft(post) {
     let url = `${postBaseUrl}/api/drafts`;
     console.log(`Making POST & createdraft request to: ${url}`);
-    return axios.post(url).then(function (res) {
+    return axios.post(url, post).then(function (res) {
         if (res.status !== 200)
             throw new Error(`Unexpected response code: ${res.status}`);
         return res.data;
