@@ -1,0 +1,60 @@
+import React from "react";
+import InfiniteScroll from "react-infinite-scroller";
+
+export default class PostsList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    render() {
+        const { posts, pages } = this.props;
+
+        let children = [];
+        if (posts.length) {
+            children = posts.map((p) => (
+                <tr data-href="#">
+                    <td className="courseName">{p.course_chinese_title}</td>
+                    <td className="teacher">{p.teacher}</td>
+                    <td className="postTitle">{p.title}</td>
+                    <td className="rating">{p.recommend}</td>
+                    <td className="rating">
+                        <span>
+                            {" "}
+                            {p.likes} <i className="fas fa-heart"></i>{" "}
+                        </span>
+                    </td>
+                </tr>
+            ));
+        }
+        return (
+            <table>
+                <colgroup>
+                    <col className="primary" />
+                    <col />
+                    <col className="primary" />
+                    <col />
+                    <col />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">課程名稱</th>
+                        <th scope="col">授課教師</th>
+                        <th scope="col">心得標題</th>
+                        <th scope="col">整體評分</th>
+                        <th scope="col">此心得評價</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <InfiniteScroll
+                        initialLoad={false}
+                        loadMore={this.props.listMorePost}
+                        hasMore={this.props.hasMore}
+                    >
+                        {children}
+                    </InfiniteScroll>
+                </tbody>
+            </table>
+        );
+    }
+}

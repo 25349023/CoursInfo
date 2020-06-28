@@ -55,6 +55,16 @@ export default class Courses extends React.Component {
         );
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.text != prevState.text) {
+            this.catchCourses(
+                this.state.department,
+                this.state.text,
+                this.state.start
+            );
+        }
+    }
+
     inputtext(e) {
         this.setState({
             text: e.target.value,
@@ -66,6 +76,9 @@ export default class Courses extends React.Component {
         if (index != -1) {
             let temp = [...this.state.department];
             temp.splice(index, 1);
+            this.setState({
+                department: temp,
+            });
         } else {
             let temp = [...this.state.department];
             temp.push(dep);
@@ -73,16 +86,11 @@ export default class Courses extends React.Component {
                 department: temp,
             });
         }
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        if (this.state.text != prevState.text) {
-            this.catchCourses(
-                this.state.department,
-                this.state.text,
-                this.state.start
-            );
-        }
+        this.catchCourses(
+            this.state.department,
+            this.state.text,
+            this.state.start
+        );
     }
 
     catchCourses(department, text, start) {
@@ -114,7 +122,7 @@ export default class Courses extends React.Component {
                 console.log(temp);
                 this.setState({
                     start: temp,
-                    courses: courseslist,
+                    courses: [...this.state.courses, ...courseslist],
                     hasMore: courseslist.length > 0,
                 });
             })

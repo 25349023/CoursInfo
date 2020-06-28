@@ -9,6 +9,8 @@ export function listCourses(department, text = "", start) {
         for (let i = 0; i < department.length; i++) {
             query.push(`department=${department[i]}`);
         }
+    } else {
+        query.push(`department=AB`);
     }
     if (text) query.push(`text=${text}`);
     if (start.length) {
@@ -30,6 +32,18 @@ export function listCourses(department, text = "", start) {
 export function selectCourse(smt, dep, subnum) {
     let url = `${postBaseUrl}/api/courses/${smt}-${dep}-${subnum}`;
     console.log(`Making GET & selectCourse request to: ${url}`);
+    return axios.get(url).then(function (res) {
+        if (res.status !== 200)
+            throw new Error(`Unexpected response code: ${res.status}`);
+
+        return res.data;
+    });
+}
+
+export function getdropdown(smt, dep) {
+    let url = `${postBaseUrl}/api/courses/${smt}-${dep}`;
+
+    console.log(`Making GET & createVote request to: ${url}`);
     return axios.get(url).then(function (res) {
         if (res.status !== 200)
             throw new Error(`Unexpected response code: ${res.status}`);

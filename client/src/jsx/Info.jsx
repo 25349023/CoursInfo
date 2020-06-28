@@ -1,5 +1,7 @@
 import React from "react";
 import Menu from "./Menu.jsx";
+import { selectCourse } from "api/Courses_api.js";
+
 export default class Info extends React.Component {
     constructor(props) {
         super(props);
@@ -259,5 +261,11 @@ export default class Info extends React.Component {
     componentDidMount() {
         this.askinfo();
     }
-    askinfo() {}
+    askinfo() {
+        selectCourse(
+            this.props.smt,
+            this.props.dep,
+            this.props.subnum
+        ).then((information) => {}); //?????????????????????
+    }
 }

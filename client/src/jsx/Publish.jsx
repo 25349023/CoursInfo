@@ -1,6 +1,7 @@
 import React from "react";
 import Menu from "./Menu.jsx";
 import { createPost } from "api/Posts_api.js";
+import { getdropdown } from "api/Courses_api.js";
 export default class Publish extends React.Component {
     constructor(props) {
         super(props);
@@ -27,13 +28,26 @@ export default class Publish extends React.Component {
             personalGrade: "",
             classGradeDist: ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
             others: "",
+            dropdownlist: [],
         };
         this.gradelist = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
 
         // this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleDrowndown = this.handleDrowndown.bind(this);
     }
 
     render() {
+        let children = [];
+        if (dropdownlist.length) {
+            children = dropdownlist.map((p) => (
+                <button type="button" className="option">
+                    <span className="primary">
+                        {p.course_number} {p.course_chinese_title}
+                    </span>
+                    <span className="secondary">{p.teacher}</span>
+                </button>
+            ));
+        }
         return (
             <div className="publishPage">
                 <section className="main">
@@ -188,7 +202,10 @@ export default class Publish extends React.Component {
                                         </div>
                                     </div>
 
-                                    <div className="dropdown courseDrop">
+                                    <div
+                                        className="dropdown courseDrop"
+                                        onClick={this.handleDrowndown}
+                                    >
                                         <button
                                             type="button"
                                             id="departmentDropdown"
@@ -200,72 +217,7 @@ export default class Publish extends React.Component {
                                             <i className="fas fa-caret-down"></i>
                                         </button>
                                         <div className="drpOptions">
-                                            <button
-                                                type="button"
-                                                className="option"
-                                            >
-                                                <span className="primary">
-                                                    CS 100000 計算機程式設計一
-                                                </span>
-                                                <span className="secondary">
-                                                    王小明
-                                                </span>
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="option"
-                                            >
-                                                <span className="primary">
-                                                    CS 100010 計算機程式設計一
-                                                </span>
-                                                <span className="secondary">
-                                                    王大明
-                                                </span>
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="option"
-                                            >
-                                                <span className="primary">
-                                                    CS 100000 計算機程式設計一
-                                                </span>
-                                                <span className="secondary">
-                                                    王小明
-                                                </span>
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="option"
-                                            >
-                                                <span className="primary">
-                                                    CS 100010 計算機程式設計一
-                                                </span>
-                                                <span className="secondary">
-                                                    王大明
-                                                </span>
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="option"
-                                            >
-                                                <span className="primary">
-                                                    CS 100000 計算機程式設計一
-                                                </span>
-                                                <span className="secondary">
-                                                    王小明
-                                                </span>
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="option"
-                                            >
-                                                <span className="primary">
-                                                    CS 100010 計算機程式設計一
-                                                </span>
-                                                <span className="secondary">
-                                                    王大明
-                                                </span>
-                                            </button>
+                                            {children}
                                         </div>
                                     </div>
                                 </section>
@@ -1149,5 +1101,12 @@ export default class Publish extends React.Component {
     handleCreatePost() {
         createPost({ ...this.state });
     }
-    //
+
+    handleDrowndown() {
+        getdropdown(this.state.semester, this.state.department).then(
+            (courselist) => {
+                this.setstate({ dropdownlist: courselist });
+            }
+        );
+    }
 }
