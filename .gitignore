@@ -1,1 +1,12 @@
 node_modules
+server/env.sh
+server/log*
+*.crt
+*.key
+
+
+# Elastic Beanstalk Files
+*/.elasticbeanstalk
+*/.elasticbeanstalk/*
+*!.elasticbeanstalk/*.cfg.yml
+*!.elasticbeanstalk/*.global.yml
