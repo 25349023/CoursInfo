@@ -196,9 +196,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type=button],
-[type=reset],
-[type=submit] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
@@ -206,9 +206,9 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -217,9 +217,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type=button]:-moz-focusring,
-[type=reset]:-moz-focusring,
-[type=submit]:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -269,8 +269,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type=checkbox],
-[type=radio] {
+[type="checkbox"],
+[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -280,8 +280,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -289,7 +289,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type=search] {
+[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -299,7 +299,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type=search]::-webkit-search-decoration {
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -346,35 +346,42 @@ template {
   display: none;
 }
 
-.postArticle .gradeSection .gradeWrapper, .postArticle .detailedSection .detailedWrapper {
+.postArticle .gradeSection .gradeWrapper,
+.postArticle .detailedSection .detailedWrapper {
   padding-left: 2.2rem;
 }
 @media (max-width: 632px) {
-  .postArticle .gradeSection .gradeWrapper, .postArticle .detailedSection .detailedWrapper {
+  .postArticle .gradeSection .gradeWrapper,
+  .postArticle .detailedSection .detailedWrapper {
     padding-left: 1.4rem;
   }
 }
-.postArticle .gradeSection .gradeWrapper h3, .postArticle .detailedSection .detailedWrapper h3 {
+.postArticle .gradeSection .gradeWrapper h3,
+.postArticle .detailedSection .detailedWrapper h3 {
   font-size: 1.4rem;
   font-weight: 400;
   margin: 1.5rem 0 0.8rem;
 }
-.postArticle .gradeSection .gradeWrapper h3 .fas, .postArticle .detailedSection .detailedWrapper h3 .fas {
+.postArticle .gradeSection .gradeWrapper h3 .fas,
+.postArticle .detailedSection .detailedWrapper h3 .fas {
   margin-right: 0.5rem;
 }
-.postArticle .gradeSection .gradeWrapper div, .postArticle .detailedSection .detailedWrapper div {
+.postArticle .gradeSection .gradeWrapper div,
+.postArticle .detailedSection .detailedWrapper div {
   padding-left: 3rem;
   padding-right: 10rem;
   font-size: 1.2rem;
   line-height: 1.5;
 }
 @media (max-width: 1012px) {
-  .postArticle .gradeSection .gradeWrapper div, .postArticle .detailedSection .detailedWrapper div {
+  .postArticle .gradeSection .gradeWrapper div,
+  .postArticle .detailedSection .detailedWrapper div {
     padding-right: 3rem;
   }
 }
 @media (max-width: 632px) {
-  .postArticle .gradeSection .gradeWrapper div, .postArticle .detailedSection .detailedWrapper div {
+  .postArticle .gradeSection .gradeWrapper div,
+  .postArticle .detailedSection .detailedWrapper div {
     padding-left: 1.6rem;
     padding-right: 1.6rem;
   }
@@ -478,7 +485,7 @@ section.main > section {
 }
 @media (max-width: 840px) {
   .courses,
-.posts {
+  .posts {
     flex-flow: column-reverse;
   }
 }
@@ -495,8 +502,8 @@ section.main > section {
   position: relative;
   margin-bottom: 1rem;
 }
-.courses main input[type=text],
-.posts main input[type=text] {
+.courses main input[type="text"],
+.posts main input[type="text"] {
   width: 100%;
   padding: 0.6rem 1rem 0.6rem 3rem;
   background-color: #f0f0f0;
@@ -542,8 +549,8 @@ section.main > section {
 
 @media (max-width: 1136px) {
   .courses main col:first-of-type,
-.courses main th:first-of-type,
-.courses main td:first-of-type {
+  .courses main th:first-of-type,
+  .courses main td:first-of-type {
     display: none;
   }
   .courses main col.primary {
@@ -557,10 +564,10 @@ section.main > section {
 }
 @media (max-width: 632px) {
   .courses main col:nth-of-type(3),
-.courses main th:nth-of-type(3),
-.courses main th:nth-of-type(4),
-.courses main td:nth-of-type(3),
-.courses main td:nth-of-type(4) {
+  .courses main th:nth-of-type(3),
+  .courses main th:nth-of-type(4),
+  .courses main td:nth-of-type(3),
+  .courses main td:nth-of-type(4) {
     display: none;
   }
   .courses main col.primary {
@@ -569,15 +576,15 @@ section.main > section {
 }
 @media (max-width: 420px) {
   .courses main col:nth-of-type(4),
-.courses main th:nth-of-type(5),
-.courses main td:nth-of-type(5) {
+  .courses main th:nth-of-type(5),
+  .courses main td:nth-of-type(5) {
     display: none;
   }
   .courses main col.primary {
     width: 65%;
   }
   .courses main td.courseName,
-.courses main td.rating {
+  .courses main td.rating {
     font-size: 1.1rem;
   }
 }
@@ -587,8 +594,8 @@ section.main > section {
 }
 @media (max-width: 1136px) {
   .posts main col:last-of-type,
-.posts main th:last-of-type,
-.posts main td:last-of-type {
+  .posts main th:last-of-type,
+  .posts main td:last-of-type {
     display: none;
   }
   .posts main col.primary {
@@ -602,8 +609,8 @@ section.main > section {
 }
 @media (max-width: 632px) {
   .posts main col:nth-of-type(4),
-.posts main th:nth-of-type(4),
-.posts main td:nth-of-type(4) {
+  .posts main th:nth-of-type(4),
+  .posts main td:nth-of-type(4) {
     display: none;
   }
   .posts main col.primary {
@@ -612,15 +619,15 @@ section.main > section {
 }
 @media (max-width: 420px) {
   .posts main col:nth-of-type(2),
-.posts main th:nth-of-type(2),
-.posts main td:nth-of-type(2) {
+  .posts main th:nth-of-type(2),
+  .posts main td:nth-of-type(2) {
     display: none;
   }
   .posts main col.primary {
     width: 50%;
   }
   .posts main td.courseName,
-.posts main td.postTitle {
+  .posts main td.postTitle {
     font-size: 1.1rem;
   }
 }
@@ -896,6 +903,144 @@ section.main > section {
   }
 }
 
+.editPage .articleForm,
+.publishPage .articleForm,
+.draftPage .articleForm {
+  color: #3c3c3c;
+}
+.editPage .articleForm h1,
+.publishPage .articleForm h1,
+.draftPage .articleForm h1 {
+  font-size: 2.8rem;
+  font-weight: 400;
+  margin: 0 0 2rem 0;
+}
+@media (max-width: 1136px) {
+  .editPage .articleForm h1,
+  .publishPage .articleForm h1,
+  .draftPage .articleForm h1 {
+    font-size: 2.2rem;
+  }
+}
+.editPage .articleForm main,
+.publishPage .articleForm main,
+.draftPage .articleForm main {
+  display: grid;
+  grid-auto-rows: auto;
+  row-gap: 2.4rem;
+}
+.editPage .articleForm main section .titleFlexbox,
+.publishPage .articleForm main section .titleFlexbox,
+.draftPage .articleForm main section .titleFlexbox {
+  display: flex;
+  align-items: baseline;
+  flex-flow: wrap;
+}
+.editPage .articleForm main section .titleFlexbox > div,
+.publishPage .articleForm main section .titleFlexbox > div,
+.draftPage .articleForm main section .titleFlexbox > div {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: rgba(60, 60, 60, 0.7);
+}
+.editPage .articleForm main section .titleFlexbox h3 + div,
+.publishPage .articleForm main section .titleFlexbox h3 + div,
+.draftPage .articleForm main section .titleFlexbox h3 + div {
+  margin-bottom: 1rem;
+}
+.editPage .articleForm main section h2,
+.publishPage .articleForm main section h2,
+.draftPage .articleForm main section h2 {
+  font-size: 1.8rem;
+  padding-left: 1rem;
+  border-left: 10px solid #95c782;
+  margin: 0 0 1.4rem;
+}
+@media (max-width: 632px) {
+  .editPage .articleForm main section h2,
+  .publishPage .articleForm main section h2,
+  .draftPage .articleForm main section h2 {
+    font-size: 1.4rem;
+  }
+}
+.editPage .articleForm main section h2 + *,
+.publishPage .articleForm main section h2 + *,
+.draftPage .articleForm main section h2 + * {
+  margin-left: 2rem;
+}
+@media (max-width: 632px) {
+  .editPage .articleForm main section h2 + *,
+  .publishPage .articleForm main section h2 + *,
+  .draftPage .articleForm main section h2 + * {
+    margin-left: 1rem;
+  }
+}
+.editPage .articleForm main section:nth-of-type(n + 2),
+.publishPage .articleForm main section:nth-of-type(n + 2),
+.draftPage .articleForm main section:nth-of-type(n + 2) {
+  display: flex;
+  flex-flow: column;
+  min-width: 0;
+}
+.editPage .articleForm main section:last-of-type,
+.publishPage .articleForm main section:last-of-type,
+.draftPage .articleForm main section:last-of-type {
+  flex-flow: row;
+}
+@media (max-width: 632px) {
+  .editPage .articleForm main section:last-of-type,
+  .publishPage .articleForm main section:last-of-type,
+  .draftPage .articleForm main section:last-of-type {
+    flex-flow: column;
+  }
+}
+
+.userPage .accountInfo {
+  color: #3c3c3c;
+}
+.userPage .accountInfo h1 {
+  font-size: 2.8rem;
+  font-weight: 400;
+  margin: 0 0 2rem 0;
+}
+@media (max-width: 1136px) {
+  .userPage .accountInfo h1 {
+    font-size: 2.2rem;
+  }
+}
+.userPage .accountInfo main .imgWrapper {
+  display: flex;
+}
+.userPage .accountInfo main figure {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 0 2rem;
+}
+.userPage .accountInfo main figcaption {
+  margin-top: 1.5rem;
+}
+.userPage .accountInfo main .info {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  row-gap: 1.6rem;
+  margin: 3rem 0 0 2rem;
+}
+.userPage .accountInfo main .info h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  padding-left: 1rem;
+  border-left: 10px solid rgba(50, 94, 160, 0.8);
+}
+.userPage .accountInfo main .info > span {
+  border-left: 1px solid rgba(60, 60, 60, 0.4);
+  font-size: 1.5rem;
+  padding-left: 1rem;
+}
+.userPage .accountInfo main .info .nickname {
+  position: relative;
+}
+
 .menu {
   background-color: #7e5f80;
   flex: 1 0 200px;
@@ -945,7 +1090,21 @@ footer {
   color: #e4e4e4;
 }
 
-.courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, .banner .foreground a.button, header nav ul .btnToggle {
+.userPage .accountInfo .popupWindow button,
+.userPage .accountInfo .editName,
+.userPage .accountInfo figcaption a,
+.editPage .main .publishContent .submitSection button:first-of-type,
+.draftPage .main .publishContent .submitSection button:last-of-type,
+.draftPage .main .publishContent .submitSection button:nth-of-type(2),
+.draftPage .main .publishContent .submitSection button:first-of-type,
+.main .publishContent .submitSection button:last-of-type,
+.main .publishContent .submitSection button:first-of-type,
+.courseInfo main .discussBlock button,
+.courseInfo main .postsBlock button,
+.courseInfo main .ratingBlock button,
+.dropdown .dropdownBtn,
+.banner .foreground a.button,
+header nav ul .btnToggle {
   line-height: 2.2;
   padding: 0;
   font-size: 1.5rem;
@@ -1124,7 +1283,8 @@ table td {
 table td.courseNumber {
   color: rgba(60, 60, 60, 0.8);
 }
-table td.courseName, table td.postTitle {
+table td.courseName,
+table td.postTitle {
   font-size: 1.2rem;
 }
 table td.rating {
@@ -1188,7 +1348,7 @@ table td.rating {
 }
 
 .banner {
-  background: fixed center 70%/cover no-repeat url("/images/library.jpg");
+  background: fixed center 70% / cover no-repeat url("/images/library.jpg");
   height: 80vh;
   min-height: 30rem;
 }
@@ -1230,6 +1390,134 @@ table td.rating {
 }
 .banner .foreground a.button:active {
   background-color: #813a86;
+}
+
+.dropdown .option {
+  line-height: 1.2;
+  padding: 0;
+  display: block;
+  width: 100%;
+  color: #3c3c3c;
+  background-color: #f0f0f0;
+  font-size: 1.3rem;
+  border: none;
+  outline: none;
+}
+.dropdown .option:hover {
+  background-color: #d4d4d4;
+}
+
+.dropdown {
+  position: relative;
+  min-width: 0;
+}
+.dropdown .dropdownBtn {
+  background-color: #a1d5ff;
+  border-color: #d6e9f9;
+  padding: 0 1rem;
+  width: 100%;
+  color: #193c58;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown .dropdownBtn:hover {
+  background-color: #afdbff;
+}
+.dropdown .dropdownBtn:active {
+  background-color: #52affb;
+}
+.dropdown .dropdownBtn .chosen {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.dropdown .dropdownBtn .fas {
+  margin-left: 1rem;
+}
+.dropdown .drpOptions {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  max-height: 15rem;
+  overflow: auto;
+}
+.dropdown .drpOptions.active {
+  display: block;
+}
+.dropdown .option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 0.6rem;
+}
+.dropdown .option:last-of-type {
+  padding-bottom: 0.9rem;
+}
+.dropdown .option .secondary {
+  font-size: 1.1rem;
+  margin-left: 1rem;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+.tooltip .tooltipBalloon {
+  position: absolute;
+  display: none;
+  background-color: rgba(42, 42, 42, 0.9);
+  color: #f8f8f8;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+.tooltip:hover .tooltipBalloon {
+  display: block;
+}
+
+.popupContent {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 4rem 3rem;
+}
+.popupContent.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popupContent .popupWindow {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 1.4rem 2rem;
+  overflow: auto;
+  max-height: 50vh;
+  max-width: 40rem;
+}
+.popupContent .popupWindow h3 {
+  display: flex;
+  font-size: 1.8rem;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(60, 60, 60, 0.5);
+}
+.popupContent .popupWindow h3 .fas {
+  margin-left: auto;
+  color: rgba(60, 60, 60, 0.6);
+  cursor: pointer;
+}
+.popupContent .popupWindow > div {
+  padding: 0.8rem 0 0.6rem;
+  font-size: 1.2rem;
 }
 
 .courseInfo main .basicInfo {
@@ -1375,8 +1663,8 @@ table td.rating {
     top: 4px;
   }
   .courseInfo main .ratingBlock button .svg-icon path,
-.courseInfo main .ratingBlock button .svg-icon polygon,
-.courseInfo main .ratingBlock button .svg-icon rect {
+  .courseInfo main .ratingBlock button .svg-icon polygon,
+  .courseInfo main .ratingBlock button .svg-icon rect {
     fill: white;
   }
   .courseInfo main .ratingBlock button .svg-icon circle {
@@ -1391,8 +1679,8 @@ table td.rating {
 }
 @media (max-width: 632px) {
   .courseInfo main .ratingBlock .item,
-.courseInfo main .ratingBlock .content,
-.courseInfo main .ratingBlock .rateScore {
+  .courseInfo main .ratingBlock .content,
+  .courseInfo main .ratingBlock .rateScore {
     font-size: 1.2rem;
   }
 }
@@ -1471,8 +1759,8 @@ table td.rating {
     height: 2.4rem;
   }
   .courseInfo main .ratingBlock .content.sweet .svg-icon path,
-.courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
-.courseInfo main .ratingBlock .content.sweet .svg-icon rect {
+  .courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.sweet .svg-icon rect {
     fill: #ffa9a9;
   }
   .courseInfo main .ratingBlock .content.sweet .svg-icon circle {
@@ -1485,8 +1773,8 @@ table td.rating {
     height: 2.2rem;
   }
   .courseInfo main .ratingBlock .content.sweet .svg-icon path,
-.courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
-.courseInfo main .ratingBlock .content.sweet .svg-icon rect {
+  .courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.sweet .svg-icon rect {
     fill: #ffa9a9;
   }
   .courseInfo main .ratingBlock .content.sweet .svg-icon circle {
@@ -1499,8 +1787,8 @@ table td.rating {
     height: 1.8rem;
   }
   .courseInfo main .ratingBlock .content.sweet .svg-icon path,
-.courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
-.courseInfo main .ratingBlock .content.sweet .svg-icon rect {
+  .courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.sweet .svg-icon rect {
     fill: #ffa9a9;
   }
   .courseInfo main .ratingBlock .content.sweet .svg-icon circle {
@@ -1526,8 +1814,8 @@ table td.rating {
     height: 2.4rem;
   }
   .courseInfo main .ratingBlock .content.cool .svg-icon path,
-.courseInfo main .ratingBlock .content.cool .svg-icon polygon,
-.courseInfo main .ratingBlock .content.cool .svg-icon rect {
+  .courseInfo main .ratingBlock .content.cool .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.cool .svg-icon rect {
     fill: #8dbeff;
   }
   .courseInfo main .ratingBlock .content.cool .svg-icon circle {
@@ -1540,8 +1828,8 @@ table td.rating {
     height: 2.2rem;
   }
   .courseInfo main .ratingBlock .content.cool .svg-icon path,
-.courseInfo main .ratingBlock .content.cool .svg-icon polygon,
-.courseInfo main .ratingBlock .content.cool .svg-icon rect {
+  .courseInfo main .ratingBlock .content.cool .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.cool .svg-icon rect {
     fill: #8dbeff;
   }
   .courseInfo main .ratingBlock .content.cool .svg-icon circle {
@@ -1554,8 +1842,8 @@ table td.rating {
     height: 1.8rem;
   }
   .courseInfo main .ratingBlock .content.cool .svg-icon path,
-.courseInfo main .ratingBlock .content.cool .svg-icon polygon,
-.courseInfo main .ratingBlock .content.cool .svg-icon rect {
+  .courseInfo main .ratingBlock .content.cool .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.cool .svg-icon rect {
     fill: #8dbeff;
   }
   .courseInfo main .ratingBlock .content.cool .svg-icon circle {
@@ -1581,8 +1869,8 @@ table td.rating {
     height: 2.4rem;
   }
   .courseInfo main .ratingBlock .content.recommend .svg-icon path,
-.courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
-.courseInfo main .ratingBlock .content.recommend .svg-icon rect {
+  .courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.recommend .svg-icon rect {
     fill: #95c782;
   }
   .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
@@ -1595,8 +1883,8 @@ table td.rating {
     height: 2.2rem;
   }
   .courseInfo main .ratingBlock .content.recommend .svg-icon path,
-.courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
-.courseInfo main .ratingBlock .content.recommend .svg-icon rect {
+  .courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.recommend .svg-icon rect {
     fill: #95c782;
   }
   .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
@@ -1609,8 +1897,8 @@ table td.rating {
     height: 1.8rem;
   }
   .courseInfo main .ratingBlock .content.recommend .svg-icon path,
-.courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
-.courseInfo main .ratingBlock .content.recommend .svg-icon rect {
+  .courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.recommend .svg-icon rect {
     fill: #95c782;
   }
   .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
@@ -1707,8 +1995,8 @@ table td.rating {
     height: 1.5rem;
   }
   .courseInfo main .postsBlock button .svg-icon path,
-.courseInfo main .postsBlock button .svg-icon polygon,
-.courseInfo main .postsBlock button .svg-icon rect {
+  .courseInfo main .postsBlock button .svg-icon polygon,
+  .courseInfo main .postsBlock button .svg-icon rect {
     fill: white;
   }
   .courseInfo main .postsBlock button .svg-icon circle {
@@ -1786,7 +2074,8 @@ table td.rating {
   font-size: 1.1rem;
 }
 @media (max-width: 1012px) {
-  .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(2), .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(3) {
+  .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(2),
+  .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(3) {
     grid-column: span 2;
   }
   .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(n + 4) {
@@ -1870,8 +2159,8 @@ table td.rating {
     top: 5px;
   }
   .courseInfo main .discussBlock button .svg-icon path,
-.courseInfo main .discussBlock button .svg-icon polygon,
-.courseInfo main .discussBlock button .svg-icon rect {
+  .courseInfo main .discussBlock button .svg-icon polygon,
+  .courseInfo main .discussBlock button .svg-icon rect {
     fill: white;
   }
   .courseInfo main .discussBlock button .svg-icon circle {
@@ -1973,14 +2262,14 @@ table td.rating {
 .postArticle .infoSection {
   display: grid;
   grid-template-columns: 6rem 1fr;
-  grid-template-rows: auto repeat(8, 2rem);
+  grid-template-rows: auto repeat(9, 2rem);
   align-items: center;
   row-gap: 0.75rem;
 }
 @media (max-width: 632px) {
   .postArticle .infoSection {
     grid-template-columns: 4.8rem 1fr;
-    grid-template-rows: auto repeat(8, minmax(2rem, auto));
+    grid-template-rows: auto repeat(9, minmax(2rem, auto));
   }
 }
 .postArticle .infoSection h2 {
@@ -2018,12 +2307,12 @@ table td.rating {
 }
 @media (max-width: 632px) {
   .postArticle .gradeSection .gradeWrapper .classGrading {
-    grid-template: repeat(6, 2rem)/1fr 1fr;
+    grid-template: repeat(6, 2rem) / 1fr 1fr;
   }
 }
 @media (max-width: 420px) {
   .postArticle .gradeSection .gradeWrapper .classGrading {
-    grid-template: repeat(10, 2rem)/1fr;
+    grid-template: repeat(10, 2rem) / 1fr;
   }
 }
 .postArticle .gradeSection .gradeWrapper .classGrading .item {
@@ -2033,12 +2322,22 @@ table td.rating {
 .postArticle .gradeSection .gradeWrapper .classGrading .item div {
   padding: 0;
 }
-.postArticle .gradeSection .gradeWrapper .classGrading .item div:nth-of-type(1) {
+.postArticle
+  .gradeSection
+  .gradeWrapper
+  .classGrading
+  .item
+  div:nth-of-type(1) {
   flex: 0 0 3.2rem;
   font-weight: 600;
   border-right: 1px solid rgba(60, 60, 60, 0.4);
 }
-.postArticle .gradeSection .gradeWrapper .classGrading .item div:nth-of-type(2) {
+.postArticle
+  .gradeSection
+  .gradeWrapper
+  .classGrading
+  .item
+  div:nth-of-type(2) {
   flex: 1;
   padding: 0 1rem;
 }
@@ -2053,19 +2352,543 @@ table td.rating {
 }
 @media (max-width: 1012px) {
   .postArticle .reviewSection div,
-.postArticle .otherSection div {
+  .postArticle .otherSection div {
     padding-right: 3rem;
   }
 }
 @media (max-width: 632px) {
   .postArticle .reviewSection div,
-.postArticle .otherSection div {
+  .postArticle .otherSection div {
     padding-left: 1.6rem;
     padding-right: 1.6rem;
   }
 }
 .postArticle .reviewSection div {
   font-size: 1.3rem;
+}
+
+.chooseCourse {
+  display: flex;
+  min-width: 0;
+}
+.chooseCourse .dropdown:nth-of-type(n + 2) {
+  margin-left: 2rem;
+}
+.chooseCourse .semesterDrop {
+  flex: 1 1 180px;
+}
+.chooseCourse .departmentDrop {
+  flex: 2 1 225px;
+}
+.chooseCourse .courseDrop {
+  flex: 3 1 400px;
+}
+@media (max-width: 1012px) {
+  .chooseCourse {
+    flex-flow: row wrap;
+  }
+  .chooseCourse .semesterDrop {
+    flex: 1 1 40%;
+  }
+  .chooseCourse .departmentDrop {
+    flex: 1 1 40%;
+  }
+  .chooseCourse .courseDrop {
+    flex: 1 1 80%;
+  }
+  .chooseCourse .dropdown:last-of-type {
+    margin: 1.5rem 0 0 0;
+  }
+}
+@media (max-width: 632px) {
+  .chooseCourse {
+    flex-flow: column;
+  }
+  .chooseCourse .dropdown:nth-of-type(n + 2) {
+    margin: 1rem 0 0;
+  }
+  .chooseCourse .dropdown .dropdownBtn {
+    font-size: 1.3rem;
+  }
+  .chooseCourse .option {
+    font-size: 1.1rem;
+  }
+}
+
+.userPage .accountInfo .popupWindow input[type="text"],
+.publishPage .articleForm textarea,
+.draftPage .articleForm textarea,
+.editPage .articleForm textarea,
+.publishPage .articleForm input[type="text"],
+.draftPage .articleForm input[type="text"],
+.editPage .articleForm input[type="text"] {
+  padding: 0.6rem 1rem;
+  background-color: #f0f0f0;
+  border: 1px solid rgba(60, 60, 60, 0.2);
+  border-radius: 5px;
+  color: #3c3c3c;
+  font-size: 1.4rem;
+  transition: all 0.3s;
+}
+.userPage .accountInfo .popupWindow input[type="text"]:focus,
+.publishPage .articleForm textarea:focus,
+.draftPage .articleForm textarea:focus,
+.editPage .articleForm textarea:focus,
+.publishPage .articleForm input[type="text"]:focus,
+.draftPage .articleForm input[type="text"]:focus,
+.editPage .articleForm input[type="text"]:focus {
+  background-color: #f8f8f8;
+}
+
+.publishPage .articleForm textarea,
+.draftPage .articleForm textarea,
+.editPage .articleForm textarea {
+  resize: none;
+  line-height: 1.5;
+}
+
+@media (max-width: 632px) {
+  .main .publishContent {
+    padding: 2rem 1.8rem 2rem 1.6rem;
+  }
+}
+.main .publishContent .ratingSection h2 .tooltip {
+  display: inline-block;
+}
+.main .publishContent .ratingSection h2 .fas {
+  margin: 0 0.6rem 0 0.5rem;
+  color: #325ea0;
+}
+.main .publishContent .ratingSection h2 .tooltipBalloon {
+  top: -2px;
+  left: 100%;
+  white-space: nowrap;
+}
+.main .publishContent .ratingSection .ratingWrapper {
+  display: flex;
+}
+@media (max-width: 840px) {
+  .main .publishContent .ratingSection .ratingWrapper {
+    flex-flow: column;
+  }
+}
+.main .publishContent .ratingSection .ratingWrapper .item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 30%;
+}
+.main .publishContent .ratingSection .ratingWrapper .item .fas {
+  margin-right: 0.5rem;
+}
+.main .publishContent .ratingSection .ratingWrapper .item:not(:last-of-type) {
+  margin-right: 2rem;
+}
+@media (max-width: 840px) {
+  .main .publishContent .ratingSection .ratingWrapper .item:not(:last-of-type) {
+    margin: 0 0 1.4rem 0;
+  }
+}
+.main .publishContent .ratingSection .ratingWrapper .item h3 {
+  margin: 0;
+  padding: 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.main .publishContent .ratingSection .ratingWrapper .item input {
+  min-width: 0;
+  flex: 1 1 50%;
+}
+.main .publishContent .detailedSection .detailedWrapper {
+  display: grid;
+  grid-auto-rows: auto;
+  row-gap: 1.5rem;
+}
+.main .publishContent .detailedSection .detailedWrapper .item {
+  display: flex;
+  flex-flow: column;
+}
+.main .publishContent .detailedSection .detailedWrapper h3 {
+  margin: 0 0 0.7rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.main .publishContent .detailedSection .detailedWrapper h3 .fas {
+  margin-right: 0.5rem;
+}
+.main .publishContent .detailedSection .detailedWrapper textarea {
+  margin-left: 1rem;
+}
+.main .publishContent .gradeSection .gradeWrapper {
+  display: flex;
+}
+@media (max-width: 840px) {
+  .main .publishContent .gradeSection .gradeWrapper {
+    flex-flow: column;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper h3 {
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.main .publishContent .gradeSection .gradeWrapper h3 .fas {
+  margin-right: 0.5rem;
+}
+.main .publishContent .gradeSection .gradeWrapper .personal {
+  flex: 1 1 200px;
+}
+@media (max-width: 840px) {
+  .main .publishContent .gradeSection .gradeWrapper .personal {
+    flex: 1 0 auto;
+    margin-bottom: 2rem;
+  }
+}
+@media (max-width: 632px) {
+  .main .publishContent .gradeSection .gradeWrapper .personal .dropdownBtn {
+    font-size: 1.3rem;
+  }
+  .main .publishContent .gradeSection .gradeWrapper .personal .option {
+    font-size: 1.1rem;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper .total {
+  margin-left: 3rem;
+  flex: 3 1 600px;
+}
+@media (max-width: 1012px) {
+  .main .publishContent .gradeSection .gradeWrapper .total {
+    margin-left: 1.2rem;
+  }
+}
+@media (max-width: 840px) {
+  .main .publishContent .gradeSection .gradeWrapper .total {
+    flex: 1 0 auto;
+    margin-left: 0;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper .total .classGrading {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 1.5rem 1rem;
+  align-items: center;
+}
+@media (max-width: 632px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading {
+    gap: 0.8rem 0.4rem;
+  }
+}
+@media (max-width: 420px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading {
+    display: flex;
+    flex-flow: column;
+    gap: 0;
+    align-items: stretch;
+  }
+}
+.main .publishContent .gradeSection .gradeWrapper .total .classGrading .item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding-right: 1.5rem;
+  border-right: 1px solid rgba(60, 60, 60, 0.2);
+}
+@media (max-width: 632px) {
+  .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item {
+    padding: 0;
+    border-right: none;
+  }
+}
+@media (max-width: 420px) {
+  .main
+    .publishContent
+    .gradeSection
+    .gradeWrapper
+    .total
+    .classGrading
+    .item:nth-of-type(n + 2) {
+    margin-top: 0.8rem;
+  }
+}
+.main
+  .publishContent
+  .gradeSection
+  .gradeWrapper
+  .total
+  .classGrading
+  .item
+  div {
+  font-size: 1.3rem;
+  font-weight: 600;
+  flex: 0 0 4rem;
+  padding-right: 1rem;
+  text-align: right;
+}
+@media (max-width: 632px) {
+  .main
+    .publishContent
+    .gradeSection
+    .gradeWrapper
+    .total
+    .classGrading
+    .item
+    div {
+    flex: 0 1 4rem;
+    padding: 0 1rem 0 0;
+  }
+}
+@media (max-width: 420px) {
+  .main
+    .publishContent
+    .gradeSection
+    .gradeWrapper
+    .total
+    .classGrading
+    .item
+    div {
+    text-align: left;
+    padding: 0 0 0 0.8rem;
+  }
+}
+.main
+  .publishContent
+  .gradeSection
+  .gradeWrapper
+  .total
+  .classGrading
+  .item
+  input {
+  min-width: 0;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+@media (max-width: 420px) {
+  .main
+    .publishContent
+    .gradeSection
+    .gradeWrapper
+    .total
+    .classGrading
+    .item
+    input {
+    flex: 1 1 40%;
+  }
+}
+.main
+  .publishContent
+  .gradeSection
+  .gradeWrapper
+  .total
+  .classGrading
+  .item:nth-of-type(3n),
+.main
+  .publishContent
+  .gradeSection
+  .gradeWrapper
+  .total
+  .classGrading
+  .item:last-of-type {
+  border-right: none;
+}
+.main .publishContent .submitSection {
+  justify-content: flex-end;
+}
+@media (max-width: 632px) {
+  .main .publishContent .submitSection {
+    align-items: stretch;
+    margin-left: 0.2rem;
+  }
+}
+.main .publishContent .submitSection button {
+  cursor: pointer;
+}
+.main .publishContent .submitSection button:first-of-type {
+  background-color: #4aa0e6;
+  border-color: #aecfe9;
+  margin-right: 2rem;
+  padding: 0 2rem;
+}
+.main .publishContent .submitSection button:first-of-type:hover {
+  background-color: #64aeeb;
+}
+.main .publishContent .submitSection button:first-of-type:active {
+  background-color: #2283d1;
+}
+@media (max-width: 632px) {
+  .main .publishContent .submitSection button:first-of-type {
+    margin: 0 0 1rem 0;
+  }
+}
+.main .publishContent .submitSection button:last-of-type {
+  background-color: #69b145;
+  border-color: #b6d3a7;
+  padding: 0 2rem;
+}
+.main .publishContent .submitSection button:last-of-type:hover {
+  background-color: #7dc35a;
+}
+.main .publishContent .submitSection button:last-of-type:active {
+  background-color: #558b39;
+}
+.main .publishContent .submitSection button .fas {
+  margin-right: 0.4rem;
+}
+
+.draftPage .main .publishContent .submitSection button:first-of-type {
+  background-color: #eb5a55;
+  border-color: #ecb5b3;
+  padding: 0 2rem;
+}
+.draftPage .main .publishContent .submitSection button:first-of-type:hover {
+  background-color: #ef726e;
+}
+.draftPage .main .publishContent .submitSection button:first-of-type:active {
+  background-color: #df2721;
+}
+.draftPage .main .publishContent .submitSection button:nth-of-type(2) {
+  background-color: #4aa0e6;
+  border-color: #aecfe9;
+  padding: 0 2rem;
+}
+.draftPage .main .publishContent .submitSection button:nth-of-type(2):hover {
+  background-color: #64aeeb;
+}
+.draftPage .main .publishContent .submitSection button:nth-of-type(2):active {
+  background-color: #2283d1;
+}
+.draftPage .main .publishContent .submitSection button:last-of-type {
+  background-color: #69b145;
+  border-color: #b6d3a7;
+  padding: 0 2rem;
+}
+.draftPage .main .publishContent .submitSection button:last-of-type:hover {
+  background-color: #7dc35a;
+}
+.draftPage .main .publishContent .submitSection button:last-of-type:active {
+  background-color: #558b39;
+}
+.draftPage .main .publishContent .submitSection button:not(:last-of-type) {
+  margin-right: 2rem;
+}
+@media (max-width: 632px) {
+  .draftPage .main .publishContent .submitSection button:not(:last-of-type) {
+    margin: 0 0 1rem 0;
+  }
+}
+
+.editPage .main .publishContent .submitSection button:first-of-type {
+  background-color: #eb5a55;
+  border-color: #ecb5b3;
+  padding: 0 2rem;
+}
+.editPage .main .publishContent .submitSection button:first-of-type:hover {
+  background-color: #ef726e;
+}
+.editPage .main .publishContent .submitSection button:first-of-type:active {
+  background-color: #df2721;
+}
+
+.userPage .accountInfo img {
+  border-radius: 50%;
+  border: 10px solid rgba(60, 60, 60, 0.5);
+  background: border-box center/cover white;
+}
+.userPage .accountInfo figcaption a {
+  background-color: #198bf6;
+  border-color: #9ac5ed;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.5rem;
+}
+.userPage .accountInfo figcaption a:hover {
+  background-color: #3b9cf8;
+}
+.userPage .accountInfo figcaption a:active {
+  background-color: #0d6fcc;
+}
+.userPage .accountInfo figcaption a .fas {
+  margin-right: 0.5rem;
+}
+
+.userPage .accountInfo .editName {
+  position: absolute;
+  top: -7px;
+  left: calc(100% + 15px);
+  margin-right: 1rem;
+  background-color: #eb8c55;
+  border-color: #ecc8b3;
+  cursor: pointer;
+  padding: 0 0.6rem;
+  line-height: 1.8;
+  font-size: 1.4rem;
+}
+.userPage .accountInfo .editName:hover {
+  background-color: #ef9d6e;
+}
+.userPage .accountInfo .editName:active {
+  background-color: #df6721;
+}
+.userPage .accountInfo .editName .tooltipBalloon {
+  position: absolute;
+  left: calc(100% + 15px);
+  top: 1px;
+  white-space: nowrap;
+  letter-spacing: 0.1rem;
+  line-height: 1.2;
+}
+.userPage .accountInfo .popupWindow {
+  min-width: 30rem;
+}
+.userPage .accountInfo .popupWindow .editContent {
+  display: flex;
+  flex-flow: column;
+}
+.userPage .accountInfo .popupWindow input[type="text"] {
+  margin-top: 0.8rem;
+  background-color: #f8f8f8;
+}
+.userPage .accountInfo .popupWindow .btnGroup {
+  display: flex;
+  margin-top: 1rem;
+}
+.userPage .accountInfo .popupWindow button {
+  background-color: #a346aa;
+  border-color: #cea6d1;
+  line-height: 1.8;
+  padding: 0 1.2rem;
+}
+.userPage .accountInfo .popupWindow button:hover {
+  background-color: #b859bf;
+}
+.userPage .accountInfo .popupWindow button:active {
+  background-color: #813a86;
+}
+.userPage .accountInfo .popupWindow button .fas {
+  margin-right: 0.5rem;
+}
+.userPage .accountInfo .popupWindow button:first-of-type {
+  flex: 1;
+  background-color: #eb5a55;
+  border-color: #ecb5b3;
+}
+.userPage .accountInfo .popupWindow button:first-of-type:hover {
+  background-color: #ef726e;
+}
+.userPage .accountInfo .popupWindow button:first-of-type:active {
+  background-color: #df2721;
+}
+.userPage .accountInfo .popupWindow button:last-of-type {
+  flex: 1;
+  margin-left: 2rem;
+  background-color: #69b145;
+  border-color: #b6d3a7;
+}
+.userPage .accountInfo .popupWindow button:last-of-type:hover {
+  background-color: #7dc35a;
+}
+.userPage .accountInfo .popupWindow button:last-of-type:active {
+  background-color: #558b39;
 }
 
 /*# sourceMappingURL=style.css.map */

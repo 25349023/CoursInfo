@@ -1,0 +1,28 @@
+.draftPage .main .publishContent {
+  .submitSection {
+    button {
+      &:first-of-type {
+        @include button-mixin($cancel-color);
+        padding: 0 2rem;
+      }
+
+      &:nth-of-type(2) {
+        @include button-mixin($save-color);
+        padding: 0 2rem;
+      }
+
+      &:last-of-type {
+        @include button-mixin($submit-color);
+        padding: 0 2rem;
+      }
+
+      &:not(:last-of-type) {
+        margin-right: 2rem;
+
+        @include brk-down($brk-medium) {
+          margin: 0 0 1rem 0;
+        }
+      }
+    }
+  }
+}

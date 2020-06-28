@@ -1,0 +1,517 @@
+<html lang="zh-TW">content="width=device-width, initial-scale=1.0" />
+    <title>發表心得</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/svgicons.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;1,300;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/d03b276a94.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body class="publishPage">
+    <header>
+      <nav>
+        <ul id="navbar">
+          <li class="brand"><a href="./index.html">CoursInfo</a></li>
+          <li class="primary link"><a href="./courses.html">課程列表</a></li>
+          <li class="primary link"><a href="./posts.html">心得</a></li>
+          <li class="link"><a href="#">關於</a></li>
+          <li class="link"><a href="#">支援</a></li>
+          <li class="rightItem link">
+            <a href="./user.html">Account<img src="images/profile.png" /></a>
+          </li>
+          <li>
+            <button id="navBtn" class="btnToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="main">
+      <section class="publishContent">
+        <form class="wrapper articleForm" spellcheck="false">
+          <h1>發表心得</h1>
+
+          <main>
+            <section class="chooseCourse">
+              <div class="dropdown semesterDrop">
+                <button type="button" id="semesterDropdown" class="dropdownBtn">
+                  <span class="chosen">請選擇學期</span>
+                  <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="drpOptions">
+                  <button type="button" data-semester="10910" class="option">
+                    <span class="primary">109 上</span>
+                  </button>
+                  <button type="button" data-semester="10820" class="option">
+                    <span class="primary">108 下</span>
+                  </button>
+                  <button type="button" data-semester="10810" class="option">
+                    <span class="primary">108 上</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="dropdown departmentDrop">
+                <button
+                  type="button"
+                  id="departmentDropdown"
+                  class="dropdownBtn"
+                >
+                  <span class="chosen">請選擇科系</span>
+                  <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="drpOptions">
+                  <button type="button" data-department="CS" class="option">
+                    <span class="primary">CS 資工系</span>
+                  </button>
+                  <button type="button" data-department="EE" class="option">
+                    <span class="primary">EE 電機系</span>
+                  </button>
+                  <button type="button" data-department="EECS" class="option">
+                    <span class="primary">EECS 電資院學士班</span>
+                  </button>
+                  <button type="button" data-department="GE" class="option">
+                    <span class="primary">GE 通識</span>
+                  </button>
+                  <button type="button" data-department="GEC" class="option">
+                    <span class="primary">GEC 通識核心</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="dropdown courseDrop">
+                <button
+                  type="button"
+                  id="departmentDropdown"
+                  class="dropdownBtn"
+                >
+                  <span class="chosen">請選擇課程</span>
+                  <i class="fas fa-caret-down"></i>
+                </button>
+                <div class="drpOptions">
+                  <button type="button" class="option">
+                    <span class="primary">CS 100000 計算機程式設計一</span>
+                    <span class="secondary">王小明</span>
+                  </button>
+                  <button type="button" class="option">
+                    <span class="primary">CS 100010 計算機程式設計一</span>
+                    <span class="secondary">王大明</span>
+                  </button>
+                  <button type="button" class="option">
+                    <span class="primary">CS 100000 計算機程式設計一</span>
+                    <span class="secondary">王小明</span>
+                  </button>
+                  <button type="button" class="option">
+                    <span class="primary">CS 100010 計算機程式設計一</span>
+                    <span class="secondary">王大明</span>
+                  </button>
+                  <button type="button" class="option">
+                    <span class="primary">CS 100000 計算機程式設計一</span>
+                    <span class="secondary">王小明</span>
+                  </button>
+                  <button type="button" class="option">
+                    <span class="primary">CS 100010 計算機程式設計一</span>
+                    <span class="secondary">王大明</span>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="titleSection">
+              <div class="titleFlexbox">
+                <h2>心得標題</h2>
+                <div><span class="wordCount">0</span> / 25</div>
+              </div>
+              <input
+                type="text"
+                id="titleInput"
+                required
+                maxlength="25"
+                placeholder="至多 25 字"
+              />
+            </section>
+
+            <section class="infoSection">
+              <div class="titleFlexbox">
+                <h2>課程類別</h2>
+                <div><span class="wordCount">0</span> / 20</div>
+              </div>
+              <input
+                type="text"
+                id="courseType"
+                maxlength="20"
+                placeholder="某系必修 ／ 選修 ／ 通識領域 ／ 核通向度"
+              />
+            </section>
+
+            <section class="ratingSection">
+              <div id="ratingPopup" class="popupContent">
+                <div class="popupWindow">
+                  <h3>This is Title <i class="close fas fa-times"></i></h3>
+                  <div>
+                    content content content content content content content
+                    content content content content content content content
+                    content content content content content content content
+                    content
+                  </div>
+                </div>
+              </div>
+              <h2>
+                課程評價
+                <div class="tooltip popup" data-target="#ratingPopup">
+                  <i class="fas fa-question-circle"></i>
+                  <div class="tooltipBalloon">參考的評分標準</div>
+                </div>
+              </h2>
+              <div class="ratingWrapper">
+                <div class="item">
+                  <h3><i class="fas fa-candy-cane"></i> 甜度</h3>
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    required
+                    maxlength="3"
+                    pattern="\d(\.\d)?"
+                    placeholder="例：3.5"
+                  />
+                </div>
+                <div class="item">
+                  <h3><i class="fas fa-wind"></i> 涼度</h3>
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    required
+                    maxlength="3"
+                    pattern="\d(\.\d)?"
+                    placeholder="例：3.5"
+                  />
+                </div>
+                <div class="item">
+                  <h3><i class="fas fa-thumbs-up"></i> 推薦</h3>
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    required
+                    maxlength="3"
+                    pattern="\d(\.\d)?"
+                    placeholder="例：3.5"
+                  />
+                </div>
+              </div>
+            </section>
+
+            <section class="detailedSection">
+              <h2>課程內容簡述</h2>
+              <div class="detailedWrapper">
+                <div class="item">
+                  <div class="titleFlexbox">
+                    <h3><i class="fas fa-info-circle"></i> 內容綱要</h3>
+                    <div><span class="wordCount">0</span> / 200</div>
+                  </div>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                    maxlength="200"
+                    placeholder="簡單描述課程內容"
+                  ></textarea>
+                </div>
+                <div class="item">
+                  <div class="titleFlexbox">
+                    <h3><i class="fas fa-backward"></i> 先修課程</h3>
+                    <div><span class="wordCount">0</span> / 200</div>
+                  </div>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    maxlength="200"
+                    placeholder="擋修或建議先修的課程"
+                  ></textarea>
+                </div>
+                <div class="item">
+                  <div class="titleFlexbox">
+                    <h3><i class="fas fa-chalkboard-teacher"></i> 上課方式</h3>
+                    <div><span class="wordCount">0</span> / 200</div>
+                  </div>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                    maxlength="200"
+                    placeholder="例：PPT ／ 版書 ..."
+                  ></textarea>
+                </div>
+                <div class="item">
+                  <div class="titleFlexbox">
+                    <h3><i class="fas fa-pencil-ruler"></i> 作業 ＆ 報告</h3>
+                    <div><span class="wordCount">0</span> / 200</div>
+                  </div>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                    maxlength="200"
+                    placeholder="作業類型、內容 ／ 個人、小組報告 ..."
+                  ></textarea>
+                </div>
+                <div class="item">
+                  <div class="titleFlexbox">
+                    <h3><i class="fas fa-eraser"></i> 考試</h3>
+                    <div><span class="wordCount">0</span> / 200</div>
+                  </div>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                    maxlength="200"
+                    placeholder="平時小考 ／ 期中末"
+                  ></textarea>
+                </div>
+                <div class="item">
+                  <div class="titleFlexbox">
+                    <h3><i class="fas fa-calculator"></i> 評分方式</h3>
+                    <div><span class="wordCount">0</span> / 200</div>
+                  </div>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                    maxlength="200"
+                    placeholder="學期成績計算方式：作業、考試所佔比例"
+                  ></textarea>
+                </div>
+                <div class="item">
+                  <div class="titleFlexbox">
+                    <h3><i class="fas fa-book"></i> 使用課本</h3>
+                    <div><span class="wordCount">0</span> / 200</div>
+                  </div>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    maxlength="200"
+                    placeholder="使用哪本課本、是否一定要買"
+                  ></textarea>
+                </div>
+                <div class="item">
+                  <div class="titleFlexbox">
+                    <h3><i class="fas fa-smile"></i> 老師個性、風格</h3>
+                    <div><span class="wordCount">0</span> / 200</div>
+                  </div>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                    maxlength="200"
+                  ></textarea>
+                </div>
+                <div class="item">
+                  <div class="titleFlexbox">
+                    <h3><i class="fas fa-hands-helping"></i> 助教表現</h3>
+                    <div><span class="wordCount">0</span> / 200</div>
+                  </div>
+                  <textarea
+                    name=""
+                    id=""
+                    cols="10"
+                    rows="2"
+                    required
+                    maxlength="200"
+                  ></textarea>
+                </div>
+              </div>
+            </section>
+
+            <section class="reviewSection">
+              <div class="titleFlexbox">
+                <h2>個人心得</h2>
+                <div><span class="wordCount">0</span> / 10000</div>
+              </div>
+
+              <textarea
+                name=""
+                id=""
+                cols="10"
+                rows="10"
+                maxlength="10000"
+                required
+              ></textarea>
+            </section>
+
+            <section class="gradeSection">
+              <h2>修課成績</h2>
+              <div class="gradeWrapper">
+                <div class="personal">
+                  <h3><i class="fas fa-user"></i> 個人</h3>
+                  <div class="dropdown">
+                    <button
+                      type="button"
+                      id="gradeDropdown"
+                      class="dropdownBtn"
+                    >
+                      <span class="chosen">請選擇成績</span>
+                      <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="drpOptions">
+                      <button type="button" data-grade="X" class="option">
+                        <span class="primary">成績未到</span>
+                      </button>
+                      <button type="button" data-grade="A+" class="option">
+                        <span class="primary">A+</span>
+                      </button>
+                      <button type="button" data-grade="A" class="option">
+                        <span class="primary">A</span>
+                      </button>
+                      <button type="button" data-grade="A-" class="option">
+                        <span class="primary">A-</span>
+                      </button>
+                      <button type="button" data-grade="B+" class="option">
+                        <span class="primary">B+</span>
+                      </button>
+                      <button type="button" data-grade="B" class="option">
+                        <span class="primary">B</span>
+                      </button>
+                      <button type="button" data-grade="B-" class="option">
+                        <span class="primary">B-</span>
+                      </button>
+                      <button type="button" data-grade="C+" class="option">
+                        <span class="primary">C+</span>
+                      </button>
+                      <button type="button" data-grade="C" class="option">
+                        <span class="primary">C</span>
+                      </button>
+                      <button type="button" data-grade="C-" class="option">
+                        <span class="primary">C-</span>
+                      </button>
+                      <button type="button" data-grade="D" class="option">
+                        <span class="primary">D&DownArrow;</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="total">
+                  <h3><i class="fas fa-users"></i> 全班</h3>
+                  <div class="classGrading">
+                    <div class="item">
+                      <div>A+</div>
+                      <input type="text" pattern="\d*" />
+                    </div>
+                    <div class="item">
+                      <div>A</div>
+                      <input type="text" pattern="\d*" />
+                    </div>
+                    <div class="item">
+                      <div>A-</div>
+                      <input type="text" pattern="\d*" />
+                    </div>
+                    <div class="item">
+                      <div>B+</div>
+                      <input type="text" pattern="\d*" />
+                    </div>
+                    <div class="item">
+                      <div>B</div>
+                      <input type="text" pattern="\d*" />
+                    </div>
+                    <div class="item">
+                      <div>B-</div>
+                      <input type="text" pattern="\d*" />
+                    </div>
+                    <div class="item">
+                      <div>C+</div>
+                      <input type="text" pattern="\d*" />
+                    </div>
+                    <div class="item">
+                      <div>C</div>
+                      <input type="text" pattern="\d*" />
+                    </div>
+                    <div class="item">
+                      <div>C-</div>
+                      <input type="text" pattern="\d*" />
+                    </div>
+                    <div class="item">
+                      <div>D&DownArrow;</div>
+                      <input type="text" pattern="\d*" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="otherSection">
+              <div class="titleFlexbox">
+                <h2>其他</h2>
+                <div><span class="wordCount">0</span> / 2000</div>
+              </div>
+              <textarea
+                name=""
+                id=""
+                cols="10"
+                rows="6"
+                maxlength="2000"
+              ></textarea>
+            </section>
+
+            <section class="submitSection">
+              <button type="button" type="button">
+                <i class="fas fa-save"></i> 存成草稿
+              </button>
+              <button type="submit">
+                <i class="fas fa-paper-plane"></i> 發表
+              </button>
+            </section>
+          </main>
+        </form>
+      </section>
+
+      <aside class="menu">
+        <ul>
+          <li><i class="fas fa-stream"></i> MENU</li>
+          <li><a href="#">發表心得</a></li>
+          <li><a href="#">討論區</a></li>
+          <li><a href="#">筆記＆考古</a></li>
+          <li><a href="#">設定</a></li>
+          <li><a href="#">OtherA</a></li>
+          <li><a href="#">OtherB</a></li>
+        </ul>
+      </aside>
+    </section>
+
+    <footer>Copyright &copy; 2020 Skyline. All Rights Reserved.</footer>
+  </body>
+</html>
