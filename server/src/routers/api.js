@@ -18,7 +18,6 @@ router.use("/drafts", draftsRouter);
 router.use("/users", usersRouter);
 
 router.get("/*", (req, res) => {
-    console.log("hello here");
     const err = new Error("api not found");
     err.status = 404;
     throw err;

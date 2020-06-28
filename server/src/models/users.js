@@ -47,8 +47,52 @@ function selectOrCreate(config) {
         });
 }
 
+function changeName(userId, newName) {
+    const sql = `
+        UPDATE users
+        SET nickname = $<newName>
+        WHERE id = $<userId>
+        RETURNING *;
+    `;
+
+    return db.any(sql, { userId, newName });
+}
+
+function loginUpdate(userId) {
+    const sql = `
+        UPDATE users
+        SET update_time = current_date,
+            daily_publish_count = 0
+        WHERE id = $<userId>
+        RETURNING *;
+    `;
+
+    const dateSql = `
+        SELECT update_time from users
+        WHERE id = $<userId>;
+    `;
+
+    return db.one(dateSql, { userId }).then((date) => {
+        let originDate = new Date(date.update_time),
+            now = new Date();
+        if (
+            originDate.getFullYear() !== now.getFullYear() ||
+            originDate.getMonth() !== now.getMonth() ||
+            originDate.getDate() !== now.getDate()
+        ) {
+            console.log("update user");
+            return db.any(sql, { userId });
+        } else {
+            console.log("no op");
+            return select(userId);
+        }
+    });
+}
+
 module.exports = {
     create,
     select,
     selectOrCreate,
+    changeName,
+    loginUpdate,
 };

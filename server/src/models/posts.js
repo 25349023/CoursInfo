@@ -73,6 +73,20 @@ function select(postId) {
     return db.any(sql, { postId });
 }
 
+function simpleList(department, subnumber) {
+    const sql = `
+        SELECT ps.id, ps.title, ps.main_review, us.nickname
+        FROM posts ps
+            LEFT JOIN users us
+            ON ps.user_id = us.id
+        WHERE ps.department = $<department> AND ps.course_subnumber = $<subnumber>
+        ORDER BY ps.likes
+        LIMIT 5;
+    `;
+
+    return db.any(sql, { department, subnumber });
+}
+
 function create(data) {
     const sql = `
         UPDATE users 
@@ -322,6 +336,7 @@ function getUserVote(userId, postId) {
 module.exports = {
     list,
     select,
+    simpleList,
     create,
     edit,
     deletePost,

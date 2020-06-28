@@ -29,9 +29,6 @@ passport.use(
             callbackURL: `${process.env.BASE_URL}/auth/google/callback`,
         },
         function (accessToken, refreshToken, profile, done) {
-            console.log(accessToken);
-            console.log(refreshToken);
-            console.log(profile);
             usersModel
                 .selectOrCreate({
                     email: profile._json.email,
@@ -60,8 +57,6 @@ passport.use(
             jwtFromRequest: cookieExtractor("jwt"),
         },
         function (jwtPayload, done) {
-            console.log("jwtpayload: ");
-            console.log(jwtPayload);
             done(null, jwtPayload.id);
         }
     )
