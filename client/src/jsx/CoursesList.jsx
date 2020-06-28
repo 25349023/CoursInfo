@@ -42,15 +42,16 @@ export default class CoursesList extends React.Component {
                         <th scope="col">授課教師</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <InfiniteScroll
-                        initialLoad={false}
-                        loadMore={this.props.listMoreCourse}
-                        hasMore={this.props.hasMore}
-                    >
-                        {children}
-                    </InfiniteScroll>
-                </tbody>
+                {/* <tbody> */}
+                <InfiniteScroll
+                    initialLoad={false}
+                    loadMore={this.props.listMoreCourse}
+                    hasMore={this.props.hasMore}
+                    element={"tbody"}
+                >
+                    {children}
+                </InfiniteScroll>
+                {/* </tbody> */}
             </table>
         );
     }

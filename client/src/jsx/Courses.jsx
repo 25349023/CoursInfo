@@ -96,8 +96,13 @@ export default class Courses extends React.Component {
     catchCourses(department, text, start) {
         listCourses(department, text, start)
             .then((courseslist) => {
+                let temp = [];
+                temp.push(courseslist[9].department);
+                temp.push(courseslist[9].course_subnumber);
+
                 this.setState({
                     courses: courseslist,
+                    start: temp,
                 });
             })
             .catch((err) => {
