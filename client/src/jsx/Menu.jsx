@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default class Menu extends React.Component {
     constructor(props) {
         super(props);
@@ -14,7 +14,7 @@ export default class Menu extends React.Component {
                         MENU <i className="fas fa-stream"></i>
                     </li>
                     <li>
-                        <Link to="/courses">發表心得</Link>
+                        <Link to="/publish">發表心得</Link>
                     </li>
                     <li>
                         <a href="#">討論區</a>

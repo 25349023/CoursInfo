@@ -41,11 +41,13 @@ export default class Publish extends React.Component {
         let { dropdownlist } = this.state;
         if (dropdownlist.length) {
             children = dropdownlist.map((p) => (
-                <button type="button" className="option">
+                <button type="button" className="option" key={p.course_number}>
                     <span className="primary">
                         {p.course_number} {p.course_chinese_title}
                     </span>
-                    <span className="secondary">{p.teacher}</span>
+                    <span className="secondary">
+                        {p.teacher ? p.teacher.split("\t")[0] : "-"}
+                    </span>
                 </button>
             ));
         }

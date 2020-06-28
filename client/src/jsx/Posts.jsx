@@ -60,11 +60,20 @@ export default class Posts extends React.Component {
                 this.state.start
             );
         }
+
+        if (this.state.department != prevState.department) {
+            this.catchPosts(
+                this.state.department,
+                this.state.text,
+                this.state.start
+            );
+        }
     }
 
     inputtext(e) {
         this.setState({
             text: e.target.value,
+            start: [],
         });
     }
 
@@ -74,13 +83,17 @@ export default class Posts extends React.Component {
             let temp = [...this.state.department];
             temp.splice(index, 1);
             this.setState({
+                text: "",
                 department: temp,
+                start: [],
             });
         } else {
             let temp = [...this.state.department];
             temp.push(dep);
             this.setState({
+                text: "",
                 department: temp,
+                start: [],
             });
         }
         this.catchPosts(
@@ -93,8 +106,12 @@ export default class Posts extends React.Component {
     catchPosts(department, text, start) {
         listPosts(department, text, start)
             .then((courseslist) => {
+                let temp = [];
+                temp.push(courseslist[9].department);
+                temp.push(courseslist[9].course_subnumber);
                 this.setState({
                     posts: courseslist,
+                    start: temp,
                 });
             })
             .catch((err) => {
