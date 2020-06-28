@@ -86,3 +86,15 @@ export function createVote(postId, islike) {
         return res.data;
     });
 }
+
+export function getsimplePost(dep, subnum) {
+    let url = `${postBaseUrl}/api/posts/${dep}-${subnum}`;
+
+    console.log(`Making GET & getsimplePost request to: ${url}`);
+    return axios.get(url).then(function (res) {
+        if (res.status !== 200)
+            throw new Error(`Unexpected response code: ${res.status}`);
+
+        return res.data;
+    });
+}

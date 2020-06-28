@@ -3,6 +3,7 @@ import Menu from "./Menu.jsx";
 import { selectCourse } from "api/Courses_api.js";
 //import { selectCourse } from "api/Courses_api.js";
 import { useLocation, withRouter } from "react-router-dom";
+import { getsimplePost } from "api/Posts_api.js";
 
 import Stars from "./Stars.jsx";
 export default class Info extends React.Component {
@@ -18,6 +19,7 @@ export default class Info extends React.Component {
             smt: temp1[0],
             dep: temp1[1],
             subnum: temp1[2],
+            simplepost: [],
             course_number: "",
             course_chinese_title: "",
             credit: "",
@@ -30,10 +32,22 @@ export default class Info extends React.Component {
         };
     }
     render() {
-        let { information } = this.state;
+        let { information, simplepost } = this.state;
         let s = parseFloat(information.sweet);
         let c = parseFloat(information.cool);
         let r = parseFloat(information.recommend);
+        let children = [];
+        if (simplepost.length) {
+            children = simplepost.map((p) => (
+                <article className="singlePost" key={p.id}>
+                    <h4>
+                        <a href="post.html">{p.title}</a>
+                    </h4>
+                    {/* <span className="user">{p.nickname}</span> */}
+                    <p>{p.main_review.slice(0, 40)}</p>
+                </article>
+            ));
+        }
         return (
             <div className="infoPage">
                 <section className="main">
@@ -123,45 +137,7 @@ export default class Info extends React.Component {
                                         &nbsp;我要分享
                                     </button>
                                     <div className="postsWrapper">
-                                        <article className="singlePost">
-                                            <h4>
-                                                <a href="post.html">
-                                                    我覺得這門課很棒
-                                                </a>
-                                            </h4>
-                                            <span className="user">大華</span>
-                                            <p>
-                                                這是內容 this is content.
-                                                這是內容 this is content.
-                                                這是內容 this is content.
-                                                這是內容 this is content.
-                                                這是內容 this is content.
-                                            </p>
-                                        </article>
-                                        <article className="singlePost">
-                                            <h4>
-                                                <a href="#">這是一門很好的課</a>
-                                            </h4>
-                                            <p>
-                                                這是內容 this is content.
-                                                這是內容 this is content.
-                                                這是內容 this is content.
-                                                這是內容 this is content.
-                                            </p>
-                                        </article>
-                                        <article className="singlePost">
-                                            <h4>
-                                                <a href="#">這是一門很好的課</a>
-                                            </h4>
-                                            <p>
-                                                這是內容 this is content.
-                                                這是內容 this is content.
-                                                這是內容 this is content.
-                                                這是內容 this is content.
-                                            </p>
-                                        </article>
-                                        <article className="singlePost"></article>
-                                        <article className="singlePost"></article>
+                                        {children}
                                     </div>
                                 </section>
 
@@ -212,6 +188,7 @@ export default class Info extends React.Component {
 
     componentDidMount() {
         this.askinfo();
+        this.asksimplePost();
     }
     askinfo() {
         selectCourse(this.state.smt, this.state.dep, this.state.subnum).then(
@@ -238,6 +215,11 @@ export default class Info extends React.Component {
                 });
             }
         );
+    }
+    asksimplePost() {
+        getsimplePost(this.state.dep, this.state.subnum).then((data) => {
+            this.setState({ simplepost: data });
+        });
     }
 }
 
