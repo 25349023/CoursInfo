@@ -35,6 +35,18 @@ router.get("/:userId", function (req, res, next) {
         .catch(next);
 });
 
+router.post("/nickname", function (req, res, next) {
+    const { userId, nickname } = req.body;
+    checkUser(userId, req);
+
+    usersModel
+        .changeName(userId, nickname)
+        .then((user) => {
+            res.json(user);
+        })
+        .catch(next);
+});
+
 // router.post("/users", function (req, res, next) {
 //     usersModel
 //         .create(req.body)

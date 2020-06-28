@@ -47,8 +47,20 @@ function selectOrCreate(config) {
         });
 }
 
+function changeName(userId, newName) {
+    const sql = `
+        UPDATE users
+        SET nickname = $<newName>
+        WHERE id = $<userId>
+        RETURNING *;
+    `;
+
+    return db.any(sql, { userId, newName });
+}
+
 module.exports = {
     create,
     select,
     selectOrCreate,
+    changeName,
 };
