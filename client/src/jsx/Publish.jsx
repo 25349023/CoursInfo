@@ -1,8 +1,8 @@
 import React from "react";
 import Menu from "./Menu.jsx";
-import { createPost } from "api/Post.js";
+import { createPost } from "api/Posts_api.js";
 export default class Publish extends React.Component {
-    constructor() {
+    constructor(props) {
         super(props);
         this.state = {
             userId: "",
@@ -30,7 +30,7 @@ export default class Publish extends React.Component {
         };
         this.gradelist = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
 
-        this.handleInputChange = this.handleInputChange.bind(this);
+        // this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     render() {
@@ -909,7 +909,9 @@ export default class Publish extends React.Component {
                                                     <input
                                                         type="text"
                                                         pattern="\d*"
-                                                        value={this.state.title}
+                                                        value={
+                                                            this.gradelist[0]
+                                                        }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
@@ -926,7 +928,9 @@ export default class Publish extends React.Component {
                                                     <input
                                                         type="text"
                                                         pattern="\d*"
-                                                        value={this.state.title}
+                                                        value={
+                                                            this.gradelist[1]
+                                                        }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
@@ -943,7 +947,9 @@ export default class Publish extends React.Component {
                                                     <input
                                                         type="text"
                                                         pattern="\d*"
-                                                        value={this.state.title}
+                                                        value={
+                                                            this.gradelist[2]
+                                                        }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
@@ -960,7 +966,9 @@ export default class Publish extends React.Component {
                                                     <input
                                                         type="text"
                                                         pattern="\d*"
-                                                        value={this.state.title}
+                                                        value={
+                                                            this.gradelist[3]
+                                                        }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
@@ -977,7 +985,9 @@ export default class Publish extends React.Component {
                                                     <input
                                                         type="text"
                                                         pattern="\d*"
-                                                        value={this.state.title}
+                                                        value={
+                                                            this.gradelist[4]
+                                                        }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
@@ -994,7 +1004,9 @@ export default class Publish extends React.Component {
                                                     <input
                                                         type="text"
                                                         pattern="\d*"
-                                                        value={this.state.title}
+                                                        value={
+                                                            this.gradelist[5]
+                                                        }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
@@ -1011,7 +1023,9 @@ export default class Publish extends React.Component {
                                                     <input
                                                         type="text"
                                                         pattern="\d*"
-                                                        value={this.state.title}
+                                                        value={
+                                                            this.gradelist[6]
+                                                        }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
@@ -1028,7 +1042,9 @@ export default class Publish extends React.Component {
                                                     <input
                                                         type="text"
                                                         pattern="\d*"
-                                                        value={this.state.title}
+                                                        value={
+                                                            this.gradelist[7]
+                                                        }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
@@ -1045,7 +1061,9 @@ export default class Publish extends React.Component {
                                                     <input
                                                         type="text"
                                                         pattern="\d*"
-                                                        value={this.state.title}
+                                                        value={
+                                                            this.gradelist[8]
+                                                        }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
@@ -1062,7 +1080,9 @@ export default class Publish extends React.Component {
                                                     <input
                                                         type="text"
                                                         pattern="\d*"
-                                                        value={this.state.title}
+                                                        value={
+                                                            this.gradelist[9]
+                                                        }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
@@ -1107,7 +1127,12 @@ export default class Publish extends React.Component {
                                     <button type="button" type="button">
                                         <i className="fas fa-save"></i> 存成草稿
                                     </button>
-                                    <button type="submit">
+                                    <button
+                                        type="submit"
+                                        onClick={this.handleCreatePost.bind(
+                                            this
+                                        )}
+                                    >
                                         <i className="fas fa-paper-plane"></i>{" "}
                                         發表
                                     </button>

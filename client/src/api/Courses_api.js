@@ -12,7 +12,7 @@ export function listCourses(department, text = "", start) {
     }
     if (text) query.push(`text=${text}`);
     if (start.length) {
-        for (let i = 0; i < department.length; i++) {
+        for (let i = 0; i < start.length; i++) {
             query.push(`start=${start[i]}`);
         }
     }

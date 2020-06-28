@@ -62,7 +62,7 @@ export default class Courses extends React.Component {
     }
 
     inputdepartment(dep) {
-        let index = this.state.department.IndexOf(dep);
+        let index = this.state.department.indexOf(dep);
         if (index != -1) {
             let temp = [...this.state.department];
             temp.splice(index, 1);
@@ -105,15 +105,17 @@ export default class Courses extends React.Component {
         if (this.state.courses.length < 1) {
             return;
         }
+        console.log(this.state);
         listCourses(this.state.department, this.state.text, this.state.start)
             .then((courseslist) => {
                 let temp = [];
                 temp.push(courseslist[9].department);
                 temp.push(courseslist[9].course_subnumber);
+                console.log(temp);
                 this.setState({
                     start: temp,
                     courses: courseslist,
-                    hasMore: courses.length > 0,
+                    hasMore: courseslist.length > 0,
                 });
             })
             .catch((err) => {
