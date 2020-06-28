@@ -28,6 +28,17 @@ router.get("/", function (req, res, next) {
         .catch(next);
 });
 
+router.get("/:department-:subnumber", function (req, res, next) {
+    let { department, subnumber } = req.params;
+
+    postsModel
+        .simpleList(department, subnumber)
+        .then((posts) => {
+            res.json(posts);
+        })
+        .catch(next);
+});
+
 router.get("/:postId", function (req, res, next) {
     let { postId } = req.params;
 
