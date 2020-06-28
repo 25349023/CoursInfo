@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const accessController = require("../middlewares/access-controller.js");
 
 const authStrategy = require("../auth/auth-strategy");
+const usersModel = require("../models/users");
+
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const secret_key = process.env.SECRET_KEY;
@@ -23,25 +25,32 @@ router.get(
 router.get(
     "/google/callback",
     passport.authenticate("login", { failureRedirect: "/login" }),
-    function (req, res) {
-        console.log(req.user);
-        const [accessToken, refreshToken] = authStrategy.getJwtToken(req.user);
+    function (req, res, next) {
+        // console.log(req.user);
+        usersModel
+            .loginUpdate(req.user.id)
+            .then((data) => {
+                const [accessToken, refreshToken] = authStrategy.getJwtToken(
+                    req.user
+                );
 
-        res.status(200)
-            .cookie("jwt", accessToken, {
-                httpOnly: true,
-                maxAge: 3600000,
-                sameSite: "lax",
-                secure: true,
+                res.status(200)
+                    .cookie("jwt", accessToken, {
+                        httpOnly: true,
+                        maxAge: 3600000,
+                        sameSite: "lax",
+                        secure: true,
+                    })
+                    .cookie("reftok", refreshToken, {
+                        httpOnly: true,
+                        maxAge: 604800000,
+                        sameSite: "lax",
+                        secure: true,
+                        path: "/auth",
+                    })
+                    .redirect("/");
             })
-            .cookie("reftok", refreshToken, {
-                httpOnly: true,
-                maxAge: 604800000,
-                sameSite: "lax",
-                secure: true,
-                path: "/auth",
-            })
-            .redirect("/");
+            .catch(next);
     }
 );
 
@@ -80,33 +89,37 @@ router.get("/refresh", function (req, res, next) {
         return;
     }
     const payload = jwt.verify(req.cookies.reftok, secret_key);
-    console.log(payload);
+    // console.log(payload);
 
-    if (checkRefreshExpired(payload)) {
-        console.log("refresh refresh token");
-        const newRefreshToken = authStrategy.genRefreshToken(payload);
-        res.cookie("reftok", newRefreshToken, {
-            httpOnly: true,
-            maxAge: 604800000,
-            sameSite: "lax",
-            secure: true,
-            path: "/auth",
-        });
-    }
+    usersModel
+        .loginUpdate(payload.id)
+        .then(() => {
+            if (checkRefreshExpired(payload)) {
+                console.log("refresh ref token");
+                const newRefreshToken = authStrategy.genRefreshToken(payload);
+                res.cookie("reftok", newRefreshToken, {
+                    httpOnly: true,
+                    maxAge: 604800000,
+                    sameSite: "lax",
+                    secure: true,
+                    path: "/auth",
+                });
+            }
 
-    const newAccessToken = authStrategy.genAccessToken(payload);
-    res.cookie("jwt", newAccessToken, {
-        httpOnly: true,
-        maxAge: 3600000,
-        sameSite: "lax",
-        secure: true,
-    }).redirect(req.query.redirect);
+            const newAccessToken = authStrategy.genAccessToken(payload);
+            res.cookie("jwt", newAccessToken, {
+                httpOnly: true,
+                maxAge: 3600000,
+                sameSite: "lax",
+                secure: true,
+            }).redirect(req.query.redirect);
+        })
+        .catch(next);
 });
 
 function checkRefreshExpired(payload) {
     const currentTime = Math.floor(Date.now() / 1000);
     const halfDay = 43200;
-    console.log(payload.exp - currentTime);
     return payload.exp - currentTime < halfDay;
 }
 
