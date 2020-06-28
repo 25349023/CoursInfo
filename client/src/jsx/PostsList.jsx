@@ -17,7 +17,9 @@ export default class PostsList extends React.Component {
                     <td className="courseName">{p.course_chinese_title}</td>
                     <td className="teacher">{p.teacher}</td>
                     <td className="postTitle">{p.title}</td>
-                    <td className="rating">{p.recommend}</td>
+                    <td className="rating">
+                        {p.recommend ? p.recommend : "-"}
+                    </td>
                     <td className="rating">
                         <span>
                             {" "}
@@ -50,6 +52,7 @@ export default class PostsList extends React.Component {
                         initialLoad={false}
                         loadMore={this.props.listMorePost}
                         hasMore={this.props.hasMore}
+                        element={"tbody"}
                     >
                         {children}
                     </InfiniteScroll>

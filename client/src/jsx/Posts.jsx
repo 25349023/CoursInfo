@@ -30,7 +30,7 @@ export default class Posts extends React.Component {
                             <Searchbar />
                             <section className="listing">
                                 <PostsList
-                                    posts={posts}
+                                    posts={this.state.posts}
                                     listMorePost={this.listMorePosts}
                                     hasMore={this.state.hasMore}
                                 />

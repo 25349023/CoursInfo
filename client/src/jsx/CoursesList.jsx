@@ -16,10 +16,12 @@ export default class CoursesList extends React.Component {
                 <tr data-href="#" key={p.course_number}>
                     <td className="courseNumber">{p.course_number}</td>
                     <td className="courseName">{p.course_chinese_title}</td>
-                    <td className="rating">{p.sweet}</td>
-                    <td className="rating">{p.cool}</td>
-                    <td className="rating">{p.recommend}</td>
-                    <td className="teacher">{p.teacher}</td>
+                    <td className="rating">{p.sweet ? p.sweet : "-"}</td>
+                    <td className="rating">{p.cool ? p.cool : "-"}</td>
+                    <td className="rating">
+                        {p.recommend ? p.recommend : "-"}
+                    </td>
+                    <td className="teacher">{p.teacher.split("\t")[0]}</td>
                 </tr>
             ));
         }

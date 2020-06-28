@@ -63,6 +63,14 @@ export default class Courses extends React.Component {
                 this.state.start
             );
         }
+
+        if (this.state.department != prevState.department) {
+            this.catchCourses(
+                this.state.department,
+                this.state.text,
+                this.state.start
+            );
+        }
     }
 
     inputtext(e) {
@@ -86,11 +94,6 @@ export default class Courses extends React.Component {
                 department: temp,
             });
         }
-        this.catchCourses(
-            this.state.department,
-            this.state.text,
-            this.state.start
-        );
     }
 
     catchCourses(department, text, start) {
@@ -101,6 +104,7 @@ export default class Courses extends React.Component {
                 temp.push(courseslist[9].course_subnumber);
 
                 this.setState({
+                    text: "",
                     courses: courseslist,
                     start: temp,
                 });

@@ -38,6 +38,7 @@ export default class Publish extends React.Component {
 
     render() {
         let children = [];
+        let { dropdownlist } = this.state;
         if (dropdownlist.length) {
             children = dropdownlist.map((p) => (
                 <button type="button" className="option">
@@ -54,7 +55,7 @@ export default class Publish extends React.Component {
                     <section className="publishContent">
                         <form
                             className="wrapper articleForm"
-                            spellcheck="false"
+                            spellCheck="false"
                         >
                             <h1>發表心得</h1>
 
@@ -234,7 +235,7 @@ export default class Publish extends React.Component {
                                         type="text"
                                         id="titleInput"
                                         required
-                                        maxlength="25"
+                                        maxLength="25"
                                         placeholder="至多 25 字"
                                         value={this.state.title}
                                         onChange={(e) => {
@@ -255,7 +256,7 @@ export default class Publish extends React.Component {
                                     <input
                                         type="text"
                                         id="courseType"
-                                        maxlength="20"
+                                        maxLength="20"
                                         placeholder="某系必修 ／ 選修 ／ 通識領域 ／ 核通向度"
                                         value={this.state.courseType}
                                         onChange={(e) => {
@@ -305,9 +306,9 @@ export default class Publish extends React.Component {
                                             </h3>
                                             <input
                                                 type="text"
-                                                inputmode="numeric"
+                                                inputMode="numeric"
                                                 required
-                                                maxlength="3"
+                                                maxLength="3"
                                                 pattern="\d(\.\d)?"
                                                 placeholder="例：3.5"
                                                 value={this.state.sweet}
@@ -326,9 +327,9 @@ export default class Publish extends React.Component {
                                             </h3>
                                             <input
                                                 type="text"
-                                                inputmode="numeric"
+                                                inputMode="numeric"
                                                 required
-                                                maxlength="3"
+                                                maxLength="3"
                                                 pattern="\d(\.\d)?"
                                                 placeholder="例：3.5"
                                                 value={this.state.cool}
@@ -347,9 +348,9 @@ export default class Publish extends React.Component {
                                             </h3>
                                             <input
                                                 type="text"
-                                                inputmode="numeric"
+                                                inputMode="numeric"
                                                 required
-                                                maxlength="3"
+                                                maxLength="3"
                                                 pattern="\d(\.\d)?"
                                                 placeholder="例：3.5"
                                                 value={this.state.recommend}
@@ -386,7 +387,7 @@ export default class Publish extends React.Component {
                                                 cols="10"
                                                 rows="2"
                                                 required
-                                                maxlength="200"
+                                                maxLength="200"
                                                 placeholder="簡單描述課程內容"
                                                 value={this.state.info}
                                                 onChange={(e) => {
@@ -415,7 +416,7 @@ export default class Publish extends React.Component {
                                                 id=""
                                                 cols="10"
                                                 rows="2"
-                                                maxlength="200"
+                                                maxLength="200"
                                                 placeholder="擋修或建議先修的課程"
                                                 value={this.state.prerequisite}
                                                 onChange={(e) => {
@@ -445,7 +446,7 @@ export default class Publish extends React.Component {
                                                 cols="10"
                                                 rows="2"
                                                 required
-                                                maxlength="200"
+                                                maxLength="200"
                                                 placeholder="例：PPT ／ 版書 ..."
                                                 value={this.state.teachMethod}
                                                 onChange={(e) => {
@@ -475,7 +476,7 @@ export default class Publish extends React.Component {
                                                 cols="10"
                                                 rows="2"
                                                 required
-                                                maxlength="200"
+                                                maxLength="200"
                                                 placeholder="作業類型、內容 ／ 個人、小組報告 ..."
                                                 value={this.state.assignment}
                                                 onChange={(e) => {
@@ -505,7 +506,7 @@ export default class Publish extends React.Component {
                                                 cols="10"
                                                 rows="2"
                                                 required
-                                                maxlength="200"
+                                                maxLength="200"
                                                 placeholder="平時小考 ／ 期中末"
                                                 value={this.state.exam}
                                                 onChange={(e) => {
@@ -535,7 +536,7 @@ export default class Publish extends React.Component {
                                                 cols="10"
                                                 rows="2"
                                                 required
-                                                maxlength="200"
+                                                maxLength="200"
                                                 placeholder="學期成績計算方式：作業、考試所佔比例"
                                                 value={this.state.evaluation}
                                                 onChange={(e) => {
@@ -564,7 +565,7 @@ export default class Publish extends React.Component {
                                                 id=""
                                                 cols="10"
                                                 rows="2"
-                                                maxlength="200"
+                                                maxLength="200"
                                                 placeholder="使用哪本課本、是否一定要買"
                                                 value={this.state.textbook}
                                                 onChange={(e) => {
@@ -594,7 +595,7 @@ export default class Publish extends React.Component {
                                                 cols="10"
                                                 rows="2"
                                                 required
-                                                maxlength="200"
+                                                maxLength="200"
                                                 value={
                                                     this.state.teacherCharacter
                                                 }
@@ -625,7 +626,7 @@ export default class Publish extends React.Component {
                                                 cols="10"
                                                 rows="2"
                                                 required
-                                                maxlength="200"
+                                                maxLength="200"
                                                 value={this.state.taPerformance}
                                                 onChange={(e) => {
                                                     const text = e.target.value;
@@ -652,7 +653,7 @@ export default class Publish extends React.Component {
                                         id=""
                                         cols="10"
                                         rows="10"
-                                        maxlength="10000"
+                                        maxLength="10000"
                                         value={this.state.mainReview}
                                         onChange={(e) => {
                                             const text = e.target.value;
@@ -1064,7 +1065,7 @@ export default class Publish extends React.Component {
                                         id=""
                                         cols="10"
                                         rows="6"
-                                        maxlength="2000"
+                                        maxLength="2000"
                                         value={this.state.others}
                                         onChange={(e) => {
                                             const text = e.target.value;
@@ -1105,7 +1106,7 @@ export default class Publish extends React.Component {
     handleDrowndown() {
         getdropdown(this.state.semester, this.state.department).then(
             (courselist) => {
-                this.setstate({ dropdownlist: courselist });
+                this.setState({ dropdownlist: courselist });
             }
         );
     }

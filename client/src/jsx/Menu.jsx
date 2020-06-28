@@ -14,7 +14,7 @@ export default class Menu extends React.Component {
                         MENU <i className="fas fa-stream"></i>
                     </li>
                     <li>
-                        <a href="#">發表心得</a>
+                        <Link to="/courses">發表心得</Link>
                     </li>
                     <li>
                         <a href="#">討論區</a>
