@@ -21,9 +21,9 @@ export default class CoursesList extends React.Component {
                 <tr
                     data-href="#"
                     key={p.course_number}
-                    onclick={() => {
+                    onClick={() => {
                         this.setState({
-                            redirect: ture,
+                            redirect: true,
                             smt: p.course_number.slice(0, 5),
                             dep: p.department,
                             subnum: p.course_subnumber,

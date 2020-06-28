@@ -25,7 +25,7 @@ export default class Stars extends React.Component {
             </svg>
         );
         return (
-            <div className="content sweet">
+            <div>
                 {this.props.num >= 0.8
                     ? onestar
                     : this.props.num < 0.2

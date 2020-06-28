@@ -2,13 +2,14 @@ import React from "react";
 import Menu from "./Menu.jsx";
 import { selectCourse } from "api/Courses_api.js";
 //import { selectCourse } from "api/Courses_api.js";
-import { useLocation } from "react-router-dom";
+import { useLocation, withRouter } from "react-router-dom";
 
 import Stars from "./Stars.jsx";
 export default class Info extends React.Component {
     constructor(props) {
         super(props);
-        let temp = useLocation().pathname;
+        let temp = props.location.pathname;
+        console.log(props.location.pathname);
         let temp1 = temp.split("/");
         temp1 = temp1[temp1.length - 1].split("-");
         this.state = {
@@ -20,7 +21,9 @@ export default class Info extends React.Component {
             course_number: "",
             course_chinese_title: "",
             credit: "",
-            classroom_and_time: "",
+            classroom: [],
+            time: [],
+            chinese_name: [],
             sweet: "",
             cool: "",
             recommend: "",
@@ -38,7 +41,7 @@ export default class Info extends React.Component {
                         <div className="wrapper">
                             <div className="title">
                                 <h1>{information.course_chinese_title}</h1>
-                                <h2>{information.teacher}</h2>
+                                <h2>{this.state.chinese_name.join(" ")}</h2>
                             </div>
 
                             <main>
@@ -59,11 +62,11 @@ export default class Info extends React.Component {
                                         </div>
                                         <div className="item">上課時間</div>
                                         <div className="content">
-                                            M7M8R6 MaMb
+                                            {this.state.time.join(" ")}
                                         </div>
                                         <div className="item">教室</div>
                                         <div className="content">
-                                            DELTA台達103、EECS資電 326
+                                            {this.state.classroom.join("、")}
                                         </div>
                                     </div>
                                 </section>
@@ -81,82 +84,30 @@ export default class Info extends React.Component {
                                     </button>
                                     <div className="item">甜度</div>
                                     <div className="content sweet">
-                                        <Stars />
+                                        <Stars num={s} />
                                     </div>
                                     <div className="rateScore sweet">
-                                        {information.sweet}
+                                        {information.sweet
+                                            ? information.sweet
+                                            : "-"}
                                     </div>
                                     <div className="item">涼度</div>
                                     <div className="content cool">
-                                        <svg
-                                            className="svg-icon"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path d="M17.684,7.925l-5.131-0.67L10.329,2.57c-0.131-0.275-0.527-0.275-0.658,0L7.447,7.255l-5.131,0.67C2.014,7.964,1.892,8.333,2.113,8.54l3.76,3.568L4.924,17.21c-0.056,0.297,0.261,0.525,0.533,0.379L10,15.109l4.543,2.479c0.273,0.153,0.587-0.089,0.533-0.379l-0.949-5.103l3.76-3.568C18.108,8.333,17.986,7.964,17.684,7.925z"></path>
-                                        </svg>
-                                        <svg
-                                            className="svg-icon"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path d="M17.684,7.925l-5.131-0.67L10.329,2.57c-0.131-0.275-0.527-0.275-0.658,0L7.447,7.255l-5.131,0.67C2.014,7.964,1.892,8.333,2.113,8.54l3.76,3.568L4.924,17.21c-0.056,0.297,0.261,0.525,0.533,0.379L10,15.109l4.543,2.479c0.273,0.153,0.587-0.089,0.533-0.379l-0.949-5.103l3.76-3.568C18.108,8.333,17.986,7.964,17.684,7.925z"></path>
-                                        </svg>
-                                        <svg
-                                            className="svg-icon"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path d="M17.684,7.925l-5.131-0.67L10.329,2.57c-0.131-0.275-0.527-0.275-0.658,0L7.447,7.255l-5.131,0.67C2.014,7.964,1.892,8.333,2.113,8.54l3.76,3.568L4.924,17.21c-0.056,0.297,0.261,0.525,0.533,0.379L10,15.109l4.543,2.479c0.273,0.153,0.587-0.089,0.533-0.379l-0.949-5.103l3.76-3.568C18.108,8.333,17.986,7.964,17.684,7.925 M13.481,11.723c-0.089,0.083-0.129,0.205-0.105,0.324l0.848,4.547l-4.047-2.208c-0.055-0.03-0.116-0.045-0.176-0.045s-0.122,0.015-0.176,0.045l-4.047,2.208l0.847-4.547c0.023-0.119-0.016-0.241-0.105-0.324L3.162,8.54L7.74z"></path>
-                                        </svg>
-                                        <svg
-                                            className="svg-icon"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path d="M17.684,7.925l-5.131-0.67L10.329,2.57c-0.131-0.275-0.527-0.275-0.658,0L7.447,7.255l-5.131,0.67C2.014,7.964,1.892,8.333,2.113,8.54l3.76,3.568L4.924,17.21c-0.056,0.297,0.261,0.525,0.533,0.379L10,15.109l4.543,2.479c0.273,0.153,0.587-0.089,0.533-0.379l-0.949-5.103l3.76-3.568C18.108,8.333,17.986,7.964,17.684,7.925 M13.481,11.723c-0.089,0.083-0.129,0.205-0.105,0.324l0.848,4.547l-4.047-2.208c-0.055-0.03-0.116-0.045-0.176-0.045s-0.122,0.015-0.176,0.045l-4.047,2.208l0.847-4.547c0.023-0.119-0.016-0.241-0.105-0.324L3.162,8.54L7.74,7.941c0.124-0.016,0.229-0.093,0.282-0.203L10,3.568l1.978,4.17c0.053,0.11,0.158,0.187,0.282,0.203l4.578,0.598L13.481,11.723z"></path>
-                                        </svg>
-                                        <svg
-                                            className="svg-icon"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path d="M17.684,7.925l-5.131-0.67L10.329,2.57c-0.131-0.275-0.527-0.275-0.658,0L7.447,7.255l-5.131,0.67C2.014,7.964,1.892,8.333,2.113,8.54l3.76,3.568L4.924,17.21c-0.056,0.297,0.261,0.525,0.533,0.379L10,15.109l4.543,2.479c0.273,0.153,0.587-0.089,0.533-0.379l-0.949-5.103l3.76-3.568C18.108,8.333,17.986,7.964,17.684,7.925 M13.481,11.723c-0.089,0.083-0.129,0.205-0.105,0.324l0.848,4.547l-4.047-2.208c-0.055-0.03-0.116-0.045-0.176-0.045s-0.122,0.015-0.176,0.045l-4.047,2.208l0.847-4.547c0.023-0.119-0.016-0.241-0.105-0.324L3.162,8.54L7.74,7.941c0.124-0.016,0.229-0.093,0.282-0.203L10,3.568l1.978,4.17c0.053,0.11,0.158,0.187,0.282,0.203l4.578,0.598L13.481,11.723z"></path>
-                                        </svg>
+                                        <Stars num={c} />
                                     </div>
                                     <div className="rateScore cool">
-                                        {information.cool}
+                                        {information.cool
+                                            ? information.cool
+                                            : "-"}
                                     </div>
                                     <div className="item">推薦</div>
                                     <div className="content recommend">
-                                        <svg
-                                            className="svg-icon"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path d="M17.684,7.925l-5.131-0.67L10.329,2.57c-0.131-0.275-0.527-0.275-0.658,0L7.447,7.255l-5.131,0.67C2.014,7.964,1.892,8.333,2.113,8.54l3.76,3.568L4.924,17.21c-0.056,0.297,0.261,0.525,0.533,0.379L10,15.109l4.543,2.479c0.273,0.153,0.587-0.089,0.533-0.379l-0.949-5.103l3.76-3.568C18.108,8.333,17.986,7.964,17.684,7.925z"></path>
-                                        </svg>
-                                        <svg
-                                            className="svg-icon"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path d="M17.684,7.925l-5.131-0.67L10.329,2.57c-0.131-0.275-0.527-0.275-0.658,0L7.447,7.255l-5.131,0.67C2.014,7.964,1.892,8.333,2.113,8.54l3.76,3.568L4.924,17.21c-0.056,0.297,0.261,0.525,0.533,0.379L10,15.109l4.543,2.479c0.273,0.153,0.587-0.089,0.533-0.379l-0.949-5.103l3.76-3.568C18.108,8.333,17.986,7.964,17.684,7.925z"></path>
-                                        </svg>
-                                        <svg
-                                            className="svg-icon"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path d="M17.684,7.925l-5.131-0.67L10.329,2.57c-0.131-0.275-0.527-0.275-0.658,0L7.447,7.255l-5.131,0.67C2.014,7.964,1.892,8.333,2.113,8.54l3.76,3.568L4.924,17.21c-0.056,0.297,0.261,0.525,0.533,0.379L10,15.109l4.543,2.479c0.273,0.153,0.587-0.089,0.533-0.379l-0.949-5.103l3.76-3.568C18.108,8.333,17.986,7.964,17.684,7.925 M13.481,11.723c-0.089,0.083-0.129,0.205-0.105,0.324l0.848,4.547l-4.047-2.208c-0.055-0.03-0.116-0.045-0.176-0.045s-0.122,0.015-0.176,0.045l-4.047,2.208l0.847-4.547c0.023-0.119-0.016-0.241-0.105-0.324L3.162,8.54L7.74z"></path>
-                                        </svg>
-                                        <svg
-                                            className="svg-icon"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path d="M17.684,7.925l-5.131-0.67L10.329,2.57c-0.131-0.275-0.527-0.275-0.658,0L7.447,7.255l-5.131,0.67C2.014,7.964,1.892,8.333,2.113,8.54l3.76,3.568L4.924,17.21c-0.056,0.297,0.261,0.525,0.533,0.379L10,15.109l4.543,2.479c0.273,0.153,0.587-0.089,0.533-0.379l-0.949-5.103l3.76-3.568C18.108,8.333,17.986,7.964,17.684,7.925 M13.481,11.723c-0.089,0.083-0.129,0.205-0.105,0.324l0.848,4.547l-4.047-2.208c-0.055-0.03-0.116-0.045-0.176-0.045s-0.122,0.015-0.176,0.045l-4.047,2.208l0.847-4.547c0.023-0.119-0.016-0.241-0.105-0.324L3.162,8.54L7.74,7.941c0.124-0.016,0.229-0.093,0.282-0.203L10,3.568l1.978,4.17c0.053,0.11,0.158,0.187,0.282,0.203l4.578,0.598L13.481,11.723z"></path>
-                                        </svg>
-                                        <svg
-                                            className="svg-icon"
-                                            viewBox="0 0 20 20"
-                                        >
-                                            <path d="M17.684,7.925l-5.131-0.67L10.329,2.57c-0.131-0.275-0.527-0.275-0.658,0L7.447,7.255l-5.131,0.67C2.014,7.964,1.892,8.333,2.113,8.54l3.76,3.568L4.924,17.21c-0.056,0.297,0.261,0.525,0.533,0.379L10,15.109l4.543,2.479c0.273,0.153,0.587-0.089,0.533-0.379l-0.949-5.103l3.76-3.568C18.108,8.333,17.986,7.964,17.684,7.925 M13.481,11.723c-0.089,0.083-0.129,0.205-0.105,0.324l0.848,4.547l-4.047-2.208c-0.055-0.03-0.116-0.045-0.176-0.045s-0.122,0.015-0.176,0.045l-4.047,2.208l0.847-4.547c0.023-0.119-0.016-0.241-0.105-0.324L3.162,8.54L7.74,7.941c0.124-0.016,0.229-0.093,0.282-0.203L10,3.568l1.978,4.17c0.053,0.11,0.158,0.187,0.282,0.203l4.578,0.598L13.481,11.723z"></path>
-                                        </svg>
+                                        <Stars num={r} />
                                     </div>
                                     <div className="rateScore recommend">
-                                        {information.recommend}
+                                        {information.recommend
+                                            ? information.recommend
+                                            : "-"}
                                     </div>
                                 </section>
 
@@ -265,8 +216,29 @@ export default class Info extends React.Component {
     askinfo() {
         selectCourse(this.state.smt, this.state.dep, this.state.subnum).then(
             (data) => {
-                this.setState({ information: data });
+                let temp = data[0].classroom_and_time.split("\n");
+                let temp2 = data[0].teacher.split("\n");
+                let myroom = [];
+                let mytime = [];
+                let chinese = [];
+                for (let i = 0; i < temp.length; i++) {
+                    let temp1 = temp[i].split("\t");
+                    myroom.push(temp1[0]);
+                    mytime.push(temp1[1]);
+                }
+                for (let i = 0; i < temp2.length; i++) {
+                    let temp1 = temp2[i].split("\t");
+                    chinese.push(temp1[0]);
+                }
+                this.setState({
+                    information: data[0],
+                    classroom: myroom,
+                    time: mytime,
+                    chinese_name: chinese,
+                });
             }
         );
     }
 }
+
+Info = withRouter(Info);
