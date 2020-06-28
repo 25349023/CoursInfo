@@ -76,6 +76,7 @@ export default class Courses extends React.Component {
     inputtext(e) {
         this.setState({
             text: e.target.value,
+            start: [],
         });
     }
 
@@ -85,13 +86,17 @@ export default class Courses extends React.Component {
             let temp = [...this.state.department];
             temp.splice(index, 1);
             this.setState({
+                text: "",
                 department: temp,
+                start: [],
             });
         } else {
             let temp = [...this.state.department];
             temp.push(dep);
             this.setState({
+                text: "",
                 department: temp,
+                start: [],
             });
         }
     }
@@ -104,7 +109,6 @@ export default class Courses extends React.Component {
                 temp.push(courseslist[9].course_subnumber);
 
                 this.setState({
-                    text: "",
                     courses: courseslist,
                     start: temp,
                 });

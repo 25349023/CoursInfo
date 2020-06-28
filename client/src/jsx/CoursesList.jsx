@@ -21,7 +21,9 @@ export default class CoursesList extends React.Component {
                     <td className="rating">
                         {p.recommend ? p.recommend : "-"}
                     </td>
-                    <td className="teacher">{p.teacher.split("\t")[0]}</td>
+                    <td className="teacher">
+                        {p.teacher ? p.teacher.split("\t")[0] : "-"}
+                    </td>
                 </tr>
             ));
         }
