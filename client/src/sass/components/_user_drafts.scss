@@ -1,0 +1,60 @@
+.userPage {
+  .savedDrafts,
+  .myPosts {
+    margin-top: 3rem;
+
+    .draftList,
+    .postsList {
+      display: flex;
+      flex-flow: column;
+
+      background-color: $ui-color-block;
+      border: 1px solid $ui-color-block-border;
+      border-radius: 10px;
+      padding: 1rem;
+
+      > div {
+        display: flex;
+        font-size: 1.4rem;
+        text-align: center;
+        padding: 0.5rem 0;
+
+        &:first-of-type {
+          font-weight: 600;
+        }
+
+        &:nth-of-type(n + 2) {
+          font-size: 1.3rem;
+          cursor: pointer;
+          padding: 1rem 0;
+          border-top: 1px solid $ui-color-block-border;
+
+          &:hover {
+            background-color: $table-hover-color;
+          }
+        }
+
+        &:last-of-type {
+          padding-bottom: 0.8rem;
+        }
+
+        span:first-of-type {
+          flex: 2;
+        }
+        span:nth-of-type(2) {
+          flex: 2;
+        }
+        time {
+          flex: 1;
+
+          @include brk-down($brk-mlarge) {
+            display: none;
+          }
+        }
+        span:nth-of-type(3) {
+          flex: 1;
+        }
+      }
+    }
+  }
+}

@@ -9,9 +9,24 @@
     @include brk-down($brk-xlarge) {
       font-size: 2.2rem;
     }
+
+    @include brk-down($brk-medium) {
+      margin-left: 1rem;
+    }
   }
 
   main {
+    h2 {
+      font-size: 1.8rem;
+      margin: 0 0 1.5rem;
+      border-left: 8px solid rgba($button-primary-color, 0.7);
+      padding-left: 1rem;
+
+      @include brk-down($brk-medium) {
+        margin-left: 1rem;
+      }
+    }
+
     .imgWrapper {
       display: flex;
     }
