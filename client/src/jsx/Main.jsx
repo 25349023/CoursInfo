@@ -2,7 +2,8 @@ import React from "react";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 import Home from "./Home.jsx";
-import CoursesAndPosts from "./Courses_posts.jsx";
+import Courses from "./Courses.jsx";
+import Posts from "./Posts.jsx";
 
 export default class Main extends React.Component {
     constructor(props) {
@@ -45,10 +46,8 @@ export default class Main extends React.Component {
                     </nav>
                 </header>
                 <Route exact path="/" render={() => <Home />} />
-                <Route
-                    path="/(courses|posts)"
-                    render={() => <CoursesAndPosts />}
-                />
+                <Route path="/courses" render={() => <Courses />} />
+                <Route path="/posts" render={() => <Posts />} />
 
                 <footer>
                     Copyright &copy; 2020 Skyline and 憶純晃晃. All Rights

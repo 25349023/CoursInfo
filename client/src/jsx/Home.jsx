@@ -1,5 +1,5 @@
 import React from "react";
-
+import { HashRouter as Router, Route, Link } from "react-router-dom";
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -13,9 +13,9 @@ export default class Home extends React.Component {
                     <div className="foreground">
                         <h1>NTHU CoursInfo</h1>
                         <h3>解決你選課時的煩惱</h3>
-                        <a className="button" href="./courses.html">
+                        <Link to="/courses" className="button">
                             現在開始
-                        </a>
+                        </Link>
                     </div>
                 </section>
                 <main>

@@ -23,6 +23,7 @@ module.exports = {
             // utilities: path.resolve(srcPath, "utilities"),
             // components: path.resolve(srcPath, "components"),
             // api: path.resolve(srcPath, "api"),
+            api: path.resolve(srcPath, "api"),
         },
     },
     entry: {

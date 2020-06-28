@@ -1,82 +1,123 @@
 import React from "react";
-
+import Searchbar from "./Searchbar.jsx";
+import Category from "./Category.jsx";
+import Menu from "./Menu.jsx";
+import CoursesList from "./CoursesList.jsx";
+import { listCourses, selectCourse } from "api/Courses_api.js";
 export default class Courses extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            courses: [],
+            department: ["CS", "EE", "EECS", "GE", "GEC"],
+            text: "",
+            start: [],
+            hasMore: true,
+        };
+        this.catchCourses = this.catchCourses.bind(this);
+        this.listMoreCourse = this.listMoreCourse.bind(this);
+        this.inputtext = this.inputtext.bind(this);
+        this.inputdepartment = this.inputdepartment.bind(this);
     }
     render() {
+        const { courses, department, text, start } = this.state;
         return (
             <div className="coursesListing">
-                <main>
-                    <section className="listing">
-                        <table>
-                            <colgroup>
-                                <col className="secondary" />
-                                <col className="primary" />
-                                <col span="2" />
-                                <col />
-                                <col />
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th scope="col">科號</th>
-                                    <th scope="col">課程名稱</th>
-                                    <th scope="col">甜度</th>
-                                    <th scope="col">涼度</th>
-                                    <th scope="col">推薦</th>
-                                    <th scope="col">授課教師</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr data-href="#">
-                                    <td className="courseNumber">CS100000</td>
-                                    <td className="courseName">Programming</td>
-                                    <td className="rating">3.3</td>
-                                    <td className="rating">4.4</td>
-                                    <td className="rating">2.2</td>
-                                    <td className="teacher">王小明</td>
-                                </tr>
-                                <tr data-href="./info.html">
-                                    <td className="courseNumber">CS100000</td>
-                                    <td className="courseName">
-                                        計算機程式設計一
-                                    </td>
-                                    <td className="rating">3.3</td>
-                                    <td className="rating">4.4</td>
-                                    <td className="rating">2.2</td>
-                                    <td className="teacher">王小明</td>
-                                </tr>
-                                <tr data-href="#">
-                                    <td className="courseNumber">CS100000</td>
-                                    <td className="courseName">Programming</td>
-                                    <td className="rating">3.3</td>
-                                    <td className="rating">4.4</td>
-                                    <td className="rating">2.2</td>
-                                    <td className="teacher">王小明</td>
-                                </tr>
-                                <tr data-href="#">
-                                    <td className="courseNumber">CS100000</td>
-                                    <td className="courseName">Programming</td>
-                                    <td className="rating">3.3</td>
-                                    <td className="rating">4.4</td>
-                                    <td className="rating">2.2</td>
-                                    <td className="teacher">王小明</td>
-                                </tr>
-                                <tr data-href="#">
-                                    <td className="courseNumber">CS100000</td>
-                                    <td className="courseName">Programming</td>
-                                    <td className="rating">3.3</td>
-                                    <td className="rating">4.4</td>
-                                    <td className="rating">2.2</td>
-                                    <td className="teacher">王小明</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <section className="main">
+                    <section className="courses">
+                        <main>
+                            <Searchbar
+                                text={this.state.text}
+                                handleinput={this.inputtext}
+                            />
+                            <section className="listing">
+                                <CoursesList
+                                    courses={courses}
+                                    listMoreCourse={this.listMoreCourse}
+                                    hasMore={this.state.hasMore}
+                                />
+                            </section>
+                        </main>
+                        <Category handleinput={this.inputdepartment} />
                     </section>
-                </main>
+                    <Menu />
+                </section>
             </div>
         );
+    }
+
+    componentDidMount() {
+        this.catchCourses(
+            this.state.department,
+            this.state.text,
+            this.state.start
+        );
+    }
+
+    inputtext(e) {
+        this.setState({
+            text: e.target.value,
+        });
+    }
+
+    inputdepartment(dep) {
+        let index = this.state.department.IndexOf(dep);
+        if (index != -1) {
+            let temp = [...this.state.department];
+            temp.splice(index, 1);
+        } else {
+            let temp = [...this.state.department];
+            temp.push(dep);
+            this.setState({
+                department: temp,
+            });
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.text != prevState.text) {
+            this.catchCourses(
+                this.state.department,
+                this.state.text,
+                this.state.start
+            );
+        }
+    }
+
+    catchCourses(department, text, start) {
+        listCourses(department, text, start)
+            .then((courseslist) => {
+                this.setState({
+                    courses: courseslist,
+                });
+            })
+            .catch((err) => {
+                console.error("Error listing posts", err);
+
+                this.setState({
+                    courses: [],
+                });
+            });
+    }
+
+    listMoreCourse() {
+        if (this.state.courses.length < 1) {
+            return;
+        }
+        listCourses(this.state.department, this.state.text, this.state.start)
+            .then((courseslist) => {
+                let temp = [];
+                temp.push(courseslist[9].department);
+                temp.push(courseslist[9].course_subnumber);
+                this.setState({
+                    start: temp,
+                    courses: courseslist,
+                    hasMore: courses.length > 0,
+                });
+            })
+            .catch((err) => {
+                console.error("Error listing more posts", err);
+            });
     }
 }
