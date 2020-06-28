@@ -2,6 +2,7 @@ import React from "react";
 import Menu from "./Menu.jsx";
 import { createPost } from "api/Posts_api.js";
 import { getdropdown } from "api/Courses_api.js";
+
 export default class Publish extends React.Component {
     constructor(props) {
         super(props);
@@ -31,6 +32,7 @@ export default class Publish extends React.Component {
             dropdownlist: [],
         };
         this.gradelist = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
+        this.dropdownRef = null;
 
         // this.handleInputChange = this.handleInputChange.bind(this);
         this.handleDrowndown = this.handleDrowndown.bind(this);
@@ -41,7 +43,15 @@ export default class Publish extends React.Component {
         let { dropdownlist } = this.state;
         if (dropdownlist.length) {
             children = dropdownlist.map((p) => (
-                <button type="button" className="option" key={p.course_number}>
+                <button
+                    type="button"
+                    className="option"
+                    key={p.course_number}
+                    onClick={() => {
+                        this.dropdownRef.textContent =
+                            p.course_number + " " + p.course_chinese_title;
+                    }}
+                >
                     <span className="primary">
                         {p.course_number} {p.course_chinese_title}
                     </span>
@@ -214,7 +224,12 @@ export default class Publish extends React.Component {
                                             id="departmentDropdown"
                                             className="dropdownBtn"
                                         >
-                                            <span className="chosen">
+                                            <span
+                                                className="chosen"
+                                                ref={(el) => {
+                                                    this.dropdownRef = el;
+                                                }}
+                                            >
                                                 請選擇課程
                                             </span>
                                             <i className="fas fa-caret-down"></i>

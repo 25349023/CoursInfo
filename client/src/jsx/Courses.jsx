@@ -105,8 +105,8 @@ export default class Courses extends React.Component {
         listCourses(department, text, start)
             .then((courseslist) => {
                 let temp = [];
-                temp.push(courseslist[9].department);
-                temp.push(courseslist[9].course_subnumber);
+                temp.push(courseslist[courseslist.length - 1].department);
+                temp.push(courseslist[courseslist.length - 1].course_subnumber);
 
                 this.setState({
                     courses: courseslist,
@@ -130,8 +130,8 @@ export default class Courses extends React.Component {
         listCourses(this.state.department, this.state.text, this.state.start)
             .then((courseslist) => {
                 let temp = [];
-                temp.push(courseslist[9].department);
-                temp.push(courseslist[9].course_subnumber);
+                temp.push(courseslist[courseslist.length - 1].department);
+                temp.push(courseslist[courseslist.length - 1].course_subnumber);
                 console.log(temp);
                 this.setState({
                     start: temp,

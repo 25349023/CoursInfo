@@ -27,7 +27,10 @@ export default class Posts extends React.Component {
                 <section className="main">
                     <section className="posts">
                         <main>
-                            <Searchbar />
+                            <Searchbar
+                                text={this.state.text}
+                                handleinput={this.inputtext}
+                            />
                             <section className="listing">
                                 <PostsList
                                     posts={this.state.posts}
@@ -107,8 +110,8 @@ export default class Posts extends React.Component {
         listPosts(department, text, start)
             .then((courseslist) => {
                 let temp = [];
-                temp.push(courseslist[9].department);
-                temp.push(courseslist[9].course_subnumber);
+                temp.push(courseslist[courseslist.length - 1].department);
+                temp.push(courseslist[courseslist.length - 1].course_subnumber);
                 this.setState({
                     posts: courseslist,
                     start: temp,
@@ -131,8 +134,8 @@ export default class Posts extends React.Component {
         listPosts(this.state.department, this.state.text, this.state.start)
             .then((courseslist) => {
                 let temp = [];
-                temp.push(courseslist[9].department);
-                temp.push(courseslist[9].course_subnumber);
+                temp.push(courseslist[courseslist.length - 1].department);
+                temp.push(courseslist[courseslist.length - 1].course_subnumber);
                 console.log(temp);
                 this.setState({
                     start: temp,

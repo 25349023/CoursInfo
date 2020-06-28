@@ -15,7 +15,9 @@ export default class PostsList extends React.Component {
             children = posts.map((p) => (
                 <tr data-href="#" key={p.course_number}>
                     <td className="courseName">{p.course_chinese_title}</td>
-                    <td className="teacher">{p.teacher}</td>
+                    <td className="teacher">
+                        {p.teacher ? p.teacher.split("\t")[0] : "-"}
+                    </td>
                     <td className="postTitle">{p.title}</td>
                     <td className="rating">
                         {p.recommend ? p.recommend : "-"}
