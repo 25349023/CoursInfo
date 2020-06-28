@@ -14,13 +14,12 @@
   color: $banner-title-color;
 }
 
-@mixin button-mixin(
-  $btn-color: $button-primary-color,
+@mixin button-color-mixin(
+  $btn-color,
   $border-color: null,
-  $pressed-color: null
+  $pressed-color: null,
+  $hover-color: null
 ) {
-  @extend %button;
-
   background-color: $btn-color;
 
   @if $border-color {
@@ -35,11 +34,15 @@
   }
 
   &:hover {
-    background-color: color.scale(
-      $color: $btn-color,
-      $lightness: 15%,
-      $saturation: 5%
-    );
+    @if $hover-color {
+      background-color: $hover-color;
+    } @else {
+      background-color: color.scale(
+        $color: $btn-color,
+        $lightness: 15%,
+        $saturation: 5%
+      );
+    }
   }
 
   &:active {
@@ -54,6 +57,22 @@
       );
     }
   }
+}
+
+@mixin button-mixin(
+  $btn-color: $button-primary-color,
+  $border-color: null,
+  $pressed-color: null,
+  $hover-color: null
+) {
+  @extend %button;
+
+  @include button-color-mixin(
+    $btn-color,
+    $border-color,
+    $pressed-color,
+    $hover-color
+  );
 }
 
 @mixin button-functional-mixin(

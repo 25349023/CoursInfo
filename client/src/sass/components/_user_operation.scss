@@ -1,0 +1,65 @@
+.userPage .accountInfo {
+  .editName {
+    position: absolute;
+    top: -7px;
+    left: calc(100% + 15px);
+    margin-right: 1rem;
+
+    @include button-mixin($edit-color);
+    cursor: pointer;
+    padding: 0 0.6rem;
+    line-height: 1.8;
+    font-size: 1.4rem;
+
+    .tooltipBalloon {
+      position: absolute;
+      left: calc(100% + 15px);
+      top: 1px;
+
+      white-space: nowrap;
+      letter-spacing: 0.1rem;
+      line-height: 1.2;
+    }
+  }
+
+  .popupWindow {
+    min-width: 30rem;
+
+    .editContent {
+      display: flex;
+      flex-flow: column;
+    }
+
+    input[type="text"] {
+      @extend %input;
+      margin-top: 0.8rem;
+      background-color: $ui-color-lighter;
+    }
+
+    .btnGroup {
+      display: flex;
+      margin-top: 1rem;
+    }
+
+    button {
+      @include button-mixin;
+      line-height: 1.8;
+      padding: 0 1.2rem;
+
+      .fas {
+        margin-right: 0.5rem;
+      }
+
+      &:first-of-type {
+        flex: 1;
+        @include button-color-mixin($cancel-color);
+      }
+
+      &:last-of-type {
+        flex: 1;
+        margin-left: 2rem;
+        @include button-color-mixin($submit-color);
+      }
+    }
+  }
+}

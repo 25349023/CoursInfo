@@ -213,7 +213,7 @@
   }
 
   .submitSection {
-    justify-content: end;
+    justify-content: flex-end;
 
     @include brk-down($brk-medium) {
       align-items: stretch;

@@ -1,0 +1,19 @@
+.userPage .accountInfo {
+  img {
+    border-radius: 50%;
+    border: 10px solid rgba($ui-color-text, 0.5);
+    background: border-box center / cover white;
+  }
+
+  figcaption a {
+    @include button-mixin($button-function-color);
+    cursor: pointer;
+
+    padding: 0.6rem 1.2rem;
+    font-size: 1.5rem;
+
+    .fas {
+      margin-right: 0.5rem;
+    }
+  }
+}
