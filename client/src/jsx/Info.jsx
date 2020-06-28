@@ -2,13 +2,21 @@ import React from "react";
 import Menu from "./Menu.jsx";
 import { selectCourse } from "api/Courses_api.js";
 //import { selectCourse } from "api/Courses_api.js";
+import { useLocation } from "react-router-dom";
+
 import Stars from "./Stars.jsx";
 export default class Info extends React.Component {
     constructor(props) {
         super(props);
-
+        let temp = useLocation().pathname;
+        let temp1 = temp.split("/");
+        temp1 = temp1[temp1.length - 1].split("-");
         this.state = {
             information: [],
+            pathname: temp,
+            smt: temp1[0],
+            dep: temp1[1],
+            subnum: temp1[2],
             course_number: "",
             course_chinese_title: "",
             credit: "",
@@ -19,6 +27,7 @@ export default class Info extends React.Component {
         };
     }
     render() {
+        let { information } = this.state;
         let s = parseFloat(information.sweet);
         let c = parseFloat(information.cool);
         let r = parseFloat(information.recommend);
@@ -254,7 +263,7 @@ export default class Info extends React.Component {
         this.askinfo();
     }
     askinfo() {
-        selectCourse(this.props.smt, this.props.dep, this.props.subnum).then(
+        selectCourse(this.state.smt, this.state.dep, this.state.subnum).then(
             (data) => {
                 this.setState({ information: data });
             }

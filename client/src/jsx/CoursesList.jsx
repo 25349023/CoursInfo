@@ -1,10 +1,15 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 export default class CoursesList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            redirect: false,
+            smt: "",
+            dep: "",
+            subnum: "",
+        };
     }
 
     render() {
@@ -13,28 +18,37 @@ export default class CoursesList extends React.Component {
         let children = [];
         if (courses.length) {
             children = courses.map((p) => (
-                <tr data-href="#" key={p.course_number}>
-                    <Link
-                        to="/info"
-                        params={{
+                <tr
+                    data-href="#"
+                    key={p.course_number}
+                    onclick={() => {
+                        this.setState({
+                            redirect: ture,
                             smt: p.course_number.slice(0, 5),
                             dep: p.department,
                             subnum: p.course_subnumber,
-                        }}
-                    >
-                        <td className="courseNumber">{p.course_number}</td>
-                        <td className="courseName">{p.course_chinese_title}</td>
-                        <td className="rating">{p.sweet ? p.sweet : "-"}</td>
-                        <td className="rating">{p.cool ? p.cool : "-"}</td>
-                        <td className="rating">
-                            {p.recommend ? p.recommend : "-"}
-                        </td>
-                        <td className="teacher">
-                            {p.teacher ? p.teacher.split("\t")[0] : "-"}
-                        </td>
-                    </Link>
+                        });
+                    }}
+                >
+                    <td className="courseNumber">{p.course_number}</td>
+                    <td className="courseName">{p.course_chinese_title}</td>
+                    <td className="rating">{p.sweet ? p.sweet : "-"}</td>
+                    <td className="rating">{p.cool ? p.cool : "-"}</td>
+                    <td className="rating">
+                        {p.recommend ? p.recommend : "-"}
+                    </td>
+                    <td className="teacher">
+                        {p.teacher ? p.teacher.split("\t")[0] : "-"}
+                    </td>
                 </tr>
             ));
+        }
+        if (this.state.redirect) {
+            return (
+                <Redirect
+                    to={`/info/${this.state.smt}-${this.state.dep}-${this.state.subnum}`}
+                />
+            );
         }
         return (
             <table>
