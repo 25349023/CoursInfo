@@ -11,8 +11,8 @@ export function listDraft(userId) {
     });
 }
 
-export function selectDraft(draftId) {
-    let url = `${postBaseUrl}/api/drafts/${draftId}`;
+export function selectDraft(draftId, userId) {
+    let url = `${postBaseUrl}/api/drafts/${draftId}?userId=${userId}`;
     console.log(`Making GET & selectdraft request to: ${url}`);
     return axios.get(url, { withCredentials: true }).then(function (res) {
         if (res.status !== 200)

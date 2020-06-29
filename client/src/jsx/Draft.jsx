@@ -1209,11 +1209,14 @@ export default class Draft extends React.Component {
     }
 
     componentDidMount() {
-        selectDraft(this.state.draftId).then((data) => {
-            this.setState({ ...data[0] });
-        });
         current().then((data) => {
-            this.setState({ userId: data[0].id });
+            this.setState({ userId: data[0].id }, () => {
+                selectDraft(this.state.draftId, this.state.userId).then(
+                    (data) => {
+                        this.setState({ ...data[0] });
+                    }
+                );
+            });
         });
     }
 
