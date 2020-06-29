@@ -88,7 +88,7 @@ export default class Draft extends React.Component {
             return <Redirect to={`/userhome`} />;
         }
         if (this.state.redirect_to_post) {
-            return <Redirect to={`/Post/${this.state.postId}`} />;
+            return <Redirect to={`/userpost/${this.state.postId}`} />;
         }
         return (
             <div className="draftPage">
@@ -331,7 +331,9 @@ export default class Draft extends React.Component {
                                         value={this.state.course_type}
                                         onChange={(e) => {
                                             const text = e.target.value;
-                                            this.setState({ courseType: text });
+                                            this.setState({
+                                                course_type: text,
+                                            });
                                         }}
                                     />
                                 </section>
@@ -522,7 +524,7 @@ export default class Draft extends React.Component {
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
-                                                        teachMethod: text,
+                                                        teach_method: text,
                                                     });
                                                 }}
                                             ></textarea>
@@ -672,7 +674,7 @@ export default class Draft extends React.Component {
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
-                                                        teacherCharacter: text,
+                                                        teacher_character: text,
                                                     });
                                                 }}
                                             ></textarea>
@@ -703,7 +705,7 @@ export default class Draft extends React.Component {
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
-                                                        taPerformance: text,
+                                                        ta_performance: text,
                                                     });
                                                 }}
                                             ></textarea>
@@ -729,7 +731,9 @@ export default class Draft extends React.Component {
                                         value={this.state.main_review}
                                         onChange={(e) => {
                                             const text = e.target.value;
-                                            this.setState({ mainReview: text });
+                                            this.setState({
+                                                main_review: text,
+                                            });
                                         }}
                                         required
                                     ></textarea>
