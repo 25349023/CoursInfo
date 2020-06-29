@@ -1252,6 +1252,24 @@ export default class Draft extends React.Component {
                 });
             });
         }
+
+        let popupBtns = document.querySelectorAll(".popup");
+        popupBtns.forEach((pop) => {
+            let popContent = document.querySelector(pop.dataset.target);
+    
+            pop.addEventListener("click", () => {
+                popContent.classList.add("active");
+            });
+        });
+    
+        let popupContents = document.querySelectorAll(".popupContent");
+        popupContents.forEach((pc) => {
+
+            pc.querySelector(".close").addEventListener("click", () => {
+                pc.classList.remove("active");
+            });
+        });
+    
     }
 
     handleCreatePost() {

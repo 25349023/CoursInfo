@@ -10,11 +10,11 @@ window.addEventListener("load", function () {
 
     let popupContents = document.querySelectorAll(".popupContent");
     popupContents.forEach((pc) => {
-        if (pc.classList.contains("static")) {
-            pc.addEventListener("click", () => {
-                pc.classList.remove("active");
-            });
-        }
+        // if (pc.classList.contains("static")) {
+        //     pc.addEventListener("click", () => {
+        //         pc.classList.remove("active");
+        //     });
+        // }
 
         pc.querySelector(".close").addEventListener("click", () => {
             pc.classList.remove("active");

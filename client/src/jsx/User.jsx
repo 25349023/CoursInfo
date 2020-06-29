@@ -428,6 +428,21 @@ export default class User extends React.Component {
 
     componentDidMount() {
         this.askid();
+        let popupBtns = document.querySelectorAll(".popup");
+        popupBtns.forEach((pop) => {
+            let popContent = document.querySelector(pop.dataset.target);
+
+            pop.addEventListener("click", () => {
+                popContent.classList.add("active");
+            });
+        });
+
+        let popupContents = document.querySelectorAll(".popupContent");
+        popupContents.forEach((pc) => {
+            pc.querySelector(".close").addEventListener("click", () => {
+                pc.classList.remove("active");
+            });
+        });
     }
 
     componentDidUpdate(prevProps, prevState) {
