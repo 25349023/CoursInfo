@@ -5,6 +5,8 @@ import { getdropdown } from "api/Courses_api.js";
 import { createDraft, selectDraft } from "api/Draft_api.js";
 import { current, selectUser } from "api/Users_api.js";
 
+import { withRouter } from "react-router-dom";
+
 //draftpost is a big obj in props
 export default class Draft extends React.Component {
     constructor(props) {
@@ -1162,11 +1164,14 @@ export default class Draft extends React.Component {
                                     <button
                                         type="button"
                                         type="button"
-                                        onClick={this.setState({
-                                            redirect: true,
-                                        })}
+                                        onClick={() => {
+                                            this.setState({
+                                                redirect: true,
+                                            });
+                                        }}
                                     >
-                                        <i class="fas fa-undo-alt"></i> 放棄變更
+                                        <i className="fas fa-undo-alt"></i>{" "}
+                                        放棄變更
                                     </button>
                                     <button
                                         type="button"
@@ -1233,4 +1238,4 @@ export default class Draft extends React.Component {
         );
     }
 }
-Info = withRouter(Info);
+Draft = withRouter(Draft);

@@ -30,7 +30,7 @@ export default class User extends React.Component {
             return <Redirect to={`/userpost/${this.state.redPostId}`} />;
         }
         if (this.state.redirectDraft) {
-            return <Redirect to={`/draft/${this.state.redDraftId}`} />;
+            return <Redirect to={`/userdraft/${this.state.redDraftId}`} />;
         }
 
         let children1 = [],
@@ -40,7 +40,17 @@ export default class User extends React.Component {
             children1 = draft.map((p) => {
                 let time = new Date(p.updated_at);
                 return [
-                    <div className="draftRow" data-target="#" key={p.title}>
+                    <div
+                        className="draftRow"
+                        data-target="#"
+                        key={p.title}
+                        onClick={() => {
+                            this.setState({
+                                redirectDraft: true,
+                                redDraftId: p.id,
+                            });
+                        }}
+                    >
                         <span>{p.title}</span>
                         <span>{p.course_chinese_title}</span>
                         <time>{time.toLocaleDateString()}</time>
