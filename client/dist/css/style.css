@@ -1923,6 +1923,7 @@ table td.rating {
   grid-template-columns: 3.6rem 1fr 1fr 3rem;
   grid-template-rows: 5rem 1fr 1.2rem;
   row-gap: 0.5rem;
+  position: relative;
 }
 @media (max-width: 840px) {
   .courseInfo main .postsBlock {
@@ -1997,6 +1998,10 @@ table td.rating {
     stroke: white;
   }
 }
+.courseInfo main .postsBlock button a {
+  color: white;
+  text-decoration: none;
+}
 .courseInfo main .postsBlock .postsWrapper {
   grid-row: 2/3;
   grid-column: 2/4;
@@ -2011,11 +2016,25 @@ table td.rating {
     flex-flow: column;
   }
 }
+.courseInfo main .postsBlock .postsWrapper .hint {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: rgba(60, 60, 60, 0.7);
+}
+.courseInfo main .postsBlock .postsWrapper .hint:only-child {
+  display: block;
+}
 .courseInfo main .postsBlock .postsWrapper .singlePost {
   border: 1px solid rgba(60, 60, 60, 0.2);
   border-radius: 10px;
   background-color: #f8f8f8;
   padding: 1rem 1.4rem;
+  cursor: pointer;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2rem 1fr;

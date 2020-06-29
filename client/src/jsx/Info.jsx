@@ -147,6 +147,7 @@ export default class Info extends React.Component {
                                         <Link to="/publish">我要分享</Link>
                                     </button>
                                     <div className="postsWrapper">
+                                        <div class="hint">目前尚無心得</div>
                                         {children}
                                     </div>
                                 </section>

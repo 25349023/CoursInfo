@@ -4,6 +4,8 @@
   grid-template-rows: 5rem 1fr 1.2rem;
   row-gap: 0.5rem;
 
+  position: relative;
+
   @include brk-down($brk-large) {
     grid-template-columns: 2rem 1fr 1fr 1.6rem;
     grid-template-rows: 5rem 1fr 0.5rem;
@@ -42,6 +44,11 @@
         // top: 5px;
       }
     }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
   }
 
   .postsWrapper {
@@ -58,11 +65,28 @@
       flex-flow: column;
     }
 
+    .hint {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: rgba($ui-color-text, 0.7);
+    }
+
+    .hint:only-child {
+      display: block;
+    }
+
     .singlePost {
       border: 1px solid $ui-color-block-border;
       border-radius: 10px;
       background-color: $ui-color-lighter;
       padding: 1rem 1.4rem;
+      cursor: pointer;
 
       display: grid;
       grid-template-columns: 1fr;
