@@ -35,13 +35,15 @@ export default class Edit extends React.Component {
             teacherCharacter: "",
             taPerformance: "",
             mainReview: "",
-            personalGrade: "",
-            classGradeDist: ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+            personalGrade: "X",
+            classGradeDist: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             others: "",
             dropdownlist: [],
-            redirect: false,
+            redirect_to_user: false,
+            redirect_to_post: false,
+            postId: "",
         };
-        this.gradelist = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
+        this.gradelist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.dropdownRef = null;
 
         // this.handleInputChange = this.handleInputChange.bind(this);
@@ -77,8 +79,11 @@ export default class Edit extends React.Component {
                 </button>
             ));
         }
-        if (this.state.redirect) {
+        if (this.state.redirect_to_user) {
             return <Redirect to={`/userhome`} />;
+        }
+        if (this.state.redirect_to_post) {
+            return <Redirect to={`/Post/${this.state.postId}`} />;
         }
         return (
             <div className="publishPage">
@@ -88,7 +93,7 @@ export default class Edit extends React.Component {
                             className="wrapper articleForm"
                             spellCheck="false"
                         >
-                            <h1>發表心得</h1>
+                            <h1>編輯文章</h1>
 
                             <main>
                                 <section className="chooseCourse">
@@ -1169,7 +1174,9 @@ export default class Edit extends React.Component {
                                         type="button"
                                         type="button"
                                         onClick={() => {
-                                            this.setState({ redirect: true });
+                                            this.setState({
+                                                redirect_to_user: true,
+                                            });
                                         }}
                                     >
                                         <i className="fas fa-undo-alt"></i>{" "}
@@ -1206,18 +1213,10 @@ export default class Edit extends React.Component {
 
     handleCreatePost() {
         if (this.state.userId) {
-            createPost({ ...this.state }).then(() => {
-                this.setState({ redirect: true });
-            });
-        } else {
-            alert("請先登入");
-        }
-    }
-
-    handleCreateDraft() {
-        if (this.state.userId) {
-            createDraft({ ...this.state }).then(() => {
-                this.setState({ redirect: true });
+            createPost({ ...this.state }).then((data) => {
+                this.setState({ postId: data.id }, () => {
+                    this.setState({ redirect_to_post: true });
+                });
             });
         } else {
             alert("請先登入");
