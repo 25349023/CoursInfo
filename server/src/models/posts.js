@@ -61,11 +61,14 @@ function list(searchOptions) {
 
 function select(postId) {
     const sql = `
-        SELECT ps.*, cs.course_chinese_title, cs.teacher, cs.credit 
+        SELECT ps.*, cs.course_chinese_title, cs.teacher, cs.credit, 
+            us.gravatar_hash, us.nickname
         FROM posts ps
             JOIN courses cs
             ON (cs.semester, cs.department, cs.course_subnumber) 
                 = (ps.semester, ps.department, ps.course_subnumber)
+            JOIN users us
+            ON us.id = ps.user_id
         WHERE ps.id = $<postId> AND deleted_at IS NULL;
     `;
 

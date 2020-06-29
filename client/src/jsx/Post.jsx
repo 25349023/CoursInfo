@@ -35,12 +35,14 @@ export default class Post extends React.Component {
                                     <figure className="user">
                                         <img
                                             className="profileImg"
-                                            src="./images/profile.png"
+                                            src={`https://www.gravatar.com/avatar/${information.gravatar_hash}?d=identicon&r=g&s=48`}
                                             alt="user image"
                                         />
                                         <figcaption>
-                                            sky1234 &bull;{" "}
-                                            <time>2020-06-10</time>
+                                            {information.nickname} &bull;{" "}
+                                            <time>
+                                                {information.updated_at}
+                                            </time>
                                         </figcaption>
                                     </figure>
 
@@ -53,16 +55,6 @@ export default class Post extends React.Component {
                                                     this.state.upVote ? 2 : 0,
                                                     this.state.userId
                                                 ).then(() => {
-                                                    // getVote(
-                                                    //     this.state.userId,
-                                                    //     this.state.id
-                                                    // ).then((data) => {
-                                                    //     this.setState({
-                                                    //         upVote: data[0]
-                                                    //             ? data[0].upvote
-                                                    //             : "",
-                                                    //     });
-                                                    // });
                                                     this.askinfo();
                                                 });
                                             }}
