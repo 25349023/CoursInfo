@@ -1130,23 +1130,27 @@ export default class Draft extends React.Component {
                                                 </div>
                                                 <div className="item">
                                                     <div>C-</div>
-                                                    value=
-                                                    {
-                                                        this.state
-                                                            .class_grade_dist[8]
-                                                    }
-                                                    onChange=
-                                                    {(e) => {
-                                                        const text =
-                                                            e.target.value;
-                                                        let temp = [
-                                                            ...class_grade_dist,
-                                                        ];
-                                                        temp[8] = Number(text);
-                                                        this.setState({
-                                                            class_grade_dist: temp,
-                                                        });
-                                                    }}
+                                                    <input
+                                                        type="text"
+                                                        pattern="\d*"
+                                                        value={
+                                                            this.state
+                                                                .class_grade_dist[8]
+                                                        }
+                                                        onChange={(e) => {
+                                                            const text =
+                                                                e.target.value;
+                                                            let temp = [
+                                                                ...class_grade_dist,
+                                                            ];
+                                                            temp[8] = Number(
+                                                                text
+                                                            );
+                                                            this.setState({
+                                                                class_grade_dist: temp,
+                                                            });
+                                                        }}
+                                                    />
                                                 </div>
                                                 <div className="item">
                                                     <div>

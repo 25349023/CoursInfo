@@ -125,7 +125,6 @@ export default class Posts extends React.Component {
         console.log(this.state);
         listPosts(this.state.department, this.state.text, this.state.start)
             .then((courseslist) => {
-                console.log(temp);
                 this.setState({
                     start: courseslist[courseslist.length - 1].id,
                     posts: [...this.state.posts, ...courseslist],
