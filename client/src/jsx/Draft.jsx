@@ -2,7 +2,12 @@ import React from "react";
 import Menu from "./Menu.jsx";
 import { createPost } from "api/Posts_api.js";
 import { getdropdown } from "api/Courses_api.js";
-import { createDraft, selectDraft, editDraft } from "api/Draft_api.js";
+import {
+    createDraft,
+    selectDraft,
+    editDraft,
+    deleteDraft,
+} from "api/Draft_api.js";
 import { current, selectUser } from "api/Users_api.js";
 
 import { withRouter, Redirect } from "react-router-dom";
@@ -19,24 +24,24 @@ export default class Draft extends React.Component {
             userId: "",
             semester: "",
             department: "",
-            courseSubnumber: "",
+            course_subnumber: "",
             title: "",
-            courseType: "",
+            course_type: "",
             sweet: "",
             cool: "",
             recommend: "",
             info: "",
             prerequisite: "",
-            teachMethod: "",
+            teach_method: "",
             assignment: "",
             exam: "",
             evaluation: "",
             textbook: "",
-            teacherCharacter: "",
-            taPerformance: "",
-            mainReview: "",
-            personalGrade: "X",
-            classGradeDist: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            teacher_character: "",
+            ta_performance: "",
+            main_review: "",
+            personal_grade: "X",
+            class_grade_dist: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             others: "",
             dropdownlist: [],
             redirect_to_user: false,
@@ -323,7 +328,7 @@ export default class Draft extends React.Component {
                                         id="courseType"
                                         maxLength="20"
                                         placeholder="某系必修 ／ 選修 ／ 通識領域 ／ 核通向度"
-                                        value={this.state.courseType}
+                                        value={this.state.course_type}
                                         onChange={(e) => {
                                             const text = e.target.value;
                                             this.setState({ courseType: text });
@@ -513,7 +518,7 @@ export default class Draft extends React.Component {
                                                 required
                                                 maxLength="200"
                                                 placeholder="例：PPT ／ 版書 ..."
-                                                value={this.state.teachMethod}
+                                                value={this.state.teach_method}
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
@@ -662,7 +667,7 @@ export default class Draft extends React.Component {
                                                 required
                                                 maxLength="200"
                                                 value={
-                                                    this.state.teacherCharacter
+                                                    this.state.teacher_character
                                                 }
                                                 onChange={(e) => {
                                                     const text = e.target.value;
@@ -692,7 +697,9 @@ export default class Draft extends React.Component {
                                                 rows="2"
                                                 required
                                                 maxLength="200"
-                                                value={this.state.taPerformance}
+                                                value={
+                                                    this.state.ta_performance
+                                                }
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
@@ -719,7 +726,7 @@ export default class Draft extends React.Component {
                                         cols="10"
                                         rows="10"
                                         maxLength="10000"
-                                        value={this.state.mainReview}
+                                        value={this.state.main_review}
                                         onChange={(e) => {
                                             const text = e.target.value;
                                             this.setState({ mainReview: text });
@@ -1228,6 +1235,9 @@ export default class Draft extends React.Component {
     handleCreatePost() {
         if (this.state.userId) {
             createPost({ ...this.state }).then((data) => {
+                deleteDraft(this.state.draftId, {
+                    userId: this.state.userId,
+                });
                 this.setState({ postId: data.id }, () => {
                     this.setState({ redirect_to_post: true });
                 });
