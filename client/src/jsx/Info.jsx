@@ -2,7 +2,7 @@ import React from "react";
 import Menu from "./Menu.jsx";
 import { selectCourse } from "api/Courses_api.js";
 //import { selectCourse } from "api/Courses_api.js";
-import { useLocation, withRouter } from "react-router-dom";
+import { useLocation, withRouter, Redirect } from "react-router-dom";
 import { getsimplePost } from "api/Posts_api.js";
 import { Link } from "react-router-dom";
 import Stars from "./Stars.jsx";
@@ -48,9 +48,7 @@ export default class Info extends React.Component {
                         this.setState({ redirect: true, id: p.id });
                     }}
                 >
-                    <h4>
-                        <a href="post.html">{p.title}</a>
-                    </h4>
+                    <h4>{p.title}</h4>
                     {/* <span className="user">{p.nickname}</span> */}
                     <p>{p.main_review.slice(0, 40)}</p>
                 </article>

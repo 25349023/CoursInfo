@@ -204,91 +204,91 @@ export default class Post extends React.Component {
                                             <div className="item">
                                                 <div>A+</div>
                                                 <div>
-                                                    {
-                                                        information
-                                                            .class_grade_dist[0]
-                                                    }
+                                                    {information.class_grade_dist
+                                                        ? information
+                                                              .class_grade_dist[0]
+                                                        : "-"}
                                                 </div>
                                             </div>
                                             <div className="item">
                                                 <div>A</div>
                                                 <div>
-                                                    {
-                                                        information
-                                                            .class_grade_dist[1]
-                                                    }
+                                                    {information.class_grade_dist
+                                                        ? information
+                                                              .class_grade_dist[1]
+                                                        : "-"}
                                                 </div>
                                             </div>
                                             <div className="item">
                                                 <div>A-</div>
                                                 <div>
-                                                    {
-                                                        information
-                                                            .class_grade_dist[2]
-                                                    }
+                                                    {information.class_grade_dist
+                                                        ? information
+                                                              .class_grade_dist[2]
+                                                        : "-"}
                                                 </div>
                                             </div>
                                             <div className="item">
                                                 <div>B+</div>
                                                 <div>
-                                                    {
-                                                        information
-                                                            .class_grade_dist[3]
-                                                    }
+                                                    {information.class_grade_dist
+                                                        ? information
+                                                              .class_grade_dist[3]
+                                                        : "-"}
                                                 </div>
                                             </div>
                                             <div className="item">
                                                 <div>B</div>
                                                 <div>
-                                                    {
-                                                        information
-                                                            .class_grade_dist[4]
-                                                    }
+                                                    {information.class_grade_dist
+                                                        ? information
+                                                              .class_grade_dist[4]
+                                                        : "-"}
                                                 </div>
                                             </div>
                                             <div className="item">
                                                 <div>B-</div>
                                                 <div>
-                                                    {
-                                                        information
-                                                            .class_grade_dist[5]
-                                                    }
+                                                    {information.class_grade_dist
+                                                        ? information
+                                                              .class_grade_dist[5]
+                                                        : "-"}
                                                 </div>
                                             </div>
                                             <div className="item">
                                                 <div>C+</div>
                                                 <div>
-                                                    {
-                                                        information
-                                                            .class_grade_dist[6]
-                                                    }
+                                                    {information.class_grade_dist
+                                                        ? information
+                                                              .class_grade_dist[6]
+                                                        : "-"}
                                                 </div>
                                             </div>
                                             <div className="item">
                                                 <div>C</div>
                                                 <div>
-                                                    {
-                                                        information
-                                                            .class_grade_dist[7]
-                                                    }
+                                                    {information.class_grade_dist
+                                                        ? information
+                                                              .class_grade_dist[7]
+                                                        : "-"}
                                                 </div>
                                             </div>
                                             <div className="item">
                                                 <div>C-</div>
                                                 <div>
-                                                    {
-                                                        information
-                                                            .class_grade_dist[8]
-                                                    }
+                                                    {information.class_grade_dist
+                                                        ? information
+                                                              .class_grade_dist[8]
+                                                        : "-"}
                                                 </div>
                                             </div>
                                             <div className="item">
                                                 <div>D&DownArrow;</div>
                                                 <div>
-                                                    {
-                                                        information
-                                                            .class_grade_dist[9]
-                                                    }
+                                                    {information.class_grade_dist
+                                                        ? information
+                                                              .class_grade_dist[9]
+                                                        : "-"}
                                                 </div>
                                             </div>
                                         </div>
@@ -312,6 +312,7 @@ export default class Post extends React.Component {
     }
 
     askinfo() {
+        console.log(this.state.id);
         selectPost(this.state.id).then((data) => {
             let temp2 = data[0].teacher.split("\n");
             let chinese = [];
@@ -323,4 +324,4 @@ export default class Post extends React.Component {
         });
     }
 }
-Info = withRouter(Info);
+Post = withRouter(Post);
