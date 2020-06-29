@@ -190,6 +190,24 @@ router.post("/:postId/like", passport.authenticate("token"), function (
         .catch(next);
 });
 
+router.get("/:postId-:userId/vote", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
+    let { postId, userId } = req.params;
+    checkUser(userId, req);
+
+    postsModel
+        .getUserVote(userId, postId)
+        .then((vote) => {
+            res.json(vote);
+        })
+        .catch((err) => {
+            res.json([{}]);
+        });
+});
+
 router.post("/:postId/dislike", passport.authenticate("token"), function (
     req,
     res,

@@ -358,4 +358,5 @@ module.exports = {
     voteLike,
     voteDislike,
     voteCancel,
+    getUserVote,
 };
