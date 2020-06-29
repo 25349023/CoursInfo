@@ -109,13 +109,19 @@ export default class Post extends React.Component {
                                             <i className="fas fa-info-circle"></i>{" "}
                                             內容綱要
                                         </h3>
-                                        <div>{information.info}</div>
+                                        <div>
+                                            {information.info &&
+                                            information.info.trim()
+                                                ? information.info
+                                                : " - "}
+                                        </div>
                                         <h3>
                                             <i className="fas fa-backward"></i>{" "}
                                             先修課程
                                         </h3>
                                         <div>
-                                            {information.prerequisite
+                                            {information.prerequisite &&
+                                            information.prerequisite.trim()
                                                 ? information.prerequisite
                                                 : "-"}
                                         </div>
@@ -124,7 +130,8 @@ export default class Post extends React.Component {
                                             上課方式
                                         </h3>
                                         <div>
-                                            {information.teach_method
+                                            {information.teach_method &&
+                                            information.teach_method.trim()
                                                 ? information.teach_method
                                                 : "-"}
                                         </div>
@@ -133,7 +140,8 @@ export default class Post extends React.Component {
                                             作業 ＆ 報告
                                         </h3>
                                         <div>
-                                            {information.assignment
+                                            {information.assignment &&
+                                            information.assignment.trim()
                                                 ? information.assignment
                                                 : "-"}
                                         </div>
@@ -142,7 +150,8 @@ export default class Post extends React.Component {
                                             考試
                                         </h3>
                                         <div>
-                                            {information.exam
+                                            {information.exam &&
+                                            information.exam.trim()
                                                 ? information.exam
                                                 : "-"}
                                         </div>
@@ -151,7 +160,8 @@ export default class Post extends React.Component {
                                             評分方式
                                         </h3>
                                         <div>
-                                            {information.evaluation
+                                            {information.evaluation &&
+                                            information.evaluation.trim()
                                                 ? information.evaluation
                                                 : "-"}
                                         </div>
@@ -160,7 +170,8 @@ export default class Post extends React.Component {
                                             使用課本
                                         </h3>
                                         <div>
-                                            {information.textbook
+                                            {information.textbook &&
+                                            information.textbook.trim()
                                                 ? information.textbook
                                                 : "-"}
                                         </div>
@@ -169,7 +180,8 @@ export default class Post extends React.Component {
                                             老師個性、風格
                                         </h3>
                                         <div>
-                                            {information.teacher_character
+                                            {information.teacher_character &&
+                                            information.teacher_character.trim()
                                                 ? information.teacher_character
                                                 : "-"}
                                         </div>
@@ -178,7 +190,8 @@ export default class Post extends React.Component {
                                             助教表現
                                         </h3>
                                         <div>
-                                            {information.ta_performance
+                                            {information.ta_performance &&
+                                            information.ta_performance.trim()
                                                 ? information.ta_performance
                                                 : "-"}
                                         </div>
@@ -187,7 +200,12 @@ export default class Post extends React.Component {
 
                                 <section className="reviewSection">
                                     <h2>個人心得</h2>
-                                    <div>{information.main_review}</div>
+                                    <div>
+                                        {information.main_review &&
+                                        information.main_review.trim()
+                                            ? information.main_review
+                                            : "-"}
+                                    </div>
                                 </section>
                                 <section className="gradeSection">
                                     <h2>修課成績</h2>
@@ -200,7 +218,7 @@ export default class Post extends React.Component {
                                             <i className="fas fa-users"></i>{" "}
                                             全班
                                         </h3>
-                                        <div className="classNameGrading">
+                                        <div className="classGrading">
                                             <div className="item">
                                                 <div>A+</div>
                                                 <div>

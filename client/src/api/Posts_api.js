@@ -38,6 +38,17 @@ export function selectPost(postId) {
     });
 }
 
+export function listPostsUser(userId) {
+    let url = `${postBaseUrl}/api/posts/users/${userId}`;
+    console.log(`Making GET & selectPost request to: ${url}`);
+    return axios.get(url).then(function (res) {
+        if (res.status !== 200)
+            throw new Error(`Unexpected response code: ${res.status}`);
+
+        return res.data;
+    });
+}
+
 //post is a big object
 export function createPost(post) {
     let url = `${postBaseUrl}/api/posts`;

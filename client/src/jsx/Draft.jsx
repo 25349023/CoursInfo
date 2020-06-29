@@ -5,7 +5,7 @@ import { getdropdown } from "api/Courses_api.js";
 import { createDraft } from "api/Draft_api.js";
 
 //draftpost is a big obj in props
-export default class Publish extends React.Component {
+export default class Draft extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -903,7 +903,8 @@ export default class Publish extends React.Component {
                                                         }}
                                                     >
                                                         <span className="primary">
-                                                            D{String.fromCharCode(
+                                                            D
+                                                            {String.fromCharCode(
                                                                 8595
                                                             )}
                                                         </span>
@@ -916,7 +917,7 @@ export default class Publish extends React.Component {
                                                 <i className="fas fa-users"></i>{" "}
                                                 全班
                                             </h3>
-                                            <div className="classNameGrading">
+                                            <div className="classGrading">
                                                 <div className="item">
                                                     <div>A+</div>
                                                     <input
@@ -1089,9 +1090,12 @@ export default class Publish extends React.Component {
                                                     />
                                                 </div>
                                                 <div className="item">
-                                                    <div>D{String.fromCharCode(
-                                                                8595
-                                                            )}</div>
+                                                    <div>
+                                                        D
+                                                        {String.fromCharCode(
+                                                            8595
+                                                        )}
+                                                    </div>
                                                     <input
                                                         type="text"
                                                         pattern="\d*"

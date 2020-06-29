@@ -2,7 +2,8 @@ import React from "react";
 import Menu from "./Menu.jsx";
 import { current, selectUser, changeName } from "api/Users_api.js";
 import { listDraft, deleteDraft } from "api/Draft_api.js";
-import { deletePost, listPosts } from "../api/Posts_api.js";
+import { deletePost, listPostsUser } from "../api/Posts_api.js";
+import { Redirect } from "react-router-dom";
 
 export default class User extends React.Component {
     constructor(props) {
@@ -18,62 +19,91 @@ export default class User extends React.Component {
             delete_post_id: "",
             delete_post_title: "",
             newname: "",
+            redirectPost: false,
+            redPostId: "",
+            redirectDraft: false,
+            redDraftId: "",
         };
     }
     render() {
+        if (this.state.redirectPost) {
+            return <Redirect to={`/userpost/${this.state.redPostId}`} />;
+        }
+        if (this.state.redirectDraft) {
+            return <Redirect to={`/draft/${this.state.redDraftId}`} />;
+        }
+
         let children1 = [],
             children2 = [];
         let { draft, post, information } = this.state;
         if (draft.length) {
-            children1 = draft.map((p) => [
-                <div className="draftRow" data-target="#" key={p.title}>
-                    <span>{p.title}</span>
-                    <span>{p.course_chinese_title}</span>
-                    <time>{p.updated_at}</time>
-                </div>,
-                <span
-                    key={p.id}
-                    className="delete popup"
-                    data-target="#draftPopup"
-                    onClick={() => {
-                        document
-                            .querySelector("#draftPopup")
-                            .classList.add("active");
-                        this.setState({
-                            delete_title: p.title,
-                            delete_id: p.id,
-                        });
-                    }}
-                >
-                    <i className="fas fa-trash-alt"></i>
-                </span>,
-            ]);
+            children1 = draft.map((p) => {
+                let time = new Date(p.updated_at);
+                return [
+                    <div className="draftRow" data-target="#" key={p.title}>
+                        <span>{p.title}</span>
+                        <span>{p.course_chinese_title}</span>
+                        <time>{time.toLocaleDateString()}</time>
+                    </div>,
+                    <span
+                        key={p.id}
+                        className="delete popup"
+                        data-target="#draftPopup"
+                        onClick={() => {
+                            document
+                                .querySelector("#draftPopup")
+                                .classList.add("active");
+                            this.setState({
+                                delete_title: p.title,
+                                delete_id: p.id,
+                            });
+                        }}
+                    >
+                        <i className="fas fa-trash-alt"></i>
+                    </span>,
+                ];
+            });
         }
         if (post.length) {
-            children1 = post.map((p) => [
-                <div className="postRow" data-target="#" key={p.title}>
-                    <span>{p.title}</span>
-                    <span>{p.course_chinese_title}</span>
-                    <time>{p.updated_at}</time>
-                    <span>{p.likes}</span>
-                </div>,
-                <span
-                    key={p.id}
-                    className="delete popup"
-                    data-target="#postPopup"
-                    onClick={() => {
-                        document
-                            .querySelector("#postPopup")
-                            .classList.add("active");
-                        this.setState({
-                            delete_post_title: p.title,
-                            delete_post_id: p.id,
-                        });
-                    }}
-                >
-                    <i className="fas fa-trash-alt"></i>
-                </span>,
-            ]);
+            children2 = post.map((p) => {
+                let time = new Date(p.updated_at);
+                return [
+                    <div
+                        className="postRow"
+                        data-target="#"
+                        key={p.title}
+                        onClick={() => {
+                            this.setState({
+                                redirectPost: true,
+                                redPostId: p.id,
+                            });
+                        }}
+                    >
+                        <span>{p.title}</span>
+                        <span>{p.course_chinese_title}</span>
+                        <time>{time.toLocaleDateString()}</time>
+                        <span>
+                            {p.likes} <i class="fas fa-heart"></i>
+                        </span>
+                    </div>,
+                    <span
+                        key={p.id}
+                        className="delete popup"
+                        data-target="#postPopup"
+                        onClick={() => {
+                            document
+                                .querySelector("#postPopup")
+                                .classList.add("active");
+                            this.setState({
+                                delete_post_title: p.title,
+                                delete_post_id: p.id,
+                            });
+                        }}
+                    >
+                        <i className="fas fa-trash-alt"></i>
+                    </span>,
+                ];
+            });
         }
         return (
             <div className="userPage">
@@ -310,7 +340,13 @@ export default class User extends React.Component {
                                         <div className="deleteContent">
                                             <span>
                                                 請問確認要刪除心得 「
-                                                <span>這門課很好</span>」 嗎？
+                                                <span>
+                                                    {
+                                                        this.state
+                                                            .delete_post_title
+                                                    }
+                                                </span>
+                                                」 嗎？
                                             </span>
                                             <div className="btnGroup">
                                                 <button
@@ -333,7 +369,7 @@ export default class User extends React.Component {
                                                     onClick={() => {
                                                         deletePost(
                                                             this.state
-                                                                .delete_id,
+                                                                .delete_post_id,
                                                             {
                                                                 userId: this
                                                                     .state.id,
@@ -342,7 +378,7 @@ export default class User extends React.Component {
                                                             this.askid();
                                                             document
                                                                 .querySelector(
-                                                                    "#draftPopup"
+                                                                    "#postPopup"
                                                                 )
                                                                 .classList.remove(
                                                                     "active"
@@ -367,60 +403,7 @@ export default class User extends React.Component {
                                             <span>評價</span>
                                             <span>刪除</span>
                                         </div>
-                                        <div
-                                            className="postRow"
-                                            data-target="#"
-                                        >
-                                            <span>這門課很好</span>
-                                            <span>計算機程式設計一</span>
-                                            <time>2020-06-25</time>
-                                            <span>
-                                                2{" "}
-                                                <i className="fas fa-heart"></i>
-                                            </span>
-                                        </div>
-                                        <span
-                                            className="delete popup"
-                                            data-target="#postPopup"
-                                        >
-                                            <i className="fas fa-trash-alt"></i>
-                                        </span>
-                                        <div
-                                            className="postRow"
-                                            data-target="#"
-                                        >
-                                            <span>這門課很好</span>
-                                            <span>計算機程式設計一</span>
-                                            <time>2020-06-25</time>
-                                            <span>
-                                                2{" "}
-                                                <i className="fas fa-heart"></i>
-                                            </span>
-                                        </div>
-                                        <span
-                                            className="delete popup"
-                                            data-target="#postPopup"
-                                        >
-                                            <i className="fas fa-trash-alt"></i>
-                                        </span>
-                                        <div
-                                            className="postRow"
-                                            data-target="#"
-                                        >
-                                            <span>這門課很好</span>
-                                            <span>計算機程式設計一</span>
-                                            <time>2020-06-25</time>
-                                            <span>
-                                                2{" "}
-                                                <i className="fas fa-heart"></i>
-                                            </span>
-                                        </div>
-                                        <span
-                                            className="delete popup"
-                                            data-target="#postPopup"
-                                        >
-                                            <i className="fas fa-trash-alt"></i>
-                                        </span>
+                                        {children2}
                                     </div>
                                 </div>
                             </main>
@@ -452,7 +435,9 @@ export default class User extends React.Component {
                 listDraft(this.state.id).then((data) => {
                     this.setState({ draft: data });
                 });
-                listPosts;
+                listPostsUser(this.state.id).then((data) => {
+                    this.setState({ post: data });
+                });
             });
         });
     }
