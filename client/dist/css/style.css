@@ -1099,7 +1099,7 @@ footer {
   color: #e4e4e4;
 }
 
-.userPage .accountInfo .popupWindow button, .userPage .accountInfo .editName, .userPage .accountInfo figcaption a, .editPage .main .publishContent .submitSection button:first-of-type, .draftPage .main .publishContent .submitSection button:last-of-type, .draftPage .main .publishContent .submitSection button:nth-of-type(2), .draftPage .main .publishContent .submitSection button:first-of-type, .main .publishContent .submitSection button:last-of-type, .main .publishContent .submitSection button:first-of-type, .courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, .dropdown .dropdownBtn, .banner .foreground a.button, header nav ul .btnToggle {
+.userPage .accountInfo .popupWindow button, .userPage .accountInfo .editName, .userPage .accountInfo figcaption a, .editPage .main .publishContent .submitSection button:first-of-type, .draftPage .main .publishContent .submitSection button:last-of-type, .draftPage .main .publishContent .submitSection button:nth-of-type(2), .draftPage .main .publishContent .submitSection button:first-of-type, .main .publishContent .submitSection button:last-of-type, .main .publishContent .submitSection button:first-of-type, .courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, #ratingPopup .btnGroup button, .dropdown .dropdownBtn, .banner .foreground a.button, header nav ul .btnToggle {
   line-height: 2.2;
   padding: 0;
   font-size: 1.5rem;
@@ -1577,6 +1577,56 @@ table td.rating {
   .courseInfo main .basicInfo .infoWrapper .content {
     padding-left: 1rem;
   }
+}
+
+#ratingPopup .inputGroup {
+  display: grid;
+  grid-template: repeat(3, auto)/6rem 1fr;
+  row-gap: 1rem;
+  align-items: center;
+  margin: 1rem 0 2rem;
+}
+#ratingPopup .inputGroup span {
+  padding-left: 0.5rem;
+}
+#ratingPopup .inputGroup input {
+  min-width: 0;
+}
+#ratingPopup .btnGroup {
+  display: flex;
+}
+#ratingPopup .btnGroup button {
+  flex: 1;
+  background-color: #a346aa;
+  border-color: #cea6d1;
+  padding: 0 1rem;
+}
+#ratingPopup .btnGroup button:hover {
+  background-color: #b859bf;
+}
+#ratingPopup .btnGroup button:active {
+  background-color: #813a86;
+}
+#ratingPopup .btnGroup button:first-of-type {
+  background-color: #eb5a55;
+  border-color: #ecb5b3;
+}
+#ratingPopup .btnGroup button:first-of-type:hover {
+  background-color: #ef726e;
+}
+#ratingPopup .btnGroup button:first-of-type:active {
+  background-color: #df2721;
+}
+#ratingPopup .btnGroup button:last-of-type {
+  margin-left: 1rem;
+  background-color: #69b145;
+  border-color: #b6d3a7;
+}
+#ratingPopup .btnGroup button:last-of-type:hover {
+  background-color: #7dc35a;
+}
+#ratingPopup .btnGroup button:last-of-type:active {
+  background-color: #558b39;
 }
 
 .courseInfo main .ratingBlock {
@@ -2421,7 +2471,7 @@ table td.rating {
 .draftPage .articleForm textarea,
 .editPage .articleForm textarea, .publishPage .articleForm input[type=text],
 .draftPage .articleForm input[type=text],
-.editPage .articleForm input[type=text] {
+.editPage .articleForm input[type=text], #ratingPopup .inputGroup input {
   padding: 0.6rem 1rem;
   background-color: #f0f0f0;
   border: 1px solid rgba(60, 60, 60, 0.2);
@@ -2434,7 +2484,7 @@ table td.rating {
 .draftPage .articleForm textarea:focus,
 .editPage .articleForm textarea:focus, .publishPage .articleForm input[type=text]:focus,
 .draftPage .articleForm input[type=text]:focus,
-.editPage .articleForm input[type=text]:focus {
+.editPage .articleForm input[type=text]:focus, #ratingPopup .inputGroup input:focus {
   background-color: #f8f8f8;
 }
 

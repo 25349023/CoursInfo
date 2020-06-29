@@ -1,5 +1,43 @@
 @use 'sass:color';
 
+#ratingPopup {
+  .inputGroup {
+    display: grid;
+    grid-template: repeat(3, auto) / 6rem 1fr;
+    row-gap: 1rem;
+    align-items: center;
+    margin: 1rem 0 2rem;
+
+    span {
+      padding-left: 0.5rem;
+    }
+
+    input {
+      @extend %input;
+      min-width: 0;
+    }
+  }
+
+  .btnGroup {
+    display: flex;
+
+    button {
+      flex: 1;
+      @include button-mixin;
+      padding: 0 1rem;
+
+      &:first-of-type {
+        @include button-color-mixin($cancel-color);
+      }
+
+      &:last-of-type {
+        margin-left: 1rem;
+        @include button-color-mixin($submit-color);
+      }
+    }
+  }
+}
+
 .courseInfo main .ratingBlock {
   display: grid;
   grid-template-columns: 2fr 5fr 2fr;
