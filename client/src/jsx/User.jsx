@@ -234,7 +234,7 @@ export default class User extends React.Component {
                                 </div>
                                 <div className="info">
                                     <h3>Email</h3>
-                                    <span>example@mail.com</span>
+                                    <span>{information.email}</span>
                                     <h3>暱稱</h3>
 
                                     <span>

@@ -4,6 +4,7 @@ import Category from "./Category.jsx";
 import Menu from "./Menu.jsx";
 import CoursesList from "./CoursesList.jsx";
 import { listCourses, selectCourse } from "api/Courses_api.js";
+
 export default class Courses extends React.Component {
     constructor(props) {
         super(props);

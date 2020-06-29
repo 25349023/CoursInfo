@@ -60,8 +60,32 @@
           </div>
 
           <main>
+            <div id="historyPopup" class="popupContent">
+              <div class="popupWindow">
+                <h3>歷年資料 <i class="close fas fa-times"></i></h3>
+                <div class="historyContent">
+                  <div class="historyGroup">
+                    <a href="#" class="historyLink">
+                      <span>108上</span>
+                      <span>王大明</span>
+                    </a>
+                    <a href="#" class="historyLink">
+                      <span>108下</span>
+                      <span>王大明</span>
+                    </a>
+                    <a href="#" class="historyLink">
+                      <span>109上</span>
+                      <span>王大明</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <section class="basicInfo">
               <h3>基本資訊</h3>
+              <button class="popup" data-target="#historyPopup">
+                <i class="fas fa-history"></i> 歷年資料
+              </button>
               <div class="infoWrapper">
                 <div class="item">科號</div>
                 <div class="content">10810CS 135501</div>
@@ -75,10 +99,32 @@
                 <div class="content">DELTA台達103、EECS資電 326</div>
               </div>
             </section>
-
+            <div id="ratingPopup" class="popupContent">
+              <div class="popupWindow">
+                <h3>我要評分 <i class="close fas fa-times"></i></h3>
+                <div class="ratingContent">
+                  <div class="inputGroup">
+                    <span>甜度：</span>
+                    <input type="text" />
+                    <span>涼度：</span>
+                    <input type="text" />
+                    <span>推薦：</span>
+                    <input type="text" />
+                  </div>
+                  <div class="btnGroup">
+                    <button type="button">
+                      <i class="fas fa-times"></i> 取消
+                    </button>
+                    <button type="button">
+                      <i class="fas fa-check"></i> 確認
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <section class="ratingBlock">
               <h3>評分</h3>
-              <button>
+              <button class="popup" data-target="#ratingPopup">
                 <svg class="svg-icon" viewBox="0 0 20 20">
                   <path
                     d="M17.684,7.925l-5.131-0.67L10.329,2.57c-0.131-0.275-0.527-0.275-0.658,0L7.447,7.255l-5.131,0.67C2.014,7.964,1.892,8.333,2.113,8.54l3.76,3.568L4.924,17.21c-0.056,0.297,0.261,0.525,0.533,0.379L10,15.109l4.543,2.479c0.273,0.153,0.587-0.089,0.533-0.379l-0.949-5.103l3.76-3.568C18.108,8.333,17.986,7.964,17.684,7.925z"
@@ -187,6 +233,7 @@
                 &nbsp;我要分享
               </button>
               <div class="postsWrapper">
+                <div class="hint">目前尚無心得</div>
                 <article class="singlePost">
                   <!--max length: 12 chinese word-->
                   <h4><a href="post.html">我覺得這門課很棒</a></h4>

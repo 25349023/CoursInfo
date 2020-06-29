@@ -6,6 +6,17 @@ export default class Category extends React.Component {
 
         this.state = {};
     }
+
+    componentDidMount() {
+        let buttons = document.querySelectorAll("aside table tbody tr");
+
+        buttons.forEach((tr) => {
+            tr.addEventListener("click", function () {
+                this.querySelector("svg").classList.toggle("checked");
+            });
+        });
+    }
+
     render() {
         return (
             <aside>
