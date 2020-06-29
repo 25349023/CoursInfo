@@ -60,7 +60,7 @@ function list(searchOptions) {
 }
 
 function select(postId) {
-    sql = `
+    const sql = `
         SELECT ps.*, cs.course_chinese_title, cs.teacher, cs.credit 
         FROM posts ps
             JOIN courses cs
@@ -71,6 +71,20 @@ function select(postId) {
 
     console.log(pgp.as.format(sql, { postId }));
     return db.any(sql, { postId });
+}
+
+function listByUser(userId) {
+    const sql = `
+        SELECT ps.id, ps.title, cs.course_chinese_title, ps.updated_at, ps.likes, ps.dislikes
+        FROM posts ps
+            LEFT JOIN courses cs
+            ON (cs.semester, cs.department, cs.course_subnumber) 
+                = (ps.semester, ps.department, ps.course_subnumber)
+        WHERE user_id = $<userId> AND deleted_at IS NULL
+        ORDER BY updated_at DESC;
+    `;
+
+    return db.any(sql, { userId });
 }
 
 function simpleList(department, subnumber) {
@@ -337,6 +351,7 @@ module.exports = {
     list,
     select,
     simpleList,
+    listByUser,
     create,
     edit,
     deletePost,

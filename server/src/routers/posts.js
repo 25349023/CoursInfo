@@ -50,6 +50,17 @@ router.get("/:postId", function (req, res, next) {
         .catch(next);
 });
 
+router.get("/users/:userId", function (req, res, next) {
+    let { userId } = req.params;
+
+    postsModel
+        .listByUser(userId)
+        .then((posts) => {
+            res.json(posts);
+        })
+        .catch(next);
+});
+
 router.post("/", passport.authenticate("token"), function (req, res, next) {
     const requiredFields = [
         "userId",

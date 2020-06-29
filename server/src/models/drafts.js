@@ -5,7 +5,7 @@ if (!global.db) {
 
 function list(userId) {
     const sql = `
-        SELECT pd.title, pd.updated_at, cs.course_chinese_title
+        SELECT pd.id, pd.title, pd.updated_at, cs.course_chinese_title
         FROM post_drafts pd
             JOIN courses cs
             ON (cs.semester, cs.department, cs.course_subnumber) 
