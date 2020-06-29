@@ -1099,7 +1099,7 @@ footer {
   color: #e4e4e4;
 }
 
-.userPage .accountInfo .popupWindow button, .userPage .accountInfo .editName, .userPage .accountInfo figcaption a, .editPage .main .publishContent .submitSection button:first-of-type, .draftPage .main .publishContent .submitSection button:last-of-type, .draftPage .main .publishContent .submitSection button:nth-of-type(2), .draftPage .main .publishContent .submitSection button:first-of-type, .main .publishContent .submitSection button:last-of-type, .main .publishContent .submitSection button:first-of-type, .courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, #ratingPopup .btnGroup button, .courseInfo main .basicInfo button, .dropdown .dropdownBtn, .banner .foreground a.button, header nav ul .btnToggle {
+.userPage .accountInfo .popupWindow button, .userPage .accountInfo .editName, .userPage .accountInfo figcaption a, .editPage .main .publishContent .submitSection button:first-of-type, .draftPage .main .publishContent .submitSection button:last-of-type, .draftPage .main .publishContent .submitSection button:nth-of-type(2), .draftPage .main .publishContent .submitSection button:first-of-type, .main .publishContent .submitSection button:last-of-type, .main .publishContent .submitSection button:first-of-type, .courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, #ratingPopup .btnGroup button, .courseInfo main .basicInfo button, #loginPopup a, .dropdown .dropdownBtn, .banner .foreground a.button, header nav ul .btnToggle {
   line-height: 2.2;
   padding: 0;
   font-size: 1.5rem;
@@ -1273,7 +1273,6 @@ table th {
 }
 table td {
   padding: 0.9rem 0;
-  vertical-align: baseline;
 }
 table td.courseNumber {
   color: rgba(60, 60, 60, 0.8);
@@ -1512,6 +1511,38 @@ table td.rating {
 .popupContent .popupWindow > div {
   padding: 0.8rem 0 0.6rem;
   font-size: 1.2rem;
+}
+
+#loginPopup {
+  color: #3c3c3c;
+}
+#loginPopup .popupWindow {
+  min-width: 20vw;
+}
+#loginPopup .loginContent {
+  margin-top: 1rem;
+}
+#loginPopup .btnGroup {
+  display: flex;
+}
+#loginPopup a {
+  flex: 1;
+  text-align: center;
+  background-color: #f8f8f8;
+  border-color: rgba(60, 60, 60, 0.2);
+  padding: 0 1rem;
+  margin-top: 2rem;
+  color: #3c3c3c;
+}
+#loginPopup a:hover {
+  background-color: #f9f9f9;
+}
+#loginPopup a:active {
+  background-color: #c6c6c6;
+}
+#loginPopup a .fab {
+  color: #6e5cb1;
+  margin-right: 0.5rem;
 }
 
 #historyPopup .popupWindow {
