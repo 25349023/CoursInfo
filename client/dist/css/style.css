@@ -2852,6 +2852,22 @@ table td.rating {
   border-radius: 10px;
   padding: 1rem;
 }
+@media (max-width: 1012px) {
+  .userPage .savedDrafts .draftList,
+.userPage .savedDrafts .postsList,
+.userPage .myPosts .draftList,
+.userPage .myPosts .postsList {
+    grid-template-columns: 2fr 2fr 5rem;
+  }
+}
+@media (max-width: 632px) {
+  .userPage .savedDrafts .draftList,
+.userPage .savedDrafts .postsList,
+.userPage .myPosts .draftList,
+.userPage .myPosts .postsList {
+    grid-template-columns: 1fr 5rem;
+  }
+}
 .userPage .savedDrafts .draftList .delete,
 .userPage .savedDrafts .postsList .delete,
 .userPage .myPosts .draftList .delete,
@@ -2877,6 +2893,24 @@ table td.rating {
   font-size: 1.4rem;
   text-align: center;
   padding: 0.5rem 0;
+}
+@media (max-width: 1012px) {
+  .userPage .savedDrafts .draftList > div,
+.userPage .savedDrafts .postsList > div,
+.userPage .myPosts .draftList > div,
+.userPage .myPosts .postsList > div {
+    grid-template-columns: 2fr 2fr 5rem;
+    grid-column: span 3;
+  }
+}
+@media (max-width: 632px) {
+  .userPage .savedDrafts .draftList > div,
+.userPage .savedDrafts .postsList > div,
+.userPage .myPosts .draftList > div,
+.userPage .myPosts .postsList > div {
+    grid-template-columns: 1fr 5rem;
+    grid-column: span 2;
+  }
 }
 .userPage .savedDrafts .draftList > div:first-of-type,
 .userPage .savedDrafts .postsList > div:first-of-type,
@@ -2908,6 +2942,14 @@ table td.rating {
 .userPage .myPosts .postsList > div span:nth-of-type(2) {
   flex: 2;
 }
+@media (max-width: 632px) {
+  .userPage .savedDrafts .draftList > div span:nth-of-type(2),
+.userPage .savedDrafts .postsList > div span:nth-of-type(2),
+.userPage .myPosts .draftList > div span:nth-of-type(2),
+.userPage .myPosts .postsList > div span:nth-of-type(2) {
+    display: none;
+  }
+}
 .userPage .savedDrafts .draftList > div time,
 .userPage .savedDrafts .postsList > div time,
 .userPage .myPosts .draftList > div time,
@@ -2935,19 +2977,77 @@ table td.rating {
   grid-column: span 3;
   grid-template-columns: 2fr 2fr 1fr;
 }
+@media (max-width: 1012px) {
+  .userPage .savedDrafts .draftList .draftRow,
+.userPage .savedDrafts .postsList .draftRow,
+.userPage .myPosts .draftList .draftRow,
+.userPage .myPosts .postsList .draftRow {
+    grid-column: span 2;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 632px) {
+  .userPage .savedDrafts .draftList .draftRow,
+.userPage .savedDrafts .postsList .draftRow,
+.userPage .myPosts .draftList .draftRow,
+.userPage .myPosts .postsList .draftRow {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+  }
+}
 .userPage .savedDrafts .postsList,
 .userPage .myPosts .postsList {
   grid-template-columns: 2fr 2fr 1fr 1fr 5rem;
+}
+@media (max-width: 1012px) {
+  .userPage .savedDrafts .postsList,
+.userPage .myPosts .postsList {
+    grid-template-columns: 2fr 2fr 1fr 5rem;
+  }
+}
+@media (max-width: 632px) {
+  .userPage .savedDrafts .postsList,
+.userPage .myPosts .postsList {
+    grid-template-columns: 2fr 1fr 5rem;
+  }
 }
 .userPage .savedDrafts .postsList > div,
 .userPage .myPosts .postsList > div {
   grid-template-columns: 2fr 2fr 1fr 1fr 5rem;
   grid-column: span 5;
 }
+@media (max-width: 1012px) {
+  .userPage .savedDrafts .postsList > div,
+.userPage .myPosts .postsList > div {
+    grid-column: span 4;
+    grid-template-columns: 2fr 2fr 1fr 5rem;
+  }
+}
+@media (max-width: 632px) {
+  .userPage .savedDrafts .postsList > div,
+.userPage .myPosts .postsList > div {
+    grid-column: span 3;
+    grid-template-columns: 2fr 1fr 5rem;
+  }
+}
 .userPage .savedDrafts .postsList .postRow,
 .userPage .myPosts .postsList .postRow {
   grid-template-columns: 2fr 2fr 1fr 1fr;
   grid-column: span 4;
+}
+@media (max-width: 1012px) {
+  .userPage .savedDrafts .postsList .postRow,
+.userPage .myPosts .postsList .postRow {
+    grid-column: span 3;
+    grid-template-columns: 2fr 2fr 1fr;
+  }
+}
+@media (max-width: 632px) {
+  .userPage .savedDrafts .postsList .postRow,
+.userPage .myPosts .postsList .postRow {
+    grid-column: span 2;
+    grid-template-columns: 2fr 1fr;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
