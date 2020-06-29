@@ -1,0 +1,28 @@
+#loginPopup {
+  color: $ui-color-text;
+
+  .popupWindow {
+    min-width: 20vw;
+  }
+
+  .loginContent {
+    margin-top: 1rem;
+  }
+
+  .btnGroup {
+    display: flex;
+  }
+
+  button {
+    flex: 1;
+
+    @include button-mixin($ui-color-lighter, $ui-color-block-border);
+    padding: 0 1rem;
+    margin-top: 2rem;
+    color: $ui-color-text;
+
+    .svg {
+      height: 100%;
+    }
+  }
+}

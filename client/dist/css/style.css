@@ -196,9 +196,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type=button],
-[type=reset],
-[type=submit] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
@@ -206,9 +206,9 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -217,9 +217,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type=button]:-moz-focusring,
-[type=reset]:-moz-focusring,
-[type=submit]:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -269,8 +269,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type=checkbox],
-[type=radio] {
+[type="checkbox"],
+[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -280,8 +280,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -289,7 +289,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type=search] {
+[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -299,7 +299,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type=search]::-webkit-search-decoration {
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -346,35 +346,42 @@ template {
   display: none;
 }
 
-.postArticle .gradeSection .gradeWrapper, .postArticle .detailedSection .detailedWrapper {
+.postArticle .gradeSection .gradeWrapper,
+.postArticle .detailedSection .detailedWrapper {
   padding-left: 2.2rem;
 }
 @media (max-width: 632px) {
-  .postArticle .gradeSection .gradeWrapper, .postArticle .detailedSection .detailedWrapper {
+  .postArticle .gradeSection .gradeWrapper,
+  .postArticle .detailedSection .detailedWrapper {
     padding-left: 1.4rem;
   }
 }
-.postArticle .gradeSection .gradeWrapper h3, .postArticle .detailedSection .detailedWrapper h3 {
+.postArticle .gradeSection .gradeWrapper h3,
+.postArticle .detailedSection .detailedWrapper h3 {
   font-size: 1.4rem;
   font-weight: 400;
   margin: 1.5rem 0 0.8rem;
 }
-.postArticle .gradeSection .gradeWrapper h3 .fas, .postArticle .detailedSection .detailedWrapper h3 .fas {
+.postArticle .gradeSection .gradeWrapper h3 .fas,
+.postArticle .detailedSection .detailedWrapper h3 .fas {
   margin-right: 0.5rem;
 }
-.postArticle .gradeSection .gradeWrapper div, .postArticle .detailedSection .detailedWrapper div {
+.postArticle .gradeSection .gradeWrapper div,
+.postArticle .detailedSection .detailedWrapper div {
   padding-left: 3rem;
   padding-right: 10rem;
   font-size: 1.2rem;
   line-height: 1.5;
 }
 @media (max-width: 1012px) {
-  .postArticle .gradeSection .gradeWrapper div, .postArticle .detailedSection .detailedWrapper div {
+  .postArticle .gradeSection .gradeWrapper div,
+  .postArticle .detailedSection .detailedWrapper div {
     padding-right: 3rem;
   }
 }
 @media (max-width: 632px) {
-  .postArticle .gradeSection .gradeWrapper div, .postArticle .detailedSection .detailedWrapper div {
+  .postArticle .gradeSection .gradeWrapper div,
+  .postArticle .detailedSection .detailedWrapper div {
     padding-left: 1.6rem;
     padding-right: 1.6rem;
   }
@@ -478,7 +485,7 @@ section.main > section {
 }
 @media (max-width: 840px) {
   .courses,
-.posts {
+  .posts {
     flex-flow: column-reverse;
   }
 }
@@ -495,8 +502,8 @@ section.main > section {
   position: relative;
   margin-bottom: 1rem;
 }
-.courses main input[type=text],
-.posts main input[type=text] {
+.courses main input[type="text"],
+.posts main input[type="text"] {
   width: 100%;
   padding: 0.6rem 1rem 0.6rem 3rem;
   background-color: #f0f0f0;
@@ -542,8 +549,8 @@ section.main > section {
 
 @media (max-width: 1136px) {
   .courses main col:first-of-type,
-.courses main th:first-of-type,
-.courses main td:first-of-type {
+  .courses main th:first-of-type,
+  .courses main td:first-of-type {
     display: none;
   }
   .courses main col.primary {
@@ -557,10 +564,10 @@ section.main > section {
 }
 @media (max-width: 632px) {
   .courses main col:nth-of-type(3),
-.courses main th:nth-of-type(3),
-.courses main th:nth-of-type(4),
-.courses main td:nth-of-type(3),
-.courses main td:nth-of-type(4) {
+  .courses main th:nth-of-type(3),
+  .courses main th:nth-of-type(4),
+  .courses main td:nth-of-type(3),
+  .courses main td:nth-of-type(4) {
     display: none;
   }
   .courses main col.primary {
@@ -569,15 +576,15 @@ section.main > section {
 }
 @media (max-width: 420px) {
   .courses main col:nth-of-type(4),
-.courses main th:nth-of-type(5),
-.courses main td:nth-of-type(5) {
+  .courses main th:nth-of-type(5),
+  .courses main td:nth-of-type(5) {
     display: none;
   }
   .courses main col.primary {
     width: 65%;
   }
   .courses main td.courseName,
-.courses main td.rating {
+  .courses main td.rating {
     font-size: 1.1rem;
   }
 }
@@ -587,8 +594,8 @@ section.main > section {
 }
 @media (max-width: 1136px) {
   .posts main col:last-of-type,
-.posts main th:last-of-type,
-.posts main td:last-of-type {
+  .posts main th:last-of-type,
+  .posts main td:last-of-type {
     display: none;
   }
   .posts main col.primary {
@@ -602,8 +609,8 @@ section.main > section {
 }
 @media (max-width: 632px) {
   .posts main col:nth-of-type(4),
-.posts main th:nth-of-type(4),
-.posts main td:nth-of-type(4) {
+  .posts main th:nth-of-type(4),
+  .posts main td:nth-of-type(4) {
     display: none;
   }
   .posts main col.primary {
@@ -612,15 +619,15 @@ section.main > section {
 }
 @media (max-width: 420px) {
   .posts main col:nth-of-type(2),
-.posts main th:nth-of-type(2),
-.posts main td:nth-of-type(2) {
+  .posts main th:nth-of-type(2),
+  .posts main td:nth-of-type(2) {
     display: none;
   }
   .posts main col.primary {
     width: 50%;
   }
   .posts main td.courseName,
-.posts main td.postTitle {
+  .posts main td.postTitle {
     font-size: 1.1rem;
   }
 }
@@ -910,8 +917,8 @@ section.main > section {
 }
 @media (max-width: 1136px) {
   .editPage .articleForm h1,
-.publishPage .articleForm h1,
-.draftPage .articleForm h1 {
+  .publishPage .articleForm h1,
+  .draftPage .articleForm h1 {
     font-size: 2.2rem;
   }
 }
@@ -951,8 +958,8 @@ section.main > section {
 }
 @media (max-width: 632px) {
   .editPage .articleForm main section h2,
-.publishPage .articleForm main section h2,
-.draftPage .articleForm main section h2 {
+  .publishPage .articleForm main section h2,
+  .draftPage .articleForm main section h2 {
     font-size: 1.4rem;
   }
 }
@@ -963,8 +970,8 @@ section.main > section {
 }
 @media (max-width: 632px) {
   .editPage .articleForm main section h2 + *,
-.publishPage .articleForm main section h2 + *,
-.draftPage .articleForm main section h2 + * {
+  .publishPage .articleForm main section h2 + *,
+  .draftPage .articleForm main section h2 + * {
     margin-left: 1rem;
   }
 }
@@ -982,8 +989,8 @@ section.main > section {
 }
 @media (max-width: 632px) {
   .editPage .articleForm main section:last-of-type,
-.publishPage .articleForm main section:last-of-type,
-.draftPage .articleForm main section:last-of-type {
+  .publishPage .articleForm main section:last-of-type,
+  .draftPage .articleForm main section:last-of-type {
     flex-flow: column;
   }
 }
@@ -1099,7 +1106,22 @@ footer {
   color: #e4e4e4;
 }
 
-.userPage .accountInfo .popupWindow button, .userPage .accountInfo .editName, .userPage .accountInfo figcaption a, .editPage .main .publishContent .submitSection button:first-of-type, .draftPage .main .publishContent .submitSection button:last-of-type, .draftPage .main .publishContent .submitSection button:nth-of-type(2), .draftPage .main .publishContent .submitSection button:first-of-type, .main .publishContent .submitSection button:last-of-type, .main .publishContent .submitSection button:first-of-type, .courseInfo main .discussBlock button, .courseInfo main .postsBlock button, .courseInfo main .ratingBlock button, #ratingPopup .btnGroup button, .courseInfo main .basicInfo button, .dropdown .dropdownBtn, .banner .foreground a.button, header nav ul .btnToggle {
+.userPage .accountInfo .popupWindow button,
+.userPage .accountInfo .editName,
+.userPage .accountInfo figcaption a,
+.editPage .main .publishContent .submitSection button:first-of-type,
+.draftPage .main .publishContent .submitSection button:last-of-type,
+.draftPage .main .publishContent .submitSection button:nth-of-type(2),
+.draftPage .main .publishContent .submitSection button:first-of-type,
+.main .publishContent .submitSection button:last-of-type,
+.main .publishContent .submitSection button:first-of-type,
+.courseInfo main .discussBlock button,
+.courseInfo main .postsBlock button,
+.courseInfo main .ratingBlock button,
+#loginPopup button,
+.dropdown .dropdownBtn,
+.banner .foreground a.button,
+header nav ul .btnToggle {
   line-height: 2.2;
   padding: 0;
   font-size: 1.5rem;
@@ -1273,12 +1295,12 @@ table th {
 }
 table td {
   padding: 0.9rem 0;
-  vertical-align: baseline;
 }
 table td.courseNumber {
   color: rgba(60, 60, 60, 0.8);
 }
-table td.courseName, table td.postTitle {
+table td.courseName,
+table td.postTitle {
   font-size: 1.2rem;
 }
 table td.rating {
@@ -1342,7 +1364,7 @@ table td.rating {
 }
 
 .banner {
-  background: fixed center 70%/cover no-repeat url("/images/library.jpg");
+  background: fixed center 70% / cover no-repeat url("/images/library.jpg");
   height: 80vh;
   min-height: 30rem;
 }
@@ -1514,30 +1536,34 @@ table td.rating {
   font-size: 1.2rem;
 }
 
-#historyPopup .popupWindow {
-  min-width: 25vw;
-}
-#historyPopup .historyGroup {
-  display: flex;
-  flex-flow: column;
-  margin: 0 0 2rem;
-}
-#historyPopup .historyGroup .historyLink {
-  font-size: 1.3rem;
-  display: flex;
-  text-align: center;
+#loginPopup {
   color: #3c3c3c;
-  text-decoration: none;
-  padding: 0.6rem 0;
 }
-#historyPopup .historyGroup .historyLink:hover {
-  background-color: #dee8f3;
+#loginPopup .popupWindow {
+  min-width: 20vw;
 }
-#historyPopup .historyGroup .historyLink span {
+#loginPopup .loginContent {
+  margin-top: 1rem;
+}
+#loginPopup .btnGroup {
+  display: flex;
+}
+#loginPopup button {
   flex: 1;
+  background-color: #f8f8f8;
+  border-color: rgba(60, 60, 60, 0.2);
+  padding: 0 1rem;
+  margin-top: 2rem;
+  color: #3c3c3c;
 }
-#historyPopup .historyGroup .historyLink:nth-of-type(n + 2) {
-  border-top: 1px solid rgba(60, 60, 60, 0.2);
+#loginPopup button:hover {
+  background-color: #f9f9f9;
+}
+#loginPopup button:active {
+  background-color: #c6c6c6;
+}
+#loginPopup button .svg {
+  height: 100%;
 }
 
 .courseInfo main .basicInfo {
@@ -1627,7 +1653,7 @@ table td.rating {
 
 #ratingPopup .inputGroup {
   display: grid;
-  grid-template: repeat(3, auto)/6rem 1fr;
+  grid-template: repeat(3, auto) / 6rem 1fr;
   row-gap: 1rem;
   align-items: center;
   margin: 1rem 0 2rem;
@@ -1753,8 +1779,8 @@ table td.rating {
     top: 4px;
   }
   .courseInfo main .ratingBlock button .svg-icon path,
-.courseInfo main .ratingBlock button .svg-icon polygon,
-.courseInfo main .ratingBlock button .svg-icon rect {
+  .courseInfo main .ratingBlock button .svg-icon polygon,
+  .courseInfo main .ratingBlock button .svg-icon rect {
     fill: white;
   }
   .courseInfo main .ratingBlock button .svg-icon circle {
@@ -1769,8 +1795,8 @@ table td.rating {
 }
 @media (max-width: 632px) {
   .courseInfo main .ratingBlock .item,
-.courseInfo main .ratingBlock .content,
-.courseInfo main .ratingBlock .rateScore {
+  .courseInfo main .ratingBlock .content,
+  .courseInfo main .ratingBlock .rateScore {
     font-size: 1.2rem;
   }
 }
@@ -1849,8 +1875,8 @@ table td.rating {
     height: 2.4rem;
   }
   .courseInfo main .ratingBlock .content.sweet .svg-icon path,
-.courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
-.courseInfo main .ratingBlock .content.sweet .svg-icon rect {
+  .courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.sweet .svg-icon rect {
     fill: #ffa9a9;
   }
   .courseInfo main .ratingBlock .content.sweet .svg-icon circle {
@@ -1863,8 +1889,8 @@ table td.rating {
     height: 2.2rem;
   }
   .courseInfo main .ratingBlock .content.sweet .svg-icon path,
-.courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
-.courseInfo main .ratingBlock .content.sweet .svg-icon rect {
+  .courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.sweet .svg-icon rect {
     fill: #ffa9a9;
   }
   .courseInfo main .ratingBlock .content.sweet .svg-icon circle {
@@ -1877,8 +1903,8 @@ table td.rating {
     height: 1.8rem;
   }
   .courseInfo main .ratingBlock .content.sweet .svg-icon path,
-.courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
-.courseInfo main .ratingBlock .content.sweet .svg-icon rect {
+  .courseInfo main .ratingBlock .content.sweet .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.sweet .svg-icon rect {
     fill: #ffa9a9;
   }
   .courseInfo main .ratingBlock .content.sweet .svg-icon circle {
@@ -1904,8 +1930,8 @@ table td.rating {
     height: 2.4rem;
   }
   .courseInfo main .ratingBlock .content.cool .svg-icon path,
-.courseInfo main .ratingBlock .content.cool .svg-icon polygon,
-.courseInfo main .ratingBlock .content.cool .svg-icon rect {
+  .courseInfo main .ratingBlock .content.cool .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.cool .svg-icon rect {
     fill: #8dbeff;
   }
   .courseInfo main .ratingBlock .content.cool .svg-icon circle {
@@ -1918,8 +1944,8 @@ table td.rating {
     height: 2.2rem;
   }
   .courseInfo main .ratingBlock .content.cool .svg-icon path,
-.courseInfo main .ratingBlock .content.cool .svg-icon polygon,
-.courseInfo main .ratingBlock .content.cool .svg-icon rect {
+  .courseInfo main .ratingBlock .content.cool .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.cool .svg-icon rect {
     fill: #8dbeff;
   }
   .courseInfo main .ratingBlock .content.cool .svg-icon circle {
@@ -1932,8 +1958,8 @@ table td.rating {
     height: 1.8rem;
   }
   .courseInfo main .ratingBlock .content.cool .svg-icon path,
-.courseInfo main .ratingBlock .content.cool .svg-icon polygon,
-.courseInfo main .ratingBlock .content.cool .svg-icon rect {
+  .courseInfo main .ratingBlock .content.cool .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.cool .svg-icon rect {
     fill: #8dbeff;
   }
   .courseInfo main .ratingBlock .content.cool .svg-icon circle {
@@ -1959,8 +1985,8 @@ table td.rating {
     height: 2.4rem;
   }
   .courseInfo main .ratingBlock .content.recommend .svg-icon path,
-.courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
-.courseInfo main .ratingBlock .content.recommend .svg-icon rect {
+  .courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.recommend .svg-icon rect {
     fill: #95c782;
   }
   .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
@@ -1973,8 +1999,8 @@ table td.rating {
     height: 2.2rem;
   }
   .courseInfo main .ratingBlock .content.recommend .svg-icon path,
-.courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
-.courseInfo main .ratingBlock .content.recommend .svg-icon rect {
+  .courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.recommend .svg-icon rect {
     fill: #95c782;
   }
   .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
@@ -1987,8 +2013,8 @@ table td.rating {
     height: 1.8rem;
   }
   .courseInfo main .ratingBlock .content.recommend .svg-icon path,
-.courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
-.courseInfo main .ratingBlock .content.recommend .svg-icon rect {
+  .courseInfo main .ratingBlock .content.recommend .svg-icon polygon,
+  .courseInfo main .ratingBlock .content.recommend .svg-icon rect {
     fill: #95c782;
   }
   .courseInfo main .ratingBlock .content.recommend .svg-icon circle {
@@ -2086,8 +2112,8 @@ table td.rating {
     height: 1.5rem;
   }
   .courseInfo main .postsBlock button .svg-icon path,
-.courseInfo main .postsBlock button .svg-icon polygon,
-.courseInfo main .postsBlock button .svg-icon rect {
+  .courseInfo main .postsBlock button .svg-icon polygon,
+  .courseInfo main .postsBlock button .svg-icon rect {
     fill: white;
   }
   .courseInfo main .postsBlock button .svg-icon circle {
@@ -2183,7 +2209,8 @@ table td.rating {
   font-size: 1.1rem;
 }
 @media (max-width: 1012px) {
-  .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(2), .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(3) {
+  .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(2),
+  .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(3) {
     grid-column: span 2;
   }
   .courseInfo main .postsBlock .postsWrapper .singlePost:nth-of-type(n + 4) {
@@ -2267,8 +2294,8 @@ table td.rating {
     top: 5px;
   }
   .courseInfo main .discussBlock button .svg-icon path,
-.courseInfo main .discussBlock button .svg-icon polygon,
-.courseInfo main .discussBlock button .svg-icon rect {
+  .courseInfo main .discussBlock button .svg-icon polygon,
+  .courseInfo main .discussBlock button .svg-icon rect {
     fill: white;
   }
   .courseInfo main .discussBlock button .svg-icon circle {
@@ -2415,12 +2442,12 @@ table td.rating {
 }
 @media (max-width: 632px) {
   .postArticle .gradeSection .gradeWrapper .classGrading {
-    grid-template: repeat(6, 2rem)/1fr 1fr;
+    grid-template: repeat(6, 2rem) / 1fr 1fr;
   }
 }
 @media (max-width: 420px) {
   .postArticle .gradeSection .gradeWrapper .classGrading {
-    grid-template: repeat(10, 2rem)/1fr;
+    grid-template: repeat(10, 2rem) / 1fr;
   }
 }
 .postArticle .gradeSection .gradeWrapper .classGrading .item {
@@ -2430,12 +2457,22 @@ table td.rating {
 .postArticle .gradeSection .gradeWrapper .classGrading .item div {
   padding: 0;
 }
-.postArticle .gradeSection .gradeWrapper .classGrading .item div:nth-of-type(1) {
+.postArticle
+  .gradeSection
+  .gradeWrapper
+  .classGrading
+  .item
+  div:nth-of-type(1) {
   flex: 0 0 3.2rem;
   font-weight: 600;
   border-right: 1px solid rgba(60, 60, 60, 0.4);
 }
-.postArticle .gradeSection .gradeWrapper .classGrading .item div:nth-of-type(2) {
+.postArticle
+  .gradeSection
+  .gradeWrapper
+  .classGrading
+  .item
+  div:nth-of-type(2) {
   flex: 1;
   padding: 0 1rem;
 }
@@ -2450,13 +2487,13 @@ table td.rating {
 }
 @media (max-width: 1012px) {
   .postArticle .reviewSection div,
-.postArticle .otherSection div {
+  .postArticle .otherSection div {
     padding-right: 3rem;
   }
 }
 @media (max-width: 632px) {
   .postArticle .reviewSection div,
-.postArticle .otherSection div {
+  .postArticle .otherSection div {
     padding-left: 1.6rem;
     padding-right: 1.6rem;
   }
@@ -2513,11 +2550,14 @@ table td.rating {
   }
 }
 
-.userPage .accountInfo .popupWindow input[type=text], .publishPage .articleForm textarea,
+.userPage .accountInfo .popupWindow input[type="text"],
+.publishPage .articleForm textarea,
 .draftPage .articleForm textarea,
-.editPage .articleForm textarea, .publishPage .articleForm input[type=text],
-.draftPage .articleForm input[type=text],
-.editPage .articleForm input[type=text], #ratingPopup .inputGroup input {
+.editPage .articleForm textarea,
+.publishPage .articleForm input[type="text"],
+.draftPage .articleForm input[type="text"],
+.editPage .articleForm input[type="text"],
+#ratingPopup .inputGroup input {
   padding: 0.6rem 1rem;
   background-color: #f0f0f0;
   border: 1px solid rgba(60, 60, 60, 0.2);
@@ -2526,11 +2566,14 @@ table td.rating {
   font-size: 1.4rem;
   transition: all 0.3s;
 }
-.userPage .accountInfo .popupWindow input[type=text]:focus, .publishPage .articleForm textarea:focus,
+.userPage .accountInfo .popupWindow input[type="text"]:focus,
+.publishPage .articleForm textarea:focus,
 .draftPage .articleForm textarea:focus,
-.editPage .articleForm textarea:focus, .publishPage .articleForm input[type=text]:focus,
-.draftPage .articleForm input[type=text]:focus,
-.editPage .articleForm input[type=text]:focus, #ratingPopup .inputGroup input:focus {
+.editPage .articleForm textarea:focus,
+.publishPage .articleForm input[type="text"]:focus,
+.draftPage .articleForm input[type="text"]:focus,
+.editPage .articleForm input[type="text"]:focus,
+#ratingPopup .inputGroup input:focus {
   background-color: #f8f8f8;
 }
 
@@ -2695,11 +2738,24 @@ table td.rating {
   }
 }
 @media (max-width: 420px) {
-  .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item:nth-of-type(n + 2) {
+  .main
+    .publishContent
+    .gradeSection
+    .gradeWrapper
+    .total
+    .classGrading
+    .item:nth-of-type(n + 2) {
     margin-top: 0.8rem;
   }
 }
-.main .publishContent .gradeSection .gradeWrapper .total .classGrading .item div {
+.main
+  .publishContent
+  .gradeSection
+  .gradeWrapper
+  .total
+  .classGrading
+  .item
+  div {
   font-size: 1.3rem;
   font-weight: 600;
   flex: 0 0 4rem;
@@ -2707,28 +2763,69 @@ table td.rating {
   text-align: right;
 }
 @media (max-width: 632px) {
-  .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item div {
+  .main
+    .publishContent
+    .gradeSection
+    .gradeWrapper
+    .total
+    .classGrading
+    .item
+    div {
     flex: 0 1 4rem;
     padding: 0 1rem 0 0;
   }
 }
 @media (max-width: 420px) {
-  .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item div {
+  .main
+    .publishContent
+    .gradeSection
+    .gradeWrapper
+    .total
+    .classGrading
+    .item
+    div {
     text-align: left;
     padding: 0 0 0 0.8rem;
   }
 }
-.main .publishContent .gradeSection .gradeWrapper .total .classGrading .item input {
+.main
+  .publishContent
+  .gradeSection
+  .gradeWrapper
+  .total
+  .classGrading
+  .item
+  input {
   min-width: 0;
   font-size: 1.2rem;
   line-height: 1.4;
 }
 @media (max-width: 420px) {
-  .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item input {
+  .main
+    .publishContent
+    .gradeSection
+    .gradeWrapper
+    .total
+    .classGrading
+    .item
+    input {
     flex: 1 1 40%;
   }
 }
-.main .publishContent .gradeSection .gradeWrapper .total .classGrading .item:nth-of-type(3n), .main .publishContent .gradeSection .gradeWrapper .total .classGrading .item:last-of-type {
+.main
+  .publishContent
+  .gradeSection
+  .gradeWrapper
+  .total
+  .classGrading
+  .item:nth-of-type(3n),
+.main
+  .publishContent
+  .gradeSection
+  .gradeWrapper
+  .total
+  .classGrading
+  .item:last-of-type {
   border-right: none;
 }
 .main .publishContent .submitSection {
@@ -2888,7 +2985,7 @@ table td.rating {
 .userPage .accountInfo .popupWindow .deleteContent {
   margin-top: 1rem;
 }
-.userPage .accountInfo .popupWindow input[type=text] {
+.userPage .accountInfo .popupWindow input[type="text"] {
   margin-top: 1.2rem;
   background-color: #f8f8f8;
 }
@@ -2936,7 +3033,8 @@ table td.rating {
 }
 
 .userPage .savedDrafts .postsList .postRow,
-.userPage .myPosts .postsList .postRow, .userPage .savedDrafts .draftList .draftRow,
+.userPage .myPosts .postsList .postRow,
+.userPage .savedDrafts .draftList .draftRow,
 .userPage .savedDrafts .postsList .draftRow,
 .userPage .myPosts .draftList .draftRow,
 .userPage .myPosts .postsList .draftRow {
@@ -2945,7 +3043,8 @@ table td.rating {
   padding: 1rem 0;
 }
 .userPage .savedDrafts .postsList .postRow:hover,
-.userPage .myPosts .postsList .postRow:hover, .userPage .savedDrafts .draftList .draftRow:hover,
+.userPage .myPosts .postsList .postRow:hover,
+.userPage .savedDrafts .draftList .draftRow:hover,
 .userPage .savedDrafts .postsList .draftRow:hover,
 .userPage .myPosts .draftList .draftRow:hover,
 .userPage .myPosts .postsList .draftRow:hover {
@@ -2969,17 +3068,17 @@ table td.rating {
 }
 @media (max-width: 1012px) {
   .userPage .savedDrafts .draftList,
-.userPage .savedDrafts .postsList,
-.userPage .myPosts .draftList,
-.userPage .myPosts .postsList {
+  .userPage .savedDrafts .postsList,
+  .userPage .myPosts .draftList,
+  .userPage .myPosts .postsList {
     grid-template-columns: 2fr 2fr 5rem;
   }
 }
 @media (max-width: 632px) {
   .userPage .savedDrafts .draftList,
-.userPage .savedDrafts .postsList,
-.userPage .myPosts .draftList,
-.userPage .myPosts .postsList {
+  .userPage .savedDrafts .postsList,
+  .userPage .myPosts .draftList,
+  .userPage .myPosts .postsList {
     grid-template-columns: 1fr 5rem;
   }
 }
@@ -3011,18 +3110,18 @@ table td.rating {
 }
 @media (max-width: 1012px) {
   .userPage .savedDrafts .draftList > div,
-.userPage .savedDrafts .postsList > div,
-.userPage .myPosts .draftList > div,
-.userPage .myPosts .postsList > div {
+  .userPage .savedDrafts .postsList > div,
+  .userPage .myPosts .draftList > div,
+  .userPage .myPosts .postsList > div {
     grid-template-columns: 2fr 2fr 5rem;
     grid-column: span 3;
   }
 }
 @media (max-width: 632px) {
   .userPage .savedDrafts .draftList > div,
-.userPage .savedDrafts .postsList > div,
-.userPage .myPosts .draftList > div,
-.userPage .myPosts .postsList > div {
+  .userPage .savedDrafts .postsList > div,
+  .userPage .myPosts .draftList > div,
+  .userPage .myPosts .postsList > div {
     grid-template-columns: 1fr 5rem;
     grid-column: span 2;
   }
@@ -3059,9 +3158,9 @@ table td.rating {
 }
 @media (max-width: 632px) {
   .userPage .savedDrafts .draftList > div span:nth-of-type(2),
-.userPage .savedDrafts .postsList > div span:nth-of-type(2),
-.userPage .myPosts .draftList > div span:nth-of-type(2),
-.userPage .myPosts .postsList > div span:nth-of-type(2) {
+  .userPage .savedDrafts .postsList > div span:nth-of-type(2),
+  .userPage .myPosts .draftList > div span:nth-of-type(2),
+  .userPage .myPosts .postsList > div span:nth-of-type(2) {
     display: none;
   }
 }
@@ -3073,9 +3172,9 @@ table td.rating {
 }
 @media (max-width: 1012px) {
   .userPage .savedDrafts .draftList > div time,
-.userPage .savedDrafts .postsList > div time,
-.userPage .myPosts .draftList > div time,
-.userPage .myPosts .postsList > div time {
+  .userPage .savedDrafts .postsList > div time,
+  .userPage .myPosts .draftList > div time,
+  .userPage .myPosts .postsList > div time {
     display: none;
   }
 }
@@ -3094,18 +3193,18 @@ table td.rating {
 }
 @media (max-width: 1012px) {
   .userPage .savedDrafts .draftList .draftRow,
-.userPage .savedDrafts .postsList .draftRow,
-.userPage .myPosts .draftList .draftRow,
-.userPage .myPosts .postsList .draftRow {
+  .userPage .savedDrafts .postsList .draftRow,
+  .userPage .myPosts .draftList .draftRow,
+  .userPage .myPosts .postsList .draftRow {
     grid-column: span 2;
     grid-template-columns: 1fr 1fr;
   }
 }
 @media (max-width: 632px) {
   .userPage .savedDrafts .draftList .draftRow,
-.userPage .savedDrafts .postsList .draftRow,
-.userPage .myPosts .draftList .draftRow,
-.userPage .myPosts .postsList .draftRow {
+  .userPage .savedDrafts .postsList .draftRow,
+  .userPage .myPosts .draftList .draftRow,
+  .userPage .myPosts .postsList .draftRow {
     grid-column: span 1;
     grid-template-columns: 1fr;
   }
@@ -3116,13 +3215,13 @@ table td.rating {
 }
 @media (max-width: 1012px) {
   .userPage .savedDrafts .postsList,
-.userPage .myPosts .postsList {
+  .userPage .myPosts .postsList {
     grid-template-columns: 2fr 2fr 1fr 5rem;
   }
 }
 @media (max-width: 632px) {
   .userPage .savedDrafts .postsList,
-.userPage .myPosts .postsList {
+  .userPage .myPosts .postsList {
     grid-template-columns: 2fr 1fr 5rem;
   }
 }
@@ -3133,14 +3232,14 @@ table td.rating {
 }
 @media (max-width: 1012px) {
   .userPage .savedDrafts .postsList > div,
-.userPage .myPosts .postsList > div {
+  .userPage .myPosts .postsList > div {
     grid-column: span 4;
     grid-template-columns: 2fr 2fr 1fr 5rem;
   }
 }
 @media (max-width: 632px) {
   .userPage .savedDrafts .postsList > div,
-.userPage .myPosts .postsList > div {
+  .userPage .myPosts .postsList > div {
     grid-column: span 3;
     grid-template-columns: 2fr 1fr 5rem;
   }
@@ -3152,14 +3251,14 @@ table td.rating {
 }
 @media (max-width: 1012px) {
   .userPage .savedDrafts .postsList .postRow,
-.userPage .myPosts .postsList .postRow {
+  .userPage .myPosts .postsList .postRow {
     grid-column: span 3;
     grid-template-columns: 2fr 2fr 1fr;
   }
 }
 @media (max-width: 632px) {
   .userPage .savedDrafts .postsList .postRow,
-.userPage .myPosts .postsList .postRow {
+  .userPage .myPosts .postsList .postRow {
     grid-column: span 2;
     grid-template-columns: 2fr 1fr;
   }
