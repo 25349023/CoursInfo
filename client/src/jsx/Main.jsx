@@ -20,6 +20,7 @@ export default class Main extends React.Component {
         this.state = {
             gravatar_hash: "",
             is_login: false,
+            userId: "",
         };
     }
 
@@ -89,11 +90,9 @@ export default class Main extends React.Component {
                             <div
                                 className="btnGroup"
                                 onClick={() => {
-                                    this.setState({ is_login: true }, () => {
-                                        document
-                                            .querySelector("#loginPopup")
-                                            .classList.remove("active");
-                                    });
+                                    document
+                                        .querySelector("#loginPopup")
+                                        .classList.remove("active");
                                 }}
                             >
                                 <a href="http://localhost:3000/auth/google">
@@ -127,7 +126,15 @@ export default class Main extends React.Component {
 
     askid() {
         current().then((user) => {
-            this.setState({ gravatar_hash: user[0].gravatar_hash });
+            this.setState(
+                {
+                    gravatar_hash: user[0].gravatar_hash,
+                    userId: user[0].id,
+                },
+                () => {
+                    this.setState({ is_login: userId ? true : false });
+                }
+            );
         });
     }
 }
