@@ -28,17 +28,22 @@
     .editContent {
       display: flex;
       flex-flow: column;
+      margin-top: 1rem;
+    }
+
+    .deleteContent {
+      margin-top: 1rem;
     }
 
     input[type="text"] {
       @extend %input;
-      margin-top: 0.8rem;
+      margin-top: 1.2rem;
       background-color: $ui-color-lighter;
     }
 
     .btnGroup {
       display: flex;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
 
     button {

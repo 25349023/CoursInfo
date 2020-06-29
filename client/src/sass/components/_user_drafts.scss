@@ -1,0 +1,163 @@
+%row {
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 1rem 0;
+
+  &:hover {
+    background-color: $table-hover-color;
+  }
+}
+
+.userPage {
+  .savedDrafts,
+  .myPosts {
+    margin-top: 3rem;
+
+    .draftList,
+    .postsList {
+      display: grid;
+      grid-template-columns: 2fr 2fr 1fr 5rem;
+
+      background-color: $ui-color-block;
+      border: 1px solid $ui-color-block-border;
+      border-radius: 10px;
+      padding: 1rem;
+
+      @include brk-down($brk-mlarge) {
+        grid-template-columns: 2fr 2fr 5rem;
+      }
+
+      @include brk-down($brk-medium) {
+        grid-template-columns: 1fr 5rem;
+      }
+
+      .delete {
+        font-size: 1.4rem;
+        place-self: center center;
+        cursor: pointer;
+        color: rgba($ui-color-text, 0.7);
+
+        &:hover {
+          color: $like-color;
+        }
+      }
+
+      > div {
+        display: grid;
+        grid-template-columns: 2fr 2fr 1fr 5rem;
+        grid-column: span 4;
+
+        font-size: 1.4rem;
+        text-align: center;
+        padding: 0.5rem 0;
+
+        @include brk-down($brk-mlarge) {
+          grid-template-columns: 2fr 2fr 5rem;
+          grid-column: span 3;
+        }
+
+        @include brk-down($brk-medium) {
+          grid-template-columns: 1fr 5rem;
+          grid-column: span 2;
+        }
+
+        &:first-of-type {
+          font-weight: 600;
+        }
+
+        &:not(:last-of-type) {
+          border-bottom: 1px solid $ui-color-block-border;
+        }
+
+        &:last-of-type {
+          padding-bottom: 0.8rem;
+        }
+
+        span:first-of-type {
+          flex: 2;
+        }
+
+        span:nth-of-type(2) {
+          flex: 2;
+
+          @include brk-down($brk-medium) {
+            display: none;
+          }
+        }
+
+        time {
+          flex: 1;
+
+          @include brk-down($brk-mlarge) {
+            display: none;
+          }
+        }
+
+        span:nth-of-type(3) {
+          flex: 1;
+        }
+      }
+
+      .draftRow {
+        grid-column: span 3;
+        grid-template-columns: 2fr 2fr 1fr;
+
+        @extend %row;
+
+        @include brk-down($brk-mlarge) {
+          grid-column: span 2;
+          grid-template-columns: 1fr 1fr;
+        }
+
+        @include brk-down($brk-medium) {
+          grid-column: span 1;
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+
+    .postsList {
+      grid-template-columns: 2fr 2fr 1fr 1fr 5rem;
+
+      @include brk-down($brk-mlarge) {
+        grid-template-columns: 2fr 2fr 1fr 5rem;
+      }
+
+      @include brk-down($brk-medium) {
+        grid-template-columns: 2fr 1fr 5rem;
+      }
+
+      > div {
+        grid-template-columns: 2fr 2fr 1fr 1fr 5rem;
+        grid-column: span 5;
+
+        @include brk-down($brk-mlarge) {
+          grid-column: span 4;
+          grid-template-columns: 2fr 2fr 1fr 5rem;
+        }
+
+        @include brk-down($brk-medium) {
+          grid-column: span 3;
+          grid-template-columns: 2fr 1fr 5rem;
+        }
+      }
+
+      .postRow {
+        grid-template-columns: 2fr 2fr 1fr 1fr;
+        grid-column: span 4;
+
+        @extend %row;
+
+        @include brk-down($brk-mlarge) {
+          grid-column: span 3;
+          grid-template-columns: 2fr 2fr 1fr;
+        }
+
+        @include brk-down($brk-medium) {
+          grid-column: span 2;
+          grid-template-columns: 2fr 1fr;
+        }
+      }
+    }
+  }
+}
