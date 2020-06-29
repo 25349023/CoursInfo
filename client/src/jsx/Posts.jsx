@@ -99,11 +99,6 @@ export default class Posts extends React.Component {
                 start: [],
             });
         }
-        this.catchPosts(
-            this.state.department,
-            this.state.text,
-            this.state.start
-        );
     }
 
     catchPosts(department, text, start) {

@@ -40,7 +40,7 @@ export default class Draft extends React.Component {
             teacher_character: "",
             ta_performance: "",
             main_review: "",
-            personal_grade: "X",
+            personal_grade: "",
             class_grade_dist: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             others: "",
             dropdownlist: [],
@@ -750,7 +750,11 @@ export default class Draft extends React.Component {
                                                     className="dropdownBtn"
                                                 >
                                                     <span className="chosen">
-                                                        請選擇成績
+                                                        {this.state
+                                                            .personal_grade
+                                                            ? this.state
+                                                                  .personal_grade
+                                                            : "請選擇成績"}
                                                     </span>
                                                     <i className="fas fa-caret-down"></i>
                                                 </button>
@@ -962,17 +966,20 @@ export default class Draft extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[1]
+                                                            this.state
+                                                                .class_grade_dist[1]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[1] = Number(
+                                                            let temp = [
+                                                                ...class_grade_dist,
+                                                            ];
+                                                            temp[1] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                class_grade_dist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -983,17 +990,20 @@ export default class Draft extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[2]
+                                                            this.state
+                                                                .class_grade_dist[2]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[2] = Number(
+                                                            let temp = [
+                                                                ...class_grade_dist,
+                                                            ];
+                                                            temp[2] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                class_grade_dist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1004,17 +1014,20 @@ export default class Draft extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[3]
+                                                            this.state
+                                                                .class_grade_dist[3]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[3] = Number(
+                                                            let temp = [
+                                                                ...class_grade_dist,
+                                                            ];
+                                                            temp[3] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                class_grade_dist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1025,17 +1038,20 @@ export default class Draft extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[4]
+                                                            this.state
+                                                                .class_grade_dist[4]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[4] = Number(
+                                                            let temp = [
+                                                                ...class_grade_dist,
+                                                            ];
+                                                            temp[4] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                class_grade_dist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1046,17 +1062,20 @@ export default class Draft extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[5]
+                                                            this.state
+                                                                .class_grade_dist[5]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[5] = Number(
+                                                            let temp = [
+                                                                ...class_grade_dist,
+                                                            ];
+                                                            temp[5] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                class_grade_dist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1067,17 +1086,20 @@ export default class Draft extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[6]
+                                                            this.state
+                                                                .class_grade_dist[6]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[6] = Number(
+                                                            let temp = [
+                                                                ...class_grade_dist,
+                                                            ];
+                                                            temp[6] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                class_grade_dist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1088,41 +1110,43 @@ export default class Draft extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[7]
+                                                            this.state
+                                                                .class_grade_dist[7]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[7] = Number(
+                                                            let temp = [
+                                                                ...class_grade_dist,
+                                                            ];
+                                                            temp[7] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                class_grade_dist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
                                                 </div>
                                                 <div className="item">
                                                     <div>C-</div>
-                                                    <input
-                                                        type="text"
-                                                        pattern="\d*"
-                                                        value={
-                                                            this.gradelist[8]
-                                                        }
-                                                        onChange={(e) => {
-                                                            const text =
-                                                                e.target.value;
-                                                            this.gradelist[8] = Number(
-                                                                text
-                                                            );
-                                                            this.setState({
-                                                                class_grade_dist: this
-                                                                    .gradelist,
-                                                            });
-                                                        }}
-                                                    />
+                                                    value=
+                                                    {
+                                                        this.state
+                                                            .class_grade_dist[8]
+                                                    }
+                                                    onChange=
+                                                    {(e) => {
+                                                        const text =
+                                                            e.target.value;
+                                                        let temp = [
+                                                            ...class_grade_dist,
+                                                        ];
+                                                        temp[8] = Number(text);
+                                                        this.setState({
+                                                            class_grade_dist: temp,
+                                                        });
+                                                    }}
                                                 </div>
                                                 <div className="item">
                                                     <div>
@@ -1135,17 +1159,20 @@ export default class Draft extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[9]
+                                                            this.state
+                                                                .class_grade_dist[9]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[9] = Number(
+                                                            let temp = [
+                                                                ...class_grade_dist,
+                                                            ];
+                                                            temp[9] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                class_grade_dist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1289,7 +1316,9 @@ export default class Draft extends React.Component {
                 teacherCharacter: this.state.teacher_character,
                 taPerformance: this.state.ta_performance,
                 mainReview: this.state.main_review,
-                personalGrade: this.state.personal_grade,
+                personalGrade: this.state.personal_grade
+                    ? this.state.personal_grade
+                    : "X",
                 classGradeDist: this.state.class_grade_dist,
             }).then(() => {
                 this.setState({ redirect_to_user: true });

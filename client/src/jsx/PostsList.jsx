@@ -1,10 +1,13 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
-
+import { Redirect } from "react-router-dom";
 export default class PostsList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            redirect: false,
+            id: "",
+        };
     }
 
     render() {
@@ -13,7 +16,16 @@ export default class PostsList extends React.Component {
         let children = [];
         if (posts.length) {
             children = posts.map((p) => (
-                <tr data-href="#" key={p.course_number}>
+                <tr
+                    data-href="#"
+                    key={p.course_number}
+                    onClick={() => {
+                        this.setState({
+                            redirect: true,
+                            id: p.id,
+                        });
+                    }}
+                >
                     <td className="courseName">{p.course_chinese_title}</td>
                     <td className="teacher">
                         {p.teacher ? p.teacher.split("\t")[0] : "-"}
@@ -30,6 +42,9 @@ export default class PostsList extends React.Component {
                     </td>
                 </tr>
             ));
+        }
+        if (this.state.redirect) {
+            return <Redirect to={`/userpost/${this.state.id}`} />;
         }
         return (
             <table>
