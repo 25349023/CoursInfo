@@ -2,67 +2,40 @@ import React from "react";
 import Menu from "./Menu.jsx";
 import { createPost } from "api/Posts_api.js";
 import { getdropdown } from "api/Courses_api.js";
-import { createDraft } from "api/Draft_api.js";
+import { createDraft, selectDraft } from "api/Draft_api.js";
+import { current, selectUser } from "api/Users_api.js";
 
 //draftpost is a big obj in props
 export default class Draft extends React.Component {
     constructor(props) {
         super(props);
+        let temp = props.location.pathname;
+        console.log(props.location.pathname);
+        let temp1 = temp.split("/");
         this.state = {
-            userId: this.props.draftpost.userId
-                ? this.props.draftpost.userId
-                : "",
-            semester: this.props.draftpost.semester
-                ? this.props.draftpost.semester
-                : "",
-            department: this.props.draftpost.department
-                ? this.props.draftpost.department
-                : "",
-            courseSubnumber: this.props.draftpost.courseSubnumber
-                ? this.props.draftpost.courseSubnumber
-                : "",
-            title: this.props.draftpost.title ? this.props.draftpost.title : "",
-            courseType: this.props.draftpost.courseType
-                ? this.props.draftpost.courseType
-                : "",
-            sweet: this.props.draftpost.sweet ? this.props.draftpost.sweet : "",
-            cool: this.props.draftpost.cool ? this.props.draftpost.cool : "",
-            recommend: this.props.draftpost.recommend
-                ? this.props.draftpost.recommend
-                : "",
-            info: this.props.draftpost.info ? this.props.draftpost.info : "",
-            prerequisite: this.props.draftpost.prerequisite
-                ? this.props.draftpost.prerequisite
-                : "",
-            teachMethod: this.props.draftpost.teachMethod
-                ? this.props.draftpost.teachMethod
-                : "",
-            assignment: this.props.draftpost.assignment
-                ? this.props.draftpost.assignment
-                : "",
-            exam: this.props.draftpost.exam ? this.props.draftpost.exam : "",
-            evaluation: this.props.draftpost.evaluation
-                ? this.props.draftpost.evaluation
-                : "",
-            textbook: this.props.draftpost.textbook
-                ? this.props.draftpost.textbook
-                : "",
-            teacherCharacter: this.props.draftpost.teacherCharacter
-                ? this.props.draftpost.teacherCharacter
-                : "",
-            taPerformance: this.props.draftpost.taPerformance
-                ? this.props.draftpost.taPerformance
-                : "",
-            mainReview: this.props.draftpost.mainReview
-                ? this.props.draftpost.mainReview
-                : "",
-            personalGrade: this.props.draftpost.personalGrade
-                ? this.props.draftpost.personalGrade
-                : "",
+            draftId: temp1[temp1.length - 1],
+            userId: "",
+            semester: "",
+            department: "",
+            courseSubnumber: "",
+            title: "",
+            courseType: "",
+            sweet: "",
+            cool: "",
+            recommend: "",
+            info: "",
+            prerequisite: "",
+            teachMethod: "",
+            assignment: "",
+            exam: "",
+            evaluation: "",
+            textbook: "",
+            teacherCharacter: "",
+            taPerformance: "",
+            mainReview: "",
+            personalGrade: "",
             classGradeDist: ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-            others: this.props.draftpost.others
-                ? this.props.draftpost.others
-                : "",
+            others: "",
             dropdownlist: [],
         };
         this.gradelist = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
@@ -80,14 +53,20 @@ export default class Draft extends React.Component {
                 <button
                     type="button"
                     className="option"
-                    key={p.course_number}
+                    key={p.department + p.course_subnumber}
                     onClick={() => {
                         this.dropdownRef.textContent =
-                            p.course_number + " " + p.course_chinese_title;
+                            p.department +
+                            " " +
+                            p.course_subnumber +
+                            " " +
+                            p.course_chinese_title;
+                        this.setState({ courseSubnumber: p.course_subnumber });
                     }}
                 >
                     <span className="primary">
-                        {p.course_number} {p.course_chinese_title}
+                        {p.department} {p.course_subnumber}{" "}
+                        {p.course_chinese_title}
                     </span>
                     <span className="secondary">
                         {p.teacher ? p.teacher.split("\t")[0] : "-"}
@@ -114,7 +93,9 @@ export default class Draft extends React.Component {
                                             className="dropdownBtn"
                                         >
                                             <span className="chosen">
-                                                請選擇學期
+                                                {this.state.semester
+                                                    ? this.state.semester
+                                                    : "請選擇學期"}
                                             </span>
                                             <i className="fas fa-caret-down"></i>
                                         </button>
@@ -126,6 +107,8 @@ export default class Draft extends React.Component {
                                                 onClick={() => {
                                                     this.setState({
                                                         semester: "10910",
+                                                        course_chinese_title:
+                                                            "",
                                                     });
                                                 }}
                                             >
@@ -140,6 +123,8 @@ export default class Draft extends React.Component {
                                                 onClick={() => {
                                                     this.setState({
                                                         semester: "10820",
+                                                        course_chinese_title:
+                                                            "",
                                                     });
                                                 }}
                                             >
@@ -154,6 +139,8 @@ export default class Draft extends React.Component {
                                                 onClick={() => {
                                                     this.setState({
                                                         semester: "10810",
+                                                        course_chinese_title:
+                                                            "",
                                                     });
                                                 }}
                                             >
@@ -171,7 +158,9 @@ export default class Draft extends React.Component {
                                             className="dropdownBtn"
                                         >
                                             <span className="chosen">
-                                                請選擇科系
+                                                {this.state.department
+                                                    ? this.state.department
+                                                    : "請選擇科系"}
                                             </span>
                                             <i className="fas fa-caret-down"></i>
                                         </button>
@@ -183,6 +172,8 @@ export default class Draft extends React.Component {
                                                 onClick={() => {
                                                     this.setState({
                                                         department: "CS",
+                                                        course_chinese_title:
+                                                            "",
                                                     });
                                                 }}
                                             >
@@ -197,6 +188,8 @@ export default class Draft extends React.Component {
                                                 onClick={() => {
                                                     this.setState({
                                                         department: "EE",
+                                                        course_chinese_title:
+                                                            "",
                                                     });
                                                 }}
                                             >
@@ -211,6 +204,8 @@ export default class Draft extends React.Component {
                                                 onClick={() => {
                                                     this.setState({
                                                         department: "EECS",
+                                                        course_chinese_title:
+                                                            "",
                                                     });
                                                 }}
                                             >
@@ -264,14 +259,15 @@ export default class Draft extends React.Component {
                                                     this.dropdownRef = el;
                                                 }}
                                             >
-                                                {this.props.draftpost
-                                                    .course_chinese_title
-                                                    ? this.props.draftpost
-                                                          .course_number +
+                                                {this.state.course_chinese_title
+                                                    ? this.state.department +
                                                       " " +
-                                                      this.props.draftpost
+                                                      this.state
+                                                          .course_subnumber +
+                                                      " " +
+                                                      this.state
                                                           .course_chinese_title
-                                                    : 請選擇課程}
+                                                    : "請選擇課程"}
                                             </span>
                                             <i className="fas fa-caret-down"></i>
                                         </button>
@@ -929,7 +925,9 @@ export default class Draft extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[0] = text;
+                                                            this.gradelist[0] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -948,7 +946,9 @@ export default class Draft extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[1] = text;
+                                                            this.gradelist[1] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -967,7 +967,9 @@ export default class Draft extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[2] = text;
+                                                            this.gradelist[2] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -986,7 +988,9 @@ export default class Draft extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[3] = text;
+                                                            this.gradelist[3] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -1005,7 +1009,9 @@ export default class Draft extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[4] = text;
+                                                            this.gradelist[4] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -1024,7 +1030,9 @@ export default class Draft extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[5] = text;
+                                                            this.gradelist[5] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -1043,7 +1051,9 @@ export default class Draft extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[6] = text;
+                                                            this.gradelist[6] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -1062,7 +1072,9 @@ export default class Draft extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[7] = text;
+                                                            this.gradelist[7] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -1081,7 +1093,9 @@ export default class Draft extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[8] = text;
+                                                            this.gradelist[8] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -1105,7 +1119,9 @@ export default class Draft extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[9] = text;
+                                                            this.gradelist[9] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -1141,18 +1157,24 @@ export default class Draft extends React.Component {
                                         }}
                                     ></textarea>
                                 </section>
-                                <section class="submitSection">
-                                    <button type="button" type="button">
+
+                                <section className="submitSection">
+                                    <button
+                                        type="button"
+                                        type="button"
+                                        onClick={this.setState({
+                                            redirect: true,
+                                        })}
+                                    >
                                         <i class="fas fa-undo-alt"></i> 放棄變更
                                     </button>
                                     <button
                                         type="button"
-                                        type="button"
-                                        onclick={() => {
-                                            createDraft({ ...this.state });
-                                        }}
+                                        onClick={this.handleCreateDraft.bind(
+                                            this
+                                        )}
                                     >
-                                        <i class="fas fa-save"></i> 儲存變更
+                                        <i className="fas fa-save"></i> 儲存變更
                                     </button>
                                     <button
                                         type="submit"
@@ -1160,7 +1182,8 @@ export default class Draft extends React.Component {
                                             this
                                         )}
                                     >
-                                        <i class="fas fa-paper-plane"></i> 發表
+                                        <i className="fas fa-paper-plane"></i>{" "}
+                                        發表
                                     </button>
                                 </section>
                             </main>
@@ -1172,8 +1195,34 @@ export default class Draft extends React.Component {
             </div>
         );
     }
+
+    componentDidMount() {
+        selectDraft(this.state.draftId).then((data) => {
+            this.setState({ ...data });
+        });
+        current().then((data) => {
+            this.setState({ userId: data[0].id });
+        });
+    }
+
     handleCreatePost() {
-        createPost({ ...this.state });
+        if (this.state.userId) {
+            createPost({ ...this.state }).then(() => {
+                this.setState({ redirect: true });
+            });
+        } else {
+            alert("請先登入");
+        }
+    }
+
+    handleCreateDraft() {
+        if (this.state.userId) {
+            createDraft({ ...this.state }).then(() => {
+                this.setState({ redirect: true });
+            });
+        } else {
+            alert("請先登入");
+        }
     }
 
     handleDrowndown() {
@@ -1184,3 +1233,4 @@ export default class Draft extends React.Component {
         );
     }
 }
+Info = withRouter(Info);
