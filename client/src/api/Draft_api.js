@@ -14,7 +14,7 @@ export function listDraft(userId) {
 export function selectDraft(draftId) {
     let url = `${postBaseUrl}/api/drafts/${draftId}`;
     console.log(`Making GET & selectdraft request to: ${url}`);
-    return axios.get(url).then(function (res) {
+    return axios.get(url, { withCredentials: true }).then(function (res) {
         if (res.status !== 200)
             throw new Error(`Unexpected response code: ${res.status}`);
         return res.data;

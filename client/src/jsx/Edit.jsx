@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "./Menu.jsx";
-import { createPost } from "api/Posts_api.js";
+import { createPost, selectPost } from "api/Posts_api.js";
 import { getdropdown } from "api/Courses_api.js";
 import { createDraft, selectDraft } from "api/Draft_api.js";
 import { current, selectUser } from "api/Users_api.js";
@@ -8,14 +8,14 @@ import { current, selectUser } from "api/Users_api.js";
 import { withRouter } from "react-router-dom";
 
 //draftpost is a big obj in props
-export default class Draft extends React.Component {
+export default class Edit extends React.Component {
     constructor(props) {
         super(props);
         let temp = props.location.pathname;
         console.log(props.location.pathname);
         let temp1 = temp.split("/");
         this.state = {
-            draftId: temp1[temp1.length - 1],
+            PostId: temp1[temp1.length - 1],
             userId: "",
             semester: "",
             department: "",
@@ -1169,33 +1169,18 @@ export default class Draft extends React.Component {
                                         type="button"
                                         type="button"
                                         onClick={() => {
-                                            this.setState({
-                                                redirect: true,
-                                            });
+                                            this.setState({ redirect: true });
                                         }}
                                     >
-                                        <i className="fas fa-undo-alt"></i>{" "}
-                                        放棄變更
+                                        <i class="fas fa-undo-alt"></i> 取消編輯
                                     </button>
-
-                                    <button
-                                        type="button"
-                                        type="button"
-                                        onClick={this.handleCreateDraft.bind(
-                                            this
-                                        )}
-                                    >
-                                        <i className="fas fa-save"></i> 儲存變更
-                                    </button>
-
                                     <button
                                         type="submit"
                                         onClick={this.handleCreatePost.bind(
                                             this
                                         )}
                                     >
-                                        <i className="fas fa-paper-plane"></i>{" "}
-                                        發表
+                                        <i class="fas fa-paper-plane"></i> 發表
                                     </button>
                                 </section>
                             </main>
@@ -1209,7 +1194,7 @@ export default class Draft extends React.Component {
     }
 
     componentDidMount() {
-        selectDraft(this.state.draftId).then((data) => {
+        selectPost(this.state.PostId).then((data) => {
             this.setState({ ...data[0] });
         });
         current().then((data) => {
@@ -1245,4 +1230,4 @@ export default class Draft extends React.Component {
         );
     }
 }
-Draft = withRouter(Draft);
+Edit = withRouter(Edit);

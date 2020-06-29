@@ -9,6 +9,7 @@ import Info from "./Info.jsx";
 import Post from "./Post.jsx";
 import User from "./User.jsx";
 import Draft from "./Draft.jsx";
+import Edit from "./Edit.jsx";
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
@@ -57,6 +58,7 @@ export default class Main extends React.Component {
                 <Route path="/userpost" render={() => <Post />} />
                 <Route path="/userhome" render={() => <User />} />
                 <Route path="/userdraft" render={() => <Draft />} />
+                <Route path="/editdraft" render={() => <Edit />} />
                 <footer>
                     Copyright &copy; 2020 Skyline and 憶純晃晃. All Rights
                     Reserved.
