@@ -1,7 +1,8 @@
 import React from "react";
 import { Redirect, withRouter } from "react-router-dom";
-import { selectPost } from "api/Posts_api.js";
+import { selectPost, createVote, getVote } from "api/Posts_api.js";
 import Menu from "./Menu.jsx";
+import { current } from "api/Users_api.js";
 
 export default class Post extends React.Component {
     constructor(props) {
@@ -11,8 +12,10 @@ export default class Post extends React.Component {
         let temp1 = temp.split("/");
         this.state = {
             id: temp1[temp1.length - 1],
+            userId: "",
             information: {},
             chinese_name: [],
+            upVote: "",
         };
     }
     render() {
@@ -42,14 +45,56 @@ export default class Post extends React.Component {
                                     </figure>
 
                                     <div className="remark">
-                                        <span className="like">
-                                            <a href="#">
+                                        <span
+                                            className="like"
+                                            onClick={() => {
+                                                createVote(
+                                                    this.state.id,
+                                                    this.state.upVote ? 2 : 0,
+                                                    this.state.userId
+                                                ).then(() => {
+                                                    // getVote(
+                                                    //     this.state.userId,
+                                                    //     this.state.id
+                                                    // ).then((data) => {
+                                                    //     this.setState({
+                                                    //         upVote: data[0]
+                                                    //             ? data[0].upvote
+                                                    //             : "",
+                                                    //     });
+                                                    // });
+                                                    this.askinfo();
+                                                });
+                                            }}
+                                        >
+                                            <a>
                                                 <i className="fas fa-heart"></i>
                                             </a>
                                             <span>{information.likes}</span>
                                         </span>
-                                        <span className="dislike">
-                                            <a href="#">
+                                        <span
+                                            className="dislike"
+                                            onClick={() => {
+                                                createVote(
+                                                    this.state.id,
+                                                    !this.state.upVote ? 1 : 2,
+                                                    this.state.userId
+                                                ).then(() => {
+                                                    // getVote(
+                                                    //     this.state.userId,
+                                                    //     this.state.id
+                                                    // ).then((data) => {
+                                                    //     this.setState({
+                                                    //         upVote: data[0]
+                                                    //             ? data[0].upvote
+                                                    //             : "",
+                                                    //     });
+                                                    // });
+                                                    this.askinfo();
+                                                });
+                                            }}
+                                        >
+                                            <a>
                                                 <i className="fas fa-heart-broken"></i>
                                             </a>
                                             <span>{information.dislikes}</span>
@@ -341,6 +386,20 @@ export default class Post extends React.Component {
                 chinese.push(temp1[0]);
             }
             this.setState({ information: data[0], chinese_name: chinese });
+        });
+        current().then((user) => {
+            this.setState(
+                {
+                    userId: user[0].id,
+                },
+                () => {
+                    getVote(this.state.userId, this.state.id).then((data) => {
+                        this.setState({
+                            upVote: data[0] ? data[0].upvote : "",
+                        });
+                    });
+                }
+            );
         });
     }
 }

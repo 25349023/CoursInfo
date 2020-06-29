@@ -84,13 +84,27 @@ export function deletePost(postId, obj) {
 }
 
 //islike = 1 means like, = 0 means dislike, = 2 means cancel
-export function createVote(postId, islike) {
+export function createVote(postId, islike, userId) {
     let url = `${postBaseUrl}/api/posts/${postId}`;
     if (islike == 0) url += `/like`;
     else if (islike == 1) url += `/dislike`;
     else if (islike == 2) url += `/cancelVote`;
     console.log(`Making POST & createVote request to: ${url}`);
-    return axios.post(url, { withCredentials: true }).then(function (res) {
+    return axios
+        .post(url, { userId }, { withCredentials: true })
+        .then(function (res) {
+            if (res.status !== 200)
+                throw new Error(`Unexpected response code: ${res.status}`);
+
+            return res.data;
+        });
+}
+
+export function getVote(userId, postId) {
+    let url = `${postBaseUrl}/api/posts/${postId}-${userId}/vote`;
+
+    console.log(`Making GET & getVote request to: ${url}`);
+    return axios.get(url, { withCredentials: true }).then(function (res) {
         if (res.status !== 200)
             throw new Error(`Unexpected response code: ${res.status}`);
 
