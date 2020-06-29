@@ -1,6 +1,6 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroller";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 export default class CoursesList extends React.Component {
     constructor(props) {
         super(props);

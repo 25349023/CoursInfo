@@ -4,7 +4,7 @@ import { selectCourse } from "api/Courses_api.js";
 //import { selectCourse } from "api/Courses_api.js";
 import { useLocation, withRouter } from "react-router-dom";
 import { getsimplePost } from "api/Posts_api.js";
-
+import { Link } from "react-router-dom";
 import Stars from "./Stars.jsx";
 export default class Info extends React.Component {
     constructor(props) {
@@ -14,6 +14,7 @@ export default class Info extends React.Component {
         let temp1 = temp.split("/");
         temp1 = temp1[temp1.length - 1].split("-");
         this.state = {
+            redirect: false,
             information: [],
             pathname: temp,
             smt: temp1[0],
@@ -29,6 +30,7 @@ export default class Info extends React.Component {
             sweet: "",
             cool: "",
             recommend: "",
+            id: "",
         };
     }
     render() {
@@ -39,7 +41,13 @@ export default class Info extends React.Component {
         let children = [];
         if (simplepost.length) {
             children = simplepost.map((p) => (
-                <article className="singlePost" key={p.id}>
+                <article
+                    className="singlePost"
+                    key={p.id}
+                    onClick={() => {
+                        this.setState({ redirect: true, id: p.id });
+                    }}
+                >
                     <h4>
                         <a href="post.html">{p.title}</a>
                     </h4>
@@ -47,6 +55,9 @@ export default class Info extends React.Component {
                     <p>{p.main_review.slice(0, 40)}</p>
                 </article>
             ));
+        }
+        if (this.state.redirect) {
+            return <Redirect to={`/userpost/${this.state.id}`} />;
         }
         return (
             <div className="infoPage">
@@ -134,7 +145,8 @@ export default class Info extends React.Component {
                                         >
                                             <path d="M18.303,4.742l-1.454-1.455c-0.171-0.171-0.475-0.171-0.646,0l-3.061,3.064H2.019c-0.251,0-0.457,0.205-0.457,0.456v9.578c0,0.251,0.206,0.456,0.457,0.456h13.683c0.252,0,0.457-0.205,0.457-0.456V7.533l2.144-2.146C18.481,5.208,18.483,4.917,18.303,4.742 M15.258,15.929H2.476V7.263h9.754L9.695,9.792c-0.057,0.057-0.101,0.13-0.119,0.212L9.18,11.36h-3.98c-0.251,0-0.457,0.205-0.457,0.456c0,0.253,0.205,0.456,0.457,0.456h4.336c0.023,0,0.899,0.02,1.498-0.127c0.312-0.077,0.55-0.137,0.55-0.137c0.08-0.018,0.155-0.059,0.212-0.118l3.463-3.443V15.929z M11.241,11.156l-1.078,0.267l0.267-1.076l6.097-6.091l0.808,0.808L11.241,11.156z"></path>
                                         </svg>
-                                        &nbsp;我要分享
+                                        &nbsp;
+                                        <Link to="/publish">我要分享</Link>
                                     </button>
                                     <div className="postsWrapper">
                                         {children}
