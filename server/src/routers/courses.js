@@ -64,4 +64,20 @@ router.get("/:semester-:department", function (req, res, next) {
         .catch(next);
 });
 
+router.get("/history/:department-:subnumber", function (req, res, next) {
+    let { department, subnumber } = req.params;
+    if (!subnumber || !department) {
+        const err = new Error("parameters are not enough");
+        err.status = 400;
+        throw err;
+    }
+
+    courseModel
+        .history(department, subnumber)
+        .then((cs) => {
+            res.json(cs);
+        })
+        .catch(next);
+});
+
 module.exports = router;
