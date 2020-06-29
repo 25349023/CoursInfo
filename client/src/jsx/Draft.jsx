@@ -5,7 +5,7 @@ import { getdropdown } from "api/Courses_api.js";
 import { createDraft, selectDraft } from "api/Draft_api.js";
 import { current, selectUser } from "api/Users_api.js";
 
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 
 //draftpost is a big obj in props
 export default class Draft extends React.Component {
@@ -35,13 +35,13 @@ export default class Draft extends React.Component {
             teacherCharacter: "",
             taPerformance: "",
             mainReview: "",
-            personalGrade: "",
-            classGradeDist: ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+            personalGrade: "X",
+            classGradeDist: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             others: "",
             dropdownlist: [],
             redirect: false,
         };
-        this.gradelist = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
+        this.gradelist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.dropdownRef = null;
 
         // this.handleInputChange = this.handleInputChange.bind(this);
@@ -81,14 +81,14 @@ export default class Draft extends React.Component {
             return <Redirect to={`/userhome`} />;
         }
         return (
-            <div className="publishPage">
+            <div className="draftPage">
                 <section className="main">
                     <section className="publishContent">
                         <form
                             className="wrapper articleForm"
                             spellCheck="false"
                         >
-                            <h1>發表心得</h1>
+                            <h1>編輯草稿</h1>
 
                             <main>
                                 <section className="chooseCourse">
