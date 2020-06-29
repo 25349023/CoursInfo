@@ -2768,14 +2768,18 @@ table td.rating {
 .userPage .accountInfo .popupWindow .editContent {
   display: flex;
   flex-flow: column;
+  margin-top: 1rem;
+}
+.userPage .accountInfo .popupWindow .deleteContent {
+  margin-top: 1rem;
 }
 .userPage .accountInfo .popupWindow input[type=text] {
-  margin-top: 0.8rem;
+  margin-top: 1.2rem;
   background-color: #f8f8f8;
 }
 .userPage .accountInfo .popupWindow .btnGroup {
   display: flex;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 .userPage .accountInfo .popupWindow button {
   background-color: #a346aa;
@@ -2816,6 +2820,23 @@ table td.rating {
   background-color: #558b39;
 }
 
+.userPage .savedDrafts .postsList .postRow,
+.userPage .myPosts .postsList .postRow, .userPage .savedDrafts .draftList .draftRow,
+.userPage .savedDrafts .postsList .draftRow,
+.userPage .myPosts .draftList .draftRow,
+.userPage .myPosts .postsList .draftRow {
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 1rem 0;
+}
+.userPage .savedDrafts .postsList .postRow:hover,
+.userPage .myPosts .postsList .postRow:hover, .userPage .savedDrafts .draftList .draftRow:hover,
+.userPage .savedDrafts .postsList .draftRow:hover,
+.userPage .myPosts .draftList .draftRow:hover,
+.userPage .myPosts .postsList .draftRow:hover {
+  background-color: #dee8f3;
+}
+
 .userPage .savedDrafts,
 .userPage .myPosts {
   margin-top: 3rem;
@@ -2824,18 +2845,35 @@ table td.rating {
 .userPage .savedDrafts .postsList,
 .userPage .myPosts .draftList,
 .userPage .myPosts .postsList {
-  display: flex;
-  flex-flow: column;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 5rem;
   background-color: #f0f0f0;
   border: 1px solid rgba(60, 60, 60, 0.2);
   border-radius: 10px;
   padding: 1rem;
 }
+.userPage .savedDrafts .draftList .delete,
+.userPage .savedDrafts .postsList .delete,
+.userPage .myPosts .draftList .delete,
+.userPage .myPosts .postsList .delete {
+  font-size: 1.4rem;
+  place-self: center center;
+  cursor: pointer;
+  color: rgba(60, 60, 60, 0.7);
+}
+.userPage .savedDrafts .draftList .delete:hover,
+.userPage .savedDrafts .postsList .delete:hover,
+.userPage .myPosts .draftList .delete:hover,
+.userPage .myPosts .postsList .delete:hover {
+  color: #dd6565;
+}
 .userPage .savedDrafts .draftList > div,
 .userPage .savedDrafts .postsList > div,
 .userPage .myPosts .draftList > div,
 .userPage .myPosts .postsList > div {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 5rem;
+  grid-column: span 4;
   font-size: 1.4rem;
   text-align: center;
   padding: 0.5rem 0;
@@ -2846,20 +2884,11 @@ table td.rating {
 .userPage .myPosts .postsList > div:first-of-type {
   font-weight: 600;
 }
-.userPage .savedDrafts .draftList > div:nth-of-type(n + 2),
-.userPage .savedDrafts .postsList > div:nth-of-type(n + 2),
-.userPage .myPosts .draftList > div:nth-of-type(n + 2),
-.userPage .myPosts .postsList > div:nth-of-type(n + 2) {
-  font-size: 1.3rem;
-  cursor: pointer;
-  padding: 1rem 0;
-  border-top: 1px solid rgba(60, 60, 60, 0.2);
-}
-.userPage .savedDrafts .draftList > div:nth-of-type(n + 2):hover,
-.userPage .savedDrafts .postsList > div:nth-of-type(n + 2):hover,
-.userPage .myPosts .draftList > div:nth-of-type(n + 2):hover,
-.userPage .myPosts .postsList > div:nth-of-type(n + 2):hover {
-  background-color: #dee8f3;
+.userPage .savedDrafts .draftList > div:not(:last-of-type),
+.userPage .savedDrafts .postsList > div:not(:last-of-type),
+.userPage .myPosts .draftList > div:not(:last-of-type),
+.userPage .myPosts .postsList > div:not(:last-of-type) {
+  border-bottom: 1px solid rgba(60, 60, 60, 0.2);
 }
 .userPage .savedDrafts .draftList > div:last-of-type,
 .userPage .savedDrafts .postsList > div:last-of-type,
@@ -2898,6 +2927,27 @@ table td.rating {
 .userPage .myPosts .draftList > div span:nth-of-type(3),
 .userPage .myPosts .postsList > div span:nth-of-type(3) {
   flex: 1;
+}
+.userPage .savedDrafts .draftList .draftRow,
+.userPage .savedDrafts .postsList .draftRow,
+.userPage .myPosts .draftList .draftRow,
+.userPage .myPosts .postsList .draftRow {
+  grid-column: span 3;
+  grid-template-columns: 2fr 2fr 1fr;
+}
+.userPage .savedDrafts .postsList,
+.userPage .myPosts .postsList {
+  grid-template-columns: 2fr 2fr 1fr 1fr 5rem;
+}
+.userPage .savedDrafts .postsList > div,
+.userPage .myPosts .postsList > div {
+  grid-template-columns: 2fr 2fr 1fr 1fr 5rem;
+  grid-column: span 5;
+}
+.userPage .savedDrafts .postsList .postRow,
+.userPage .myPosts .postsList .postRow {
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  grid-column: span 4;
 }
 
 /*# sourceMappingURL=style.css.map */

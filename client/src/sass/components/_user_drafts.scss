@@ -1,3 +1,13 @@
+%row {
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 1rem 0;
+
+  &:hover {
+    background-color: $table-hover-color;
+  }
+}
+
 .userPage {
   .savedDrafts,
   .myPosts {
@@ -5,16 +15,30 @@
 
     .draftList,
     .postsList {
-      display: flex;
-      flex-flow: column;
+      display: grid;
+      grid-template-columns: 2fr 2fr 1fr 5rem;
 
       background-color: $ui-color-block;
       border: 1px solid $ui-color-block-border;
       border-radius: 10px;
       padding: 1rem;
 
+      .delete {
+        font-size: 1.4rem;
+        place-self: center center;
+        cursor: pointer;
+        color: rgba($ui-color-text, 0.7);
+
+        &:hover {
+          color: $like-color;
+        }
+      }
+
       > div {
-        display: flex;
+        display: grid;
+        grid-template-columns: 2fr 2fr 1fr 5rem;
+        grid-column: span 4;
+
         font-size: 1.4rem;
         text-align: center;
         padding: 0.5rem 0;
@@ -23,15 +47,8 @@
           font-weight: 600;
         }
 
-        &:nth-of-type(n + 2) {
-          font-size: 1.3rem;
-          cursor: pointer;
-          padding: 1rem 0;
-          border-top: 1px solid $ui-color-block-border;
-
-          &:hover {
-            background-color: $table-hover-color;
-          }
+        &:not(:last-of-type) {
+          border-bottom: 1px solid $ui-color-block-border;
         }
 
         &:last-of-type {
@@ -41,9 +58,11 @@
         span:first-of-type {
           flex: 2;
         }
+
         span:nth-of-type(2) {
           flex: 2;
         }
+
         time {
           flex: 1;
 
@@ -51,9 +70,33 @@
             display: none;
           }
         }
+
         span:nth-of-type(3) {
           flex: 1;
         }
+      }
+
+      .draftRow {
+        grid-column: span 3;
+        grid-template-columns: 2fr 2fr 1fr;
+
+        @extend %row;
+      }
+    }
+
+    .postsList {
+      grid-template-columns: 2fr 2fr 1fr 1fr 5rem;
+
+      > div {
+        grid-template-columns: 2fr 2fr 1fr 1fr 5rem;
+        grid-column: span 5;
+      }
+
+      .postRow {
+        grid-template-columns: 2fr 2fr 1fr 1fr;
+        grid-column: span 4;
+
+        @extend %row;
       }
     }
   }

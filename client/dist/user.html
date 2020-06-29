@@ -117,6 +117,24 @@
               <h3>草稿數量</h3>
               <span><span class="draftLimit">2</span> / 5</span>
             </div>
+            <div id="draftPopup" class="popupContent">
+              <div class="popupWindow">
+                <h3>刪除草稿 <i class="close fas fa-times"></i></h3>
+                <div class="deleteContent">
+                  <span
+                    >請問確認要刪除草稿 「<span>這門課很好</span>」 嗎？</span
+                  >
+                  <div class="btnGroup">
+                    <button type="button">
+                      <i class="fas fa-times"></i> 取消
+                    </button>
+                    <button type="button">
+                      <i class="fas fa-check"></i> 確認
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="savedDrafts">
               <h2>我的草稿</h2>
               <div class="draftList">
@@ -124,51 +142,89 @@
                   <span>標題</span>
                   <span>課程</span>
                   <time>上次修改時間</time>
+                  <span>刪除</span>
                 </div>
-                <div data-target="#">
+                <div class="draftRow" data-target="#">
                   <span>這門課很好</span>
                   <span>計算機程式設計一</span>
                   <time>2020-06-25</time>
                 </div>
-                <div data-target="#">
+                <span class="delete popup" data-target="#draftPopup"
+                  ><i class="fas fa-trash-alt"></i
+                ></span>
+                <div class="draftRow" data-target="#">
                   <span>這門課很好</span>
                   <span>計算機程式設計一</span>
                   <time>2020-06-25</time>
                 </div>
-                <div data-target="#">
+                <span class="delete popup" data-target="#draftPopup"
+                  ><i class="fas fa-trash-alt"></i
+                ></span>
+                <div class="draftRow" data-target="#">
                   <span>這門課很好</span>
                   <span>計算機程式設計一</span>
                   <time>2020-06-25</time>
+                </div>
+                <span class="delete popup" data-target="#draftPopup"
+                  ><i class="fas fa-trash-alt"></i
+                ></span>
+              </div>
+            </div>
+            <div id="postPopup" class="popupContent">
+              <div class="popupWindow">
+                <h3>刪除心得 <i class="close fas fa-times"></i></h3>
+                <div class="deleteContent">
+                  <span
+                    >請問確認要刪除心得 「<span>這門課很好</span>」 嗎？</span
+                  >
+                  <div class="btnGroup">
+                    <button type="button">
+                      <i class="fas fa-times"></i> 取消
+                    </button>
+                    <button type="button">
+                      <i class="fas fa-check"></i> 確認
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="myPosts">
               <h2>我的文章</h2>
               <div class="postsList">
-                <div data-target="#">
+                <div>
                   <span>標題</span>
                   <span>課程</span>
                   <time>上次修改時間</time>
                   <span>評價</span>
+                  <span>刪除</span>
                 </div>
-                <div data-target="#">
+                <div class="postRow" data-target="#">
                   <span>這門課很好</span>
                   <span>計算機程式設計一</span>
                   <time>2020-06-25</time>
                   <span>2 <i class="fas fa-heart"></i></span>
                 </div>
-                <div data-target="#">
+                <span class="delete popup" data-target="#postPopup"
+                  ><i class="fas fa-trash-alt"></i
+                ></span>
+                <div class="postRow" data-target="#">
                   <span>這門課很好</span>
                   <span>計算機程式設計一</span>
                   <time>2020-06-25</time>
                   <span>2 <i class="fas fa-heart"></i></span>
                 </div>
-                <div data-target="#">
+                <span class="delete popup" data-target="#postPopup"
+                  ><i class="fas fa-trash-alt"></i
+                ></span>
+                <div class="postRow" data-target="#">
                   <span>這門課很好</span>
                   <span>計算機程式設計一</span>
                   <time>2020-06-25</time>
                   <span>2 <i class="fas fa-heart"></i></span>
                 </div>
+                <span class="delete popup" data-target="#postPopup"
+                  ><i class="fas fa-trash-alt"></i
+                ></span>
               </div>
             </div>
           </main>
