@@ -337,17 +337,54 @@ export default class Edit extends React.Component {
                                         className="popupContent"
                                     >
                                         <div className="popupWindow">
-                                            <h3>
-                                                This is Title{" "}
+                                        <h3>
+                                                參考用評分標準{" "}
                                                 <i className="close fas fa-times"></i>
                                             </h3>
                                             <div>
-                                                content content content content
-                                                content content content content
-                                                content content content content
-                                                content content content content
-                                                content content content content
-                                                content content
+                                                甜度: <br />
+                                                在有付出一定努力的條件(願意交所有作業、正常出席、有考試)下，可以拿到的等第{" "}
+                                                <br />
+                                                5星:A+~A(87以上) 4星:A~A-(86~80){" "}
+                                                <br />
+                                                3星:B+~B(79~73) 2星:B-~C-(72~60){" "}
+                                                <br />
+                                                1星:不及格 <br /> <br />
+                                                涼度: <br />
+                                                以「作業多寡」、「考試需要準備多久」做為考量{" "}
+                                                <br />
+                                                作業多寡:以整學期作業字數加總為準{" "}
+                                                <br />
+                                                5星:1000字以內 4星:1000-3000{" "}
+                                                <br />
+                                                3星:3000-8000 2星:8000-15000{" "}
+                                                <br />
+                                                1星:大於15000 <br />
+                                                考試需要準備多久:(以考到80分上下為例){" "}
+                                                <br />
+                                                5星:幾乎不須準備，僅需前一晚做考古or看筆記{" "}
+                                                <br />
+                                                4星:須考前一個禮拜做準備，但有固定範圍，或考前教授有複習{" "}
+                                                <br />
+                                                3星:須考前1~2個禮拜做準備，但考試會考平時上課內容，僅看ppt成績不夠好看{" "}
+                                                <br />
+                                                2星:許每個禮拜都做準備，否則來不及{" "}
+                                                <br />
+                                                1星:申論題，且教授心境難以揣摩，字數多也不一定高{" "}
+                                                <br /> <br />
+                                                推薦: 5星:完全不後悔修這門課{" "}
+                                                <br />
+                                                4星:若是重來過，還是會修這門課，但有些地方可以表現更好(自我因素){" "}
+                                                <br />
+                                                3星: <br />
+                                                若是重來過，不一定會修這門課，可能是教授給的作業太多，或成績不夠理想{" "}
+                                                <br />
+                                                2星: <br />
+                                                若是重來過，不會修這門課，但既然修了就修完吧{" "}
+                                                <br />
+                                                1星: <br />
+                                                絕對不修這門課，就算修了也要在二退期間退掉!{" "}
+                                                <br />
                                             </div>
                                         </div>
                                     </div>
