@@ -43,6 +43,9 @@
           <li class="rightItem link">
             <a href="./user.html">Account<img src="images/profile.png" /></a>
           </li>
+          <li class="link">
+            <a class="popup" data-target="#loginPopup" href="#">登入</a>
+          </li>
           <li>
             <button id="navBtn" class="btnToggle">
               <i class="fas fa-bars"></i>
@@ -51,6 +54,20 @@
         </ul>
       </nav>
     </header>
+    <div id="loginPopup" class="popupContent">
+      <div class="popupWindow">
+        <h3>登入 <i class="close fas fa-times"></i></h3>
+        <div class="loginContent">
+          <span>請使用 NTHU gapp 帳號登入</span>
+          <div class="btnGroup">
+            <a href="http://localhost:3000/auth/google">
+              <i class="fab fa-google"></i>
+              使用 Google 繼續
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <section class="main">
       <section class="courses">

@@ -11,12 +11,8 @@ export function listPosts(department, text = "", start) {
         }
     }
     if (text) query.push(`text=${text}`);
-    if (start.length) {
-        for (let i = 0; i < department.length; i++) {
-            query.push(`start=${start[i]}`);
-        }
-    }
     if (query.length) url += "?" + query.join("&");
+    if (start) url += `&start=${start}`;
     console.log(`Making GET & listPosts request to: ${url}`);
 
     return axios.get(url).then(function (res) {

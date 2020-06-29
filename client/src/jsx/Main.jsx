@@ -10,9 +10,18 @@ import Post from "./Post.jsx";
 import User from "./User.jsx";
 import Draft from "./Draft.jsx";
 import Edit from "./Edit.jsx";
+
+import { current } from "api/Users_api.js";
+
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            gravatar_hash: "",
+            is_login: false,
+            userId: "",
+        };
     }
 
     render() {
@@ -36,12 +45,33 @@ export default class Main extends React.Component {
                             <li className="link">
                                 <a href="#">支援</a>
                             </li>
-                            <li className="rightItem link">
-                                <Link to="/userhome">
-                                    Account
-                                    <img src="images/profile.png" />
-                                </Link>
-                            </li>
+                            {this.state.is_login ? (
+                                <li className="rightItem link">
+                                    <Link to="/userhome">
+                                        Account
+                                        <img
+                                            src={`https://www.gravatar.com/avatar/${this.state.gravatar_hash}?d=identicon&r=g&s=48`}
+                                        />
+                                    </Link>
+                                </li>
+                            ) : (
+                                ""
+                            )}
+
+                            {!this.state.is_login ? (
+                                <li className="link">
+                                    <a
+                                        className="popup"
+                                        data-target="#loginPopup"
+                                        href="#"
+                                    >
+                                        登入
+                                    </a>
+                                </li>
+                            ) : (
+                                ""
+                            )}
+
                             <li>
                                 <button id="navBtn" className="btnToggle">
                                     <i className="fas fa-bars"></i>
@@ -50,6 +80,29 @@ export default class Main extends React.Component {
                         </ul>
                     </nav>
                 </header>
+                <div id="loginPopup" className="popupContent">
+                    <div className="popupWindow">
+                        <h3>
+                            登入 <i className="close fas fa-times"></i>
+                        </h3>
+                        <div className="loginContent">
+                            <span>請使用 NTHU gapp 帳號登入</span>
+                            <div
+                                className="btnGroup"
+                                onClick={() => {
+                                    document
+                                        .querySelector("#loginPopup")
+                                        .classList.remove("active");
+                                }}
+                            >
+                                <a href="https://coursinfonthu.us-east-1.elasticbeanstalk.com/auth/google">
+                                    <i className="fab fa-google"></i>
+                                    使用 Google 繼續
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <Route exact path="/" render={() => <Home />} />
                 <Route path="/courses" render={() => <Courses />} />
                 <Route path="/posts" render={() => <Posts />} />
@@ -65,5 +118,25 @@ export default class Main extends React.Component {
                 </footer>
             </Router>
         );
+    }
+
+    componentDidMount() {
+        this.askid();
+    }
+
+    askid() {
+        current().then((user) => {
+            this.setState(
+                {
+                    gravatar_hash: user[0].gravatar_hash,
+                    userId: user[0].id,
+                },
+                () => {
+                    this.setState({
+                        is_login: this.state.userId ? true : false,
+                    });
+                }
+            );
+        });
     }
 }

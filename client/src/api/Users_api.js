@@ -20,7 +20,7 @@ export function current() {
     return axios.get(url, { withCredentials: true }).then(function (res) {
         if (res.status !== 200)
             throw new Error(`Unexpected response code: ${res.status}`);
-
+        if (res.status == 401) return [{ id: "" }];
         return res.data;
     });
 }
