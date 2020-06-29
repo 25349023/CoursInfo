@@ -1367,9 +1367,10 @@ export default class Draft extends React.Component {
             }).then((data) => {
                 deleteDraft(this.state.draftId, {
                     userId: this.state.userId,
-                });
-                this.setState({ postId: data.id }, () => {
-                    this.setState({ redirect_to_post: true });
+                }).then(() => {
+                    this.setState({ postId: data.id }, () => {
+                        this.setState({ redirect_to_post: true });
+                    });
                 });
             });
         } else {

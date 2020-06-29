@@ -24,13 +24,7 @@ export default class Menu extends React.Component {
                         <a href="#">筆記＆考古</a>
                     </li>
                     <li>
-                        <a href="#">設定</a>
-                    </li>
-                    <li>
-                        <a href="#">OtherA</a>
-                    </li>
-                    <li>
-                        <a href="#">OtherB</a>
+                        <Link to="/userhome">設定</Link>
                     </li>
                 </ul>
             </aside>

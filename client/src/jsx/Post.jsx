@@ -80,16 +80,6 @@ export default class Post extends React.Component {
                                                     !this.state.upVote ? 1 : 2,
                                                     this.state.userId
                                                 ).then(() => {
-                                                    // getVote(
-                                                    //     this.state.userId,
-                                                    //     this.state.id
-                                                    // ).then((data) => {
-                                                    //     this.setState({
-                                                    //         upVote: data[0]
-                                                    //             ? data[0].upvote
-                                                    //             : "",
-                                                    //     });
-                                                    // });
                                                     this.askinfo();
                                                 });
                                             }}
@@ -395,7 +385,7 @@ export default class Post extends React.Component {
                 () => {
                     getVote(this.state.userId, this.state.id).then((data) => {
                         this.setState({
-                            upVote: data[0] ? data[0].upvote : "",
+                            upVote: data ? data.upvote : "",
                         });
                     });
                 }

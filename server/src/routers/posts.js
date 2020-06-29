@@ -204,7 +204,7 @@ router.get("/:postId-:userId/vote", passport.authenticate("token"), function (
             res.json(vote);
         })
         .catch((err) => {
-            res.json([{}]);
+            res.json({});
         });
 });
 
