@@ -70,7 +70,6 @@ function create(data) {
         ) RETURNING *;
     `;
 
-    console.log(pgp.as.format(sql, data));
     return db.one(sql, data);
 }
 

@@ -107,4 +107,15 @@ function dropdownList(semester, department) {
     return db.any(sql, { semester, department });
 }
 
-module.exports = { list, select, dropdownList };
+function history(department, subnumber) {
+    const sql = `
+        SELECT semester, department, course_subnumber, teacher 
+        FROM courses
+        WHERE department = $<department> AND course_subnumber = $<subnumber>
+        ORDER BY semester DESC;
+    `;
+
+    return db.any(sql, { department, subnumber });
+}
+
+module.exports = { list, select, dropdownList, history };
