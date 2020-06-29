@@ -953,7 +953,8 @@ export default class Draft extends React.Component {
                                                             const text =
                                                                 e.target.value;
                                                             let temp = [
-                                                                ...class_grade_dist,
+                                                                ...this.state
+                                                                    .class_grade_dist,
                                                             ];
                                                             temp[0] = Number(
                                                                 text
@@ -977,7 +978,8 @@ export default class Draft extends React.Component {
                                                             const text =
                                                                 e.target.value;
                                                             let temp = [
-                                                                ...class_grade_dist,
+                                                                ...this.state
+                                                                    .class_grade_dist,
                                                             ];
                                                             temp[1] = Number(
                                                                 text
@@ -1001,7 +1003,8 @@ export default class Draft extends React.Component {
                                                             const text =
                                                                 e.target.value;
                                                             let temp = [
-                                                                ...class_grade_dist,
+                                                                ...this.state
+                                                                    .class_grade_dist,
                                                             ];
                                                             temp[2] = Number(
                                                                 text
@@ -1025,7 +1028,8 @@ export default class Draft extends React.Component {
                                                             const text =
                                                                 e.target.value;
                                                             let temp = [
-                                                                ...class_grade_dist,
+                                                                ...this.state
+                                                                    .class_grade_dist,
                                                             ];
                                                             temp[3] = Number(
                                                                 text
@@ -1049,7 +1053,8 @@ export default class Draft extends React.Component {
                                                             const text =
                                                                 e.target.value;
                                                             let temp = [
-                                                                ...class_grade_dist,
+                                                                ...this.state
+                                                                    .class_grade_dist,
                                                             ];
                                                             temp[4] = Number(
                                                                 text
@@ -1073,7 +1078,8 @@ export default class Draft extends React.Component {
                                                             const text =
                                                                 e.target.value;
                                                             let temp = [
-                                                                ...class_grade_dist,
+                                                                ...this.state
+                                                                    .class_grade_dist,
                                                             ];
                                                             temp[5] = Number(
                                                                 text
@@ -1097,7 +1103,8 @@ export default class Draft extends React.Component {
                                                             const text =
                                                                 e.target.value;
                                                             let temp = [
-                                                                ...class_grade_dist,
+                                                                ...this.state
+                                                                    .class_grade_dist,
                                                             ];
                                                             temp[6] = Number(
                                                                 text
@@ -1121,7 +1128,8 @@ export default class Draft extends React.Component {
                                                             const text =
                                                                 e.target.value;
                                                             let temp = [
-                                                                ...class_grade_dist,
+                                                                ...this.state
+                                                                    .class_grade_dist,
                                                             ];
                                                             temp[7] = Number(
                                                                 text
@@ -1145,7 +1153,8 @@ export default class Draft extends React.Component {
                                                             const text =
                                                                 e.target.value;
                                                             let temp = [
-                                                                ...class_grade_dist,
+                                                                ...this.state
+                                                                    .class_grade_dist,
                                                             ];
                                                             temp[8] = Number(
                                                                 text
@@ -1174,7 +1183,8 @@ export default class Draft extends React.Component {
                                                             const text =
                                                                 e.target.value;
                                                             let temp = [
-                                                                ...class_grade_dist,
+                                                                ...this.state
+                                                                    .class_grade_dist,
                                                             ];
                                                             temp[9] = Number(
                                                                 text

@@ -10,9 +10,16 @@ import Post from "./Post.jsx";
 import User from "./User.jsx";
 import Draft from "./Draft.jsx";
 import Edit from "./Edit.jsx";
+
+import { current } from "api/Users_api.js";
+
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            gravatar_hash: "",
+        };
     }
 
     render() {
@@ -39,7 +46,9 @@ export default class Main extends React.Component {
                             <li className="rightItem link">
                                 <Link to="/userhome">
                                     Account
-                                    <img src="images/profile.png" />
+                                    <img
+                                        src={`https://www.gravatar.com/avatar/${this.state.gravatar_hash}?d=identicon&r=g&s=48`}
+                                    />
                                 </Link>
                             </li>
                             <li>
@@ -65,5 +74,15 @@ export default class Main extends React.Component {
                 </footer>
             </Router>
         );
+    }
+
+    componentDidMount() {
+        this.askid();
+    }
+
+    askid() {
+        current().then((user) => {
+            this.setState({ gravatar_hash: user[0].gravatar_hash });
+        });
     }
 }

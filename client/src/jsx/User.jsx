@@ -133,10 +133,10 @@ export default class User extends React.Component {
                                 <div className="imgWrapper">
                                     <figure>
                                         <img
-                                            src="https://www.gravatar.com/avatar/4f1a2eb9a71a5ad830d450e3a5c8e40e?d=identicon&r=g&s=256"
+                                            src={`https://www.gravatar.com/avatar/${information.gravatar_hash}?d=identicon&r=g&s=256`}
                                             style={{
                                                 backgroundImage: `url(
-                                                    https://www.gravatar.com/avatar/4f1a2eb9a71a5ad830d450e3a5c8e40e?d=identicon&r=g&s=275`,
+                                                    https://www.gravatar.com/avatar/${information.gravatar_hash}?d=identicon&r=g&s=275`,
                                             }}
                                             alt="userImage"
                                         />
