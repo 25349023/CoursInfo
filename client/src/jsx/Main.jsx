@@ -95,7 +95,7 @@ export default class Main extends React.Component {
                                         .classList.remove("active");
                                 }}
                             >
-                                <a href="http://localhost:3000/auth/google">
+                                <a href="https://coursinfonthu.us-east-1.elasticbeanstalk.com/auth/google">
                                     <i className="fab fa-google"></i>
                                     使用 Google 繼續
                                 </a>
@@ -132,7 +132,9 @@ export default class Main extends React.Component {
                     userId: user[0].id,
                 },
                 () => {
-                    this.setState({ is_login: userId ? true : false });
+                    this.setState({
+                        is_login: this.state.userId ? true : false,
+                    });
                 }
             );
         });
