@@ -33,6 +33,8 @@ export default class Publish extends React.Component {
             others: "",
             dropdownlist: [],
             redirect: false,
+            redirectPost: false,
+            pid: "",
         };
         this.gradelist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.dropdownRef = null;
@@ -72,6 +74,9 @@ export default class Publish extends React.Component {
         }
         if (this.state.redirect) {
             return <Redirect to="/posts" />;
+        }
+        if (this.state.redirectPost) {
+            return <Redirect to={`/userpost${this.state.pid}`} />;
         }
         return (
             <div className="publishPage">
@@ -1240,8 +1245,8 @@ export default class Publish extends React.Component {
 
     handleCreatePost() {
         if (this.state.userId) {
-            createPost({ ...this.state }).then(() => {
-                this.setState({ redirect: true });
+            createPost({ ...this.state }).then((post) => {
+                this.setState({ redirectPost: true, pid: post.id });
             });
         } else {
             alert("請先登入");
