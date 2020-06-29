@@ -1172,7 +1172,8 @@ export default class Edit extends React.Component {
                                             this.setState({ redirect: true });
                                         }}
                                     >
-                                        <i class="fas fa-undo-alt"></i> 取消編輯
+                                        <i className="fas fa-undo-alt"></i>{" "}
+                                        取消編輯
                                     </button>
                                     <button
                                         type="submit"
@@ -1180,7 +1181,8 @@ export default class Edit extends React.Component {
                                             this
                                         )}
                                     >
-                                        <i class="fas fa-paper-plane"></i> 發表
+                                        <i className="fas fa-paper-plane"></i>{" "}
+                                        發表
                                     </button>
                                 </section>
                             </main>
