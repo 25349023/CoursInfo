@@ -10,16 +10,18 @@ window.addEventListener("load", function () {
 
     let popupContents = document.querySelectorAll(".popupContent");
     popupContents.forEach((pc) => {
-        pc.addEventListener("click", () => {
-            pc.classList.remove("active");
-        });
+        if (pc.classList.contains("static")) {
+            pc.addEventListener("click", () => {
+                pc.classList.remove("active");
+            });
+        }
 
         pc.querySelector(".close").addEventListener("click", () => {
             pc.classList.remove("active");
         });
     });
 
-    let popupWindows = document.querySelectorAll(".popupWindow");
+    let popupWindows = document.querySelectorAll(".static .popupWindow");
     popupWindows.forEach((pw) => {
         pw.addEventListener("click", (e) => {
             e.stopPropagation();

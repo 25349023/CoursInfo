@@ -4,7 +4,7 @@ const postBaseUrl = "http://localhost:3000";
 export function listDraft(userId) {
     let url = `${postBaseUrl}/api/drafts/user/${userId}`;
     console.log(`Making GET & listdraft request to: ${url}`);
-    return axios.get(url).then(function (res) {
+    return axios.get(url, { withCredentials: true }).then(function (res) {
         if (res.status !== 200)
             throw new Error(`Unexpected response code: ${res.status}`);
         return res.data;
@@ -24,29 +24,34 @@ export function selectDraft(draftId) {
 export function createDraft(post) {
     let url = `${postBaseUrl}/api/drafts`;
     console.log(`Making POST & createdraft request to: ${url}`);
-    return axios.post(url, post).then(function (res) {
-        if (res.status !== 200)
-            throw new Error(`Unexpected response code: ${res.status}`);
-        return res.data;
-    });
+    return axios
+        .post(url, post, { withCredentials: true })
+        .then(function (res) {
+            if (res.status !== 200)
+                throw new Error(`Unexpected response code: ${res.status}`);
+            return res.data;
+        });
 }
 
-export function editDraft(draftId) {
+export function editDraft(draftId, obj) {
     let url = `${postBaseUrl}/api/drafts/${draftId}`;
     console.log(`Making PUT & editdraft request to: ${url}`);
-    return axios.put(url).then(function (res) {
+    return axios.put(url, obj, { withCredentials: true }).then(function (res) {
         if (res.status !== 200)
             throw new Error(`Unexpected response code: ${res.status}`);
         return res.data;
     });
 }
 
-export function deleteDraft(draftId) {
+export function deleteDraft(draftId, obj) {
     let url = `${postBaseUrl}/api/drafts/${draftId}`;
     console.log(`Making DELETE & deletedraft request to: ${url}`);
-    return axios.delete(url).then(function (res) {
-        if (res.status !== 200)
-            throw new Error(`Unexpected response code: ${res.status}`);
-        return res.data;
-    });
+    console.log(obj);
+    return axios
+        .delete(url, { data: obj, withCredentials: true })
+        .then(function (res) {
+            if (res.status !== 200)
+                throw new Error(`Unexpected response code: ${res.status}`);
+            return res.data;
+        });
 }

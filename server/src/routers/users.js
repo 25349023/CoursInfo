@@ -12,9 +12,13 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(accessController);
 
-router.use(passport.authenticate("token"));
+// router.use(passport.authenticate("token"));
 
-router.get("/current", function (req, res, next) {
+router.get("/current", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
     usersModel
         .select(req.user)
         .then((user) => {
@@ -23,7 +27,11 @@ router.get("/current", function (req, res, next) {
         .catch(next);
 });
 
-router.get("/:userId", function (req, res, next) {
+router.get("/:userId", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
     const { userId } = req.params;
     checkUser(userId, req);
 
@@ -35,7 +43,11 @@ router.get("/:userId", function (req, res, next) {
         .catch(next);
 });
 
-router.post("/nickname", function (req, res, next) {
+router.post("/nickname", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
     const { userId, nickname } = req.body;
     checkUser(userId, req);
 

@@ -99,9 +99,9 @@ function select(courseId) {
 
 function dropdownList(semester, department) {
     const sql = `
-        SELECT course_number, course_chinese_title, teacher FROM courses
+        SELECT department, course_subnumber, course_chinese_title, teacher FROM courses
         WHERE semester = $<semester> AND department = $<department>
-        ORDER BY course_number;
+        ORDER BY department, course_subnumber;
     `;
 
     return db.any(sql, { semester, department });

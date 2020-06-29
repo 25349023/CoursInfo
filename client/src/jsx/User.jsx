@@ -1,7 +1,8 @@
 import React from "react";
 import Menu from "./Menu.jsx";
-import { current, selectUser } from "api/Users_api.js";
-import { listDraft, deleteDraft, changeName } from "api/Draft_api.js";
+import { current, selectUser, changeName } from "api/Users_api.js";
+import { listDraft, deleteDraft } from "api/Draft_api.js";
+import { deletePost, listPosts } from "../api/Posts_api.js";
 
 export default class User extends React.Component {
     constructor(props) {
@@ -13,26 +14,62 @@ export default class User extends React.Component {
             draft: [],
             delete_id: "",
             delete_title: "",
+            post: [],
+            delete_post_id: "",
+            delete_post_title: "",
             newname: "",
         };
     }
     render() {
-        let children1 = [];
+        let children1 = [],
+            children2 = [];
+        let { draft, post, information } = this.state;
         if (draft.length) {
             children1 = draft.map((p) => [
                 <div className="draftRow" data-target="#" key={p.title}>
                     <span>{p.title}</span>
                     <span>{p.course_chinese_title}</span>
-                    <time>{p.update_at}</time>
+                    <time>{p.updated_at}</time>
                 </div>,
                 <span
-                    key={p.title}
+                    key={p.id}
                     className="delete popup"
                     data-target="#draftPopup"
-                    onClick={this.setState({
-                        delete_title: p.title,
-                        delete_id: p.id,
-                    })}
+                    onClick={() => {
+                        document
+                            .querySelector("#draftPopup")
+                            .classList.add("active");
+                        this.setState({
+                            delete_title: p.title,
+                            delete_id: p.id,
+                        });
+                    }}
+                >
+                    <i className="fas fa-trash-alt"></i>
+                </span>,
+            ]);
+        }
+        if (post.length) {
+            children1 = post.map((p) => [
+                <div className="postRow" data-target="#" key={p.title}>
+                    <span>{p.title}</span>
+                    <span>{p.course_chinese_title}</span>
+                    <time>{p.updated_at}</time>
+                    <span>{p.likes}</span>
+                </div>,
+                <span
+                    key={p.id}
+                    className="delete popup"
+                    data-target="#postPopup"
+                    onClick={() => {
+                        document
+                            .querySelector("#postPopup")
+                            .classList.add("active");
+                        this.setState({
+                            delete_post_title: p.title,
+                            delete_post_id: p.id,
+                        });
+                    }}
                 >
                     <i className="fas fa-trash-alt"></i>
                 </span>,
@@ -43,8 +80,12 @@ export default class User extends React.Component {
                 <section className="main">
                     <section className="accountInfo">
                         <div className="wrapper">
-                            <h1>
-                                Hi，<span>sky1234</span>
+                            <h1
+                                onClick={() => {
+                                    console.log("asdfasdf");
+                                }}
+                            >
+                                Hi，<span>{information.nickname}</span>
                             </h1>
 
                             <main>
@@ -53,9 +94,10 @@ export default class User extends React.Component {
                                     <figure>
                                         <img
                                             src="https://www.gravatar.com/avatar/4f1a2eb9a71a5ad830d450e3a5c8e40e?d=identicon&r=g&s=256"
-                                            style="
-                    background-image: url(https://www.gravatar.com/avatar/4f1a2eb9a71a5ad830d450e3a5c8e40e?d=identicon&r=g&s=275);
-                  "
+                                            style={{
+                                                backgroundImage: `url(
+                                                    https://www.gravatar.com/avatar/4f1a2eb9a71a5ad830d450e3a5c8e40e?d=identicon&r=g&s=275`,
+                                            }}
                                             alt="userImage"
                                         />
                                         <figcaption>
@@ -66,8 +108,19 @@ export default class User extends React.Component {
                                         </figcaption>
                                     </figure>
                                 </div>
-                                <div id="namePopup" className="popupContent">
-                                    <div className="popupWindow">
+                                <div
+                                    id="namePopup"
+                                    className="popupContent"
+                                    onClick={(e) => {
+                                        e.target.classList.remove("active");
+                                    }}
+                                >
+                                    <div
+                                        className="popupWindow"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                        }}
+                                    >
                                         <h3>
                                             更改暱稱{" "}
                                             <i className="close fas fa-times"></i>
@@ -85,32 +138,54 @@ export default class User extends React.Component {
                                                 }}
                                             />
                                             <div className="btnGroup">
-                                                <button type="button">
-                                                    <i
-                                                        className="fas fa-times"
-                                                        onClick={() => {
-                                                            document
-                                                                .querySelector(
-                                                                    "#namePopup"
-                                                                )
-                                                                .classList.remove(
-                                                                    "active"
-                                                                );
-                                                        }}
-                                                    ></i>{" "}
+                                                <button
+                                                    type="button"
+                                                    onClick={() => {
+                                                        console.log("asdasd");
+                                                        document
+                                                            .querySelector(
+                                                                "#namePopup"
+                                                            )
+                                                            .classList.remove(
+                                                                "active"
+                                                            );
+                                                        this.setState({
+                                                            newname: "",
+                                                        });
+                                                    }}
+                                                >
+                                                    <i className="fas fa-times"></i>{" "}
                                                     取消
                                                 </button>
-                                                <button type="button">
-                                                    <i
-                                                        className="fas fa-check"
-                                                        onClick={() => {
-                                                            changeName(
+                                                <button
+                                                    type="button"
+                                                    onClick={() => {
+                                                        console.log("asdasd");
+
+                                                        changeName({
+                                                            userId:
                                                                 information.id,
-                                                                this.state
-                                                                    .newname
-                                                            );
-                                                        }}
-                                                    ></i>{" "}
+                                                            nickname: this.state
+                                                                .newname,
+                                                        })
+                                                            .then((user) => {
+                                                                this.setState({
+                                                                    information:
+                                                                        user[0],
+                                                                });
+                                                            })
+                                                            .then(() => {
+                                                                document
+                                                                    .querySelector(
+                                                                        "#namePopup"
+                                                                    )
+                                                                    .classList.remove(
+                                                                        "active"
+                                                                    );
+                                                            });
+                                                    }}
+                                                >
+                                                    <i className="fas fa-check"></i>{" "}
                                                     確認
                                                 </button>
                                             </div>
@@ -189,8 +264,22 @@ export default class User extends React.Component {
                                                     type="button"
                                                     onClick={() => {
                                                         deleteDraft(
-                                                            this.state.delete_id
-                                                        );
+                                                            this.state
+                                                                .delete_id,
+                                                            {
+                                                                userId: this
+                                                                    .state.id,
+                                                            }
+                                                        ).then(() => {
+                                                            this.askid();
+                                                            document
+                                                                .querySelector(
+                                                                    "#draftPopup"
+                                                                )
+                                                                .classList.remove(
+                                                                    "active"
+                                                                );
+                                                        });
                                                     }}
                                                 >
                                                     <i className="fas fa-check"></i>{" "}
@@ -224,11 +313,43 @@ export default class User extends React.Component {
                                                 <span>這門課很好</span>」 嗎？
                                             </span>
                                             <div className="btnGroup">
-                                                <button type="button">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => {
+                                                        document
+                                                            .querySelector(
+                                                                "#postPopup"
+                                                            )
+                                                            .classList.remove(
+                                                                "active"
+                                                            );
+                                                    }}
+                                                >
                                                     <i className="fas fa-times"></i>{" "}
                                                     取消
                                                 </button>
-                                                <button type="button">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => {
+                                                        deletePost(
+                                                            this.state
+                                                                .delete_id,
+                                                            {
+                                                                userId: this
+                                                                    .state.id,
+                                                            }
+                                                        ).then(() => {
+                                                            this.askid();
+                                                            document
+                                                                .querySelector(
+                                                                    "#draftPopup"
+                                                                )
+                                                                .classList.remove(
+                                                                    "active"
+                                                                );
+                                                        });
+                                                    }}
+                                                >
                                                     <i className="fas fa-check"></i>{" "}
                                                     確認
                                                 </button>
@@ -318,19 +439,20 @@ export default class User extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.newname != prevState.newname) {
-            this.askid();
+            // this.askid();
         }
     }
 
     askid() {
-        current().then((userid) => {
-            this.setState({ id: userid }, () => {
+        current().then((user) => {
+            this.setState({ id: user[0].id }, () => {
                 selectUser(this.state.id).then((data) => {
                     this.setState({ information: data[0] });
                 });
                 listDraft(this.state.id).then((data) => {
                     this.setState({ draft: data });
                 });
+                listPosts;
             });
         });
     }

@@ -3,7 +3,8 @@ import Menu from "./Menu.jsx";
 import { createPost } from "api/Posts_api.js";
 import { getdropdown } from "api/Courses_api.js";
 import { createDraft } from "api/Draft_api.js";
-
+import { current, selectUser } from "api/Users_api.js";
+import { Redirect } from "react-router-dom";
 export default class Publish extends React.Component {
     constructor(props) {
         super(props);
@@ -14,9 +15,9 @@ export default class Publish extends React.Component {
             courseSubnumber: "",
             title: "",
             courseType: "",
-            sweet: "",
-            cool: "",
-            recommend: "",
+            sweet: 0,
+            cool: 0,
+            recommend: 0,
             info: "",
             prerequisite: "",
             teachMethod: "",
@@ -27,12 +28,13 @@ export default class Publish extends React.Component {
             teacherCharacter: "",
             taPerformance: "",
             mainReview: "",
-            personalGrade: "",
-            classGradeDist: ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+            personalGrade: "X",
+            classGradeDist: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             others: "",
             dropdownlist: [],
+            redirect: false,
         };
-        this.gradelist = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
+        this.gradelist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.dropdownRef = null;
 
         // this.handleInputChange = this.handleInputChange.bind(this);
@@ -47,20 +49,29 @@ export default class Publish extends React.Component {
                 <button
                     type="button"
                     className="option"
-                    key={p.course_number}
+                    key={p.department + p.course_subnumber}
                     onClick={() => {
                         this.dropdownRef.textContent =
-                            p.course_number + " " + p.course_chinese_title;
+                            p.department +
+                            " " +
+                            p.course_subnumber +
+                            " " +
+                            p.course_chinese_title;
+                        this.setState({ courseSubnumber: p.course_subnumber });
                     }}
                 >
                     <span className="primary">
-                        {p.course_number} {p.course_chinese_title}
+                        {p.department} {p.course_subnumber}{" "}
+                        {p.course_chinese_title}
                     </span>
                     <span className="secondary">
                         {p.teacher ? p.teacher.split("\t")[0] : "-"}
                     </span>
                 </button>
             ));
+        }
+        if (this.state.redirect) {
+            return <Redirect to="/posts" />;
         }
         return (
             <div className="publishPage">
@@ -863,7 +874,10 @@ export default class Publish extends React.Component {
                                                         }}
                                                     >
                                                         <span className="primary">
-                                                            D&DownArrow;
+                                                            D
+                                                            {String.fromCharCode(
+                                                                8595
+                                                            )}
                                                         </span>
                                                     </button>
                                                 </div>
@@ -874,7 +888,7 @@ export default class Publish extends React.Component {
                                                 <i className="fas fa-users"></i>{" "}
                                                 全班
                                             </h3>
-                                            <div className="classNameGrading">
+                                            <div className="classGrading">
                                                 <div className="item">
                                                     <div>A+</div>
                                                     <input
@@ -886,7 +900,9 @@ export default class Publish extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[0] = text;
+                                                            this.gradelist[0] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -905,7 +921,9 @@ export default class Publish extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[1] = text;
+                                                            this.gradelist[1] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -924,7 +942,9 @@ export default class Publish extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[2] = text;
+                                                            this.gradelist[2] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -943,7 +963,9 @@ export default class Publish extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[3] = text;
+                                                            this.gradelist[3] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -962,7 +984,9 @@ export default class Publish extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[4] = text;
+                                                            this.gradelist[4] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -981,7 +1005,9 @@ export default class Publish extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[5] = text;
+                                                            this.gradelist[5] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -1000,7 +1026,9 @@ export default class Publish extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[6] = text;
+                                                            this.gradelist[6] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -1019,7 +1047,9 @@ export default class Publish extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[7] = text;
+                                                            this.gradelist[7] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -1038,7 +1068,9 @@ export default class Publish extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[8] = text;
+                                                            this.gradelist[8] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -1047,7 +1079,12 @@ export default class Publish extends React.Component {
                                                     />
                                                 </div>
                                                 <div className="item">
-                                                    <div>D&DownArrow;</div>
+                                                    <div>
+                                                        D
+                                                        {String.fromCharCode(
+                                                            8595
+                                                        )}
+                                                    </div>
                                                     <input
                                                         type="text"
                                                         pattern="\d*"
@@ -1057,7 +1094,9 @@ export default class Publish extends React.Component {
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[9] = text;
+                                                            this.gradelist[9] = Number(
+                                                                text
+                                                            );
                                                             this.setState({
                                                                 classGradeDist: this
                                                                     .gradelist,
@@ -1097,10 +1136,9 @@ export default class Publish extends React.Component {
                                 <section className="submitSection">
                                     <button
                                         type="button"
-                                        type="button"
-                                        onclick={() => {
-                                            createDraft({ ...this.state });
-                                        }}
+                                        onClick={this.handleCreateDraft.bind(
+                                            this
+                                        )}
                                     >
                                         <i className="fas fa-save"></i> 存成草稿
                                     </button>
@@ -1123,8 +1161,31 @@ export default class Publish extends React.Component {
             </div>
         );
     }
+
+    componentDidMount() {
+        current().then((data) => {
+            this.setState({ userId: data[0].id });
+        });
+    }
+
     handleCreatePost() {
-        createPost({ ...this.state });
+        if (this.state.userId) {
+            createPost({ ...this.state }).then(() => {
+                this.setState({ redirect: true });
+            });
+        } else {
+            alert("請先登入");
+        }
+    }
+
+    handleCreateDraft() {
+        if (this.state.userId) {
+            createDraft({ ...this.state }).then(() => {
+                this.setState({ redirect: true });
+            });
+        } else {
+            alert("請先登入");
+        }
     }
 
     handleDrowndown() {

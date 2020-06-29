@@ -43,7 +43,7 @@ export function selectCourse(smt, dep, subnum) {
 export function getdropdown(smt, dep) {
     let url = `${postBaseUrl}/api/courses/${smt}-${dep}`;
 
-    console.log(`Making GET & createVote request to: ${url}`);
+    console.log(`Making GET & getdropdown request to: ${url}`);
     return axios.get(url).then(function (res) {
         if (res.status !== 200)
             throw new Error(`Unexpected response code: ${res.status}`);

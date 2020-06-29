@@ -11,9 +11,13 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(accessController);
 
-router.use(passport.authenticate("token"));
+// router.use(passport.authenticate("token"));
 
-router.get("/user/:userId", function (req, res, next) {
+router.get("/user/:userId", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
     const { userId } = req.params;
     checkUser(userId, req);
 
@@ -25,7 +29,11 @@ router.get("/user/:userId", function (req, res, next) {
         .catch(next);
 });
 
-router.get("/:draftId", function (req, res, next) {
+router.get("/:draftId", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
     let { draftId } = req.params;
     const { userId } = req.query;
     checkUser(userId, req);
@@ -38,14 +46,14 @@ router.get("/:draftId", function (req, res, next) {
         .catch(next);
 });
 
-router.post("/", function (req, res, next) {
+router.post("/", passport.authenticate("token"), function (req, res, next) {
     const requiredFields = [
         "userId",
         "semester",
         "department",
         "courseSubnumber",
     ];
-    const { userId } = res.body;
+    const { userId } = req.body;
     checkUser(userId, req);
 
     let err = null;
@@ -65,7 +73,11 @@ router.post("/", function (req, res, next) {
         .catch(next);
 });
 
-router.put("/:draftId", function (req, res, next) {
+router.put("/:draftId", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
     const requiredFields = [
         "userId",
         "semester",
@@ -94,7 +106,11 @@ router.put("/:draftId", function (req, res, next) {
         .catch(next);
 });
 
-router.delete("/:draftId", function (req, res, next) {
+router.delete("/:draftId", passport.authenticate("token"), function (
+    req,
+    res,
+    next
+) {
     const { userId } = req.body;
     checkUser(userId, req);
     let { draftId } = req.params;

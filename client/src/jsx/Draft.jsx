@@ -903,7 +903,9 @@ export default class Publish extends React.Component {
                                                         }}
                                                     >
                                                         <span className="primary">
-                                                            D&DownArrow;
+                                                            D{String.fromCharCode(
+                                                                8595
+                                                            )}
                                                         </span>
                                                     </button>
                                                 </div>
@@ -1087,7 +1089,9 @@ export default class Publish extends React.Component {
                                                     />
                                                 </div>
                                                 <div className="item">
-                                                    <div>D&DownArrow;</div>
+                                                    <div>D{String.fromCharCode(
+                                                                8595
+                                                            )}</div>
                                                     <input
                                                         type="text"
                                                         pattern="\d*"

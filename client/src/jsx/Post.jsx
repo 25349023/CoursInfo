@@ -283,7 +283,9 @@ export default class Post extends React.Component {
                                                 </div>
                                             </div>
                                             <div className="item">
-                                                <div>D&DownArrow;</div>
+                                                <div>
+                                                    D{String.fromCharCode(8595)}
+                                                </div>
                                                 <div>
                                                     {information.class_grade_dist
                                                         ? information
