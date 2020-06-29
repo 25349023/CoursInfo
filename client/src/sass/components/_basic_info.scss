@@ -1,10 +1,59 @@
+#historyPopup {
+  .popupWindow {
+    min-width: 25vw;
+  }
+
+  .historyGroup {
+    display: flex;
+    flex-flow: column;
+    margin: 0 0 2rem;
+
+    .historyLink {
+      font-size: 1.3rem;
+      display: flex;
+      text-align: center;
+      color: $ui-color-text;
+      text-decoration: none;
+      padding: 0.6rem 0;
+
+      &:hover {
+        background-color: $table-hover-color;
+      }
+
+      span {
+        flex: 1;
+      }
+
+      &:nth-of-type(n + 2) {
+        // margin-top: 1rem;
+        border-top: 1px solid rgba($ui-color-text, 0.2);
+      }
+    }
+  }
+}
+
 .courseInfo main .basicInfo {
   display: grid;
   grid-template-rows: 4rem 1fr;
   grid-template-columns: 2rem 1fr 2fr 2rem;
 
   h3 {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
+  }
+
+  button {
+    @include button-mixin($button-function-color);
+    position: relative;
+    margin: auto 0 auto auto;
+    padding: 0 1rem;
+    font-size: 1.2rem;
+    top: 10px;
+    left: -15px;
+
+    .fas {
+      font-size: 1.3rem;
+      margin-right: 0.5rem;
+    }
   }
 
   .infoWrapper {
