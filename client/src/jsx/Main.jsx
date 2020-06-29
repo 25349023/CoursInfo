@@ -19,6 +19,7 @@ export default class Main extends React.Component {
 
         this.state = {
             gravatar_hash: "",
+            is_login: false,
         };
     }
 
@@ -43,14 +44,33 @@ export default class Main extends React.Component {
                             <li className="link">
                                 <a href="#">支援</a>
                             </li>
-                            <li className="rightItem link">
-                                <Link to="/userhome">
-                                    Account
-                                    <img
-                                        src={`https://www.gravatar.com/avatar/${this.state.gravatar_hash}?d=identicon&r=g&s=48`}
-                                    />
-                                </Link>
-                            </li>
+                            {this.state.is_login ? (
+                                <li className="rightItem link">
+                                    <Link to="/userhome">
+                                        Account
+                                        <img
+                                            src={`https://www.gravatar.com/avatar/${this.state.gravatar_hash}?d=identicon&r=g&s=48`}
+                                        />
+                                    </Link>
+                                </li>
+                            ) : (
+                                ""
+                            )}
+
+                            {!this.state.is_login ? (
+                                <li className="link">
+                                    <a
+                                        className="popup"
+                                        data-target="#loginPopup"
+                                        href="#"
+                                    >
+                                        登入
+                                    </a>
+                                </li>
+                            ) : (
+                                ""
+                            )}
+
                             <li>
                                 <button id="navBtn" className="btnToggle">
                                     <i className="fas fa-bars"></i>
@@ -59,6 +79,31 @@ export default class Main extends React.Component {
                         </ul>
                     </nav>
                 </header>
+                <div id="loginPopup" className="popupContent">
+                    <div className="popupWindow">
+                        <h3>
+                            登入 <i className="close fas fa-times"></i>
+                        </h3>
+                        <div className="loginContent">
+                            <span>請使用 NTHU gapp 帳號登入</span>
+                            <div
+                                className="btnGroup"
+                                onClick={() => {
+                                    this.setState({ is_login: true }, () => {
+                                        document
+                                            .querySelector("#loginPopup")
+                                            .classList.remove("active");
+                                    });
+                                }}
+                            >
+                                <a href="http://localhost:3000/auth/google">
+                                    <i className="fab fa-google"></i>
+                                    使用 Google 繼續
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <Route exact path="/" render={() => <Home />} />
                 <Route path="/courses" render={() => <Courses />} />
                 <Route path="/posts" render={() => <Posts />} />
