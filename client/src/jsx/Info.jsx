@@ -71,6 +71,21 @@ export default class Info extends React.Component {
                 <Link
                     to={`/info/${p.semester}-${p.department}-${p.course_subnumber}`}
                     className="historyLink"
+                    onClick={() => {
+                        this.setState(
+                            {
+                                smt: p.semester,
+                                dep: p.department,
+                                subnum: p.course_subnumber,
+                            },
+                            () => {
+                                this.askinfo();
+                                document
+                                    .querySelector("#historyPopup")
+                                    .classList.remove("active");
+                            }
+                        );
+                    }}
                 >
                     <span>{p.semester}</span>
                     <span>{p.teacher.split("\t")[0]}</span>
@@ -238,6 +253,7 @@ export default class Info extends React.Component {
                                                                 .classList.remove(
                                                                     "active"
                                                                 );
+                                                            this.askinfo();
                                                         });
                                                     }}
                                                 >
@@ -363,7 +379,7 @@ export default class Info extends React.Component {
             });
         });
         current().then((data) => {
-            this.setState({ userId: data }, () => {
+            this.setState({ userId: data[0].id }, () => {
                 getrating(
                     this.state.userId,
                     this.state.smt,

@@ -761,7 +761,7 @@ export default class Draft extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "X",
                                                             });
                                                         }}
@@ -776,7 +776,7 @@ export default class Draft extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "A+",
                                                             });
                                                         }}
@@ -791,7 +791,7 @@ export default class Draft extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "A",
                                                             });
                                                         }}
@@ -806,7 +806,7 @@ export default class Draft extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "A-",
                                                             });
                                                         }}
@@ -821,7 +821,7 @@ export default class Draft extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "B+",
                                                             });
                                                         }}
@@ -836,7 +836,7 @@ export default class Draft extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "B",
                                                             });
                                                         }}
@@ -851,7 +851,7 @@ export default class Draft extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "B-",
                                                             });
                                                         }}
@@ -866,7 +866,7 @@ export default class Draft extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "C+",
                                                             });
                                                         }}
@@ -881,7 +881,7 @@ export default class Draft extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "C",
                                                             });
                                                         }}
@@ -896,7 +896,7 @@ export default class Draft extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "C-",
                                                             });
                                                         }}
@@ -911,7 +911,7 @@ export default class Draft extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "D",
                                                             });
                                                         }}
@@ -938,17 +938,20 @@ export default class Draft extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[0]
+                                                            this.state
+                                                                .class_grade_dist[0]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[0] = Number(
+                                                            let temp = [
+                                                                ...class_grade_dist,
+                                                            ];
+                                                            temp[0] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -968,7 +971,7 @@ export default class Draft extends React.Component {
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
+                                                                class_grade_dist: this
                                                                     .gradelist,
                                                             });
                                                         }}
@@ -989,7 +992,7 @@ export default class Draft extends React.Component {
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
+                                                                class_grade_dist: this
                                                                     .gradelist,
                                                             });
                                                         }}
@@ -1010,7 +1013,7 @@ export default class Draft extends React.Component {
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
+                                                                class_grade_dist: this
                                                                     .gradelist,
                                                             });
                                                         }}
@@ -1031,7 +1034,7 @@ export default class Draft extends React.Component {
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
+                                                                class_grade_dist: this
                                                                     .gradelist,
                                                             });
                                                         }}
@@ -1052,7 +1055,7 @@ export default class Draft extends React.Component {
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
+                                                                class_grade_dist: this
                                                                     .gradelist,
                                                             });
                                                         }}
@@ -1073,7 +1076,7 @@ export default class Draft extends React.Component {
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
+                                                                class_grade_dist: this
                                                                     .gradelist,
                                                             });
                                                         }}
@@ -1094,7 +1097,7 @@ export default class Draft extends React.Component {
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
+                                                                class_grade_dist: this
                                                                     .gradelist,
                                                             });
                                                         }}
@@ -1115,7 +1118,7 @@ export default class Draft extends React.Component {
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
+                                                                class_grade_dist: this
                                                                     .gradelist,
                                                             });
                                                         }}
@@ -1141,7 +1144,7 @@ export default class Draft extends React.Component {
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
+                                                                class_grade_dist: this
                                                                     .gradelist,
                                                             });
                                                         }}

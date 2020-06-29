@@ -27,7 +27,7 @@ export default class User extends React.Component {
     }
     render() {
         if (this.state.redirectPost) {
-            return <Redirect to={`/editpost/${this.state.redPostId}`} />;
+            return <Redirect to={`/userpost/${this.state.redPostId}`} />;
         }
         if (this.state.redirectDraft) {
             return <Redirect to={`/userdraft/${this.state.redDraftId}`} />;

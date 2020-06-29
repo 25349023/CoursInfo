@@ -68,7 +68,7 @@ export function createrating(obj) {
     let url = `${postBaseUrl}/api/ratings`;
 
     console.log(`Making POST & createratings request to: ${url}`);
-    return axios.post(url, obj).then(function (res) {
+    return axios.post(url, obj, { withCredentials: true }).then(function (res) {
         if (res.status !== 200)
             throw new Error(`Unexpected response code: ${res.status}`);
 
