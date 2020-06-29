@@ -20,6 +20,8 @@ export default class Post extends React.Component {
     }
     render() {
         let { information, chinese_name } = this.state;
+        let date = new Date(information.updated_at);
+
         return (
             <div className="postPage">
                 <section className="main">
@@ -41,7 +43,7 @@ export default class Post extends React.Component {
                                         <figcaption>
                                             {information.nickname} &bull;{" "}
                                             <time>
-                                                {information.updated_at}
+                                                {date.toLocaleDateString()}
                                             </time>
                                         </figcaption>
                                     </figure>

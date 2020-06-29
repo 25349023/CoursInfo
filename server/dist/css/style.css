@@ -1350,7 +1350,7 @@ table td.rating {
   background-image: radial-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
   color: white;
   text-align: center;
-  font-family: "Exo 2", "Maven Pro", sans-serif;
+  font-family: "Exo 2", "Maven Pro", "Noto Sans TC", sans-serif;
   padding: 4rem 0 3rem;
   display: flex;
   flex-flow: column;

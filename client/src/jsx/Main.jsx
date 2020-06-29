@@ -59,7 +59,7 @@ export default class Main extends React.Component {
                             )}
 
                             {!this.state.is_login ? (
-                                <li className="link">
+                                <li className="rightItem link">
                                     <a
                                         className="popup"
                                         data-target="#loginPopup"
