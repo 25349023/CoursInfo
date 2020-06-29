@@ -5,7 +5,7 @@ const fs = require("fs");
  * See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
  */
 module.exports = function (req, res, next) {
-    res.set("Access-Control-Allow-Origin", "http://localhost:7070");
+    // res.set("Access-Control-Allow-Origin", "http://localhost:7070");
     res.set("Access-Control-Allow-Credentials", true);
     if (req.get("Access-Control-Request-Headers"))
         res.set(

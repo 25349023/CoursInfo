@@ -1,5 +1,5 @@
 import axios from "axios";
-const postBaseUrl = "http://localhost:3000";
+const postBaseUrl = "https://coursinfonthu.us-east-1.elasticbeanstalk.com";
 
 export function listDraft(userId) {
     let url = `${postBaseUrl}/api/drafts/user/${userId}`;

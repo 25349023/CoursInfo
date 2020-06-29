@@ -38,13 +38,13 @@ router.get(
                     .cookie("jwt", accessToken, {
                         httpOnly: true,
                         maxAge: 3600000,
-                        // sameSite: "lax",
+                        sameSite: "lax",
                         secure: true,
                     })
                     .cookie("reftok", refreshToken, {
                         httpOnly: true,
                         maxAge: 604800000,
-                        // sameSite: "lax",
+                        sameSite: "lax",
                         secure: true,
                         path: "/auth",
                     })
@@ -70,12 +70,12 @@ router.get("/logout", function (req, res, next) {
     res.status(200)
         .clearCookie("jwt", {
             httpOnly: true,
-            // sameSite: "lax",
+            sameSite: "lax",
             secure: true,
         })
         .clearCookie("reftok", {
             httpOnly: true,
-            // sameSite: "lax",
+            sameSite: "lax",
             secure: true,
             path: "/auth",
         })
@@ -100,7 +100,7 @@ router.get("/refresh", function (req, res, next) {
                 res.cookie("reftok", newRefreshToken, {
                     httpOnly: true,
                     maxAge: 604800000,
-                    // sameSite: "lax",
+                    sameSite: "lax",
                     secure: true,
                     path: "/auth",
                 });
@@ -110,7 +110,7 @@ router.get("/refresh", function (req, res, next) {
             res.cookie("jwt", newAccessToken, {
                 httpOnly: true,
                 maxAge: 3600000,
-                // sameSite: "lax",
+                sameSite: "lax",
                 secure: true,
             }).redirect(req.query.redirect);
         })
