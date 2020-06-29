@@ -1234,7 +1234,17 @@ export default class Edit extends React.Component {
 
     handleCreatePost() {
         if (this.state.userId) {
-            createPost({ ...this.state }).then((data) => {
+            createPost({
+                ...this.state,
+                courseSubnumber: this.state.course_subnumber,
+                courseType: this.state.course_type,
+                teachMethod: this.state.teach_method,
+                teacherCharacter: this.state.teacher_character,
+                taPerformance: this.state.ta_performance,
+                mainReview: this.state.main_review,
+                personalGrade: this.state.personal_grade,
+                classGradeDist: this.state.class_grade_dist,
+            }).then((data) => {
                 this.setState({ postId: data.id }, () => {
                     this.setState({ redirect_to_post: true });
                 });
