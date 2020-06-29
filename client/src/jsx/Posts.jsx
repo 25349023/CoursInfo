@@ -104,12 +104,9 @@ export default class Posts extends React.Component {
     catchPosts(department, text, start) {
         listPosts(department, text, start)
             .then((courseslist) => {
-                let temp = [];
-                temp.push(courseslist[courseslist.length - 1].department);
-                temp.push(courseslist[courseslist.length - 1].course_subnumber);
                 this.setState({
                     posts: courseslist,
-                    start: temp,
+                    start: courseslist[courseslist.length - 1].id,
                 });
             })
             .catch((err) => {
@@ -128,12 +125,9 @@ export default class Posts extends React.Component {
         console.log(this.state);
         listPosts(this.state.department, this.state.text, this.state.start)
             .then((courseslist) => {
-                let temp = [];
-                temp.push(courseslist[courseslist.length - 1].department);
-                temp.push(courseslist[courseslist.length - 1].course_subnumber);
                 console.log(temp);
                 this.setState({
-                    start: temp,
+                    start: courseslist[courseslist.length - 1].id,
                     posts: [...this.state.posts, ...courseslist],
                     hasMore: courseslist.length > 0,
                 });
