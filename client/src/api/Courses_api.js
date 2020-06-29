@@ -51,3 +51,39 @@ export function getdropdown(smt, dep) {
         return res.data;
     });
 }
+
+export function getrating(userId, smt, dep, subnum) {
+    let url = `${postBaseUrl}/api/ratings/${userId}/${smt}-${dep}-${subnum}`;
+
+    console.log(`Making GET & getratings request to: ${url}`);
+    return axios.get(url).then(function (res) {
+        if (res.status !== 200)
+            throw new Error(`Unexpected response code: ${res.status}`);
+
+        return res.data;
+    });
+}
+
+export function createrating(obj) {
+    let url = `${postBaseUrl}/api/ratings`;
+
+    console.log(`Making POST & createratings request to: ${url}`);
+    return axios.post(url, obj).then(function (res) {
+        if (res.status !== 200)
+            throw new Error(`Unexpected response code: ${res.status}`);
+
+        return res.data;
+    });
+}
+
+export function gethistory(dep, subnum) {
+    let url = `${postBaseUrl}/api/courses/history/${dep}-${subnum}`;
+
+    console.log(`Making GET & gethistory request to: ${url}`);
+    return axios.get(url).then(function (res) {
+        if (res.status !== 200)
+            throw new Error(`Unexpected response code: ${res.status}`);
+
+        return res.data;
+    });
+}

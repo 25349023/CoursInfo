@@ -1,6 +1,12 @@
 import React from "react";
 import Menu from "./Menu.jsx";
-import { selectCourse } from "api/Courses_api.js";
+import {
+    selectCourse,
+    gethistory,
+    getrating,
+    createrating,
+} from "api/Courses_api.js";
+import { current } from "api/Users_api.js";
 //import { selectCourse } from "api/Courses_api.js";
 import { useLocation, withRouter, Redirect } from "react-router-dom";
 import { getsimplePost } from "api/Posts_api.js";
@@ -14,6 +20,7 @@ export default class Info extends React.Component {
         let temp1 = temp.split("/");
         temp1 = temp1[temp1.length - 1].split("-");
         this.state = {
+            userId: "",
             redirect: false,
             information: [],
             pathname: temp,
@@ -31,6 +38,10 @@ export default class Info extends React.Component {
             cool: "",
             recommend: "",
             id: "",
+            historyobj: [],
+            user_s: "",
+            user_c: "",
+            user_r: "",
         };
     }
     render() {
@@ -54,6 +65,18 @@ export default class Info extends React.Component {
                 </article>
             ));
         }
+        let historydropdown = [];
+        if (this.state.historyobj.length) {
+            historydropdown = this.state.historyobj.map((p) => (
+                <Link
+                    to={`/info/${p.semester}-${p.department}-${p.course_subnumber}`}
+                    className="historyLink"
+                >
+                    <span>{p.semester}</span>
+                    <span>{p.teacher.split("\t")[0]}</span>
+                </Link>
+            ));
+        }
         if (this.state.redirect) {
             return <Redirect to={`/userpost/${this.state.id}`} />;
         }
@@ -68,6 +91,19 @@ export default class Info extends React.Component {
                             </div>
 
                             <main>
+                                <div id="historyPopup" className="popupContent">
+                                    <div className="popupWindow">
+                                        <h3>
+                                            歷年資料{" "}
+                                            <i className="close fas fa-times"></i>
+                                        </h3>
+                                        <div className="historyContent">
+                                            <div className="historyGroup">
+                                                {historydropdown}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <section className="basicInfo">
                                     <h3>基本資訊</h3>
                                     <div className="infoWrapper">
@@ -93,7 +129,118 @@ export default class Info extends React.Component {
                                         </div>
                                     </div>
                                 </section>
+                                <div id="ratingPopup" className="popupContent">
+                                    <div className="popupWindow">
+                                        <h3>
+                                            我要評分{" "}
+                                            <i className="close fas fa-times"></i>
+                                        </h3>
+                                        <div className="ratingContent">
+                                            <div className="inputGroup">
+                                                <span>甜度：</span>
+                                                <input
+                                                    type="text"
+                                                    value={
+                                                        this.state.user_s
+                                                            ? this.state.user_s
+                                                            : ""
+                                                    }
+                                                    onChange={(e) => {
+                                                        const text =
+                                                            e.target.value;
 
+                                                        this.setState({
+                                                            user_s: text,
+                                                        });
+                                                    }}
+                                                />
+                                                <span>涼度：</span>
+                                                <input
+                                                    type="text"
+                                                    value={
+                                                        this.state.user_c
+                                                            ? this.state.user_c
+                                                            : ""
+                                                    }
+                                                    onChange={(e) => {
+                                                        const text =
+                                                            e.target.value;
+
+                                                        this.setState({
+                                                            user_c: text,
+                                                        });
+                                                    }}
+                                                />
+                                                <span>推薦：</span>
+                                                <input
+                                                    type="text"
+                                                    value={
+                                                        this.state.user_r
+                                                            ? this.state.user_r
+                                                            : ""
+                                                    }
+                                                    onChange={(e) => {
+                                                        const text =
+                                                            e.target.value;
+
+                                                        this.setState({
+                                                            user_r: text,
+                                                        });
+                                                    }}
+                                                />
+                                            </div>
+                                            <div className="btnGroup">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => {
+                                                        document
+                                                            .querySelector(
+                                                                "#ratingPopup"
+                                                            )
+                                                            .classList.remove(
+                                                                "active"
+                                                            );
+                                                    }}
+                                                >
+                                                    <i className="fas fa-times"></i>{" "}
+                                                    取消
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => {
+                                                        createrating({
+                                                            semester: this.state
+                                                                .smt,
+                                                            department: this
+                                                                .state.dep,
+                                                            subnumber: this
+                                                                .state.subnum,
+                                                            userId: this.state
+                                                                .userId,
+                                                            sweet: this.state
+                                                                .user_s,
+                                                            cool: this.state
+                                                                .user_c,
+                                                            recommend: this
+                                                                .state.user_r,
+                                                        }).then(() => {
+                                                            document
+                                                                .querySelector(
+                                                                    "#ratingPopup"
+                                                                )
+                                                                .classList.remove(
+                                                                    "active"
+                                                                );
+                                                        });
+                                                    }}
+                                                >
+                                                    <i className="fas fa-check"></i>{" "}
+                                                    確認
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <section className="ratingBlock">
                                     <h3>評分</h3>
                                     <button>
@@ -147,7 +294,7 @@ export default class Info extends React.Component {
                                         <Link to="/publish">我要分享</Link>
                                     </button>
                                     <div className="postsWrapper">
-                                        <div class="hint">目前尚無心得</div>
+                                        <div className="hint">目前尚無心得</div>
                                         {children}
                                     </div>
                                 </section>
@@ -200,6 +347,27 @@ export default class Info extends React.Component {
     componentDidMount() {
         this.askinfo();
         this.asksimplePost();
+        gethistory(this.state.dep, this.state.subnum).then((data) => {
+            this.setState({
+                historyobj: data,
+            });
+        });
+        current().then((data) => {
+            this.setState({ userId: data }, () => {
+                getrating(
+                    this.state.userId,
+                    this.state.smt,
+                    this.state.dep,
+                    this.state.subnum
+                ).then((data) => {
+                    this.setState({
+                        user_s: data[0].sweet,
+                        user_c: data[0].cool,
+                        user_r: data[0].recommend,
+                    });
+                });
+            });
+        });
     }
     askinfo() {
         selectCourse(this.state.smt, this.state.dep, this.state.subnum).then(
