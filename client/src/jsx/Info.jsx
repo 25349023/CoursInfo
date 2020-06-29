@@ -106,6 +106,13 @@ export default class Info extends React.Component {
                                 </div>
                                 <section className="basicInfo">
                                     <h3>基本資訊</h3>
+                                    <button
+                                        className="popup"
+                                        data-target="#historyPopup"
+                                    >
+                                        <i className="fas fa-history"></i>{" "}
+                                        歷年資料
+                                    </button>
                                     <div className="infoWrapper">
                                         <div className="item">科號</div>
                                         <div className="content">
@@ -243,7 +250,10 @@ export default class Info extends React.Component {
                                 </div>
                                 <section className="ratingBlock">
                                     <h3>評分</h3>
-                                    <button>
+                                    <button
+                                        className="popup"
+                                        data-target="#ratingPopup"
+                                    >
                                         <svg
                                             className="svg-icon"
                                             viewBox="0 0 20 20"
