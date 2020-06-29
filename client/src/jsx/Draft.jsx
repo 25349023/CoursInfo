@@ -2,7 +2,7 @@ import React from "react";
 import Menu from "./Menu.jsx";
 import { createPost } from "api/Posts_api.js";
 import { getdropdown } from "api/Courses_api.js";
-import { createDraft, selectDraft } from "api/Draft_api.js";
+import { createDraft, selectDraft, editDraft } from "api/Draft_api.js";
 import { current, selectUser } from "api/Users_api.js";
 
 import { withRouter, Redirect } from "react-router-dom";
@@ -39,7 +39,9 @@ export default class Draft extends React.Component {
             classGradeDist: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             others: "",
             dropdownlist: [],
-            redirect: false,
+            redirect_to_user: false,
+            redirect_to_post: false,
+            postId: "",
         };
         this.gradelist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.dropdownRef = null;
@@ -77,8 +79,11 @@ export default class Draft extends React.Component {
                 </button>
             ));
         }
-        if (this.state.redirect) {
+        if (this.state.redirect_to_user) {
             return <Redirect to={`/userhome`} />;
+        }
+        if (this.state.redirect_to_post) {
+            return <Redirect to={`/Post/${this.state.postId}`} />;
         }
         return (
             <div className="draftPage">
@@ -1170,7 +1175,7 @@ export default class Draft extends React.Component {
                                         type="button"
                                         onClick={() => {
                                             this.setState({
-                                                redirect: true,
+                                                redirect_to_user: true,
                                             });
                                         }}
                                     >
@@ -1181,7 +1186,7 @@ export default class Draft extends React.Component {
                                     <button
                                         type="button"
                                         type="button"
-                                        onClick={this.handleCreateDraft.bind(
+                                        onClick={this.handleEditDraft.bind(
                                             this
                                         )}
                                     >
@@ -1222,18 +1227,20 @@ export default class Draft extends React.Component {
 
     handleCreatePost() {
         if (this.state.userId) {
-            createPost({ ...this.state }).then(() => {
-                this.setState({ redirect: true });
+            createPost({ ...this.state }).then((data) => {
+                this.setState({ postId: data.id }, () => {
+                    this.setState({ redirect_to_post: true });
+                });
             });
         } else {
             alert("請先登入");
         }
     }
 
-    handleCreateDraft() {
+    handleEditDraft() {
         if (this.state.userId) {
-            createDraft({ ...this.state }).then(() => {
-                this.setState({ redirect: true });
+            editDraft(this.state.draftId, { ...this.state }).then(() => {
+                this.setState({ redirect_to_user: true });
             });
         } else {
             alert("請先登入");
