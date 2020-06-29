@@ -13,16 +13,18 @@
     display: flex;
   }
 
-  button {
+  a {
     flex: 1;
+    text-align: center;
 
     @include button-mixin($ui-color-lighter, $ui-color-block-border);
     padding: 0 1rem;
     margin-top: 2rem;
     color: $ui-color-text;
 
-    .svg {
-      height: 100%;
+    .fab {
+      color: $h2-color;
+      margin-right: 0.5rem;
     }
   }
 }
