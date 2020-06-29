@@ -93,7 +93,7 @@ export default class User extends React.Component {
                         <span>{p.course_chinese_title}</span>
                         <time>{time.toLocaleDateString()}</time>
                         <span>
-                            {p.likes} <i class="fas fa-heart"></i>
+                            {p.likes} <i className="fas fa-heart"></i>
                         </span>
                     </div>,
                     <span
