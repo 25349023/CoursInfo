@@ -1,5 +1,5 @@
 import axios from "axios";
-const postBaseUrl = "http://localhost:3000";
+const postBaseUrl = "https://coursinfonthu.us-east-1.elasticbeanstalk.com";
 
 //department, start are a array of string
 export function listCourses(department, text = "", start) {

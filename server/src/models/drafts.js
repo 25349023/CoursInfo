@@ -36,6 +36,11 @@ function select(draftId, userId) {
 function create(data) {
     fillNull(data);
 
+    const check = `
+        SELECT draft_count FROM users
+        WHERE id = $<userId>;
+    `;
+
     const sql = `
         UPDATE users SET draft_count = draft_count + 1
         WHERE id = $<userId>;    
@@ -70,7 +75,15 @@ function create(data) {
         ) RETURNING *;
     `;
 
-    return db.one(sql, data);
+    return db.one(check, { userId: data.userId }).then((cnt) => {
+        if (cnt.draft_count < 5) {
+            return db.one(sql, data);
+        } else {
+            const err = new Error("exceed limit");
+            err.status = 401;
+            throw err;
+        }
+    });
 }
 
 function edit(draftId, userId, data) {

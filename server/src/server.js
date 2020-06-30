@@ -7,18 +7,26 @@ const fs = require("fs");
 
 const apiRouter = require("./routers/api");
 const authRouter = require("./routers/auth");
-const requestLogger = require("./middlewares/requests-logger");
+// const requestLogger = require("./middlewares/requests-logger");
 const errorHandler = require("./middlewares/error-handler.js");
 const cookieParser = require("cookie-parser");
 
 const app = express();
-const httpsPort = 3000,
+const httpsPort = 443,
     httpPort = 3001;
 
-app.use(requestLogger);
+// app.use(requestLogger);
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(function (req, res, next) {
+    console.log(req.protocol);
+    if (req.headers["x-forwarded-proto"] === "https") {
+        return next();
+    }
+    res.redirect("https://" + req.hostname + req.url);
+});
 
 app.use(
     express.static("dist", {
@@ -29,14 +37,6 @@ app.use(
 );
 
 app.use(express.static("public"));
-
-// app.use(function (req, res, next) {
-//     console.log(req.protocol);
-//     if (req.headers["x-forwarded-proto"] === "https") {
-//         return next();
-//     }
-//     res.redirect("https://" + req.hostname + req.url);
-// });
 
 app.get("/", (req, res) => res.send("Hello World!"));
 app.use("/api", apiRouter);

@@ -38,13 +38,13 @@ router.get(
                     .cookie("jwt", accessToken, {
                         httpOnly: true,
                         maxAge: 3600000,
-                        // sameSite: "lax",
+                        sameSite: "lax",
                         secure: true,
                     })
                     .cookie("reftok", refreshToken, {
                         httpOnly: true,
                         maxAge: 604800000,
-                        // sameSite: "lax",
+                        sameSite: "lax",
                         secure: true,
                         path: "/auth",
                     })
@@ -54,28 +54,20 @@ router.get(
     }
 );
 
-router.get("/check", function (req, res, next) {
-    passport.authenticate("token", function (err, user, info) {
-        if (req.query.fail) {
-            res.send("auth failed");
-        } else if (!user) {
-            res.redirect(`/auth/refresh?redirect=${req.baseUrl}${req.path}`);
-        } else {
-            res.send("auth success");
-        }
-    })(req, res, next);
+router.get("/check", authStrategy.retrieveNewToken, function (req, res, next) {
+    res.send("auth success");
 });
 
 router.get("/logout", function (req, res, next) {
     res.status(200)
         .clearCookie("jwt", {
             httpOnly: true,
-            // sameSite: "lax",
+            sameSite: "lax",
             secure: true,
         })
         .clearCookie("reftok", {
             httpOnly: true,
-            // sameSite: "lax",
+            sameSite: "lax",
             secure: true,
             path: "/auth",
         })
@@ -100,7 +92,7 @@ router.get("/refresh", function (req, res, next) {
                 res.cookie("reftok", newRefreshToken, {
                     httpOnly: true,
                     maxAge: 604800000,
-                    // sameSite: "lax",
+                    sameSite: "lax",
                     secure: true,
                     path: "/auth",
                 });
@@ -110,7 +102,7 @@ router.get("/refresh", function (req, res, next) {
             res.cookie("jwt", newAccessToken, {
                 httpOnly: true,
                 maxAge: 3600000,
-                // sameSite: "lax",
+                sameSite: "lax",
                 secure: true,
             }).redirect(req.query.redirect);
         })

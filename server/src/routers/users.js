@@ -4,7 +4,7 @@ const accessController = require("../middlewares/access-controller.js");
 
 const usersModel = require("../models/users");
 const { checkUser } = require("../utils");
-
+const authStrategy = require("../auth/auth-strategy");
 const passport = require("passport");
 
 const router = express.Router();
@@ -12,13 +12,9 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(accessController);
 
-// router.use(passport.authenticate("token"));
+router.use(authStrategy.retrieveNewToken);
 
-router.get("/current", passport.authenticate("token"), function (
-    req,
-    res,
-    next
-) {
+router.get("/current", function (req, res, next) {
     usersModel
         .select(req.user)
         .then((user) => {
@@ -27,11 +23,7 @@ router.get("/current", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.get("/:userId", passport.authenticate("token"), function (
-    req,
-    res,
-    next
-) {
+router.get("/:userId", function (req, res, next) {
     const { userId } = req.params;
     checkUser(userId, req);
 
@@ -43,11 +35,7 @@ router.get("/:userId", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.post("/nickname", passport.authenticate("token"), function (
-    req,
-    res,
-    next
-) {
+router.post("/nickname", function (req, res, next) {
     const { userId, nickname } = req.body;
     checkUser(userId, req);
 

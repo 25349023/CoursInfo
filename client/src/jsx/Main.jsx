@@ -59,7 +59,7 @@ export default class Main extends React.Component {
                             )}
 
                             {!this.state.is_login ? (
-                                <li className="link">
+                                <li className="rightItem link">
                                     <a
                                         className="popup"
                                         data-target="#loginPopup"
@@ -95,7 +95,7 @@ export default class Main extends React.Component {
                                         .classList.remove("active");
                                 }}
                             >
-                                <a href="http://localhost:3000/auth/google">
+                                <a href="https://coursinfonthu.us-east-1.elasticbeanstalk.com/auth/google">
                                     <i className="fab fa-google"></i>
                                     使用 Google 繼續
                                 </a>
@@ -122,6 +122,21 @@ export default class Main extends React.Component {
 
     componentDidMount() {
         this.askid();
+        let popupBtns = document.querySelectorAll(".popup");
+        popupBtns.forEach((pop) => {
+            let popContent = document.querySelector(pop.dataset.target);
+
+            pop.addEventListener("click", () => {
+                popContent.classList.add("active");
+            });
+        });
+
+        let popupContents = document.querySelectorAll(".popupContent");
+        popupContents.forEach((pc) => {
+            pc.querySelector(".close").addEventListener("click", () => {
+                pc.classList.remove("active");
+            });
+        });
     }
 
     askid() {
@@ -132,7 +147,9 @@ export default class Main extends React.Component {
                     userId: user[0].id,
                 },
                 () => {
-                    this.setState({ is_login: userId ? true : false });
+                    this.setState({
+                        is_login: this.state.userId ? true : false,
+                    });
                 }
             );
         });

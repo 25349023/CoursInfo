@@ -20,6 +20,8 @@ export default class Post extends React.Component {
     }
     render() {
         let { information, chinese_name } = this.state;
+        let date = new Date(information.updated_at);
+
         return (
             <div className="postPage">
                 <section className="main">
@@ -35,12 +37,14 @@ export default class Post extends React.Component {
                                     <figure className="user">
                                         <img
                                             className="profileImg"
-                                            src="./images/profile.png"
+                                            src={`https://www.gravatar.com/avatar/${information.gravatar_hash}?d=identicon&r=g&s=48`}
                                             alt="user image"
                                         />
                                         <figcaption>
-                                            sky1234 &bull;{" "}
-                                            <time>2020-06-10</time>
+                                            {information.nickname} &bull;{" "}
+                                            <time>
+                                                {date.toLocaleDateString()}
+                                            </time>
                                         </figcaption>
                                     </figure>
 
@@ -50,22 +54,14 @@ export default class Post extends React.Component {
                                             onClick={() => {
                                                 createVote(
                                                     this.state.id,
-                                                    this.state.upVote ? 2 : 0
+                                                    this.state.upVote ? 2 : 0,
+                                                    this.state.userId
                                                 ).then(() => {
-                                                    getVote(
-                                                        this.state.userId,
-                                                        this.state.id
-                                                    ).then((data) => {
-                                                        this.setState({
-                                                            upVote: data[0]
-                                                                ? data[0].upvote
-                                                                : "",
-                                                        });
-                                                    });
+                                                    this.askinfo();
                                                 });
                                             }}
                                         >
-                                            <a href="#">
+                                            <a>
                                                 <i className="fas fa-heart"></i>
                                             </a>
                                             <span>{information.likes}</span>
@@ -75,22 +71,14 @@ export default class Post extends React.Component {
                                             onClick={() => {
                                                 createVote(
                                                     this.state.id,
-                                                    !this.state.upVote ? 2 : 1
+                                                    !this.state.upVote ? 1 : 2,
+                                                    this.state.userId
                                                 ).then(() => {
-                                                    getVote(
-                                                        this.state.userId,
-                                                        this.state.id
-                                                    ).then((data) => {
-                                                        this.setState({
-                                                            upVote: data[0]
-                                                                ? data[0].upvote
-                                                                : "",
-                                                        });
-                                                    });
+                                                    this.askinfo();
                                                 });
                                             }}
                                         >
-                                            <a href="#">
+                                            <a>
                                                 <i className="fas fa-heart-broken"></i>
                                             </a>
                                             <span>{information.dislikes}</span>
@@ -370,16 +358,6 @@ export default class Post extends React.Component {
     }
     componentDidMount() {
         this.askinfo();
-        current().then((user) => {
-            this.setState(
-                {
-                    userId: user[0].id,
-                },
-                getVote(this.state.userId, this.state.id).then((data) => {
-                    this.setState({ upVote: data[0] ? data[0].upvote : "" });
-                })
-            );
-        });
     }
 
     askinfo() {
@@ -392,6 +370,20 @@ export default class Post extends React.Component {
                 chinese.push(temp1[0]);
             }
             this.setState({ information: data[0], chinese_name: chinese });
+        });
+        current().then((user) => {
+            this.setState(
+                {
+                    userId: user[0].id,
+                },
+                () => {
+                    getVote(this.state.userId, this.state.id).then((data) => {
+                        this.setState({
+                            upVote: data ? data.upvote : "",
+                        });
+                    });
+                }
+            );
         });
     }
 }

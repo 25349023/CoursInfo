@@ -4,20 +4,16 @@ const accessController = require("../middlewares/access-controller.js");
 
 const draftsModel = require("../models/drafts");
 const { checkUser } = require("../utils");
-
+const authStrategy = require("../auth/auth-strategy");
 const passport = require("passport");
 const router = express.Router();
 
 router.use(bodyParser.json());
 router.use(accessController);
 
-// router.use(passport.authenticate("token"));
+router.use(authStrategy.retrieveNewToken);
 
-router.get("/user/:userId", passport.authenticate("token"), function (
-    req,
-    res,
-    next
-) {
+router.get("/user/:userId", function (req, res, next) {
     const { userId } = req.params;
     checkUser(userId, req);
 
@@ -29,11 +25,7 @@ router.get("/user/:userId", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.get("/:draftId", passport.authenticate("token"), function (
-    req,
-    res,
-    next
-) {
+router.get("/:draftId", function (req, res, next) {
     let { draftId } = req.params;
     const { userId } = req.query;
     checkUser(userId, req);
@@ -46,7 +38,7 @@ router.get("/:draftId", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.post("/", passport.authenticate("token"), function (req, res, next) {
+router.post("/", function (req, res, next) {
     const requiredFields = [
         "userId",
         "semester",
@@ -73,11 +65,7 @@ router.post("/", passport.authenticate("token"), function (req, res, next) {
         .catch(next);
 });
 
-router.put("/:draftId", passport.authenticate("token"), function (
-    req,
-    res,
-    next
-) {
+router.put("/:draftId", function (req, res, next) {
     const requiredFields = [
         "userId",
         "semester",
@@ -106,11 +94,7 @@ router.put("/:draftId", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.delete("/:draftId", passport.authenticate("token"), function (
-    req,
-    res,
-    next
-) {
+router.delete("/:draftId", function (req, res, next) {
     const { userId } = req.body;
     checkUser(userId, req);
     let { draftId } = req.params;

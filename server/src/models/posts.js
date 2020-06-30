@@ -61,11 +61,14 @@ function list(searchOptions) {
 
 function select(postId) {
     const sql = `
-        SELECT ps.*, cs.course_chinese_title, cs.teacher, cs.credit 
+        SELECT ps.*, cs.course_chinese_title, cs.teacher, cs.credit, 
+            us.gravatar_hash, us.nickname
         FROM posts ps
             JOIN courses cs
             ON (cs.semester, cs.department, cs.course_subnumber) 
                 = (ps.semester, ps.department, ps.course_subnumber)
+            JOIN users us
+            ON us.id = ps.user_id
         WHERE ps.id = $<postId> AND deleted_at IS NULL;
     `;
 
@@ -102,6 +105,11 @@ function simpleList(department, subnumber) {
 }
 
 function create(data) {
+    const check = `
+        SELECT daily_publish_count FROM users
+        WHERE id = $<userId>;  
+    `;
+
     const sql = `
         UPDATE users 
         SET daily_publish_count = daily_publish_count + 1
@@ -137,8 +145,16 @@ function create(data) {
         ) RETURNING *;
     `;
 
-    console.log(pgp.as.format(sql, data));
-    return db.one(sql, data);
+    // console.log(pgp.as.format(sql, data));
+    return db.one(check, { userId: data.userId }).then((obj) => {
+        if (obj.daily_publish_count < 5) {
+            return db.one(sql, data);
+        } else {
+            const err = new Error("exceed limit");
+            err.status = 401;
+            throw err;
+        }
+    });
 }
 
 function edit(postId, userId, data) {
@@ -358,4 +374,5 @@ module.exports = {
     voteLike,
     voteDislike,
     voteCancel,
+    getUserVote,
 };
