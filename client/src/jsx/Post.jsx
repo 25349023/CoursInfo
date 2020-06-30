@@ -71,7 +71,12 @@ export default class Post extends React.Component {
                                             onClick={() => {
                                                 createVote(
                                                     this.state.id,
-                                                    !this.state.upVote ? 1 : 2,
+                                                    this.state.upVote
+                                                        ? 1
+                                                        : this.state.upVote ==
+                                                          false
+                                                        ? 2
+                                                        : 1,
                                                     this.state.userId
                                                 ).then(() => {
                                                     this.askinfo();
