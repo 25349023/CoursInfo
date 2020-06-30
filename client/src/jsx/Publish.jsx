@@ -256,7 +256,11 @@ export default class Publish extends React.Component {
                                     <div className="titleFlexbox">
                                         <h2>心得標題</h2>
                                         <div>
-                                            <span className="wordCount">0</span>{" "}
+                                            <span className="wordCount">
+                                                {this.state.title
+                                                    ? this.state.title.length
+                                                    : "0"}
+                                            </span>{" "}
                                             / 25
                                         </div>
                                     </div>
@@ -278,7 +282,12 @@ export default class Publish extends React.Component {
                                     <div className="titleFlexbox">
                                         <h2>課程類別</h2>
                                         <div>
-                                            <span className="wordCount">0</span>{" "}
+                                            <span className="wordCount">
+                                                {this.state.courseType
+                                                    ? this.state.courseType
+                                                          .length
+                                                    : "0"}
+                                            </span>{" "}
                                             / 20
                                         </div>
                                     </div>
@@ -405,7 +414,10 @@ export default class Publish extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.info
+                                                            ? this.state.info
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -435,7 +447,11 @@ export default class Publish extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.prerequisite
+                                                            ? this.state
+                                                                  .prerequisite
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -464,7 +480,11 @@ export default class Publish extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.teachMethod
+                                                            ? this.state
+                                                                  .teachMethod
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -494,7 +514,11 @@ export default class Publish extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.assignment
+                                                            ? this.state
+                                                                  .assignment
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -524,7 +548,10 @@ export default class Publish extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.exam
+                                                            ? this.state.exam
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -554,7 +581,11 @@ export default class Publish extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.evaluation
+                                                            ? this.state
+                                                                  .evaluation
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -584,7 +615,11 @@ export default class Publish extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.textbook
+                                                            ? this.state
+                                                                  .textbook
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -613,7 +648,12 @@ export default class Publish extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state
+                                                            .teacherCharacter
+                                                            ? this.state
+                                                                  .teacherCharacter
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -644,7 +684,12 @@ export default class Publish extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state
+                                                            .taPerformance
+                                                            ? this.state
+                                                                  .taPerformance
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -672,7 +717,12 @@ export default class Publish extends React.Component {
                                     <div className="titleFlexbox">
                                         <h2>個人心得</h2>
                                         <div>
-                                            <span className="wordCount">0</span>{" "}
+                                            <span className="wordCount">
+                                                {this.state.mainReview
+                                                    ? this.state.mainReview
+                                                          .length
+                                                    : "0"}
+                                            </span>{" "}
                                             / 10000
                                         </div>
                                     </div>
@@ -1113,7 +1163,11 @@ export default class Publish extends React.Component {
                                     <div className="titleFlexbox">
                                         <h2>其他</h2>
                                         <div>
-                                            <span className="wordCount">0</span>{" "}
+                                            <span className="wordCount">
+                                                {this.state.others
+                                                    ? this.state.others.length
+                                                    : "0"}
+                                            </span>{" "}
                                             / 2000
                                         </div>
                                     </div>
