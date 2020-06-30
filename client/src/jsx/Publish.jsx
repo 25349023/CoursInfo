@@ -38,6 +38,7 @@ export default class Publish extends React.Component {
         };
         this.gradelist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.dropdownRef = null;
+        this.formRef = null;
 
         // this.handleInputChange = this.handleInputChange.bind(this);
         this.handleDrowndown = this.handleDrowndown.bind(this);
@@ -76,7 +77,7 @@ export default class Publish extends React.Component {
             return <Redirect to={`/userpost/${this.state.pid}`} />;
         }
         if (this.state.redirect) {
-            return <Redirect to="/posts" />;
+            return <Redirect to="/userhome" />;
         }
         return (
             <div className="publishPage">
@@ -85,6 +86,9 @@ export default class Publish extends React.Component {
                         <form
                             className="wrapper articleForm"
                             spellCheck="false"
+                            ref={(el) => {
+                                this.formRef = el;
+                            }}
                         >
                             <h1>發表心得</h1>
 
@@ -382,7 +386,11 @@ export default class Publish extends React.Component {
                                                 maxLength="3"
                                                 pattern="\d(\.\d)?"
                                                 placeholder="例：3.5"
-                                                value={this.state.sweet}
+                                                value={
+                                                    this.state.sweet
+                                                        ? this.state.sweet
+                                                        : ""
+                                                }
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
@@ -403,7 +411,11 @@ export default class Publish extends React.Component {
                                                 maxLength="3"
                                                 pattern="\d(\.\d)?"
                                                 placeholder="例：3.5"
-                                                value={this.state.cool}
+                                                value={
+                                                    this.state.cool
+                                                        ? this.state.cool
+                                                        : ""
+                                                }
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
@@ -424,7 +436,11 @@ export default class Publish extends React.Component {
                                                 maxLength="3"
                                                 pattern="\d(\.\d)?"
                                                 placeholder="例：3.5"
-                                                value={this.state.recommend}
+                                                value={
+                                                    this.state.recommend
+                                                        ? this.state.recommend
+                                                        : ""
+                                                }
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
@@ -1244,6 +1260,10 @@ export default class Publish extends React.Component {
     }
 
     handleCreatePost() {
+        if (!this.formRef.checkValidity()) {
+            return;
+        }
+
         if (this.state.userId) {
             createPost({ ...this.state }).then((post) => {
                 this.setState({ redirectPost: true, pid: post.id });
