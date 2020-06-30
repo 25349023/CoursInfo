@@ -97,6 +97,7 @@ function simpleList(department, subnumber) {
             LEFT JOIN users us
             ON ps.user_id = us.id
         WHERE ps.department = $<department> AND ps.course_subnumber = $<subnumber>
+            AND deleted_at IS NULL
         ORDER BY ps.likes
         LIMIT 5;
     `;
