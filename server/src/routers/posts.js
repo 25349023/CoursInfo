@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const accessController = require("../middlewares/access-controller.js");
 
 const postsModel = require("../models/posts");
-const { checkUser } = require("../utils");
+const utils = require("../utils");
 const authStrategy = require("../auth/auth-strategy");
 
 const passport = require("passport");
@@ -88,7 +88,7 @@ router.post("/", authStrategy.retrieveNewToken, function (req, res, next) {
         "others",
     ];
 
-    checkUser(req.body.userId, req);
+    utils.checkUser(req.body.userId, req);
 
     let err = null;
     for (let f of requiredFields) {
@@ -99,8 +99,10 @@ router.post("/", authStrategy.retrieveNewToken, function (req, res, next) {
         }
     }
 
+    const data = utils.sanitize(req.body);
+
     postsModel
-        .create(req.body)
+        .create(data)
         .then((post) => {
             res.json(post);
         })
@@ -138,7 +140,7 @@ router.put("/:postId", authStrategy.retrieveNewToken, function (
 
     const { userId } = req.body;
     let { postId } = req.params;
-    checkUser(userId, req);
+    utils.checkUser(userId, req);
 
     let err = null;
     for (let f of requiredFields) {
@@ -149,8 +151,10 @@ router.put("/:postId", authStrategy.retrieveNewToken, function (
         }
     }
 
+    const data = utils.sanitize(req.body);
+
     postsModel
-        .edit(postId, userId, req.body)
+        .edit(postId, userId, data)
         .then((post) => {
             res.json(post);
         })
@@ -164,7 +168,7 @@ router.delete("/:postId", authStrategy.retrieveNewToken, function (
 ) {
     const { userId } = req.body;
     let { postId } = req.params;
-    checkUser(userId, req);
+    utils.checkUser(userId, req);
 
     postsModel
         .deletePost(postId, userId)
@@ -181,7 +185,7 @@ router.post("/:postId/like", authStrategy.retrieveNewToken, function (
 ) {
     let { postId } = req.params;
     let { userId } = req.body;
-    checkUser(userId, req);
+    utils.checkUser(userId, req);
 
     postsModel
         .voteLike(userId, postId)
@@ -197,7 +201,7 @@ router.get("/:postId-:userId/vote", authStrategy.retrieveNewToken, function (
     next
 ) {
     let { postId, userId } = req.params;
-    checkUser(userId, req);
+    utils.checkUser(userId, req);
 
     postsModel
         .getUserVote(userId, postId)
@@ -216,7 +220,7 @@ router.post("/:postId/dislike", authStrategy.retrieveNewToken, function (
 ) {
     let { postId } = req.params;
     let { userId } = req.body;
-    checkUser(userId, req);
+    utils.checkUser(userId, req);
 
     postsModel
         .voteDislike(userId, postId)
@@ -233,7 +237,7 @@ router.post("/:postId/cancelVote", authStrategy.retrieveNewToken, function (
 ) {
     let { postId } = req.params;
     let { userId } = req.body;
-    checkUser(userId, req);
+    utils.checkUser(userId, req);
 
     postsModel
         .voteCancel(userId, postId)

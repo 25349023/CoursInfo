@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const accessController = require("../middlewares/access-controller.js");
 
 const draftsModel = require("../models/drafts");
-const { checkUser } = require("../utils");
+const { checkUser, sanitize } = require("../utils");
 const authStrategy = require("../auth/auth-strategy");
 const passport = require("passport");
 const router = express.Router();
@@ -57,8 +57,10 @@ router.post("/", function (req, res, next) {
         }
     }
 
+    const data = sanitize(req.body);
+
     draftsModel
-        .create(req.body)
+        .create(data)
         .then((df) => {
             res.json(df);
         })
@@ -86,8 +88,10 @@ router.put("/:draftId", function (req, res, next) {
         }
     }
 
+    const data = sanitize(req.body);
+
     draftsModel
-        .edit(draftId, userId, req.body)
+        .edit(draftId, userId, data)
         .then((df) => {
             res.json(df);
         })
