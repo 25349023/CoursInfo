@@ -1605,6 +1605,11 @@ table td.rating {
   font-size: 1.3rem;
   margin-right: 0.5rem;
 }
+@media (max-width: 632px) {
+  .courseInfo main .basicInfo button {
+    grid-column: span 2;
+  }
+}
 .courseInfo main .basicInfo .infoWrapper {
   grid-column: 2/4;
   grid-row: 2/3;

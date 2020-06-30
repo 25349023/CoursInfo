@@ -54,6 +54,10 @@
       font-size: 1.3rem;
       margin-right: 0.5rem;
     }
+
+    @include brk-down($brk-medium) {
+      grid-column: span 2;
+    }
   }
 
   .infoWrapper {
