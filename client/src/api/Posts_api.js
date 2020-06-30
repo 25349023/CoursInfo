@@ -83,7 +83,7 @@ export function deletePost(postId, obj) {
         });
 }
 
-//islike = 1 means like, = 0 means dislike, = 2 means cancel
+// = 0 means like, = 1 means dislike, = 2 means cancel
 export function createVote(postId, islike, userId) {
     let url = `${postBaseUrl}/api/posts/${postId}`;
     if (islike == 0) url += `/like`;
