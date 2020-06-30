@@ -11,7 +11,7 @@ function checkUser(userId, req) {
 function sanitize(data) {
     for (let key in data) {
         if (typeof data[key] == "string") {
-            data[key] = data[key].replace("\n", "<br>");
+            // data[key] = data[key].replace("\n", "<br>");
             data[key] = sanitizeHtml(data[key], {
                 allowedTags: ["b", "i", "em", "strong", "br"],
             });
