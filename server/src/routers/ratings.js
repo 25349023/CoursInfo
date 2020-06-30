@@ -4,6 +4,7 @@ const accessController = require("../middlewares/access-controller.js");
 
 const ratingsModel = require("../models/ratings");
 const { checkUser } = require("../utils");
+const authStrategy = require("../auth/auth-strategy");
 
 const passport = require("passport");
 const router = express.Router();
@@ -11,7 +12,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(accessController);
 
-router.use(passport.authenticate("token"));
+router.use(authStrategy.retrieveNewToken);
 
 router.get("/:userId/:semester-:department-:subnumber", function (
     req,

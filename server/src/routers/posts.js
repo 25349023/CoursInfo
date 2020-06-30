@@ -4,6 +4,7 @@ const accessController = require("../middlewares/access-controller.js");
 
 const postsModel = require("../models/posts");
 const { checkUser } = require("../utils");
+const authStrategy = require("../auth/auth-strategy");
 
 const passport = require("passport");
 const router = express.Router();
@@ -61,7 +62,7 @@ router.get("/users/:userId", function (req, res, next) {
         .catch(next);
 });
 
-router.post("/", passport.authenticate("token"), function (req, res, next) {
+router.post("/", authStrategy.retrieveNewToken, function (req, res, next) {
     const requiredFields = [
         "userId",
         "semester",
@@ -106,7 +107,7 @@ router.post("/", passport.authenticate("token"), function (req, res, next) {
         .catch(next);
 });
 
-router.put("/:postId", passport.authenticate("token"), function (
+router.put("/:postId", authStrategy.retrieveNewToken, function (
     req,
     res,
     next
@@ -156,7 +157,7 @@ router.put("/:postId", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.delete("/:postId", passport.authenticate("token"), function (
+router.delete("/:postId", authStrategy.retrieveNewToken, function (
     req,
     res,
     next
@@ -173,7 +174,7 @@ router.delete("/:postId", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.post("/:postId/like", passport.authenticate("token"), function (
+router.post("/:postId/like", authStrategy.retrieveNewToken, function (
     req,
     res,
     next
@@ -190,7 +191,7 @@ router.post("/:postId/like", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.get("/:postId-:userId/vote", passport.authenticate("token"), function (
+router.get("/:postId-:userId/vote", authStrategy.retrieveNewToken, function (
     req,
     res,
     next
@@ -208,7 +209,7 @@ router.get("/:postId-:userId/vote", passport.authenticate("token"), function (
         });
 });
 
-router.post("/:postId/dislike", passport.authenticate("token"), function (
+router.post("/:postId/dislike", authStrategy.retrieveNewToken, function (
     req,
     res,
     next
@@ -225,7 +226,7 @@ router.post("/:postId/dislike", passport.authenticate("token"), function (
         .catch(next);
 });
 
-router.post("/:postId/cancelVote", passport.authenticate("token"), function (
+router.post("/:postId/cancelVote", authStrategy.retrieveNewToken, function (
     req,
     res,
     next

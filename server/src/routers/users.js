@@ -4,7 +4,7 @@ const accessController = require("../middlewares/access-controller.js");
 
 const usersModel = require("../models/users");
 const { checkUser } = require("../utils");
-
+const authStrategy = require("../auth/auth-strategy");
 const passport = require("passport");
 
 const router = express.Router();
@@ -12,7 +12,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(accessController);
 
-router.use(passport.authenticate("token"));
+router.use(authStrategy.retrieveNewToken);
 
 router.get("/current", function (req, res, next) {
     usersModel

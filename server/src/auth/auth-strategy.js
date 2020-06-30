@@ -94,4 +94,22 @@ function genRefreshToken(user) {
     );
 }
 
-module.exports = { getJwtToken, genAccessToken, genRefreshToken };
+function retrieveNewToken(req, res, next) {
+    passport.authenticate("token", function (err, user, info) {
+        if (req.query.fail) {
+            next();
+        } else if (!user) {
+            res.redirect(`/auth/refresh?redirect=${req.baseUrl}${req.path}`);
+        } else {
+            req.user = user;
+            next();
+        }
+    })(req, res, next);
+}
+
+module.exports = {
+    getJwtToken,
+    genAccessToken,
+    genRefreshToken,
+    retrieveNewToken,
+};

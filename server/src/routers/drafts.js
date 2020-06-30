@@ -4,14 +4,14 @@ const accessController = require("../middlewares/access-controller.js");
 
 const draftsModel = require("../models/drafts");
 const { checkUser } = require("../utils");
-
+const authStrategy = require("../auth/auth-strategy");
 const passport = require("passport");
 const router = express.Router();
 
 router.use(bodyParser.json());
 router.use(accessController);
 
-router.use(passport.authenticate("token"));
+router.use(authStrategy.retrieveNewToken);
 
 router.get("/user/:userId", function (req, res, next) {
     const { userId } = req.params;

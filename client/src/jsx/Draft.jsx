@@ -1365,13 +1365,14 @@ export default class Draft extends React.Component {
                 personalGrade: this.state.personal_grade,
                 classGradeDist: this.state.class_grade_dist,
             }).then((data) => {
-                deleteDraft(this.state.draftId, {
-                    userId: this.state.userId,
-                }).then(() => {
-                    this.setState({ postId: data.id }, () => {
-                        this.setState({ redirect_to_post: true });
-                    });
-                });
+                this.setState(
+                    { postId: data.id, redirect_to_post: true },
+                    () => {
+                        deleteDraft(this.state.draftId, {
+                            userId: this.state.userId,
+                        });
+                    }
+                );
             });
         } else {
             alert("請先登入");

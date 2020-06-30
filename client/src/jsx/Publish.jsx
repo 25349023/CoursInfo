@@ -72,11 +72,11 @@ export default class Publish extends React.Component {
                 </button>
             ));
         }
+        if (this.state.redirectPost) {
+            return <Redirect to={`/userpost/${this.state.pid}`} />;
+        }
         if (this.state.redirect) {
             return <Redirect to="/posts" />;
-        }
-        if (this.state.redirectPost) {
-            return <Redirect to={`/userpost${this.state.pid}`} />;
         }
         return (
             <div className="publishPage">

@@ -54,16 +54,8 @@ router.get(
     }
 );
 
-router.get("/check", function (req, res, next) {
-    passport.authenticate("token", function (err, user, info) {
-        if (req.query.fail) {
-            res.send("auth failed");
-        } else if (!user) {
-            res.redirect(`/auth/refresh?redirect=${req.baseUrl}${req.path}`);
-        } else {
-            res.send("auth success");
-        }
-    })(req, res, next);
+router.get("/check", authStrategy.retrieveNewToken, function (req, res, next) {
+    res.send("auth success");
 });
 
 router.get("/logout", function (req, res, next) {
