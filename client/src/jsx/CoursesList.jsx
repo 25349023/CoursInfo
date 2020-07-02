@@ -72,6 +72,7 @@ export default class CoursesList extends React.Component {
                     loadMore={this.props.listMoreCourse}
                     hasMore={this.props.hasMore}
                     className="listBody"
+                    threshold={100}
                 >
                     {children}
                 </InfiniteScroll>

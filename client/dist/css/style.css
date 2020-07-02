@@ -491,10 +491,16 @@ section.main > section {
 .courses main,
 .posts main {
   margin-left: 4%;
-  height: 100%;
+  min-height: 80vh;
   flex: 3 1 600px;
   display: flex;
   flex-flow: column;
+}
+@media (max-width: 840px) {
+  .courses main,
+.posts main {
+    flex: 3 1;
+  }
 }
 .courses main .searchBox,
 .posts main .searchBox {
@@ -537,13 +543,19 @@ section.main > section {
   padding-bottom: 1rem;
   border-radius: 10px;
   border: 1px solid rgba(60, 60, 60, 0.2);
-  overflow: auto;
 }
 .courses aside,
 .posts aside {
   flex: 1 0 200px;
   min-width: 250px;
   max-height: 32rem;
+}
+@media (max-width: 840px) {
+  .courses aside,
+.posts aside {
+    flex: 1 0;
+    max-height: 15rem;
+  }
 }
 
 @media (max-width: 840px) {
