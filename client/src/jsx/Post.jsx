@@ -105,7 +105,9 @@ export default class Post extends React.Component {
                                     </div>
                                     <div className="item">科號</div>
                                     <div className="content">
-                                        {information.course_subnumber}
+                                        {information.department +
+                                            " " +
+                                            information.course_subnumber}
                                     </div>
                                     <div className="item">學分</div>
                                     <div className="content">

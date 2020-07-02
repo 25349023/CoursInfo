@@ -31,13 +31,11 @@ export default class Posts extends React.Component {
                                 text={this.state.text}
                                 handleinput={this.inputtext}
                             />
-                            <section className="listing">
-                                <PostsList
-                                    posts={this.state.posts}
-                                    listMorePost={this.listMorePosts}
-                                    hasMore={this.state.hasMore}
-                                />
-                            </section>
+                            <PostsList
+                                posts={this.state.posts}
+                                listMorePost={this.listMorePosts}
+                                hasMore={this.state.hasMore}
+                            />
                         </main>
                         <Category handleinput={this.inputdepartment} />
                     </section>

@@ -64,74 +64,63 @@
           </form>
 
           <section class="listing">
-            <table>
-              <colgroup>
-                <col class="primary" />
-                <col />
-                <col class="primary" />
-                <col />
-                <col />
-              </colgroup>
-              <thead>
-                <tr>
-                  <th scope="col">課程名稱</th>
-                  <th scope="col">授課教師</th>
-                  <th scope="col">心得標題</th>
-                  <th scope="col">整體評分</th>
-                  <th scope="col">此心得評價</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr data-href="#">
-                  <td class="courseName">Programming</td>
-                  <td class="teacher">王小明</td>
-                  <td class="postTitle">一門好課</td>
-                  <td class="rating">3.5</td>
-                  <td class="rating">－</td>
-                </tr>
-                <tr data-href="#">
-                  <td class="courseName">Programming</td>
-                  <td class="teacher">王小明</td>
-                  <td class="postTitle">一門好課</td>
-                  <td class="rating">3.5</td>
-                  <td class="rating">
-                    <span> -4 <i class="fas fa-heart"></i> </span>
-                  </td>
-                </tr>
-                <tr data-href="#">
-                  <td class="courseName">Programming</td>
-                  <td class="teacher">王小明</td>
-                  <td class="postTitle">一門好課</td>
-                  <td class="rating">3.5</td>
-                  <td class="rating">－</td>
-                </tr>
-                <tr data-href="post.html">
-                  <td class="courseName">計算機程式設計一</td>
-                  <td class="teacher">王大明</td>
-                  <td class="postTitle">我覺得這門課很棒</td>
-                  <td class="rating">3.4</td>
-                  <td class="rating">
-                    <span> 2 <i class="fas fa-heart"></i> </span>
-                  </td>
-                </tr>
-                <tr data-href="#">
-                  <td class="courseName">Programming</td>
-                  <td class="teacher">王小明</td>
-                  <td class="postTitle">一門好課</td>
-                  <td class="rating">3.5</td>
-                  <td class="rating">
-                    <span> 1 <i class="fas fa-heart"></i> </span>
-                  </td>
-                </tr>
-                <tr data-href="#">
-                  <td class="courseName">Programming</td>
-                  <td class="teacher">王小明</td>
-                  <td class="postTitle">一門好課</td>
-                  <td class="rating">3.5</td>
-                  <td class="rating">－</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="listHead">
+              <span class="cell">課程名稱</span>
+              <span class="cell">授課教師</span>
+              <span class="cell">心得標題</span>
+              <span class="cell">整體評分</span>
+              <span class="cell">此心得評價</span>
+            </div>
+            <div class="listBody">
+              <div class="rowItem" data-href="#">
+                <span class="cell courseName">Programming</span>
+                <span class="cell teacher">王小明</span>
+                <span class="cell postTitle">一門好課</span>
+                <span class="cell rating">3.5</span>
+                <span class="cell rating">－</span>
+              </div>
+              <div class="rowItem" data-href="#">
+                <span class="cell courseName">Programming</span>
+                <span class="cell teacher">王小明</span>
+                <span class="cell postTitle">一門好課</span>
+                <span class="cell rating">3.5</span>
+                <span class="cell rating">
+                  <span> -4 <i class="fas fa-heart"></i> </span>
+                </span>
+              </div>
+              <div class="rowItem" data-href="#">
+                <span class="cell courseName">Programming</span>
+                <span class="cell teacher">王小明</span>
+                <span class="cell postTitle">一門好課</span>
+                <span class="cell rating">3.5</span>
+                <span class="cell rating">－</span>
+              </div>
+              <div class="rowItem" data-href="post.html">
+                <span class="cell courseName">計算機程式設計一</span>
+                <span class="cell teacher">王大明</span>
+                <span class="cell postTitle">我覺得這門課很棒</span>
+                <span class="cell rating">3.4</span>
+                <span class="cell rating">
+                  <span> 2 <i class="fas fa-heart"></i> </span>
+                </span>
+              </div>
+              <div class="rowItem" data-href="#">
+                <span class="cell courseName">Programming</span>
+                <span class="cell teacher">王小明</span>
+                <span class="cell postTitle">一門好課</span>
+                <span class="cell rating">3.5</span>
+                <span class="cell rating">
+                  <span> 1 <i class="fas fa-heart"></i> </span>
+                </span>
+              </div>
+              <div class="rowItem" data-href="#">
+                <span class="cell courseName">Programming</span>
+                <span class="cell teacher">王小明</span>
+                <span class="cell postTitle">一門好課</span>
+                <span class="cell rating">3.5</span>
+                <span class="cell rating">－</span>
+              </div>
+            </div>
           </section>
         </main>
 
