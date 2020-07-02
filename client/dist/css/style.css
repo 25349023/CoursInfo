@@ -541,6 +541,7 @@ section.main > section {
   background-color: #f0f0f0;
   flex: 1 1 80%;
   padding-bottom: 1rem;
+  min-height: 0;
   border-radius: 10px;
   border: 1px solid rgba(60, 60, 60, 0.2);
 }

@@ -47,6 +47,7 @@
     background-color: $ui-color-block;
     flex: 1 1 80%;
     padding-bottom: 1rem;
+    min-height: 0;
 
     border-radius: 10px;
     border: 1px solid $ui-color-block-border;
