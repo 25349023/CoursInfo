@@ -1,11 +1,62 @@
 .posts .listing {
-  td:last-of-type span {
+  .cell:last-of-type span {
     position: relative;
 
     .fa-heart {
       position: absolute;
       right: -24px;
       top: 2px;
+    }
+  }
+}
+
+.posts main {
+  @include brk-down($brk-large) {
+    margin: 2rem 0 0;
+  }
+
+  .listing {
+    .listHead,
+    .listBody .rowItem {
+      grid-template-columns: 1.5fr 1fr 1.5fr repeat(2, 1fr);
+    }
+
+    @include brk-down($brk-xlarge) {
+      .cell:last-of-type {
+        display: none;
+      }
+
+      .listHead,
+      .listBody .rowItem {
+        grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+      }
+    }
+
+    @include brk-down($brk-medium) {
+      .cell:nth-of-type(4) {
+        display: none;
+      }
+
+      .listHead,
+      .listBody .rowItem {
+        grid-template-columns: 2fr 1.5fr 1.5fr;
+      }
+    }
+
+    @include brk-down($brk-small) {
+      .cell:nth-of-type(2) {
+        display: none;
+      }
+
+      .listHead,
+      .listBody .rowItem {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cell.courseName,
+      .cell.postTitle {
+        font-size: 1.1rem;
+      }
     }
   }
 }

@@ -58,94 +58,53 @@
 }
 
 .courses main {
-  @include brk-down($brk-xlarge) {
-    col:first-of-type,
-    th:first-of-type,
-    td:first-of-type {
-      display: none;
-    }
-
-    col.primary {
-      width: 40%;
-    }
-  }
-
   @include brk-down($brk-large) {
     margin: 2rem 0 0;
   }
 
-  @include brk-down($brk-medium) {
-    col:nth-of-type(3),
-    th:nth-of-type(3),
-    th:nth-of-type(4),
-    td:nth-of-type(3),
-    td:nth-of-type(4) {
-      display: none;
+  .listing {
+    .listHead,
+    .listBody .rowItem {
+      grid-template-columns: 1.8fr 2.5fr repeat(3, 1.4fr) 1.6fr;
     }
 
-    col.primary {
-      width: 50%;
+    @include brk-down($brk-xlarge) {
+      .cell:first-of-type {
+        display: none;
+      }
+
+      .listHead,
+      .listBody .rowItem {
+        grid-template-columns: 4fr repeat(3, 1.4fr) 1.8fr;
+      }
+    }
+
+    @include brk-down($brk-medium) {
+      .cell:nth-of-type(3),
+      .cell:nth-of-type(4) {
+        display: none;
+      }
+
+      .listHead,
+      .listBody .rowItem {
+        grid-template-columns: 3.2fr 1.4fr 1.8fr;
+      }
+    }
+
+    @include brk-down($brk-small) {
+      .cell:nth-of-type(5) {
+        display: none;
+      }
+
+      .listHead,
+      .listBody .rowItem {
+        grid-template-columns: 3.2fr 1.6fr;
+      }
+
+      .cell.courseName,
+      .cell.rating {
+        font-size: 1.1rem;
+      }
     }
   }
-
-  @include brk-down($brk-small) {
-    col:nth-of-type(4),
-    th:nth-of-type(5),
-    td:nth-of-type(5) {
-      display: none;
-    }
-    col.primary {
-      width: 65%;
-    }
-    td.courseName,
-    td.rating {
-      font-size: 1.1rem;
-    }
-  }
-}
-
-.posts main {
-  @include brk-down($brk-xlarge) {
-    col:last-of-type,
-    th:last-of-type,
-    td:last-of-type {
-      display: none;
-    }
-
-    col.primary {
-      width: 30%;
-    }
-  }
-
-  @include brk-down($brk-large) {
-    margin: 2rem 0 0;
-  }
-
-  @include brk-down($brk-medium) {
-    col:nth-of-type(4),
-    th:nth-of-type(4),
-    td:nth-of-type(4) {
-      display: none;
-    }
-
-    col.primary {
-      width: 40%;
-    }
-  }
-
-  @include brk-down($brk-small) {
-    col:nth-of-type(2),
-    th:nth-of-type(2),
-    td:nth-of-type(2) {
-      display: none;
-    }
-    col.primary {
-      width: 50%;
-    }
-    td.courseName,
-    td.postTitle {
-      font-size: 1.1rem;
-    }
-  }
-  /*}*/
 }
