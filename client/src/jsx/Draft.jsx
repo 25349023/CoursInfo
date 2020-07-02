@@ -101,6 +101,10 @@ export default class Draft extends React.Component {
                             ref={(el) => {
                                 this.formRef = el;
                             }}
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                return false;
+                            }}
                         >
                             <h1>編輯草稿</h1>
 

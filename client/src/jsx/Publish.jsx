@@ -89,6 +89,10 @@ export default class Publish extends React.Component {
                             ref={(el) => {
                                 this.formRef = el;
                             }}
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                return false;
+                            }}
                         >
                             <h1>發表心得</h1>
 
