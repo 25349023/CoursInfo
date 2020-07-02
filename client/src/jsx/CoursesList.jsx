@@ -18,7 +18,8 @@ export default class CoursesList extends React.Component {
         let children = [];
         if (courses.length) {
             children = courses.map((p) => (
-                <tr
+                <div
+                    className="rowItem"
                     data-href="#"
                     key={p.course_number}
                     onClick={() => {
@@ -30,17 +31,23 @@ export default class CoursesList extends React.Component {
                         });
                     }}
                 >
-                    <td className="courseNumber">{p.course_number}</td>
-                    <td className="courseName">{p.course_chinese_title}</td>
-                    <td className="rating">{p.sweet ? p.sweet : "-"}</td>
-                    <td className="rating">{p.cool ? p.cool : "-"}</td>
-                    <td className="rating">
+                    <span className="cell courseNumber">
+                        {p.department + " " + p.course_subnumber}
+                    </span>
+                    <span className="cell courseName">
+                        {p.course_chinese_title}
+                    </span>
+                    <span className="cell rating">
+                        {p.sweet ? p.sweet : "-"}
+                    </span>
+                    <span className="cell rating">{p.cool ? p.cool : "-"}</span>
+                    <span className="cell rating">
                         {p.recommend ? p.recommend : "-"}
-                    </td>
-                    <td className="teacher">
+                    </span>
+                    <span className="cell teacher">
                         {p.teacher ? p.teacher.split("\t")[0] : "-"}
-                    </td>
-                </tr>
+                    </span>
+                </div>
             ));
         }
         if (this.state.redirect) {
@@ -51,35 +58,24 @@ export default class CoursesList extends React.Component {
             );
         }
         return (
-            <table>
-                <colgroup>
-                    <col className="secondary" />
-                    <col className="primary" />
-                    <col span="2" />
-                    <col />
-                    <col />
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th scope="col">科號</th>
-                        <th scope="col">課程名稱</th>
-                        <th scope="col">甜度</th>
-                        <th scope="col">涼度</th>
-                        <th scope="col">推薦</th>
-                        <th scope="col">授課教師</th>
-                    </tr>
-                </thead>
-                {/* <tbody> */}
+            <section className="listing">
+                <div className="listHead">
+                    <span className="cell">科號</span>
+                    <span className="cell">課程名稱</span>
+                    <span className="cell">甜度</span>
+                    <span className="cell">涼度</span>
+                    <span className="cell">推薦</span>
+                    <span className="cell">授課教師</span>
+                </div>
                 <InfiniteScroll
                     initialLoad={false}
                     loadMore={this.props.listMoreCourse}
                     hasMore={this.props.hasMore}
-                    element={"tbody"}
+                    className="listBody"
                 >
                     {children}
                 </InfiniteScroll>
-                {/* </tbody> */}
-            </table>
+            </section>
         );
     }
 }

@@ -16,9 +16,10 @@ export default class PostsList extends React.Component {
         let children = [];
         if (posts.length) {
             children = posts.map((p) => (
-                <tr
+                <div
+                    className="rowItem"
                     data-href="#"
-                    key={p.course_number}
+                    key={p.id}
                     onClick={() => {
                         this.setState({
                             redirect: true,
@@ -26,53 +27,45 @@ export default class PostsList extends React.Component {
                         });
                     }}
                 >
-                    <td className="courseName">{p.course_chinese_title}</td>
-                    <td className="teacher">
+                    <span class="cell courseName">
+                        {p.course_chinese_title}
+                    </span>
+                    <span class="cell teacher">
                         {p.teacher ? p.teacher.split("\t")[0] : "-"}
-                    </td>
-                    <td className="postTitle">{p.title}</td>
-                    <td className="rating">
+                    </span>
+                    <span class="cell postTitle">{p.title}</span>
+                    <span class="cell rating">
                         {p.recommend ? p.recommend : "-"}
-                    </td>
-                    <td className="rating">
+                    </span>
+                    <span class="cell rating">
                         <span>
-                            {" "}
-                            {p.likes} <i className="fas fa-heart"></i>{" "}
+                            {p.likes} <i className="fas fa-heart"></i>
                         </span>
-                    </td>
-                </tr>
+                    </span>
+                </div>
             ));
         }
         if (this.state.redirect) {
             return <Redirect to={`/userpost/${this.state.id}`} />;
         }
         return (
-            <table>
-                <colgroup>
-                    <col className="primary" />
-                    <col />
-                    <col className="primary" />
-                    <col />
-                    <col />
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th scope="col">課程名稱</th>
-                        <th scope="col">授課教師</th>
-                        <th scope="col">心得標題</th>
-                        <th scope="col">整體評分</th>
-                        <th scope="col">此心得評價</th>
-                    </tr>
-                </thead>
+            <section className="listing">
+                <div className="listHead">
+                    <span className="cell">課程名稱</span>
+                    <span className="cell">授課教師</span>
+                    <span className="cell">心得標題</span>
+                    <span className="cell">整體評分</span>
+                    <span className="cell">此心得評價</span>
+                </div>
                 <InfiniteScroll
                     initialLoad={false}
-                    loadMore={this.props.listMorePost}
+                    loadMore={this.props.listMoreCourse}
                     hasMore={this.props.hasMore}
-                    element={"tbody"}
+                    className="listBody"
                 >
                     {children}
                 </InfiniteScroll>
-            </table>
+            </section>
         );
     }
 }

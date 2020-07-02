@@ -32,13 +32,11 @@ export default class Courses extends React.Component {
                                 text={this.state.text}
                                 handleinput={this.inputtext}
                             />
-                            <section className="listing">
-                                <CoursesList
-                                    courses={courses}
-                                    listMoreCourse={this.listMoreCourse}
-                                    hasMore={this.state.hasMore}
-                                />
-                            </section>
+                            <CoursesList
+                                courses={courses}
+                                listMoreCourse={this.listMoreCourse}
+                                hasMore={this.state.hasMore}
+                            />
                         </main>
                         <Category handleinput={this.inputdepartment} />
                     </section>
