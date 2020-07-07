@@ -95,7 +95,7 @@ export default class Main extends React.Component {
                                         .classList.remove("active");
                                 }}
                             >
-                                <a href="https://coursinfonthu.us-east-1.elasticbeanstalk.com/auth/google">
+                                <a href="https://coursinfo.herokuapp.com/auth/google">
                                     <i className="fab fa-google"></i>
                                     使用 Google 繼續
                                 </a>
