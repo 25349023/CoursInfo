@@ -11,7 +11,7 @@ export default class Searchbar extends React.Component {
             <form className="searchBox">
                 <input
                     type="text"
-                    placeholder="search for courses..."
+                    placeholder="輸入文字來搜尋..."
                     value={this.props.text}
                     onChange={(e) => {
                         this.props.handleinput(e);

@@ -394,11 +394,10 @@ export default class Publish extends React.Component {
                                             </h3>
                                             <input
                                                 type="text"
-                                                inputMode="numeric"
                                                 required
                                                 maxLength="3"
-                                                pattern="\d(\.\d)?"
-                                                placeholder="例：3.5"
+                                                pattern="[0-5](\.\d)?"
+                                                placeholder="滿分 5 分，例：3.5"
                                                 value={
                                                     this.state.sweet
                                                         ? this.state.sweet
@@ -419,10 +418,9 @@ export default class Publish extends React.Component {
                                             </h3>
                                             <input
                                                 type="text"
-                                                inputMode="numeric"
                                                 required
                                                 maxLength="3"
-                                                pattern="\d(\.\d)?"
+                                                pattern="[0-5](\.\d)?"
                                                 placeholder="例：3.5"
                                                 value={
                                                     this.state.cool
@@ -444,10 +442,9 @@ export default class Publish extends React.Component {
                                             </h3>
                                             <input
                                                 type="text"
-                                                inputMode="numeric"
                                                 required
                                                 maxLength="3"
-                                                pattern="\d(\.\d)?"
+                                                pattern="[0-5](\.\d)?"
                                                 placeholder="例：3.5"
                                                 value={
                                                     this.state.recommend

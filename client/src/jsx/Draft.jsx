@@ -432,10 +432,9 @@ export default class Draft extends React.Component {
                                             </h3>
                                             <input
                                                 type="text"
-                                                inputMode="numeric"
                                                 required
                                                 maxLength="3"
-                                                pattern="\d(\.\d)?"
+                                                pattern="[0-5](\.\d)?"
                                                 placeholder="例：3.5"
                                                 value={
                                                     this.state.sweet
@@ -457,10 +456,9 @@ export default class Draft extends React.Component {
                                             </h3>
                                             <input
                                                 type="text"
-                                                inputMode="numeric"
                                                 required
                                                 maxLength="3"
-                                                pattern="\d(\.\d)?"
+                                                pattern="[0-5](\.\d)?"
                                                 placeholder="例：3.5"
                                                 value={
                                                     this.state.cool
@@ -482,10 +480,9 @@ export default class Draft extends React.Component {
                                             </h3>
                                             <input
                                                 type="text"
-                                                inputMode="numeric"
                                                 required
                                                 maxLength="3"
-                                                pattern="\d(\.\d)?"
+                                                pattern="[0-5](\.\d)?"
                                                 placeholder="例：3.5"
                                                 value={
                                                     this.state.recommend

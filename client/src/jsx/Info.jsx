@@ -175,6 +175,8 @@ export default class Info extends React.Component {
                                                             user_s: text,
                                                         });
                                                     }}
+                                                    pattern="[0-5](\.\d)?"
+                                                    placeholder="0 ~ 5 分，例：2.6"
                                                 />
                                                 <span>涼度：</span>
                                                 <input
@@ -192,6 +194,8 @@ export default class Info extends React.Component {
                                                             user_c: text,
                                                         });
                                                     }}
+                                                    pattern="[0-5](\.\d)?"
+                                                    placeholder="0 ~ 5 分，例：2.6"
                                                 />
                                                 <span>推薦：</span>
                                                 <input
@@ -209,6 +213,8 @@ export default class Info extends React.Component {
                                                             user_r: text,
                                                         });
                                                     }}
+                                                    pattern="[0-5](\.\d)?"
+                                                    placeholder="0 ~ 5 分，例：2.6"
                                                 />
                                             </div>
                                             <div className="btnGroup">
@@ -230,31 +236,47 @@ export default class Info extends React.Component {
                                                 <button
                                                     type="button"
                                                     onClick={() => {
-                                                        createrating({
-                                                            semester: this.state
-                                                                .smt,
-                                                            department: this
-                                                                .state.dep,
-                                                            subnumber: this
-                                                                .state.subnum,
-                                                            userId: this.state
-                                                                .userId,
-                                                            sweet: this.state
-                                                                .user_s,
-                                                            cool: this.state
-                                                                .user_c,
-                                                            recommend: this
-                                                                .state.user_r,
-                                                        }).then(() => {
-                                                            document
-                                                                .querySelector(
-                                                                    "#ratingPopup"
-                                                                )
-                                                                .classList.remove(
-                                                                    "active"
-                                                                );
-                                                            this.askinfo();
-                                                        });
+                                                        let inputBoxes = Array.from(
+                                                            document.querySelectorAll(
+                                                                ".ratingContent input"
+                                                            )
+                                                        );
+                                                        if (
+                                                            inputBoxes.every(
+                                                                (el) =>
+                                                                    el.reportValidity()
+                                                            )
+                                                        ) {
+                                                            createrating({
+                                                                semester: this
+                                                                    .state.smt,
+                                                                department: this
+                                                                    .state.dep,
+                                                                subnumber: this
+                                                                    .state
+                                                                    .subnum,
+                                                                userId: this
+                                                                    .state
+                                                                    .userId,
+                                                                sweet: this
+                                                                    .state
+                                                                    .user_s,
+                                                                cool: this.state
+                                                                    .user_c,
+                                                                recommend: this
+                                                                    .state
+                                                                    .user_r,
+                                                            }).then(() => {
+                                                                document
+                                                                    .querySelector(
+                                                                        "#ratingPopup"
+                                                                    )
+                                                                    .classList.remove(
+                                                                        "active"
+                                                                    );
+                                                                this.askinfo();
+                                                            });
+                                                        }
                                                     }}
                                                 >
                                                     <i className="fas fa-check"></i>{" "}
