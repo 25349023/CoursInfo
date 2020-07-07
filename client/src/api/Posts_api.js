@@ -1,5 +1,6 @@
 import axios from "axios";
-const postBaseUrl = "https://coursinfonthu.us-east-1.elasticbeanstalk.com";
+// const postBaseUrl = "https://coursinfonthu.us-east-1.elasticbeanstalk.com";
+const postBaseUrl = "https://coursinfo.herokuapp.com";
 // const postBaseUrl = "http://localhost:3000";
 
 //department, start are a array of string

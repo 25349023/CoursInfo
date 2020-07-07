@@ -6,6 +6,9 @@ try {
         case "production":
             process.env.DB_URL = `postgres://${process.env.RDS_USERNAME}:${process.env.RDS_PASSWORD}@${process.env.RDS_HOSTNAME}:${process.env.RDS_PORT}/${process.env.RDS_DB_NAME}`;
             break;
+        case "heroku":
+            process.env.DB_URL = process.env.DATABASE_URL;
+            break;
     }
 } catch (err) {
     console.log(

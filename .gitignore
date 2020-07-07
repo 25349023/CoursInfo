@@ -1,5 +1,6 @@
 node_modules
 server/env.sh
+server/.env
 server/log*
 *.crt
 *.key
