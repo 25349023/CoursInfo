@@ -10,7 +10,7 @@ export default class Posts extends React.Component {
 
         this.state = {
             posts: [],
-            department: ["CS", "EE", "EECS", "GE", "GEC"],
+            department: ["CL", "CS", "EE", "EECS", "FL", "GE", "GEC"],
             text: "",
             start: [],
             hasMore: true,

@@ -11,7 +11,7 @@ export default class Courses extends React.Component {
 
         this.state = {
             courses: [],
-            department: ["CS", "EE", "EECS", "GE", "GEC"],
+            department: ["CL", "CS", "EE", "EECS", "FL", "GE", "GEC"],
             text: "",
             start: [],
             hasMore: true,
