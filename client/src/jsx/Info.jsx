@@ -362,7 +362,7 @@ export default class Info extends React.Component {
 
     componentDidMount() {
         this.askinfo().then(() => {
-            document.title = this.information.course_chinese_title;
+            document.title = this.state.information.course_chinese_title;
         });
         this.asksimplePost();
         gethistory(this.state.dep, this.state.subnum).then((data) => {
@@ -403,6 +403,10 @@ export default class Info extends React.Component {
             });
         });
     }
+
+    setAsyncState = (newState) =>
+        new Promise((resolve) => this.setState(newState, resolve));
+
     askinfo() {
         return selectCourse(
             this.state.smt,
@@ -423,7 +427,7 @@ export default class Info extends React.Component {
                 let temp1 = temp2[i].split("\t");
                 chinese.push(temp1[0]);
             }
-            this.setState({
+            return this.setAsyncState({
                 information: data[0],
                 classroom: myroom,
                 time: mytime,

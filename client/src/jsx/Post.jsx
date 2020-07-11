@@ -18,6 +18,10 @@ export default class Post extends React.Component {
             upVote: null,
         };
     }
+
+    setAsyncState = (newState) =>
+        new Promise((resolve) => this.setState(newState, resolve));
+
     render() {
         let { information, chinese_name } = this.state;
         let date = new Date(information.updated_at);
@@ -379,7 +383,7 @@ export default class Post extends React.Component {
 
     componentDidMount() {
         this.askinfo().then(() => {
-            document.title = this.information.title;
+            document.title = this.state.information.title;
         });
     }
 
@@ -389,29 +393,38 @@ export default class Post extends React.Component {
 
     askinfo() {
         console.log(this.state.id);
-        selectPost(this.state.id).then((data) => {
-            let temp2 = data[0].teacher.split("\n");
-            let chinese = [];
-            for (let i = 0; i < temp2.length; i++) {
-                let temp1 = temp2[i].split("\t");
-                chinese.push(temp1[0]);
-            }
-            this.setState({ information: data[0], chinese_name: chinese });
-        });
-        return current().then((user) => {
-            this.setState(
-                {
-                    userId: user[0].id,
-                },
-                () => {
-                    getVote(this.state.userId, this.state.id).then((data) => {
-                        this.setState({
-                            upVote: data !== {} ? data.upvote : null,
-                        });
-                    });
+        return selectPost(this.state.id)
+            .then((data) => {
+                let temp2 = data[0].teacher.split("\n");
+                let chinese = [];
+                for (let i = 0; i < temp2.length; i++) {
+                    let temp1 = temp2[i].split("\t");
+                    chinese.push(temp1[0]);
                 }
-            );
-        });
+                return this.setAsyncState({
+                    information: data[0],
+                    chinese_name: chinese,
+                });
+            })
+            .then(() => {
+                current().then((user) => {
+                    this.setState(
+                        {
+                            userId: user[0].id,
+                        },
+                        () => {
+                            getVote(this.state.userId, this.state.id).then(
+                                (data) => {
+                                    this.setState({
+                                        upVote:
+                                            data !== {} ? data.upvote : null,
+                                    });
+                                }
+                            );
+                        }
+                    );
+                });
+            });
     }
 }
 Post = withRouter(Post);
