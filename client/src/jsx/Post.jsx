@@ -239,7 +239,9 @@ export default class Post extends React.Component {
                                     <div>
                                         {information.main_review &&
                                         information.main_review.trim()
-                                            ? information.main_review
+                                            ? this.breakLines(
+                                                  information.main_review
+                                              )
                                             : "-"}
                                     </div>
                                 </section>
@@ -363,8 +365,13 @@ export default class Post extends React.Component {
             </div>
         );
     }
+
     componentDidMount() {
         this.askinfo();
+    }
+
+    breakLines(text) {
+        return text.split("\n").map((p, i) => <p key={i}>{p}</p>);
     }
 
     askinfo() {

@@ -2562,6 +2562,18 @@ table td.rating {
     padding-right: 1.6rem;
   }
 }
+.postArticle .reviewSection div p,
+.postArticle .otherSection div p {
+  margin: 1rem 0;
+}
+.postArticle .reviewSection div p:first-of-type,
+.postArticle .otherSection div p:first-of-type {
+  margin-top: 0;
+}
+.postArticle .reviewSection div p:last-of-type,
+.postArticle .otherSection div p:last-of-type {
+  margin-bottom: 0;
+}
 .postArticle .reviewSection div {
   font-size: 1.3rem;
 }

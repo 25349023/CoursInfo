@@ -17,12 +17,12 @@ export default class Menu extends React.Component {
                     <li>
                         <Link to="/publish">發表心得</Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <a href="#">討論區</a>
                     </li>
                     <li>
                         <a href="#">筆記＆考古</a>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/userhome">設定</Link>
                     </li>

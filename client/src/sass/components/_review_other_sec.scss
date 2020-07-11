@@ -16,6 +16,18 @@
         padding-left: 1.6rem;
         padding-right: 1.6rem;
       }
+
+      p {
+        margin: 1rem 0;
+
+        &:first-of-type {
+          margin-top: 0;
+        }
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 
