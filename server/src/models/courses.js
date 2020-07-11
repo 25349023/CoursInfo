@@ -78,7 +78,7 @@ function _parseDepartment(department) {
     return [ftDep, normal, core];
 }
 
-function _GEQuery(geClass = geQueryType.NORMAL, prefix) {
+function _GEQuery(geClass = geQueryType.NORMAL, prefix = "") {
     let query = [`${prefix}ge_class IS NOT NULL`];
     switch (geClass) {
         case geQueryType.NORMAL:
