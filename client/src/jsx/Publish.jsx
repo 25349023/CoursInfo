@@ -1276,6 +1276,7 @@ export default class Publish extends React.Component {
     }
 
     componentDidMount() {
+        document.title = "發表心得";
         current().then((data) => {
             this.setState({ userId: data[0].id });
         });

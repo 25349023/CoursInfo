@@ -337,7 +337,7 @@ export default class Edit extends React.Component {
                                         className="popupContent"
                                     >
                                         <div className="popupWindow">
-                                        <h3>
+                                            <h3>
                                                 參考用評分標準{" "}
                                                 <i className="close fas fa-times"></i>
                                             </h3>
@@ -1242,6 +1242,8 @@ export default class Edit extends React.Component {
     }
 
     componentDidMount() {
+        document.title = "編輯文章";
+
         selectPost(this.state.PostId).then((data) => {
             this.setState({ ...data[0] });
         });

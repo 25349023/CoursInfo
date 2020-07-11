@@ -6,6 +6,11 @@ export default class Home extends React.Component {
 
         this.state = {};
     }
+
+    componentDidMount() {
+        document.title = "NTHU CoursInfo";
+    }
+
     render() {
         return (
             <div className="home">

@@ -361,7 +361,9 @@ export default class Info extends React.Component {
     }
 
     componentDidMount() {
-        this.askinfo();
+        this.askinfo().then(() => {
+            document.title = this.information.course_chinese_title;
+        });
         this.asksimplePost();
         gethistory(this.state.dep, this.state.subnum).then((data) => {
             this.setState({
@@ -402,30 +404,32 @@ export default class Info extends React.Component {
         });
     }
     askinfo() {
-        selectCourse(this.state.smt, this.state.dep, this.state.subnum).then(
-            (data) => {
-                let temp = data[0].classroom_and_time.split("\n");
-                let temp2 = data[0].teacher.split("\n");
-                let myroom = [];
-                let mytime = [];
-                let chinese = [];
-                for (let i = 0; i < temp.length; i++) {
-                    let temp1 = temp[i].split("\t");
-                    myroom.push(temp1[0]);
-                    mytime.push(temp1[1]);
-                }
-                for (let i = 0; i < temp2.length; i++) {
-                    let temp1 = temp2[i].split("\t");
-                    chinese.push(temp1[0]);
-                }
-                this.setState({
-                    information: data[0],
-                    classroom: myroom,
-                    time: mytime,
-                    chinese_name: chinese,
-                });
+        return selectCourse(
+            this.state.smt,
+            this.state.dep,
+            this.state.subnum
+        ).then((data) => {
+            let temp = data[0].classroom_and_time.split("\n");
+            let temp2 = data[0].teacher.split("\n");
+            let myroom = [];
+            let mytime = [];
+            let chinese = [];
+            for (let i = 0; i < temp.length; i++) {
+                let temp1 = temp[i].split("\t");
+                myroom.push(temp1[0]);
+                mytime.push(temp1[1]);
             }
-        );
+            for (let i = 0; i < temp2.length; i++) {
+                let temp1 = temp2[i].split("\t");
+                chinese.push(temp1[0]);
+            }
+            this.setState({
+                information: data[0],
+                classroom: myroom,
+                time: mytime,
+                chinese_name: chinese,
+            });
+        });
     }
     asksimplePost() {
         getsimplePost(this.state.dep, this.state.subnum).then((data) => {

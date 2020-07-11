@@ -427,6 +427,8 @@ export default class User extends React.Component {
     }
 
     componentDidMount() {
+        document.title = "帳號資訊";
+
         this.askid();
         let popupBtns = document.querySelectorAll(".popup");
         popupBtns.forEach((pop) => {

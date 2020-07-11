@@ -47,6 +47,7 @@ export default class Courses extends React.Component {
     }
 
     componentDidMount() {
+        document.title = "課程列表";
         this.catchCourses(
             this.state.department,
             this.state.text,

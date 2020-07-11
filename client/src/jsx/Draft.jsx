@@ -1377,6 +1377,8 @@ export default class Draft extends React.Component {
     }
 
     componentDidMount() {
+        document.title = "編輯草稿";
+
         current().then((data) => {
             this.setState({ userId: data[0].id }, () => {
                 selectDraft(this.state.draftId, this.state.userId).then(

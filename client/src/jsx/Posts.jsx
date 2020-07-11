@@ -46,6 +46,7 @@ export default class Posts extends React.Component {
     }
 
     componentDidMount() {
+        document.title = "心得列表";
         this.catchPosts(
             this.state.department,
             this.state.text,

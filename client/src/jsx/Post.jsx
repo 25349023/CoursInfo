@@ -378,7 +378,9 @@ export default class Post extends React.Component {
     }
 
     componentDidMount() {
-        this.askinfo();
+        this.askinfo().then(() => {
+            document.title = this.information.title;
+        });
     }
 
     breakLines(text) {
@@ -396,7 +398,7 @@ export default class Post extends React.Component {
             }
             this.setState({ information: data[0], chinese_name: chinese });
         });
-        current().then((user) => {
+        return current().then((user) => {
             this.setState(
                 {
                     userId: user[0].id,
