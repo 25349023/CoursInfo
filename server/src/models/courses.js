@@ -3,40 +3,101 @@ if (!global.db) {
     db = pgp(process.env.DB_URL);
 }
 
+const geQueryType = Object.freeze({
+    NORMAL: Symbol("normal"),
+    CORE: Symbol("core"),
+    BOTH: Symbol("both"),
+});
+
 /**  List courses satisfying options
  * searchOptions: { text, department, start, full }
  *      text: string,  department: array,
  *      start: [department, subnumber],  full: bool
  */
 function list(searchOptions) {
-    const { text, department, start, full } = searchOptions;
+    const { text, start, full } = searchOptions;
+    let originDep = searchOptions.department;
+    originDep = Array.isArray(originDep) ? originDep : [originDep];
+
+    let [department, normal, core] = _parseDepartment(originDep);
+    department = Array.isArray(department) ? department : [department];
+
     let queryingColumns = full
-        ? ["cs.*"]
-        : [
-              "cs.course_number",
-              "cs.department",
-              "cs.course_subnumber",
-              "cs.course_chinese_title",
-              "cs.teacher",
-          ];
-    let textSearchColumns = [
-        "course_number",
-        "course_chinese_title",
-        "teacher",
-    ];
-    let queries = ["cs.department IN ($<department:list>)"];
+            ? ["cs.*"]
+            : [
+                  "cs.course_number",
+                  "cs.department",
+                  "cs.course_subnumber",
+                  "cs.course_chinese_title",
+                  "cs.teacher",
+              ],
+        textSearchColumns = [
+            "course_number",
+            "course_chinese_title",
+            "teacher",
+        ];
+
+    let departmentQry = department.length
+        ? ["cs.department IN ($<department:list>)"]
+        : [];
+
+    if (normal && core) {
+        departmentQry.push(_GEQuery(geQueryType.BOTH, "cs."));
+    } else if (normal) {
+        departmentQry.push(_GEQuery(geQueryType.NORMAL, "cs."));
+    } else if (core) {
+        departmentQry.push(_GEQuery(geQueryType.CORE, "cs."));
+    }
+
+    let queries = [departmentQry.join(" OR ")];
 
     if (text) {
         let textQry = [];
         for (let col of textSearchColumns) {
             textQry.push(`cs.${col} ILIKE '%$<text:value>%'`);
         }
-        queries.push(`(${textQry.join(" OR ")})`);
+        queries.push(`${textQry.join(" OR ")}`);
     }
 
     if (start) {
         queries.push(`(cs.department, cs.course_subnumber) > ($<start:list>)`);
     }
+
+    const sql = _genListSql({ queryingColumns, queries });
+    // console.log(pgp.as.format(sql, { text, department, start }));
+
+    return db.any(sql, { text, department, start });
+}
+
+function _parseDepartment(department) {
+    console.log(department);
+    const normal = department.indexOf("GE") !== -1,
+        core = department.indexOf("GEC") !== -1,
+        ftDep = department.filter((dep) => !dep.startsWith("GE"));
+    console.log(normal, core);
+    return [ftDep, normal, core];
+}
+
+function _GEQuery(geClass = geQueryType.NORMAL, prefix) {
+    let query = [`${prefix}ge_class IS NOT NULL`];
+    switch (geClass) {
+        case geQueryType.NORMAL:
+            query.push(`${prefix}ge_class NOT ILIKE '%core%'`);
+            break;
+        case geQueryType.CORE:
+            query.push(`${prefix}ge_class ILIKE '%core%'`);
+            break;
+        case geQueryType.BOTH:
+            break;
+        default:
+            throw new Error("Invalid ge config");
+    }
+    return query.join(" AND ");
+}
+
+function _genListSql(options) {
+    let { queryingColumns, queries } = options;
+    queries = queries.map((q) => `(${q})`);
 
     const sql = `
         SELECT uniq_cs.*, 
@@ -67,7 +128,7 @@ function list(searchOptions) {
         ORDER BY uniq_cs.department, uniq_cs.course_subnumber;
     `;
 
-    return db.any(sql, { text, department, start });
+    return sql;
 }
 
 function select(courseId) {
@@ -98,9 +159,18 @@ function select(courseId) {
 }
 
 function dropdownList(semester, department) {
+    let depQry;
+    if (department === "GE") {
+        depQry = _GEQuery(geQueryType.NORMAL);
+    } else if (department === "GEC") {
+        depQry = _GEQuery(geQueryType.CORE);
+    } else {
+        depQry = "department = $<department>";
+    }
+
     const sql = `
         SELECT department, course_subnumber, course_chinese_title, teacher FROM courses
-        WHERE semester = $<semester> AND department = $<department>
+        WHERE semester = $<semester> AND ${depQry}
         ORDER BY department, course_subnumber;
     `;
 
