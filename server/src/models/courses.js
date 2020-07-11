@@ -3,11 +3,7 @@ if (!global.db) {
     db = pgp(process.env.DB_URL);
 }
 
-const geQueryType = Object.freeze({
-    NORMAL: Symbol("normal"),
-    CORE: Symbol("core"),
-    BOTH: Symbol("both"),
-});
+const { geQueryType, _parseDepartment, _GEQuery } = require("../utils");
 
 /**  List courses satisfying options
  * searchOptions: { text, department, start, full }
@@ -20,7 +16,6 @@ function list(searchOptions) {
     originDep = Array.isArray(originDep) ? originDep : [originDep];
 
     let [department, normal, core] = _parseDepartment(originDep);
-    department = Array.isArray(department) ? department : [department];
 
     let queryingColumns = full
             ? ["cs.*"]
@@ -67,32 +62,6 @@ function list(searchOptions) {
     // console.log(pgp.as.format(sql, { text, department, start }));
 
     return db.any(sql, { text, department, start });
-}
-
-function _parseDepartment(department) {
-    console.log(department);
-    const normal = department.indexOf("GE") !== -1,
-        core = department.indexOf("GEC") !== -1,
-        ftDep = department.filter((dep) => !dep.startsWith("GE"));
-    console.log(normal, core);
-    return [ftDep, normal, core];
-}
-
-function _GEQuery(geClass = geQueryType.NORMAL, prefix = "") {
-    let query = [`${prefix}ge_class IS NOT NULL`];
-    switch (geClass) {
-        case geQueryType.NORMAL:
-            query.push(`${prefix}ge_class NOT ILIKE '%core%'`);
-            break;
-        case geQueryType.CORE:
-            query.push(`${prefix}ge_class ILIKE '%core%'`);
-            break;
-        case geQueryType.BOTH:
-            break;
-        default:
-            throw new Error("Invalid ge config");
-    }
-    return query.join(" AND ");
 }
 
 function _genListSql(options) {

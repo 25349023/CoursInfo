@@ -3,13 +3,20 @@ if (!global.db) {
     db = pgp(process.env.DB_URL);
 }
 
+const { geQueryType, _parseDepartment, _GEQuery } = require("../utils");
+
 /**  List posts satisfying options
  * searchOptions: { text, department, start }
  *      text: string,  department: array,
  *      start: int
  */
 function list(searchOptions) {
-    const { text, department, start } = searchOptions;
+    const { text, start } = searchOptions;
+    let originDep = searchOptions.department;
+    originDep = Array.isArray(originDep) ? originDep : [originDep];
+
+    let [department, normal, core] = _parseDepartment(originDep);
+
     let queryingColumns = [
         "cs.course_chinese_title",
         "cs.teacher",
@@ -28,7 +35,19 @@ function list(searchOptions) {
         "cs.course_chinese_title",
         "cs.teacher",
     ];
-    let queries = ["ps.department IN ($<department:list>)"];
+
+    let departmentQry = department.length
+        ? ["ps.department IN ($<department:list>)"]
+        : [];
+
+    if (normal && core) {
+        departmentQry.push(_GEQuery(geQueryType.BOTH, "cs."));
+    } else if (normal) {
+        departmentQry.push(_GEQuery(geQueryType.NORMAL, "cs."));
+    } else if (core) {
+        departmentQry.push(_GEQuery(geQueryType.CORE, "cs."));
+    }
+    let queries = [departmentQry.join(" OR ")];
 
     if (text) {
         let textQry = [];
@@ -55,7 +74,7 @@ function list(searchOptions) {
         ORDER BY id DESC
         LIMIT 10;
     `;
-    console.log(pgp.as.format(sql, { text, department, start }));
+    // console.log(pgp.as.format(sql, { text, department, start }));
     return db.any(sql, { text, department, start });
 }
 
@@ -72,7 +91,7 @@ function select(postId) {
         WHERE ps.id = $<postId> AND deleted_at IS NULL;
     `;
 
-    console.log(pgp.as.format(sql, { postId }));
+    // console.log(pgp.as.format(sql, { postId }));
     return db.any(sql, { postId });
 }
 
@@ -188,7 +207,7 @@ function edit(postId, userId, data) {
     `;
 
     return checkUserPost(postId, userId).then(() => {
-        console.log(pgp.as.format(sql, { ...data, postId, userId }));
+        // console.log(pgp.as.format(sql, { ...data, postId, userId }));
         return db.any(sql, { ...data, postId, userId });
     });
 }
