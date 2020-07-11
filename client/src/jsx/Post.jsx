@@ -15,7 +15,7 @@ export default class Post extends React.Component {
             userId: "",
             information: {},
             chinese_name: [],
-            upVote: "",
+            upVote: null,
         };
     }
     render() {
@@ -54,14 +54,22 @@ export default class Post extends React.Component {
                                             onClick={() => {
                                                 createVote(
                                                     this.state.id,
-                                                    this.state.upVote ? 2 : 0,
+                                                    this.state.upVote === true
+                                                        ? 2
+                                                        : 0,
                                                     this.state.userId
                                                 ).then(() => {
                                                     this.askinfo();
                                                 });
                                             }}
                                         >
-                                            <a>
+                                            <a
+                                                className={
+                                                    this.state.upvote === true
+                                                        ? "active"
+                                                        : ""
+                                                }
+                                            >
                                                 <i className="fas fa-heart"></i>
                                             </a>
                                             <span>{information.likes}</span>
@@ -71,10 +79,7 @@ export default class Post extends React.Component {
                                             onClick={() => {
                                                 createVote(
                                                     this.state.id,
-                                                    this.state.upVote
-                                                        ? 1
-                                                        : this.state.upVote ==
-                                                          false
+                                                    this.state.upVote === false
                                                         ? 2
                                                         : 1,
                                                     this.state.userId
@@ -83,7 +88,13 @@ export default class Post extends React.Component {
                                                 });
                                             }}
                                         >
-                                            <a>
+                                            <a
+                                                className={
+                                                    this.state.upvote === false
+                                                        ? "active"
+                                                        : ""
+                                                }
+                                            >
                                                 <i className="fas fa-heart-broken"></i>
                                             </a>
                                             <span>{information.dislikes}</span>
@@ -393,7 +404,7 @@ export default class Post extends React.Component {
                 () => {
                     getVote(this.state.userId, this.state.id).then((data) => {
                         this.setState({
-                            upVote: data ? data.upvote : "",
+                            upVote: data !== {} ? data.upvote : null,
                         });
                     });
                 }

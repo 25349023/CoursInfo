@@ -88,9 +88,9 @@ export function deletePost(postId, obj) {
 // = 0 means like, = 1 means dislike, = 2 means cancel
 export function createVote(postId, islike, userId) {
     let url = `${postBaseUrl}/api/posts/${postId}`;
-    if (islike == 0) url += `/like`;
-    else if (islike == 1) url += `/dislike`;
-    else if (islike == 2) url += `/cancelVote`;
+    if (islike === 0) url += `/like`;
+    else if (islike === 1) url += `/dislike`;
+    else if (islike === 2) url += `/cancelVote`;
     console.log(`Making POST & createVote request to: ${url}`);
     return axios
         .post(url, { userId }, { withCredentials: true })
