@@ -104,12 +104,19 @@
         a {
           color: rgba($like-color, 0.4);
           text-decoration: none;
+          cursor: pointer;
         }
+
         a:hover {
-          color: $like-color;
+          color: rgba($like-color, 0.85);
         }
+
         a.active {
           color: $like-color;
+
+          &:hover {
+            color: rgba($like-color, 0.85);
+          }
         }
 
         span {
@@ -125,14 +132,19 @@
         a {
           color: rgba($dislike-color, 0.4);
           text-decoration: none;
+          cursor: pointer;
         }
 
         a:hover {
-          color: $dislike-color;
+          color: rgba($dislike-color, 0.85);
         }
 
         a.active {
           color: $dislike-color;
+
+          &:hover {
+            color: rgba($dislike-color, 0.85);
+          }
         }
 
         span {

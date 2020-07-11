@@ -863,12 +863,16 @@ section.main > section {
 .postArticle .title .remark .like a {
   color: rgba(221, 101, 101, 0.4);
   text-decoration: none;
+  cursor: pointer;
 }
 .postArticle .title .remark .like a:hover {
-  color: #dd6565;
+  color: rgba(221, 101, 101, 0.85);
 }
 .postArticle .title .remark .like a.active {
   color: #dd6565;
+}
+.postArticle .title .remark .like a.active:hover {
+  color: rgba(221, 101, 101, 0.85);
 }
 .postArticle .title .remark .like span {
   font-weight: 600;
@@ -881,12 +885,16 @@ section.main > section {
 .postArticle .title .remark .dislike a {
   color: rgba(101, 103, 221, 0.4);
   text-decoration: none;
+  cursor: pointer;
 }
 .postArticle .title .remark .dislike a:hover {
-  color: #6567dd;
+  color: rgba(101, 103, 221, 0.85);
 }
 .postArticle .title .remark .dislike a.active {
   color: #6567dd;
+}
+.postArticle .title .remark .dislike a.active:hover {
+  color: rgba(101, 103, 221, 0.85);
 }
 .postArticle .title .remark .dislike span {
   font-weight: 600;

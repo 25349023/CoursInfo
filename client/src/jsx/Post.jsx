@@ -65,7 +65,7 @@ export default class Post extends React.Component {
                                         >
                                             <a
                                                 className={
-                                                    this.state.upvote === true
+                                                    this.state.upVote === true
                                                         ? "active"
                                                         : ""
                                                 }
@@ -90,7 +90,7 @@ export default class Post extends React.Component {
                                         >
                                             <a
                                                 className={
-                                                    this.state.upvote === false
+                                                    this.state.upVote === false
                                                         ? "active"
                                                         : ""
                                                 }
