@@ -170,6 +170,8 @@ export default class User extends React.Component {
                                             <input
                                                 type="text"
                                                 value={this.state.newname}
+                                                required
+                                                maxLength="20"
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
@@ -181,7 +183,6 @@ export default class User extends React.Component {
                                                 <button
                                                     type="button"
                                                     onClick={() => {
-                                                        console.log("asdasd");
                                                         document
                                                             .querySelector(
                                                                 "#namePopup"
@@ -200,29 +201,38 @@ export default class User extends React.Component {
                                                 <button
                                                     type="button"
                                                     onClick={() => {
-                                                        console.log("asdasd");
-
-                                                        changeName({
-                                                            userId:
-                                                                information.id,
-                                                            nickname: this.state
-                                                                .newname,
-                                                        })
-                                                            .then((user) => {
-                                                                this.setState({
-                                                                    information:
-                                                                        user[0],
-                                                                });
+                                                        let inp = document.querySelector(
+                                                            "#namePopup input"
+                                                        );
+                                                        if (
+                                                            inp.reportValidity() &&
+                                                            inp.value.trim()
+                                                        ) {
+                                                            changeName({
+                                                                userId:
+                                                                    information.id,
+                                                                nickname: this.state.newname.trim(),
                                                             })
-                                                            .then(() => {
-                                                                document
-                                                                    .querySelector(
-                                                                        "#namePopup"
-                                                                    )
-                                                                    .classList.remove(
-                                                                        "active"
-                                                                    );
-                                                            });
+                                                                .then(
+                                                                    (user) => {
+                                                                        this.setState(
+                                                                            {
+                                                                                information:
+                                                                                    user[0],
+                                                                            }
+                                                                        );
+                                                                    }
+                                                                )
+                                                                .then(() => {
+                                                                    document
+                                                                        .querySelector(
+                                                                            "#namePopup"
+                                                                        )
+                                                                        .classList.remove(
+                                                                            "active"
+                                                                        );
+                                                                });
+                                                        }
                                                     }}
                                                 >
                                                     <i className="fas fa-check"></i>{" "}

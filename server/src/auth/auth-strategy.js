@@ -29,10 +29,14 @@ passport.use(
             callbackURL: `${process.env.BASE_URL}/auth/google/callback`,
         },
         function (accessToken, refreshToken, profile, done) {
+            const nickname =
+                profile.displayName.length > 20
+                    ? profile.displayName.slice(0, 20)
+                    : profile.displayName;
             usersModel
                 .selectOrCreate({
                     email: profile._json.email,
-                    nickname: profile.displayName,
+                    nickname: nickname,
                 })
                 .then((user) => {
                     done(null, {
