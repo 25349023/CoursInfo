@@ -1423,6 +1423,8 @@ export default class Edit extends React.Component {
                 mainReview: this.state.main_review,
                 personalGrade: this.state.personal_grade,
                 classGradeDist: this.state.class_grade_dist,
+            }).then(() => {
+                this.setState({ redirect_to_post: true });
             });
         } else {
             alert("請先登入");
