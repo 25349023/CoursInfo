@@ -2,14 +2,7 @@ import React from "react";
 import Menu from "./Menu.jsx";
 import { createPost } from "api/Posts_api.js";
 import { getdropdown } from "api/Courses_api.js";
-import {
-    createDraft,
-    selectDraft,
-    editDraft,
-    deleteDraft,
-} from "api/Draft_api.js";
-
-import { selectPost } from "api/Posts_api";
+import { selectPost, editPost } from "api/Posts_api";
 import { current, selectUser } from "api/Users_api.js";
 
 import { withRouter, Redirect } from "react-router-dom";
@@ -94,7 +87,7 @@ export default class Edit extends React.Component {
             return <Redirect to={`/userpost/${this.state.postId}`} />;
         }
         return (
-            <div className="draftPage">
+            <div className="editPage">
                 <section className="main">
                     <section className="publishContent">
                         <form
@@ -108,7 +101,7 @@ export default class Edit extends React.Component {
                                 return false;
                             }}
                         >
-                            <h1>編輯貼文</h1>
+                            <h1>編輯文章</h1>
 
                             <main>
                                 <section className="chooseCourse">
@@ -1369,7 +1362,7 @@ export default class Edit extends React.Component {
     }
 
     componentDidMount() {
-        document.title = "編輯貼文";
+        document.title = "編輯文章";
 
         current().then((data) => {
             this.setState({ userId: data[0].id }, () => {
@@ -1420,7 +1413,7 @@ export default class Edit extends React.Component {
             return;
         }
         if (this.state.userId) {
-            createPost({
+            editPost(this.state.postId, {
                 ...this.state,
                 courseSubnumber: this.state.course_subnumber,
                 courseType: this.state.course_type,
@@ -1444,4 +1437,4 @@ export default class Edit extends React.Component {
         );
     }
 }
-Draft = withRouter(Draft);
+Edit = withRouter(Edit);
