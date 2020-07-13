@@ -43,7 +43,9 @@ export default class Main extends React.Component {
                                 <a href="#">關於</a>
                             </li>
                             <li className="link">
-                                <a href="#">支援</a>
+                                <a href="mailto:nthu.coursinfo@gmail.com">
+                                    支援
+                                </a>
                             </li>
                             {this.state.is_login ? (
                                 <li className="rightItem link">
