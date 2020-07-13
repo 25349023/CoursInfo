@@ -21,12 +21,16 @@ export default class User extends React.Component {
             newname: "",
             redirectPost: false,
             redPostId: "",
+            redirectEdit: false,
             redirectDraft: false,
             redDraftId: "",
         };
     }
     render() {
         if (this.state.redirectPost) {
+            return <Redirect to={`/userpost/${this.state.redPostId}`} />;
+        }
+        if (this.state.redirectEdit) {
             return <Redirect to={`/editpost/${this.state.redPostId}`} />;
         }
         if (this.state.redirectDraft) {
@@ -81,7 +85,7 @@ export default class User extends React.Component {
                     <div
                         className="postRow"
                         data-target="#"
-                        key={p.title}
+                        key={`pr${p.id}`}
                         onClick={() => {
                             this.setState({
                                 redirectPost: true,
@@ -97,7 +101,19 @@ export default class User extends React.Component {
                         </span>
                     </div>,
                     <span
-                        key={p.id}
+                        className="edit"
+                        key={`pe${p.id}`}
+                        onClick={() => {
+                            this.setState({
+                                redirectEdit: true,
+                                redPostId: p.id,
+                            });
+                        }}
+                    >
+                        <i class="fas fa-edit"></i>
+                    </span>,
+                    <span
+                        key={`pt${p.id}`}
                         className="delete popup"
                         data-target="#postPopup"
                         onClick={() => {
@@ -142,8 +158,11 @@ export default class User extends React.Component {
                                         />
                                         <figcaption>
                                             <a href="https://en.gravatar.com/">
-                                                <i className="fas fa-image"></i>{" "}
-                                                到 Gravatar 上更改頭貼
+                                                <i class="fas fa-external-link-alt"></i>
+                                                <span class="ignore">
+                                                    到 Gravatar 上
+                                                </span>
+                                                更改頭貼
                                             </a>
                                         </figcaption>
                                     </figure>
@@ -421,6 +440,7 @@ export default class User extends React.Component {
                                             <span>課程</span>
                                             <time>上次修改時間</time>
                                             <span>評價</span>
+                                            <span>編輯</span>
                                             <span>刪除</span>
                                         </div>
                                         {children2}
