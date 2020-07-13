@@ -24,7 +24,7 @@ export default class Post extends React.Component {
 
     render() {
         let { information, chinese_name } = this.state;
-        let date = new Date(information.updated_at);
+        let date = new Date(information.created_at);
 
         return (
             <div className="postPage">
