@@ -175,7 +175,7 @@ export default class Info extends React.Component {
                                                             user_s: text,
                                                         });
                                                     }}
-                                                    pattern="[0-5](\.\d)?"
+                                                    pattern="([0-4](\.\d)?)|5|5\.0"
                                                     placeholder="0 ~ 5 分，例：2.6"
                                                 />
                                                 <span>涼度：</span>
@@ -194,7 +194,7 @@ export default class Info extends React.Component {
                                                             user_c: text,
                                                         });
                                                     }}
-                                                    pattern="[0-5](\.\d)?"
+                                                    pattern="([0-4](\.\d)?)|5|5\.0"
                                                     placeholder="0 ~ 5 分，例：2.6"
                                                 />
                                                 <span>推薦：</span>
@@ -213,7 +213,7 @@ export default class Info extends React.Component {
                                                             user_r: text,
                                                         });
                                                     }}
-                                                    pattern="[0-5](\.\d)?"
+                                                    pattern="([0-4](\.\d)?)|5|5\.0"
                                                     placeholder="0 ~ 5 分，例：2.6"
                                                 />
                                             </div>

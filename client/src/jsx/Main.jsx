@@ -113,7 +113,7 @@ export default class Main extends React.Component {
                 <Route path="/userpost" render={() => <Post />} />
                 <Route path="/userhome" render={() => <User />} />
                 <Route path="/userdraft" render={() => <Draft />} />
-                {/* <Route path="/editdraft" render={() => <Edit />} /> */}
+                <Route path="/editpost" render={() => <Edit />} />
                 <footer>
                     Copyright &copy; 2020 Skyline and 憶純晃晃. All Rights
                     Reserved.

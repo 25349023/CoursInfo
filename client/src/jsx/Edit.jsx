@@ -1,11 +1,11 @@
 import React from "react";
 import Menu from "./Menu.jsx";
-import { createPost, selectPost } from "api/Posts_api.js";
+import { createPost } from "api/Posts_api.js";
 import { getdropdown } from "api/Courses_api.js";
-import { createDraft, selectDraft } from "api/Draft_api.js";
+import { selectPost, editPost } from "api/Posts_api";
 import { current, selectUser } from "api/Users_api.js";
 
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 
 //draftpost is a big obj in props
 export default class Edit extends React.Component {
@@ -35,7 +35,7 @@ export default class Edit extends React.Component {
             teacher_character: "",
             ta_performance: "",
             main_review: "",
-            personal_grade: "X",
+            personal_grade: "",
             class_grade_dist: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             others: "",
             dropdownlist: [],
@@ -45,6 +45,7 @@ export default class Edit extends React.Component {
         };
         this.gradelist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.dropdownRef = null;
+        this.formRef = null;
 
         // this.handleInputChange = this.handleInputChange.bind(this);
         this.handleDrowndown = this.handleDrowndown.bind(this);
@@ -83,15 +84,22 @@ export default class Edit extends React.Component {
             return <Redirect to={`/userhome`} />;
         }
         if (this.state.redirect_to_post) {
-            return <Redirect to={`/Post/${this.state.postId}`} />;
+            return <Redirect to={`/userpost/${this.state.id}`} />;
         }
         return (
-            <div className="publishPage">
+            <div className="editPage">
                 <section className="main">
                     <section className="publishContent">
                         <form
                             className="wrapper articleForm"
                             spellCheck="false"
+                            ref={(el) => {
+                                this.formRef = el;
+                            }}
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                return false;
+                            }}
                         >
                             <h1>編輯文章</h1>
 
@@ -292,7 +300,11 @@ export default class Edit extends React.Component {
                                     <div className="titleFlexbox">
                                         <h2>心得標題</h2>
                                         <div>
-                                            <span className="wordCount">0</span>{" "}
+                                            <span className="wordCount">
+                                                {this.state.title
+                                                    ? this.state.title.length
+                                                    : "0"}
+                                            </span>{" "}
                                             / 25
                                         </div>
                                     </div>
@@ -314,7 +326,12 @@ export default class Edit extends React.Component {
                                     <div className="titleFlexbox">
                                         <h2>課程類別</h2>
                                         <div>
-                                            <span className="wordCount">0</span>{" "}
+                                            <span className="wordCount">
+                                                {this.state.course_type
+                                                    ? this.state.course_type
+                                                          .length
+                                                    : "0"}
+                                            </span>{" "}
                                             / 20
                                         </div>
                                     </div>
@@ -326,7 +343,9 @@ export default class Edit extends React.Component {
                                         value={this.state.course_type}
                                         onChange={(e) => {
                                             const text = e.target.value;
-                                            this.setState({ courseType: text });
+                                            this.setState({
+                                                course_type: text,
+                                            });
                                         }}
                                     />
                                 </section>
@@ -408,12 +427,15 @@ export default class Edit extends React.Component {
                                             </h3>
                                             <input
                                                 type="text"
-                                                inputMode="numeric"
                                                 required
                                                 maxLength="3"
-                                                pattern="\d(\.\d)?"
+                                                pattern="([0-4](\.\d)?)|5|5\.0"
                                                 placeholder="例：3.5"
-                                                value={this.state.sweet}
+                                                value={
+                                                    this.state.sweet
+                                                        ? this.state.sweet
+                                                        : ""
+                                                }
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
@@ -429,12 +451,15 @@ export default class Edit extends React.Component {
                                             </h3>
                                             <input
                                                 type="text"
-                                                inputMode="numeric"
                                                 required
                                                 maxLength="3"
-                                                pattern="\d(\.\d)?"
+                                                pattern="([0-4](\.\d)?)|5|5\.0"
                                                 placeholder="例：3.5"
-                                                value={this.state.cool}
+                                                value={
+                                                    this.state.cool
+                                                        ? this.state.cool
+                                                        : ""
+                                                }
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
@@ -450,12 +475,15 @@ export default class Edit extends React.Component {
                                             </h3>
                                             <input
                                                 type="text"
-                                                inputMode="numeric"
                                                 required
                                                 maxLength="3"
-                                                pattern="\d(\.\d)?"
+                                                pattern="([0-4](\.\d)?)|5|5\.0"
                                                 placeholder="例：3.5"
-                                                value={this.state.recommend}
+                                                value={
+                                                    this.state.recommend
+                                                        ? this.state.recommend
+                                                        : ""
+                                                }
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
@@ -478,7 +506,10 @@ export default class Edit extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.info
+                                                            ? this.state.info
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -508,7 +539,11 @@ export default class Edit extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.prerequisite
+                                                            ? this.state
+                                                                  .prerequisite
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -537,7 +572,11 @@ export default class Edit extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.teach_method
+                                                            ? this.state
+                                                                  .teach_method
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -554,7 +593,7 @@ export default class Edit extends React.Component {
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
-                                                        teachMethod: text,
+                                                        teach_method: text,
                                                     });
                                                 }}
                                             ></textarea>
@@ -567,7 +606,11 @@ export default class Edit extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.assignment
+                                                            ? this.state
+                                                                  .assignment
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -597,7 +640,10 @@ export default class Edit extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.exam
+                                                            ? this.state.exam
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -627,7 +673,11 @@ export default class Edit extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.evaluation
+                                                            ? this.state
+                                                                  .evaluation
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -657,7 +707,11 @@ export default class Edit extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state.textbook
+                                                            ? this.state
+                                                                  .textbook
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -686,7 +740,12 @@ export default class Edit extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state
+                                                            .teacher_character
+                                                            ? this.state
+                                                                  .teacher_character
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -704,7 +763,7 @@ export default class Edit extends React.Component {
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
-                                                        teacherCharacter: text,
+                                                        teacher_character: text,
                                                     });
                                                 }}
                                             ></textarea>
@@ -717,7 +776,12 @@ export default class Edit extends React.Component {
                                                 </h3>
                                                 <div>
                                                     <span className="wordCount">
-                                                        0
+                                                        {this.state
+                                                            .ta_performance
+                                                            ? this.state
+                                                                  .ta_performance
+                                                                  .length
+                                                            : "0"}
                                                     </span>{" "}
                                                     / 200
                                                 </div>
@@ -735,7 +799,7 @@ export default class Edit extends React.Component {
                                                 onChange={(e) => {
                                                     const text = e.target.value;
                                                     this.setState({
-                                                        taPerformance: text,
+                                                        ta_performance: text,
                                                     });
                                                 }}
                                             ></textarea>
@@ -747,7 +811,12 @@ export default class Edit extends React.Component {
                                     <div className="titleFlexbox">
                                         <h2>個人心得</h2>
                                         <div>
-                                            <span className="wordCount">0</span>{" "}
+                                            <span className="wordCount">
+                                                {this.state.main_review
+                                                    ? this.state.main_review
+                                                          .length
+                                                    : "0"}
+                                            </span>{" "}
                                             / 10000
                                         </div>
                                     </div>
@@ -761,7 +830,9 @@ export default class Edit extends React.Component {
                                         value={this.state.main_review}
                                         onChange={(e) => {
                                             const text = e.target.value;
-                                            this.setState({ mainReview: text });
+                                            this.setState({
+                                                main_review: text,
+                                            });
                                         }}
                                         required
                                     ></textarea>
@@ -782,7 +853,11 @@ export default class Edit extends React.Component {
                                                     className="dropdownBtn"
                                                 >
                                                     <span className="chosen">
-                                                        請選擇成績
+                                                        {this.state
+                                                            .personal_grade
+                                                            ? this.state
+                                                                  .personal_grade
+                                                            : "請選擇成績"}
                                                     </span>
                                                     <i className="fas fa-caret-down"></i>
                                                 </button>
@@ -793,7 +868,7 @@ export default class Edit extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "X",
                                                             });
                                                         }}
@@ -808,7 +883,7 @@ export default class Edit extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "A+",
                                                             });
                                                         }}
@@ -823,7 +898,7 @@ export default class Edit extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "A",
                                                             });
                                                         }}
@@ -838,7 +913,7 @@ export default class Edit extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "A-",
                                                             });
                                                         }}
@@ -853,7 +928,7 @@ export default class Edit extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "B+",
                                                             });
                                                         }}
@@ -868,7 +943,7 @@ export default class Edit extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "B",
                                                             });
                                                         }}
@@ -883,7 +958,7 @@ export default class Edit extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "B-",
                                                             });
                                                         }}
@@ -898,7 +973,7 @@ export default class Edit extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "C+",
                                                             });
                                                         }}
@@ -913,7 +988,7 @@ export default class Edit extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "C",
                                                             });
                                                         }}
@@ -928,7 +1003,7 @@ export default class Edit extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "C-",
                                                             });
                                                         }}
@@ -943,7 +1018,7 @@ export default class Edit extends React.Component {
                                                         className="option"
                                                         onClick={() => {
                                                             this.setState({
-                                                                personalGrade:
+                                                                personal_grade:
                                                                     "D",
                                                             });
                                                         }}
@@ -970,17 +1045,21 @@ export default class Edit extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[0]
+                                                            this.state
+                                                                .class_grade_dist[0]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[0] = Number(
+                                                            let temp = [
+                                                                ...this.state
+                                                                    .class_grade_dist,
+                                                            ];
+                                                            temp[0] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -991,17 +1070,21 @@ export default class Edit extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[1]
+                                                            this.state
+                                                                .class_grade_dist[1]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[1] = Number(
+                                                            let temp = [
+                                                                ...this.state
+                                                                    .class_grade_dist,
+                                                            ];
+                                                            temp[1] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1012,17 +1095,21 @@ export default class Edit extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[2]
+                                                            this.state
+                                                                .class_grade_dist[2]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[2] = Number(
+                                                            let temp = [
+                                                                ...this.state
+                                                                    .class_grade_dist,
+                                                            ];
+                                                            temp[2] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1033,17 +1120,21 @@ export default class Edit extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[3]
+                                                            this.state
+                                                                .class_grade_dist[3]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[3] = Number(
+                                                            let temp = [
+                                                                ...this.state
+                                                                    .class_grade_dist,
+                                                            ];
+                                                            temp[3] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1054,17 +1145,21 @@ export default class Edit extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[4]
+                                                            this.state
+                                                                .class_grade_dist[4]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[4] = Number(
+                                                            let temp = [
+                                                                ...this.state
+                                                                    .class_grade_dist,
+                                                            ];
+                                                            temp[4] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1075,17 +1170,21 @@ export default class Edit extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[5]
+                                                            this.state
+                                                                .class_grade_dist[5]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[5] = Number(
+                                                            let temp = [
+                                                                ...this.state
+                                                                    .class_grade_dist,
+                                                            ];
+                                                            temp[5] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1096,17 +1195,21 @@ export default class Edit extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[6]
+                                                            this.state
+                                                                .class_grade_dist[6]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[6] = Number(
+                                                            let temp = [
+                                                                ...this.state
+                                                                    .class_grade_dist,
+                                                            ];
+                                                            temp[6] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1117,17 +1220,21 @@ export default class Edit extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[7]
+                                                            this.state
+                                                                .class_grade_dist[7]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[7] = Number(
+                                                            let temp = [
+                                                                ...this.state
+                                                                    .class_grade_dist,
+                                                            ];
+                                                            temp[7] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1138,17 +1245,21 @@ export default class Edit extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[8]
+                                                            this.state
+                                                                .class_grade_dist[8]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[8] = Number(
+                                                            let temp = [
+                                                                ...this.state
+                                                                    .class_grade_dist,
+                                                            ];
+                                                            temp[8] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1164,17 +1275,21 @@ export default class Edit extends React.Component {
                                                         type="text"
                                                         pattern="\d*"
                                                         value={
-                                                            this.gradelist[9]
+                                                            this.state
+                                                                .class_grade_dist[9]
                                                         }
                                                         onChange={(e) => {
                                                             const text =
                                                                 e.target.value;
-                                                            this.gradelist[9] = Number(
+                                                            let temp = [
+                                                                ...this.state
+                                                                    .class_grade_dist,
+                                                            ];
+                                                            temp[9] = Number(
                                                                 text
                                                             );
                                                             this.setState({
-                                                                classGradeDist: this
-                                                                    .gradelist,
+                                                                class_grade_dist: temp,
                                                             });
                                                         }}
                                                     />
@@ -1188,7 +1303,11 @@ export default class Edit extends React.Component {
                                     <div className="titleFlexbox">
                                         <h2>其他</h2>
                                         <div>
-                                            <span className="wordCount">0</span>{" "}
+                                            <span className="wordCount">
+                                                {this.state.others
+                                                    ? this.state.others.length
+                                                    : "0"}
+                                            </span>{" "}
                                             / 2000
                                         </div>
                                     </div>
@@ -1221,6 +1340,7 @@ export default class Edit extends React.Component {
                                         <i className="fas fa-undo-alt"></i>{" "}
                                         取消編輯
                                     </button>
+
                                     <button
                                         type="submit"
                                         onClick={this.handleCreatePost.bind(
@@ -1244,11 +1364,12 @@ export default class Edit extends React.Component {
     componentDidMount() {
         document.title = "編輯文章";
 
-        selectPost(this.state.PostId).then((data) => {
-            this.setState({ ...data[0] });
-        });
         current().then((data) => {
-            this.setState({ userId: data[0].id });
+            this.setState({ userId: data[0].id }, () => {
+                selectPost(this.state.PostId).then((data) => {
+                    this.setState({ ...data[0] });
+                });
+            });
         });
 
         let dropdowns = document.querySelectorAll(".dropdown");
@@ -1288,8 +1409,11 @@ export default class Edit extends React.Component {
     }
 
     handleCreatePost() {
+        if (!this.formRef.checkValidity()) {
+            return;
+        }
         if (this.state.userId) {
-            createPost({
+            editPost(this.state.id, {
                 ...this.state,
                 courseSubnumber: this.state.course_subnumber,
                 courseType: this.state.course_type,
@@ -1299,10 +1423,8 @@ export default class Edit extends React.Component {
                 mainReview: this.state.main_review,
                 personalGrade: this.state.personal_grade,
                 classGradeDist: this.state.class_grade_dist,
-            }).then((data) => {
-                this.setState({ postId: data.id }, () => {
-                    this.setState({ redirect_to_post: true });
-                });
+            }).then(() => {
+                this.setState({ redirect_to_post: true });
             });
         } else {
             alert("請先登入");

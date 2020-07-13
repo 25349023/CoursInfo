@@ -434,7 +434,7 @@ export default class Draft extends React.Component {
                                                 type="text"
                                                 required
                                                 maxLength="3"
-                                                pattern="[0-5](\.\d)?"
+                                                pattern="([0-4](\.\d)?)|5|5\.0"
                                                 placeholder="例：3.5"
                                                 value={
                                                     this.state.sweet
@@ -458,7 +458,7 @@ export default class Draft extends React.Component {
                                                 type="text"
                                                 required
                                                 maxLength="3"
-                                                pattern="[0-5](\.\d)?"
+                                                pattern="([0-4](\.\d)?)|5|5\.0"
                                                 placeholder="例：3.5"
                                                 value={
                                                     this.state.cool
@@ -482,7 +482,7 @@ export default class Draft extends React.Component {
                                                 type="text"
                                                 required
                                                 maxLength="3"
-                                                pattern="[0-5](\.\d)?"
+                                                pattern="([0-4](\.\d)?)|5|5\.0"
                                                 placeholder="例：3.5"
                                                 value={
                                                     this.state.recommend
