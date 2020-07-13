@@ -84,7 +84,7 @@ export default class Edit extends React.Component {
             return <Redirect to={`/userhome`} />;
         }
         if (this.state.redirect_to_post) {
-            return <Redirect to={`/userpost/${this.state.postId}`} />;
+            return <Redirect to={`/userpost/${this.state.id}`} />;
         }
         return (
             <div className="editPage">
@@ -1413,7 +1413,7 @@ export default class Edit extends React.Component {
             return;
         }
         if (this.state.userId) {
-            editPost(this.state.postId, {
+            editPost(this.state.id, {
                 ...this.state,
                 courseSubnumber: this.state.course_subnumber,
                 courseType: this.state.course_type,
