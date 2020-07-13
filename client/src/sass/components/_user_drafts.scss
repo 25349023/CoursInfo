@@ -31,7 +31,8 @@
         grid-template-columns: 1fr 5rem;
       }
 
-      .delete {
+      .delete,
+      .edit {
         font-size: 1.4rem;
         place-self: center center;
         cursor: pointer;
@@ -39,6 +40,12 @@
 
         &:hover {
           color: $like-color;
+        }
+      }
+
+      .edit {
+        &:hover {
+          color: $save-color;
         }
       }
 
@@ -101,6 +108,7 @@
       .draftRow {
         grid-column: span 3;
         grid-template-columns: 2fr 2fr 1fr;
+        align-items: center;
 
         @extend %row;
 
@@ -117,34 +125,48 @@
     }
 
     .postsList {
-      grid-template-columns: 2fr 2fr 1fr 1fr 5rem;
+      grid-template-columns: 2fr 2fr 1.4fr 1fr 5rem 5rem;
 
       @include brk-down($brk-mlarge) {
-        grid-template-columns: 2fr 2fr 1fr 5rem;
+        grid-template-columns: 2fr 2fr 1fr 5rem 5rem;
       }
 
       @include brk-down($brk-medium) {
-        grid-template-columns: 2fr 1fr 5rem;
+        grid-template-columns: 2fr 1fr 5rem 5rem;
+      }
+
+      @include brk-down($brk-small) {
+        grid-template-columns: 1fr 3.6rem 3.6rem;
       }
 
       > div {
-        grid-template-columns: 2fr 2fr 1fr 1fr 5rem;
-        grid-column: span 5;
+        grid-template-columns: 2fr 2fr 1.4fr 1fr 5rem 5rem;
+        grid-column: span 6;
 
         @include brk-down($brk-mlarge) {
-          grid-column: span 4;
-          grid-template-columns: 2fr 2fr 1fr 5rem;
+          grid-column: span 5;
+          grid-template-columns: 2fr 2fr 1fr 5rem 5rem;
         }
 
         @include brk-down($brk-medium) {
+          grid-column: span 4;
+          grid-template-columns: 2fr 1fr 5rem 5rem;
+        }
+
+        @include brk-down($brk-small) {
           grid-column: span 3;
-          grid-template-columns: 2fr 1fr 5rem;
+          grid-template-columns: 2fr 3.6rem 3.6rem;
+
+          span:nth-of-type(3) {
+            display: none;
+          }
         }
       }
 
       .postRow {
-        grid-template-columns: 2fr 2fr 1fr 1fr;
+        grid-template-columns: 2fr 2fr 1.4fr 1fr;
         grid-column: span 4;
+        align-items: center;
 
         @extend %row;
 
@@ -156,6 +178,11 @@
         @include brk-down($brk-medium) {
           grid-column: span 2;
           grid-template-columns: 2fr 1fr;
+        }
+
+        @include brk-down($brk-small) {
+          grid-column: span 1;
+          grid-template-columns: 1fr;
         }
       }
     }

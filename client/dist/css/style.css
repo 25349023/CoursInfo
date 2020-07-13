@@ -1060,6 +1060,13 @@ section.main > section {
   row-gap: 1.6rem;
   margin: 3rem 0 0 2rem;
 }
+@media (max-width: 632px) {
+  .userPage .accountInfo main .info {
+    display: flex;
+    flex-flow: column;
+    row-gap: 0;
+  }
+}
 .userPage .accountInfo main .info h3 {
   font-size: 1.5rem;
   margin: 0;
@@ -1070,6 +1077,17 @@ section.main > section {
   border-left: 1px solid rgba(60, 60, 60, 0.4);
   font-size: 1.5rem;
   padding-left: 1rem;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 632px) {
+  .userPage .accountInfo main .info > span {
+    border-left: none;
+    margin-top: 0.7rem;
+    padding-left: 2rem;
+  }
+  .userPage .accountInfo main .info > span:not(:last-of-type) {
+    margin-bottom: 1.4rem;
+  }
 }
 .userPage .accountInfo main .info .nickname {
   position: relative;
@@ -2955,6 +2973,11 @@ table td.rating {
   border: 10px solid rgba(60, 60, 60, 0.5);
   background: border-box center/cover white;
 }
+@media (max-width: 632px) {
+  .userPage .accountInfo img {
+    width: 192px;
+  }
+}
 .userPage .accountInfo figcaption a {
   background-color: #198bf6;
   border-color: #9ac5ed;
@@ -2967,6 +2990,11 @@ table td.rating {
 }
 .userPage .accountInfo figcaption a:active {
   background-color: #0d6fcc;
+}
+@media (max-width: 632px) {
+  .userPage .accountInfo figcaption a .ignore {
+    display: none;
+  }
 }
 .userPage .accountInfo figcaption a .fas {
   margin-right: 0.5rem;
@@ -3105,19 +3133,33 @@ table td.rating {
   }
 }
 .userPage .savedDrafts .draftList .delete,
+.userPage .savedDrafts .draftList .edit,
 .userPage .savedDrafts .postsList .delete,
+.userPage .savedDrafts .postsList .edit,
 .userPage .myPosts .draftList .delete,
-.userPage .myPosts .postsList .delete {
+.userPage .myPosts .draftList .edit,
+.userPage .myPosts .postsList .delete,
+.userPage .myPosts .postsList .edit {
   font-size: 1.4rem;
   place-self: center center;
   cursor: pointer;
   color: rgba(60, 60, 60, 0.7);
 }
 .userPage .savedDrafts .draftList .delete:hover,
+.userPage .savedDrafts .draftList .edit:hover,
 .userPage .savedDrafts .postsList .delete:hover,
+.userPage .savedDrafts .postsList .edit:hover,
 .userPage .myPosts .draftList .delete:hover,
-.userPage .myPosts .postsList .delete:hover {
+.userPage .myPosts .draftList .edit:hover,
+.userPage .myPosts .postsList .delete:hover,
+.userPage .myPosts .postsList .edit:hover {
   color: #dd6565;
+}
+.userPage .savedDrafts .draftList .edit:hover,
+.userPage .savedDrafts .postsList .edit:hover,
+.userPage .myPosts .draftList .edit:hover,
+.userPage .myPosts .postsList .edit:hover {
+  color: #4aa0e6;
 }
 .userPage .savedDrafts .draftList > div,
 .userPage .savedDrafts .postsList > div,
@@ -3212,6 +3254,7 @@ table td.rating {
 .userPage .myPosts .postsList .draftRow {
   grid-column: span 3;
   grid-template-columns: 2fr 2fr 1fr;
+  align-items: center;
 }
 @media (max-width: 1012px) {
   .userPage .savedDrafts .draftList .draftRow,
@@ -3233,43 +3276,61 @@ table td.rating {
 }
 .userPage .savedDrafts .postsList,
 .userPage .myPosts .postsList {
-  grid-template-columns: 2fr 2fr 1fr 1fr 5rem;
+  grid-template-columns: 2fr 2fr 1.4fr 1fr 5rem 5rem;
 }
 @media (max-width: 1012px) {
   .userPage .savedDrafts .postsList,
 .userPage .myPosts .postsList {
-    grid-template-columns: 2fr 2fr 1fr 5rem;
+    grid-template-columns: 2fr 2fr 1fr 5rem 5rem;
   }
 }
 @media (max-width: 632px) {
   .userPage .savedDrafts .postsList,
 .userPage .myPosts .postsList {
-    grid-template-columns: 2fr 1fr 5rem;
+    grid-template-columns: 2fr 1fr 5rem 5rem;
+  }
+}
+@media (max-width: 420px) {
+  .userPage .savedDrafts .postsList,
+.userPage .myPosts .postsList {
+    grid-template-columns: 1fr 3.6rem 3.6rem;
   }
 }
 .userPage .savedDrafts .postsList > div,
 .userPage .myPosts .postsList > div {
-  grid-template-columns: 2fr 2fr 1fr 1fr 5rem;
-  grid-column: span 5;
+  grid-template-columns: 2fr 2fr 1.4fr 1fr 5rem 5rem;
+  grid-column: span 6;
 }
 @media (max-width: 1012px) {
   .userPage .savedDrafts .postsList > div,
 .userPage .myPosts .postsList > div {
-    grid-column: span 4;
-    grid-template-columns: 2fr 2fr 1fr 5rem;
+    grid-column: span 5;
+    grid-template-columns: 2fr 2fr 1fr 5rem 5rem;
   }
 }
 @media (max-width: 632px) {
   .userPage .savedDrafts .postsList > div,
 .userPage .myPosts .postsList > div {
+    grid-column: span 4;
+    grid-template-columns: 2fr 1fr 5rem 5rem;
+  }
+}
+@media (max-width: 420px) {
+  .userPage .savedDrafts .postsList > div,
+.userPage .myPosts .postsList > div {
     grid-column: span 3;
-    grid-template-columns: 2fr 1fr 5rem;
+    grid-template-columns: 2fr 3.6rem 3.6rem;
+  }
+  .userPage .savedDrafts .postsList > div span:nth-of-type(3),
+.userPage .myPosts .postsList > div span:nth-of-type(3) {
+    display: none;
   }
 }
 .userPage .savedDrafts .postsList .postRow,
 .userPage .myPosts .postsList .postRow {
-  grid-template-columns: 2fr 2fr 1fr 1fr;
+  grid-template-columns: 2fr 2fr 1.4fr 1fr;
   grid-column: span 4;
+  align-items: center;
 }
 @media (max-width: 1012px) {
   .userPage .savedDrafts .postsList .postRow,
@@ -3283,6 +3344,13 @@ table td.rating {
 .userPage .myPosts .postsList .postRow {
     grid-column: span 2;
     grid-template-columns: 2fr 1fr;
+  }
+}
+@media (max-width: 420px) {
+  .userPage .savedDrafts .postsList .postRow,
+.userPage .myPosts .postsList .postRow {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
   }
 }
 

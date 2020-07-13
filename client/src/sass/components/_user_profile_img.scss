@@ -3,6 +3,10 @@
     border-radius: 50%;
     border: 10px solid rgba($ui-color-text, 0.5);
     background: border-box center / cover white;
+
+    @include brk-down($brk-medium) {
+      width: 192px;
+    }
   }
 
   figcaption a {
@@ -12,6 +16,11 @@
     padding: 0.6rem 1.2rem;
     font-size: 1.5rem;
 
+    @include brk-down($brk-medium) {
+      .ignore {
+        display: none;
+      }
+    }
     .fas {
       margin-right: 0.5rem;
     }
