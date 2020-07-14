@@ -74,8 +74,9 @@ export default class Draft extends React.Component {
                             " " +
                             p.course_chinese_title;
                         this.setState({
-                            courseSubnumber: p.course_subnumber,
+                            course_subnumber: p.course_subnumber,
                             department: p.department,
+                            course_chinese_title: p.course_chinese_title,
                         });
                     }}
                 >
