@@ -19,6 +19,7 @@ export default class Edit extends React.Component {
             userId: "",
             semester: "",
             department: "",
+            drpDep: "",
             course_subnumber: "",
             title: "",
             course_type: "",
@@ -67,7 +68,10 @@ export default class Edit extends React.Component {
                             p.course_subnumber +
                             " " +
                             p.course_chinese_title;
-                        this.setState({ courseSubnumber: p.course_subnumber });
+                        this.setState({
+                            courseSubnumber: p.course_subnumber,
+                            department: p.department,
+                        });
                     }}
                 >
                     <span className="primary">
@@ -177,8 +181,8 @@ export default class Edit extends React.Component {
                                             className="dropdownBtn"
                                         >
                                             <span className="chosen">
-                                                {this.state.department
-                                                    ? this.state.department
+                                                {this.state.drpDep
+                                                    ? this.state.drpDep
                                                     : "請選擇科系"}
                                             </span>
                                             <i className="fas fa-caret-down"></i>
@@ -186,11 +190,27 @@ export default class Edit extends React.Component {
                                         <div className="drpOptions">
                                             <button
                                                 type="button"
+                                                data-department="CL"
+                                                className="option"
+                                                onClick={() => {
+                                                    this.setState({
+                                                        drpDep: "CL",
+                                                        course_chinese_title:
+                                                            "",
+                                                    });
+                                                }}
+                                            >
+                                                <span className="primary">
+                                                    CL 中文系
+                                                </span>
+                                            </button>
+                                            <button
+                                                type="button"
                                                 data-department="CS"
                                                 className="option"
                                                 onClick={() => {
                                                     this.setState({
-                                                        department: "CS",
+                                                        drpDep: "CS",
                                                         course_chinese_title:
                                                             "",
                                                     });
@@ -206,7 +226,7 @@ export default class Edit extends React.Component {
                                                 className="option"
                                                 onClick={() => {
                                                     this.setState({
-                                                        department: "EE",
+                                                        drpDep: "EE",
                                                         course_chinese_title:
                                                             "",
                                                     });
@@ -222,7 +242,7 @@ export default class Edit extends React.Component {
                                                 className="option"
                                                 onClick={() => {
                                                     this.setState({
-                                                        department: "EECS",
+                                                        drpDep: "EECS",
                                                         course_chinese_title:
                                                             "",
                                                     });
@@ -234,11 +254,27 @@ export default class Edit extends React.Component {
                                             </button>
                                             <button
                                                 type="button"
+                                                data-department="FL"
+                                                className="option"
+                                                onClick={() => {
+                                                    this.setState({
+                                                        drpDep: "FL",
+                                                        course_chinese_title:
+                                                            "",
+                                                    });
+                                                }}
+                                            >
+                                                <span className="primary">
+                                                    FL 外文系
+                                                </span>
+                                            </button>
+                                            <button
+                                                type="button"
                                                 data-department="GE"
                                                 className="option"
                                                 onClick={() => {
                                                     this.setState({
-                                                        department: "GE",
+                                                        drpDep: "GE",
                                                     });
                                                 }}
                                             >
@@ -252,7 +288,7 @@ export default class Edit extends React.Component {
                                                 className="option"
                                                 onClick={() => {
                                                     this.setState({
-                                                        department: "GEC",
+                                                        drpDep: "GEC",
                                                     });
                                                 }}
                                             >
@@ -1432,7 +1468,7 @@ export default class Edit extends React.Component {
     }
 
     handleDrowndown() {
-        getdropdown(this.state.semester, this.state.department).then(
+        getdropdown(this.state.semester, this.state.drpDep).then(
             (courselist) => {
                 this.setState({ dropdownlist: courselist });
             }

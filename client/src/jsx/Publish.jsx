@@ -11,6 +11,7 @@ export default class Publish extends React.Component {
         this.state = {
             userId: "",
             semester: "",
+            drpDep: "",
             department: "",
             courseSubnumber: "",
             title: "",
@@ -60,7 +61,10 @@ export default class Publish extends React.Component {
                             p.course_subnumber +
                             " " +
                             p.course_chinese_title;
-                        this.setState({ courseSubnumber: p.course_subnumber });
+                        this.setState({
+                            courseSubnumber: p.course_subnumber,
+                            department: p.department,
+                        });
                     }}
                 >
                     <span className="primary">
@@ -169,11 +173,25 @@ export default class Publish extends React.Component {
                                         <div className="drpOptions">
                                             <button
                                                 type="button"
+                                                data-department="CL"
+                                                className="option"
+                                                onClick={() => {
+                                                    this.setState({
+                                                        drpDep: "CL",
+                                                    });
+                                                }}
+                                            >
+                                                <span className="primary">
+                                                    CL 中文系
+                                                </span>
+                                            </button>
+                                            <button
+                                                type="button"
                                                 data-department="CS"
                                                 className="option"
                                                 onClick={() => {
                                                     this.setState({
-                                                        department: "CS",
+                                                        drpDep: "CS",
                                                     });
                                                 }}
                                             >
@@ -187,7 +205,7 @@ export default class Publish extends React.Component {
                                                 className="option"
                                                 onClick={() => {
                                                     this.setState({
-                                                        department: "EE",
+                                                        drpDep: "EE",
                                                     });
                                                 }}
                                             >
@@ -201,7 +219,7 @@ export default class Publish extends React.Component {
                                                 className="option"
                                                 onClick={() => {
                                                     this.setState({
-                                                        department: "EECS",
+                                                        drpDep: "EECS",
                                                     });
                                                 }}
                                             >
@@ -211,11 +229,25 @@ export default class Publish extends React.Component {
                                             </button>
                                             <button
                                                 type="button"
+                                                data-department="FL"
+                                                className="option"
+                                                onClick={() => {
+                                                    this.setState({
+                                                        drpDep: "FL",
+                                                    });
+                                                }}
+                                            >
+                                                <span className="primary">
+                                                    FL 外文系
+                                                </span>
+                                            </button>
+                                            <button
+                                                type="button"
                                                 data-department="GE"
                                                 className="option"
                                                 onClick={() => {
                                                     this.setState({
-                                                        department: "GE",
+                                                        drpDep: "GE",
                                                     });
                                                 }}
                                             >
@@ -229,7 +261,7 @@ export default class Publish extends React.Component {
                                                 className="option"
                                                 onClick={() => {
                                                     this.setState({
-                                                        department: "GEC",
+                                                        drpDep: "GEC",
                                                     });
                                                 }}
                                             >
@@ -1340,7 +1372,7 @@ export default class Publish extends React.Component {
     }
 
     handleDrowndown() {
-        getdropdown(this.state.semester, this.state.department).then(
+        getdropdown(this.state.semester, this.state.drpDep).then(
             (courselist) => {
                 this.setState({ dropdownlist: courselist });
             }
