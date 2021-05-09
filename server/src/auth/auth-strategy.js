@@ -3,7 +3,7 @@ const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 
 const passportJWT = require("passport-jwt");
 const JWTStrategy = passportJWT.Strategy;
-const ExtractJWT = passportJWT.ExtractJwt;
+// const ExtractJWT = passportJWT.ExtractJwt;
 const jwt = require("jsonwebtoken");
 
 const secret_key = process.env.SECRET_KEY;
