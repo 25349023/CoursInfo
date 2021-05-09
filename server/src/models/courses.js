@@ -1,4 +1,5 @@
 const pgp = require("pg-promise")();
+pgp.pg.defaults.ssl = true;
 if (!global.db) {
     db = pgp(process.env.DB_URL);
 }

@@ -1,5 +1,6 @@
 const pgp = require("pg-promise")();
 const MD5 = require("crypto-js/md5");
+pgp.pg.defaults.ssl = true;
 if (!global.db) {
     db = pgp(process.env.DB_URL);
 }
